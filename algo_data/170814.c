@@ -6,10 +6,9 @@
 unsigned long long int find_bound(unsigned long long int min, unsigned long long int max, unsigned long long int a)
 {
 	unsigned long long int mid = (min + max) / 2;
-	//printf(">>>>%llu %llu %llu / %llu - %llu\n", \
-		min, mid, max, (mid - 1)*mid / 2, (mid*(mid + 1)) / 2);
+	printf(">>>>%llu %llu %llu\n", min, mid, max);
 	if ((((mid - 1)*mid) / 2 <= a) && (a < (mid*(mid + 1)) / 2)) return mid;
-	if (mid <= a && a<= max)
+	if ((((mid - 1)*mid) / 2 <= a) && (a < (mid*(mid + 1)) / 2))
 	{
 		return find_bound(mid, max, a);
 	}
