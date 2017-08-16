@@ -3,6 +3,1141 @@
 #include <assert.h>
 
 #if 1
+unsigned long long int find_index(unsigned long long int a)
+{
+	unsigned long long int i = 1;
+	if (a == i) return i;
+	while (i)
+	{
+		if (((i - 1)*i) / 2 <= a && a <= (i*(i + 1)) / 2 - 1) break;
+		i++;
+	}
+	return i;
+}
+int main(void)
+{
+	assert(1 == find_index(1));
+	assert(3 == find_index(4));
+	assert(45 == find_index(1000));
+	assert(1234567890 == find_index(762078938126809995));
+	unsigned long long int N;
+	scanf("%llu", &N);
+	printf("%llu", find_index(N));
+}
+#endif
+
+
+#if 0
+int main(void)
+{
+	int N, cnt = 2, i =0;
+	scanf("%d", &N);
+
+	while (N != i)
+	{
+		cnt = 2 * cnt - 1;
+		i++;
+	}	
+	printf("%d", cnt*cnt);
+}
+#endif
+
+#if 0
+int N;
+int matrix[100][100];
+int main(void)
+{
+	scanf("%d", &N);
+
+	int row = -1, col = -1;
+	int val = 0;
+
+	for (int i = 0; i < 100; i++)
+	{
+		for (int j = 0; j < 100; j++)
+		{
+			matrix[i][j] = -1;
+		}
+	}
+
+	for (int i = 0; i < N; ++i)
+	{
+		for (int j = i; j < N; ++j)
+		{
+			if (i % 3 == 0)
+			{
+				row++; col++;
+			}
+			else if (i % 3 == 1)
+			{
+				col--;
+			}
+			else if (i % 3 == 2)
+			{
+				row--;
+			}
+			matrix[row][col] = (val++) % 10;
+		}
+	}
+
+
+	// 출력
+	for (int i = 0; i < N; i++)
+	{
+		for (int j = 0; j < N; j++)
+		{
+			if (matrix[i][j] == -1)continue;
+			printf("%d ", matrix[i][j]);
+		}
+		printf("\n");
+	}
+
+}
+#endif
+
+#if 0
+int N;
+int matrix[100][100];
+void pprint(void)
+{
+	// 출력
+	for (int i = 0; i < N; i++)
+	{
+		for (int j = 0; j < N; j++)
+		{
+			if (matrix[i][j] == -1)continue;
+			printf("%d ", matrix[i][j]);
+		}
+		printf("\n");
+	}
+}
+int main(void)
+{
+	
+	int loop = 0;
+	int row = 0, col = 0;
+	int index = 0;
+
+	scanf("%d", &N);
+
+
+	for (int i = 0; i < 100; i++)
+	{
+		for (int j = 0; j < 100; j++)
+		{
+			matrix[i][j] = -1;
+		}
+	}
+
+	do{
+		//printf("s==> %d %d %d\n", row, col, index % 10);
+		// \ 방향
+		for (; row < (N-1) - loop; row++, col++, index++)
+		{
+			matrix[row][col] = index %10;
+		}
+		//printf("==> %d %d %d\n", row, col, index%10);
+
+
+		// <-- 방향
+		for (; col > 0 + loop; col--, index++)
+		{
+			matrix[row][col] = index % 10;
+		}
+
+
+		// ㅅ
+		// |
+		for (; row > 0 + loop; row--, index++)
+		{
+
+			
+			printf("==> %d %d %d\n", row, col, index);
+			if (index == (N*(N + 1) / 2)) {
+				printf("break==> %d %d %d\n", row, col, index);
+				break;
+			}
+			matrix[row][col] = index % 10;
+			pprint();
+		}
+
+		row++; row++; col++;
+		//printf("==> %d %d %d\n", row, col, index % 10);
+
+		loop++;
+
+
+	} while (index < (N*(N + 1)) / 2);
+
+	pprint();
+
+
+	return 0;
+}
+#endif
+
+#if 0
+int matrix[100][100] = { 0, }; //1~100
+int main()
+{
+
+	int N; // Input
+
+	scanf("%d", &N);
+
+	int row = 0, col = 0; // index
+	int val = 1; 
+	int loop = 0; // 겉 한바퀴를 돌았을때,  loop을 증가시킴.
+
+	do
+	{
+		// --> 방향
+		for (; col < N - loop; col++){
+			matrix[row][col] = val++;
+		}
+		col--; // 열의 index가 matrix 행의 크기를 초과했으므로, 한단계 이전으로
+		row++; // 행의 index를 증가해서 다음 장소로 이동해 있는다.
+
+
+		//  |
+		//  v  방향
+		for (; row < N - loop; row++){
+			matrix[row][col] = val++;
+		}
+
+		col--; // 열의 index를 감소해서 다음 장소로 이동해 있는다.
+		row--; // 마찬가지로 행의 index가 행의 크기를 초과했으므로, 한단계 이전으로 이동.
+
+
+		// <-- 방향
+		for (; col >= 0 + loop; col--){
+			matrix[row][col] = val++;
+		}
+
+		col++;
+		row--;
+
+		//  ㅅ
+		//  | 방향
+		for (; row > 0 + loop; row--){
+			matrix[row][col] = val++;
+		}
+
+		col++;
+		row++;
+
+		loop++;
+
+	} while (val < N*N + 1);
+
+
+	// 출력
+	for (int i = 0; i < N; i++)
+	{
+		for (int j = 0; j < N; j++)
+		{
+			printf("%d ", matrix[i][j]);
+		}
+		printf("\n");
+	}
+}
+#endif
+
+
+#if 0
+int N;
+int val[100][100];
+int main(void)
+{
+	int depth = 0, weight = 0, width = 0, bump_cnt = 0, backup;
+	//scanf("%d", &N);
+	//depth = (N % 2) ? ((N + 1) / 2) : (N / 2);
+	// backup = N;
+
+	// test case
+	N = 5;
+	backup = N;
+	depth = 1; 
+	width = N - 1;
+
+	if (N % 2)
+	{
+		//입력값 홀수 케이스 
+		for (int i = 0; i < depth; i++)
+		{
+			bump_cnt = 0;
+			// 1 direction
+			for (int j = 0; j < width; j++)
+			{
+				val[i][j] = bump_cnt*(width)+(j + 1);
+			}
+			bump_cnt++;
+
+			// 2 direction
+			for (int j = 0; j < width; j++)
+			{
+				val[j][N-i] = bump_cnt * (width)+(j + 1);
+			}
+			bump_cnt++;
+
+
+			// 3 direction
+			for (int j = width; j > 0; j--)
+			{
+				val[N - i][j] = bump_cnt * (width)+(N - j);
+			}
+			bump_cnt++;
+
+			// 4 direction
+			for (int j = width; j > 0; j--)
+			{
+				val[j][i] = bump_cnt * (width)+(N - j);
+			}
+			bump_cnt++;
+
+
+			weight += N*N - (N - 1)*(N - 1); N--;
+		}
+
+	}
+	else
+	{
+	}
+	
+
+
+	N = backup;
+
+
+
+	// 출력
+	for (int i = 0; i < N; i++)
+	{
+		for (int j = 0; j < N; j++)
+		{
+			printf("%d ", val[i][j]);
+		}
+		printf("\n");
+	}
+
+	return 0;
+}
+#endif
+
+
+#if 0
+int N;
+char alpha_set[10000][21];
+short cnt_set[10000][10000];
+int main(void)
+{
+	scanf("%d", &N);
+
+
+	return 0;
+}
+#endif
+
+
+
+#if 0
+int Cor_N, charset;
+
+typedef struct{
+	char origin;
+	char correction;
+} Table;
+
+Table t[50];
+char raw[100001];
+
+int main(void)
+{
+	//freopen("170814-3.txt", "r", stdin);
+	int len;
+
+	scanf("%d", &Cor_N);
+	for (int i = 0; i < Cor_N; i++)
+	{
+		scanf(" %c %c", &t[i].origin, &t[i].correction);
+	}
+
+	//printf("=====\n");
+	//for (int i = 0; i < Cor_N; i++)
+	//{
+	//	printf("%c %c\n", t[i].origin, t[i].correction);
+	//}
+	//printf("=====\n");
+
+
+	scanf("%d", &charset);
+	for (int i = 0; i < charset; i++)
+	{
+		scanf(" %c", &raw[i]);
+	}
+
+	//printf("%s\n", raw);
+
+	for (int i = 0; i < charset; i++)
+	{
+		for (int j = 0; j < Cor_N; j++)
+		{
+			//if (raw[i] == '0') printf("before %c ", raw[i]);
+			if (raw[i] == t[j].origin)
+			{
+				raw[i] = t[j].correction;
+				break;
+				//printf("after %c\n", raw[i]);
+			}
+		}
+	}
+
+	printf("%s", raw);
+
+	return 0;
+}
+#endif
+
+
+
+#if 0
+int N;
+int degree = 1;
+int matrix[50][50];
+int tmp[50][50];
+void pprint(void);
+void clockwise(int cnt)
+{
+	if (cnt == 0) return;
+	//do sth
+	//90 degree rotate and copy to tmp-matrix
+	for (int i = 0; i < N; i++)
+	{
+		for (int j = 0; j < N; j++)
+		{
+			tmp[j][(N-1)-i] = matrix[i][j];
+		}
+	}
+
+	// backup to original matrix
+	for (int i = 0; i < N; i++)
+	{
+		for (int j = 0; j < N; j++)
+		{
+			matrix[i][j] = tmp[i][j];
+		}
+	}
+
+
+	clockwise(cnt - 1);
+}
+void pprint(void)
+{
+	for (int i = 0; i < N; i++)
+	{
+		for (int j = 0; j < N; j++)
+		{
+			printf("%d ", matrix[i][j]);
+		}
+		printf("\n");
+	}
+}
+
+int main(void)
+{
+	
+	scanf("%d", &N);
+	for (int i = 0; i < N; i++)
+	{
+		for (int j = 0; j < N; j++)
+		{
+			scanf("%d", &matrix[i][j]);
+		}
+	}
+
+	while (degree)
+	{
+		scanf("%d", &degree);
+		if (degree / 90 == 0) break;
+		if (degree % 90 != 0) continue;
+		clockwise(degree / 90);
+		pprint();
+	}
+
+	return 0;
+}
+#endif
+
+#if 0
+int val[100][100];
+int main(void)
+{
+	// direction은 3가지 상태가 있다. 1, 0, -1
+	int N,backup, depth=0, row_dir = 0, col_dir = 1,  row_i = 0, col_i = 0, weight =0;
+	scanf("%d", &N);
+	backup = N;
+	depth = (N + 1)/2;
+
+	
+	while (depth)
+	{
+
+		for (int i = 1; i <= depth; i++)
+		{
+			// direction 1
+			if (row_dir == 0 && col_dir == 1)
+			{
+				for (int j = i; j <= ((2 * depth - 1) - 1); j++)
+				{
+					col_i = j - 1;
+					val[row_i][col_i] = j + weight + 0 * ((2 * depth - 1) - 1);
+				}
+				if ((((2 * depth - 1) - 1) != 0) && (i % ((2 * depth - 1) - 1)))
+				{
+					row_dir = 1;
+					col_dir = 0;
+					col_i = (2 * depth - 1) - 1;
+				}
+			}
+
+			// dir 2
+			if (row_dir == 1 && col_dir == 0)
+			{
+				for (int j = i; j <= ((2 * depth - 1) - 1); j++)
+				{
+					row_i = j - 1;
+					val[row_i][col_i] = j + weight + 1 * ((2 * depth - 1) - 1);
+				}
+				row_i += (2 * depth - 1) - 1;
+				if ((((2 * depth - 1) - 1) != 0) && (i % ((2 * depth - 1) - 1)))
+				{
+					row_dir = 0;
+					col_dir = -1;
+					row_i = (2 * depth - 1) - 1;
+				}
+			}
+
+			// dir3
+			if (row_dir == 0 && col_dir == -1)
+			{
+				for (int j = i; j <= (N - 1); j++)
+				{
+					col_i = (2 * depth - 1) - j;
+					val[row_i][col_i] = j + weight + 2 * ((2 * depth - 1) - 1);
+				}
+				if ((((2 * depth - 1) - 1) != 0) && (i % ((2 * depth - 1) - 1)))
+				{
+					
+					row_dir = -1;
+					col_dir = 0;
+					col_i = col_i - 1;
+				}
+			}
+
+			// dir 4
+			if (row_dir == -1 && col_dir == 0)
+			{
+				for (int j = i; j <= ((2 * depth - 1) - 1); j++)
+				{
+					row_i = (2 * depth - 1) - j;
+					val[row_i][col_i] = j + weight + 3 * ((2 * depth - 1) - 1);
+				}
+				if ((((2 * depth - 1) - 1) != 0) && (i % ((2 * depth - 1) - 1)))
+				{
+					row_dir = 0;
+					col_dir = 1;
+					row_i = row_i - 1;
+					//printf(" row_i %d\n", row_i);
+				}
+			}
+
+
+		}
+
+		N -= 1;
+		depth--;
+		weight = (N*N) - ((N - 1)*(N - 1));
+		row_i++; col_i++;
+		printf("N ==> %d\n", N);
+	}
+
+
+	//N = backup;
+
+	for (int i = 0; i < N; i++)
+	{
+		for (int j = 0; j < N; j++)
+		{
+			printf("%d ", val[i][j]);
+		}
+		printf("\n");
+	}
+
+	return 0;
+}
+#endif
+
+
+#if 0
+double val[10000];
+int main(void)
+{
+	int N;
+	double max = -1.0;
+	freopen("170814-3.txt", "r", stdin);
+
+	scanf("%d", &N);
+
+	for (int i = 0; i < N; i++)
+	{
+		scanf("%lf", &val[i]);
+	}
+
+	for (int i = 0; i < N-1; i++)
+	{
+		double tmp = 1.0;
+		for (int j = i; j < N; j++)
+		{
+			tmp *= val[j];
+			if (tmp > max)
+			{
+				max = tmp;
+			}
+		}
+	}
+
+	printf("%.3lf", max);
+
+
+	return 0;
+}
+#endif
+
+
+
+#if 0
+
+int	numerator[100], denominator[100];
+int GCD(int a, int b)
+{
+	int r = 1, tmp;
+	if (a % b == 0) return b;
+	if (a == 0 || b == 0) return 0;
+	if (a == 1 || b == 1) return 1;
+	while (r)
+	{
+		tmp = a%b;
+		a = b;
+		b = tmp;
+		r = a%b;
+	}
+	return b;
+}
+
+int LCM(int a, int b)
+{
+	int gcd = GCD(a, b);
+	if (gcd == 0) return 0;
+	return gcd *(a / gcd) *(b / gcd);
+}
+
+int main(void)
+{
+	int N;
+	int t_numerator = 0, t_lcm = 1;
+	//freopen("170814-3.txt", "r", stdin);
+
+	scanf("%d", &N);
+
+	for (int i = 0; i < N; i++)
+	{
+		scanf("%d %d", &numerator[i], &denominator[i]);
+	}
+
+	// 입력된 수를 전부 기약분수화 하기.
+	for (int i = 0; i < N; i++)
+	{
+		//printf("i=%d %d %d\n", i, numerator[i], denominator[i]);
+		if (denominator[i] == 0) { printf("0"); return 0; }
+		if (numerator[i] == 0) { continue; }
+		int gcd = GCD(numerator[i], denominator[i]);
+		if (gcd < 0) gcd = -gcd;
+		
+		if (gcd == 1 || gcd == 0) continue;
+		numerator[i] /= gcd;
+		denominator[i] /= gcd;
+	}
+	
+	//for (int i = 0; i < N; i++)
+	//{
+	//	printf("i=%d %d %d\n", i, numerator[i], denominator[i]);
+	//}
+
+	//분모 구하기. 결국에는 lcm 이다.
+	for (int i = 0; i < N; i++)
+	{
+		t_lcm = LCM(t_lcm, denominator[i]);
+		//printf("lcm ==> %d\n", t_lcm);
+	}
+
+	//printf("lcm ==> %d\n", t_lcm);
+
+	// 분자의 합 구하기.
+	for (int i = 0; i < N; i++)
+	{
+		t_numerator += numerator[i]*(t_lcm / denominator[i]);
+	}
+
+
+	if (t_numerator == 0) { printf("0"); }
+	else { 
+		int _gcd = GCD(t_numerator, t_lcm);
+		if (_gcd < 0) _gcd = -_gcd;
+		printf("%d/%d", t_numerator/_gcd, t_lcm/_gcd); 
+	}
+	
+
+	return 0;
+}
+#endif
+
+
+#if 0
+int freq_table[11] = { 1, 2, 3, 4, 5, 6, 5, 4, 3, 2, 1 };
+int main(void)
+{
+	int N;
+	double r;
+
+	scanf("%d", &N);
+
+	printf("%5.4lf%%", ((double)freq_table[N-2] / 36.0)*100.0);
+
+	return 0;
+}
+#endif
+
+#if 0
+int val[6];
+int main(void)
+{
+	int N, len=0, i =0;
+	scanf("%d", &N);
+
+	while (N)
+	{
+		val[len] = N % 10;
+		N /= 10;
+		len++;
+	}
+	len--;
+
+	while (i != len)
+	{
+		printf("%d", val[i]);
+		i++;
+	}
+	printf("%d", val[i]);
+
+	return 0;
+}
+#endif
+
+#if 0
+int main(void)
+{
+	int N;
+	scanf("%d", &N);
+
+	printf("%d", (N + 1)*(N + 2) / 2);
+
+	return 0;
+}
+#endif
+
+
+
+#if 0
+char alpha[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"; 
+char matrix[100][100];
+int main(void)
+{
+	int N, k=0;
+	scanf("%d", &N);
+
+	for (int i = N - 1; i >=0; i--)
+	{
+		for (int j = N - 1; j >= 0; j--)
+		{
+			if (k % 26 == 0) k = 0;
+			matrix[j][i] = alpha[k];
+			k++;
+		}
+	}
+
+	for (int i = 0; i < N; i++)
+	{
+		for (int j = 0; j < N; j++)
+		{
+			printf("%c ", matrix[i][j]);
+		}
+		printf("\n");
+	}
+
+	return 0;
+}
+#endif
+
+
+#if 0
+
+void print_star(int max, int type)
+{
+	if (type < 1 || type > 3)
+	{
+		printf("INPUT ERROR!");
+		return;
+	}
+	
+	if (max < 0 || max > 100)
+	{
+		printf("INPUT ERROR!");
+		return;
+	}
+
+	if (type == 1)
+	{
+		for (int i = 0; i < max; i++)
+		{
+			for (int j = 0; j <= i; j++)
+			{
+				printf("*");
+			}
+			printf("\n");
+		}
+		return;
+	}
+
+	if (type == 2)
+	{
+		for (int i = max; i > 0; i--)
+		{
+			for (int j = 0; j < i; j++)
+			{
+				printf("*");
+			}
+			printf("\n");
+		}
+		return;
+	}
+
+	if (type == 3)
+	{
+		int row = max * 2 - 1;
+		for (int i = 0; i < max; i++)
+		{
+			for (int j = 0; j < row; j++)
+			{
+				if (((max - 1) - i) <= j && j <= ((max - 1) + i))
+				{
+					printf("*");
+					if (j == ((max - 1) + i)) break;
+				}
+				else
+				{
+					printf(" ");
+				}
+
+			}
+			printf("\n");
+		}
+
+		return;
+	}
+}
+
+int main(void)
+{
+	int N, type;
+	scanf("%d %d", &N, &type);
+
+	print_star(N, type);
+	return 0;
+}
+#endif
+
+
+#if 0
+typedef struct{
+	int row;
+	int col;
+	int t_row;
+	int t_col;
+} A;
+
+typedef struct{
+	int row;
+	int col;
+	int t_row;
+	int t_col;
+} B;
+int main(void)
+{
+	A aa[4], bb[5], tmp;
+	int a[4][5] = { { 3, -5, 12, 3, -21 }, { -2, 11, 2, -7, -11 }, { 21, -21, -35, -93, -11 }, { 9, 14, 39, -98, -1 } };
+
+	//int aa[4][2] = { { 1, 0 }, { 2, 0 }, { 3, 0 }, {4, 0 }, { 5, 0 } };
+
+	for (int i = 0; i < 4; i++)
+	{
+		aa[i].row = i + 1;
+	}
+
+	for (int i = 0; i < 5; i++)
+	{
+		bb[i].col = i + 1;
+	}
+
+	for (int i = 0; i < 4; i++)
+	{
+		for (int j = 0; j < 5; j++)
+		{
+			aa[i].t_row += a[i][j];
+		}
+	}
+
+	for (int i = 0; i < 5; i++)
+	{
+		for (int j = 0; j < 4; j++)
+		{
+			bb[j].t_col += a[j][i];
+		}
+	}
+
+	// 행의 합으로 정렬
+	for (int i = 0; i < 3; i++)
+	{
+		for (int j = i; j < 4; j++)
+		{
+			if (aa[i].t_row < aa[j].t_row)
+			{
+				tmp = aa[i];
+				aa[i] = aa[j];
+				aa[j] = tmp;
+			}
+		}
+	}
+	printf("%d ", aa[0].row);
+
+
+
+
+	// 열의 합으로 정렬
+	for (int i = 0; i < 4; i++)
+	{		
+		for (int j = i; j < 5; j++)
+		{
+			if (aa[i].t_col < aa[j].t_col)
+			{
+				tmp = bb[i];
+				bb[i] = bb[j];
+				bb[j] = tmp;
+			}
+		}
+	}
+	printf("%d", bb[0].col);
+
+
+
+	return 0;
+}
+#endif
+
+
+
+#if 0
+void main(void)
+{
+	int k_cnt = 0, i_cnt = 0, i = 0;
+	char inputs[10000] = { 0 };
+
+	scanf("%s", inputs);
+
+	while (inputs[i])
+	{
+		if ((inputs[i] == 'K') && (inputs[i + 1] == 'O') && (inputs[i + 2] == 'I')){
+			k_cnt++;
+		}
+		if ((inputs[i] == 'I') && (inputs[i + 1] == 'O') && (inputs[i + 2] == 'I')){
+			i_cnt++;
+		}
+		i++;
+	}
+
+	printf("%d\n", k_cnt);
+	printf("%d\n", i_cnt);
+}
+
+#endif
+
+
+
+#if 0
+// 문자열 뒤집기 2 기본2. koi 008c
+char toUpper(char c){
+	if (!('a' <= c && c <= 'z')) return c;
+	c = c - 'a' + 'A';
+	return c;
+}
+void reverse_print(char *p, int n){
+	int i;
+	for (i = 1; i < n+1; i++)
+	{
+		printf("%c", toUpper(p[-i]));
+	}
+}
+int main(void)
+{
+	char a[51] = { 0 };
+	gets(a);
+	int k = 0;
+	int cnt = 0;
+
+	while (a[k]){
+		if (a[k] == ' ' || a[k] == '.' || a[k] =='!')
+		{
+			reverse_print(a + k, cnt);
+			cnt = 0;
+			printf("%c", a[k]);
+		}
+		else
+		{
+			cnt++;
+		}
+		k++;
+	}
+	reverse_print(a + k, cnt);
+	printf("\n");
+}
+
+#endif
+
+#if 0
+char set[51];
+int str_len(char *p)
+{
+	int len = 0;
+	while (*p)
+	{
+		len++; p++;
+	}
+	return len;
+}
+int main(void)
+{
+	char *p;
+	int cnt;
+	//freopen("test170814-3.txt", "r", stdin);
+	gets(set);
+	cnt = str_len(set)-1;
+	p = set + str_len(set) - 1;
+
+	while (cnt)
+	{
+		printf("%c", *p); 
+		p--; cnt--;
+	}
+	printf("%c", *p);
+
+
+	return 0;
+}
+#endif
+
+
+#if 0
+char set[256];
+int str_len(char *p)
+{
+	int len = 0;
+	while (*p)
+	{
+		if (len == 10) break;
+		if ('a' <= (*p) && (*p) <= 'z')
+		{
+			len++; p++;
+			continue;
+		}
+		if ('A' <= (*p) && (*p) <= 'Z')
+		{
+			len++; p++;
+			continue;
+		}
+		break;
+	}
+	return len;
+}
+int main(void)
+{
+	char *p;
+	int cnt = 10;
+	scanf("%s", set);
+
+	p = set + str_len(set) - 1;
+
+	while (cnt)
+	{
+		if ('a' <= (*p) && (*p) <= 'z')
+		{
+			printf("%c", *p); 
+		}
+		if ('A' <= (*p) && (*p) <= 'Z')
+		{
+			printf("%c", *p); 
+		}
+		p--; cnt--;
+	}
+
+
+	return 0;
+}
+#endif
+
+#if 0
+
+int main(void)
+{
+	int i=-1;
+	char c;
+	scanf("%c", &c);
+
+	if ('a' <= c && c <= 'z') {
+		while ((c-'a')-i)
+		{
+			i++;
+			printf("%c", 'a' + i);
+			
+		}
+		return 0;
+	}
+
+	if ('A' <= c && c <= 'Z') {
+		while ((c + i) != 'Z')
+		{
+			i++;
+			printf("%c", c + i);
+		}
+		return 0;
+	}
+
+	printf("Error");
+	return 0;
+}
+
+#endif
+
+
+#if 0
 int val[200][3] = { 0 };
 int player[200];
 int main(void)
