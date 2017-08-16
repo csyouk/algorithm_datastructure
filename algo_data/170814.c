@@ -3,26 +3,58 @@
 #include <assert.h>
 
 #if 1
+unsigned long long int find_bound(unsigned long long int min, unsigned long long int max, unsigned long long int a)
+{
+	unsigned long long int mid = (min + max) / 2;
+	//printf(">>>>%llu %llu %llu / %llu - %llu\n", \
+		min, mid, max, (mid - 1)*mid / 2, (mid*(mid + 1)) / 2);
+	if ((((mid - 1)*mid) / 2 <= a) && (a < (mid*(mid + 1)) / 2)) return mid;
+	if (mid <= a && a<= max)
+	{
+		return find_bound(mid, max, a);
+	}
+	else
+	{
+		return find_bound(min, mid, a);
+	}
+	
+}
 unsigned long long int find_index(unsigned long long int a)
 {
 	unsigned long long int i = 1;
-	if (a == i) return i;
-	while (i)
+	unsigned long long int min = 100000000;
+	unsigned long long int max = 1000000000000000000;
+	if (a < min)
 	{
-		if (((i - 1)*i) / 2 <= a && a <= (i*(i + 1)) / 2 - 1) break;
-		i++;
+		if (a == i) return i;
+		while (i)
+		{
+			if (((i - 1)*i) / 2 <= a && a < (i*(i + 1)) / 2) break;
+			i++;
+		}
+	}
+	else
+	{
+		i = find_bound(min, max, a);
+		//printf("i is ==> %d\n", i);
 	}
 	return i;
 }
 int main(void)
 {
-	assert(1 == find_index(1));
-	assert(3 == find_index(4));
-	assert(45 == find_index(1000));
+	//assert(1 == find_index(1));
+	//assert(3 == find_index(4));
+	//assert(45 == find_index(1000));
 	assert(1234567890 == find_index(762078938126809995));
-	unsigned long long int N;
-	scanf("%llu", &N);
-	printf("%llu", find_index(N));
+	//assert(1234567890 == find_index(99999999999999994));
+	unsigned long long int test = 1000000000000000000;
+	//printf("==> %llu\n", find_index(test));
+
+	assert(1414213562 == find_index(test));
+
+	//unsigned long long int N;
+	//scanf("%llu", &N);
+	//printf("%llu", find_index(N));
 }
 #endif
 
