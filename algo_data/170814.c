@@ -2,7 +2,7 @@
 //#include <time.h>
 #include <assert.h>
 
-#if 1
+#if 0
 #include <stdio.h>
 
 int  B;
@@ -973,7 +973,7 @@ int main(void)
 }
 #endif
 
-#if 0
+#if 1
 int N;
 int matrix[100][100];
 void pprint(void)
@@ -1008,14 +1008,11 @@ int main(void)
 	}
 
 	do{
-		//printf("s==> %d %d %d\n", row, col, index % 10);
 		// \ 방향
 		for (; row < (N-1) - loop; row++, col++, index++)
 		{
 			matrix[row][col] = index %10;
 		}
-		//printf("==> %d %d %d\n", row, col, index%10);
-
 
 		// <-- 방향
 		for (; col > 0 + loop; col--, index++)
