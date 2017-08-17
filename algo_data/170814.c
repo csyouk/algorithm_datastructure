@@ -923,6 +923,19 @@ int main(void)
 #if 0
 int N;
 int matrix[100][100];
+void pprint(void)
+{
+	// 출력
+	for (int i = 0; i < N; i++)
+	{
+		for (int j = 0; j < N; j++)
+		{
+			if (matrix[i][j] == -1)continue;
+			printf("%d ", matrix[i][j]);
+		}
+		printf("\n");
+	}
+}
 int main(void)
 {
 	scanf("%d", &N);
@@ -955,25 +968,15 @@ int main(void)
 				row--;
 			}
 			matrix[row][col] = (val++) % 10;
+			pprint();
 		}
 	}
 
-
-	// 출력
-	for (int i = 0; i < N; i++)
-	{
-		for (int j = 0; j < N; j++)
-		{
-			if (matrix[i][j] == -1)continue;
-			printf("%d ", matrix[i][j]);
-		}
-		printf("\n");
-	}
-
+	pprint();
 }
 #endif
 
-#if 1
+#if 0
 int N;
 int matrix[100][100];
 void pprint(void)
@@ -1011,12 +1014,14 @@ int main(void)
 		// \ 방향
 		for (; row < (N-1) - loop; row++, col++, index++)
 		{
+			printf("\\");
 			matrix[row][col] = index %10;
 		}
 
 		// <-- 방향
 		for (; col > 0 + loop; col--, index++)
 		{
+			printf("<");
 			matrix[row][col] = index % 10;
 		}
 
@@ -1025,24 +1030,25 @@ int main(void)
 		// |
 		for (; row > 0 + loop; row--, index++)
 		{
-
+			printf("ㅅ");
 			
-			printf("==> %d %d %d\n", row, col, index);
 			if (index == (N*(N + 1) / 2)) {
-				printf("break==> %d %d %d\n", row, col, index);
 				break;
 			}
 			matrix[row][col] = index % 10;
-			pprint();
 		}
 
 		row++; row++; col++;
-		//printf("==> %d %d %d\n", row, col, index % 10);
 
 		loop++;
 
 
 	} while (index < (N*(N + 1)) / 2);
+	// 출력 회수를 보면, 크기 5짜리 matrix에 대하여.
+	// 4 4 4 
+	// 1 1 1
+	
+
 
 	pprint();
 
@@ -1068,6 +1074,7 @@ int main()
 	{
 		// --> 방향
 		for (; col < N - loop; col++){
+			printf(">");
 			matrix[row][col] = val++;
 		}
 		col--; // 열의 index가 matrix 행의 크기를 초과했으므로, 한단계 이전으로
@@ -1077,6 +1084,7 @@ int main()
 		//  |
 		//  v  방향
 		for (; row < N - loop; row++){
+			printf("v");
 			matrix[row][col] = val++;
 		}
 
@@ -1086,25 +1094,33 @@ int main()
 
 		// <-- 방향
 		for (; col >= 0 + loop; col--){
+			printf("<");
 			matrix[row][col] = val++;
 		}
 
-		col++;
-		row--;
+		col++; // 열의 index를 증가시켜서 사각형 안으로 가져다 놓는다.
+		row--; // 행의 index를 감소시켜서 다음 장소로 가져다 놓는다.
 
 		//  ㅅ
 		//  | 방향
 		for (; row > 0 + loop; row--){
+			printf("ㅅ");
 			matrix[row][col] = val++;
 		}
-
+		/*printf("%d %d\n", row, col);*/
+		// 행과 열의 index를 증가시켜서 다음 loop의 첫번째 위치로 돌려놓는다.
 		col++;
 		row++;
+
 
 		loop++;
 
 	} while (val < N*N + 1);
-
+	// loop이 돈 회수를 세어보면, 바깥쪽 부터
+	// 5 4 4 3
+	// 3 2 2 1
+	// 1
+	// 이런식이다.
 
 	// 출력
 	for (int i = 0; i < N; i++)
