@@ -3,12 +3,852 @@
 #include <assert.h>
 
 #if 1
-unsigned long long int find_bound(unsigned long long int min, unsigned long long int max, unsigned long long int a)
+#include <stdio.h>
+
+int  B;
+
+char N[300+10][20+10];
+char M[300+10][20+10];
+int cnt;
+char nums[] = "0123456789ABCDEFGHIJ";
+
+int trans(char*N, int t)
 {
-	unsigned long long int mid = (min + max) / 2;
-	printf(">>>>%llu %llu %llu\n", min, mid, max);
-	if ((((mid - 1)*mid) / 2 <= a) && (a < (mid*(mid + 1)) / 2)) return mid;
-	if ((((mid - 1)*mid) / 2 <= a) && (a < (mid*(mid + 1)) / 2))
+	int p = 0;
+
+	while(t != 0)
+	{
+		N[p++] = nums[t%B];
+		t/=B;
+	}
+	N[p] = '\0';
+	return p;
+}
+
+void reverse(char*N, int p)
+{
+	int temp, j;
+	for(j=0; j<p/2; j++)
+	{
+		temp = N[j];
+		N[j] = N[p-1-j];
+		N[p-1-j] = temp;
+	}
+}
+
+int main(void)
+{
+	int i, j, p;
+
+
+	scanf("%d", &B);
+
+
+	for(i=1;i<=300;i++)
+	{
+		p = trans(N[cnt], i*i);
+
+		for(j=0; j<=p/2; j++)
+		{
+			if (N[cnt][j] != N[cnt][p-j-1])
+				break;
+		}
+
+		if (j>p/2)
+		{
+			p = trans(M[cnt], i);
+			reverse(M[cnt], p);
+			cnt++;
+		}
+	}
+
+	for (i=0; i<cnt; i++)
+	{
+		printf("%s %s\n", M[i], N[i]);
+	}
+
+	return 0;
+}
+#endif
+
+#if 0
+#include <stdio.h>
+
+char str[200 + 10];
+
+char *strp[200 + 10];
+char sol[100 + 10][200 + 10];
+int  sp;
+
+unsigned int strlen(const char *d)
+{
+	unsigned int cnt = 0;
+
+	while (*d++)
+	{
+		cnt++;
+	}
+
+	return cnt;
+}
+
+int strcmp(const char *s1, const char *s2)
+{
+	for (;;)
+	{
+		if (*s1 > *s2) return 1;
+		else if (*s1 < *s2) return -1;
+		else if (*s1 == 0) return 0;
+		s1++;
+		s2++;
+	}
+}
+
+int main(void)
+{
+	int i, j, len, n, cnt;
+
+	for (;;)
+	{
+
+		gets(str);
+		if (str[0] == 'E' && str[1] == 'N' && str[2] == 'D' && str[3] == '\0') break;
+
+
+		len = (int)strlen(str);
+		n = 0;
+		strp[0] = &str[0];
+		for (i = 1; i<len; i++)
+		{
+			if (str[i] == ' ')
+			{
+				str[i] = 0;
+				n++;
+				strp[n] = &str[i + 1];
+			}
+		}
+		n++;
+
+		/* 오름차순 정렬 */
+		for (i = 0; i<n - 1; i++)
+		{
+			for (j = i + 1; j<n; j++)
+			{
+				if (strcmp(strp[i], strp[j])>0)
+				{
+					char *p;
+					p = strp[i];
+					strp[i] = strp[j];
+					strp[j] = p;
+				}
+			}
+		}
+
+		cnt = 1;
+		sp = 0;
+		for (i = 1; i<n; i++)
+		{
+			if (strcmp(strp[i], strp[i - 1]) != 0)
+			{
+				sprintf(sol[sp++], "%s : %d", strp[i - 1], cnt);
+				cnt = 1;
+			}
+			else
+			{
+				cnt++;
+			}
+		}
+		sprintf(sol[sp++], "%s : %d", strp[i - 1], cnt);
+
+		for (i = 0; i<sp; i++)
+		{
+			printf("%s\n", sol[i]);
+		}
+	}
+
+	return 0;
+}
+#endif
+
+#if 0
+char Buffer[201];
+char * addressBuffer[201];
+char database[110][210];
+int address_size;
+int str_cmp(char *p, char *q)
+{
+	if (p == 0) return -1;
+	if (q == 0) return 1;
+	while (*p || *q)
+	{
+		if (*p == *q) { p++; q++; continue; }
+		return (*p > *q) ? 1: -1;
+	}
+	return 0;
+}
+void store_addresses(char *p)
+{
+	// clear before store(init)
+	for (int i = 0; i < 201; i++)
+	{
+		addressBuffer[i] = 0;
+	}
+
+	int i = 0;
+	addressBuffer[i] = p;
+	address_size = 1;
+	i++; p++;
+	while (*p)
+	{
+		if (*p != ' ' && *(p-1) == ' ') 
+		{ 
+			*(p-1) = 0;
+			addressBuffer[i] = p;
+			address_size++;
+			i++;
+			p++;
+			continue;
+		}
+
+		p++;
+	}
+}
+void sort_address(void)
+{
+	char * tmp;
+	for (int i = 0; i < address_size-1; i++)
+	{
+		for (int j = i; j < address_size; j++)
+		{
+			if (str_cmp(addressBuffer[i], addressBuffer[j]) > 0)
+			{
+				tmp = addressBuffer[i];
+				addressBuffer[i] = addressBuffer[j];
+				addressBuffer[j] = tmp;
+			}
+		}
+	}
+}
+void pprint(void)
+{
+
+	if (address_size == 0) return;
+	int cnt = 0;
+	char * leading_word = addressBuffer[0];
+	printf("%s : ", leading_word);
+	cnt++;
+	for (int i = 1; i < address_size; i++)
+	{
+		if (str_cmp(leading_word, addressBuffer[i]) == 0)
+		{
+			cnt++;
+			leading_word = addressBuffer[i];
+		}
+		else //  (str_cmp(tmp, addressBuffer[i]) != 0)
+		{ 
+			printf("%d\n", cnt);
+			cnt = 0;
+			leading_word = addressBuffer[i];
+			printf("%s : ", addressBuffer[i]);
+			cnt++;
+		}
+	}
+	printf("%d", cnt);
+}
+int main(void)
+{
+	//freopen("170814-3.txt", "r", stdin);
+	while (1)
+	{
+
+		gets(Buffer);
+		if (Buffer[0] == 0) continue;
+		if (Buffer[0] == 'E' && Buffer[1] == 'N' && Buffer[2] == 'D' && Buffer[3] == '\0') break;
+		store_addresses(Buffer);
+		sort_address();
+		pprint();
+	}
+}
+#endif
+
+#if 0
+for (int j = i; j < address_size; j++)
+{
+	if (str_cmp(tmp, addressBuffer[i]) == 0) {
+		cnt++;
+		tmp = addressBuffer[i];
+	}
+	if (str_cmp(tmp, addressBuffer[i]) != 0)
+	{ 
+		//tmp = addressBuffer[i];
+		cnt = 0;
+		printf("%s : ", addressBuffer[i]);
+		cnt++;
+	}
+}
+#endif
+
+#if 0
+#include <stdio.h>
+
+int N;
+char s[100000+10][20+10];
+
+int strcmp(const char *s1, const char *s2)
+{
+	for(;;)
+	{
+		if(*s1 > *s2) return 1;
+		else if(*s1 < *s2) return -1;
+		else if(*s1 == 0) return 0;
+		s1++;
+		s2++;
+	}
+}
+
+int main(void)
+{
+	int i;
+	int j, cnt, unique=1;
+
+
+	scanf("%d", &N);
+
+	for(i=1; i<=N; i++)
+	{
+		scanf("%s", s[i]);
+	}
+
+
+	for(i=1; i<N; i++)
+	{
+		cnt = 0;
+		if(s[i][0] == 0) continue;
+
+		for(j=i+1; j<=N; j++)
+		{
+			if(s[j][0] == 0) continue;
+			if(strcmp(s[i], s[j]) == 0)
+			{
+				if(cnt==0)
+				{
+					printf("%s %d %d", s[i], i, j);
+				}
+				else
+				{
+					printf(" %d", j);
+				}
+				cnt++;
+				s[j][0] = 0;
+				unique = 0;
+			}
+		}
+		if(cnt) printf("\n");
+	}
+
+	if(unique) printf("unique");
+
+	return 0;
+}
+#endif
+
+#if 0
+#include <stdio.h>
+
+char str[200 + 10];
+
+char *strp[200+10];
+char sol[100+10][200+10];
+int  sp;
+
+unsigned int strlen(const char *d)
+{
+	unsigned int cnt = 0;
+
+	while(*d++)
+	{
+		cnt++;
+	}
+
+	return cnt;
+}
+
+int strcmp(const char *s1, const char *s2)
+{
+	for(;;)
+	{
+		if(*s1 > *s2) return 1;
+		else if(*s1 < *s2) return -1;
+		else if(*s1 == 0) return 0;
+		s1++;
+		s2++;
+	}
+}
+
+int main(void)
+{
+	int i, j, len, n, cnt;
+
+	for(;;)
+	{
+
+		gets(str);
+		if(str[0]=='E' && str[1]=='N' && str[2]=='D' && str[3]=='\0') break;
+
+
+		len = (int)strlen(str);
+		n = 0;
+		strp[0] = &str[0];
+		for(i=1; i<len;i++)
+		{
+			if(str[i] == ' ')
+			{
+				str[i] = 0;
+				n++;
+				strp[n] = &str[i+1];
+			}
+		}
+		n++;
+
+		/* 오름차순 정렬 */
+		for(i=0; i<n-1; i++)
+		{
+			for(j=i+1; j<n; j++)
+			{
+				if(strcmp(strp[i], strp[j])>0)
+				{
+					char *p;
+					p = strp[i];
+					strp[i] = strp[j];
+					strp[j] = p;
+				}
+			}
+		}
+
+		cnt = 1;
+		sp = 0;
+		for(i=1; i<n; i++)
+		{
+			if(strcmp(strp[i], strp[i-1])!=0)
+			{
+				sprintf(sol[sp++], "%s : %d", strp[i-1], cnt);
+				cnt = 1;
+			}
+			else
+			{
+				cnt++;
+			}
+		}
+		sprintf(sol[sp++], "%s : %d", strp[i-1], cnt);
+
+		for (i=0; i<sp; i++)
+		{
+			printf("%s\n", sol[i]);
+			}
+	  }
+
+	return 0;
+}
+#endif
+
+
+#if 0
+int N;
+char database[10000][21];
+unsigned int str_length(const char);
+int str_cmp(char *p, char *q);
+unsigned int compute_length(const char *d)
+{
+	int length = 0;
+	while (*d)
+	{
+		*d++;
+		length++;
+	}
+	return length;
+}
+int str_cmp(char *p, char *q)
+{
+	// return 0 when two strings are same
+	while (*p || *q)
+	{
+		if (*p == *q){ p++; q++; continue; }
+		return (*p > *q) ? 1 : -1;
+		p++; q++;
+	}
+	return 0;
+}
+
+int main(void)
+{
+	freopen("170814-3.txt","r",stdin);
+	int unique_flag = 1;
+	int cnt = 0;
+	scanf("%d", &N);
+	for (int i = 0; i < N; i++)
+	{
+		scanf("%s", database[i]);
+	}
+
+	for (int i = 0; i < N; i++)
+	{
+		if (database[i][0] == 0) continue;
+		for (int j = i+1; j < N; j++)
+		{
+			if (compute_length(database[i]) != 0 &&
+				str_cmp(database[i], database[j]) == 0)
+			{
+				unique_flag = 0;
+				break;
+			}
+			unique_flag = 1;
+		}
+
+		if (unique_flag) { cnt++; continue; }
+		int word_flag = 0;
+		for (int k = i+1; k < N; k++)
+		{
+			if (compute_length(database[i]) != 0 &&
+				str_cmp(database[i], database[k]) == 0)
+			{
+				if (word_flag == 0)
+				{
+					printf("%s", database[i]);
+					printf(" %d", i + 1);
+					database[k][0] = 0;
+					word_flag = 1;
+				}
+				printf(" %d", k + 1);
+				database[k][0] = 0;
+			}
+		}
+		printf("\n");
+	}
+
+	if (cnt == N) { 
+		printf("unique"); 
+		return 0; 
+	}
+	return 0;
+}
+
+#endif
+
+// UNIQUENESS
+#if 0
+int N;
+char database[10000][21];
+typedef struct{
+	char word[24];
+	short index[10000];
+} WORD;
+WORD words[10000];
+int str_cmp(char *p, char *q)
+{
+	// return 0 when two strings are same
+	while (*p || *q)
+	{
+		if (*p == *q){ p++; q++; continue; }
+		return (*p > *q) ? 1 : -1;
+		p++; q++;
+	}
+	return 0;
+}
+void str_cpy(char *d, const char *s)
+{
+	while (*d++ = *s++);
+}
+int main(void)
+{
+	int i, j, k;
+	//freopen("170814-3.txt", "r", stdin);
+	scanf("%d", &N);
+	for (int i = 0; i < N; i++)
+	{
+		scanf("%s", database[i]);
+	}
+
+	// 입력
+	for (i = 0; i < N; i++)
+	{
+		j = 0;
+		while (1)
+		{
+			// 순차적으로 비교후 문자열이 이미 존재할 경우, 
+			// index만 추가. 
+			if (str_cmp(&words[j].word, database[i]) == 0)
+			{
+				k = 0;
+				while (1)
+				{
+					if (words[j].index[k] == 0){
+						words[j].index[k] = i + 1;
+						break;
+					}
+					k++;
+				}
+				break;
+			}
+			// 문자열이 존재하지 않을 경우 바로 추가. 
+			// 문자열, 인덱스 추가. 
+			else
+			{
+				if (words[j].index[0] != 0){ j++; continue; }
+				str_cpy(&words[j].word, database[i]);
+				k = 0;
+				while (1)
+				{
+					if (words[j].index[k] == 0){
+						words[j].index[k] = i + 1;
+						break;
+					}
+					k++;
+				}
+				break;
+			}
+			j++;
+		}
+
+	}
+
+
+	if (words[N-1].index[0] != 0)
+	{
+		printf("unique");
+		return;
+	}
+
+	// 출력
+	for (i = 0; i < N; i++)
+	{
+		if (words[i].index[1] == 0) continue;
+		printf("%s ", words[i].word);
+		j = 0;
+		while (1)
+		{
+			if (words[i].index[j] == 0) break;
+			printf("%d ", words[i].index[j]);
+			j++;
+		}
+		printf("\n");
+		
+	}
+
+}
+#endif
+
+
+#if 0
+int N;
+char paper[1024 * 1024 +1];
+char backup[1024 * 1024 + 1];
+void pprint(int n);
+int pow(int b, int e)
+{
+	int t = 1;
+	while (e)
+	{
+		t *= b;
+		e--;
+	}
+	return t;
+}
+void assemble(int n)
+{
+	char* p = paper;
+	if (n == 1) return;
+
+	// 중간값의 index 정하기.
+	int cur_paper_len = 0, middle;
+	while (*p){
+		cur_paper_len++; p++;
+	}
+
+	//backup
+	int b_range = pow(2, N-(n - 1));
+	//printf("-------------> backup range : %d\n", b_range);
+	for (int i = 0; i < b_range; i++)
+	{
+		backup[i] = paper[i];
+	}
+	
+	middle = 2*cur_paper_len-1;
+	//paper[middle] = paper[(middle-1)/2];
+	paper[middle] = 'V';
+	//printf("middle : %d / cur : %d \n", middle, cur_paper_len);
+
+	//printf("before : %s\n", paper);
+	//printf("backup : %s\n", backup);
+
+	// 중간값이 정해지면, 그 이전을 채워놓는다.
+	// 짝수 단계는 새로 패턴을 넣어준다.
+	for (int i = 0; i < (middle); i += 2)
+	{
+		if (i / 2 % 2 == 0)
+		{
+			paper[i] = '^';
+		}
+		else
+		{
+			paper[i] = 'V';
+		}
+	}
+	//printf("even %s\n", paper);
+
+	// 중간값이 정해지면, 그 이전을 채워놓는다.
+	// 홀수번째는 이전 단계의 패턴을 빌려온다.
+	for (int i = 0; i < (middle); i ++)
+	{
+		//printf("i : %d / cur : %c / backup : %c\n", i, paper[2*i+1], backup[i]);
+		//paper[i] = backup[(i + 1) / 2];
+		paper[2 * i + 1] = backup[i];
+	}
+	//printf("odd  %s\n", paper);
+
+	return assemble(n - 1);
+}
+void pprint(int n)
+{
+	int len = 0;
+	char *p = paper;
+
+	while (*p)
+	{
+		printf("%c", *p);
+		p++; len++;
+	}
+	p--; p--; len--;
+
+	
+	while (len)
+	{
+		if (*p == 'V'){
+			printf("^");
+		}
+		else
+		{
+			printf("V");
+		}
+
+		p--; len--;
+	}
+
+}
+int main(void)
+{
+	paper[0] = 'V';
+	scanf("%d", &N);	
+	assemble(N);
+	pprint(N);
+	//N = 5;
+	//assemble(N);
+	//pprint(N);
+	//printf("%d", assemble(9));
+}
+#endif
+
+#if 0
+int matrix[99][99];
+int main(void)
+{
+	int N, row, col, cnt=0, val=1;
+	scanf("%d", &N);
+	cnt = N*N;
+
+	// 1 넣기.
+	row = 0;
+	col = (N - 1) / 2;
+	matrix[row][col] = val;
+	cnt--; val++;
+	row--; col--;
+
+	while (cnt)
+	{
+		if (row < 0) row = N - 1;
+		if (col < 0) col = N - 1;
+		matrix[row][col] = val;
+		row--; col--;
+		if (!(val % N))
+		{
+			row++; row++; col++;
+			if (row < 0) row = N - 1;
+			if (col < 0) col = N - 1;
+		}
+
+		val++;
+		cnt--;
+	}
+
+
+	if (!(val % 3))
+	{
+		row++;
+		if (row < 0) row = N - 1;
+		if (col < 0) col = N - 1;
+	}
+
+
+
+	for (int i = 0; i < N; i++)
+	{
+		for (int j = 0; j < N; j++)
+		{
+			printf("%d ", matrix[i][j]);
+		}
+		printf("\n");
+	}
+}
+#endif
+
+
+#if 0
+int songs[200];
+int main(void)
+{
+	//freopen("170814-3.txt", "r", stdin);
+
+	int N, T, tmp, i, cnt=0;
+	scanf("%d %d", &N, &T);
+
+	for (i = 0; i < N; i++)
+	{
+		scanf("%d", &songs[i]);
+	}
+
+	for (i = 0; i < N-1; i++)
+	{
+		for (int j = i; j < N; j++)
+		{
+			if (songs[i] > songs[j])
+			{
+				tmp = songs[i];
+				songs[i] = songs[j];
+				songs[j] = tmp;
+			}
+		}
+	}
+
+	i = 0;
+	while (1)
+	{
+		T -= songs[i];
+		cnt++; i++;
+		if (T == 0) { break; }
+		if (T < 0) { cnt--; break; }
+	}
+
+	printf("%d", cnt);
+}
+#endif
+
+#if 0																			
+#define ULL unsigned long long int
+ULL find_bound(double min, double max, double a)
+{
+	double mid = (min + max) / 2;
+	//printf(">>>>%lf %lf %lf\n", min, mid, max);
+	if (((((mid + 1)*mid) / 2 + 1) <= a) && (a < (((mid + 3)*mid) / 2 + 1))) return (ULL)mid;
+	if ((((mid + 1)*mid) / 2 + 1) < a)
 	{
 		return find_bound(mid, max, a);
 	}
@@ -18,11 +858,11 @@ unsigned long long int find_bound(unsigned long long int min, unsigned long long
 	}
 	
 }
-unsigned long long int find_index(unsigned long long int a)
+ULL find_index(ULL a)
 {
-	unsigned long long int i = 1;
-	unsigned long long int min = 100000000;
-	unsigned long long int max = 1000000000000000000;
+	ULL i = 1;
+	ULL min = 100000000;
+	ULL max = 1000000000000000000;
 	if (a < min)
 	{
 		if (a == i) return i;
@@ -34,8 +874,14 @@ unsigned long long int find_index(unsigned long long int a)
 	}
 	else
 	{
-		i = find_bound(min, max, a);
-		//printf("i is ==> %d\n", i);
+		i = find_bound(1, max, a);
+		//printf("i is ==> %d //  %llu \n", i, a);
+		while (i)
+		{
+			if (((i - 1)*i) / 2 <= a && a <= (i*(i + 1)) / 2) break;
+			i++;
+		}
+		//printf("i is ==> %d %llu \n", i, a);
 	}
 	return i;
 }
@@ -44,16 +890,17 @@ int main(void)
 	//assert(1 == find_index(1));
 	//assert(3 == find_index(4));
 	//assert(45 == find_index(1000));
-	assert(1234567890 == find_index(762078938126809995));
-	//assert(1234567890 == find_index(99999999999999994));
-	unsigned long long int test = 1000000000000000000;
+	//assert(1234567890 == find_index(762078938126809995));
+	//assert(447213595 == find_index(99999999999999994));
+	//assert(1234568 == find_index(762078456029));
+	//ULL test = 99999999999999994;
 	//printf("==> %llu\n", find_index(test));
 
-	assert(1414213562 == find_index(test));
+	//assert(1414213562 == find_index(1000000000000000000));
 
-	//unsigned long long int N;
-	//scanf("%llu", &N);
-	//printf("%llu", find_index(N));
+	unsigned long long int N;
+	scanf("%llu", &N);
+	printf("%llu", find_index(N));
 }
 #endif
 
