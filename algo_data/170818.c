@@ -176,7 +176,7 @@ int main(void)
 #endif
 
 // ¼Ò¼ö369
-#if 1
+#if 0
 #include <stdio.h>
 int is_prime(int a)
 {
@@ -228,5 +228,14 @@ int main(void)
 	//printf("%d", clap_cnt[i]);
 
 	return 0;
+}
+#endif
+
+#if 0
+int main(void)
+{
+
+
+
 }
 #endif
