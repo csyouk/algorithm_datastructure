@@ -234,6 +234,20 @@ int main(void)
 #if 0
 int main(void)
 {
+	printf("%d\n", sizeof("Samsung")); // 끝에 보이지 않는 널 문자포함 8
+	printf("%d\n", sizeof("\0")); // 끝에 보이지 않는 널 문자포함 2
+	printf("%d\n", sizeof("SCSA")); // 끝에 보이지 않는 널 문자포함 5
+	printf("%d\n", sizeof("\n")); // 끝에 보이지 않는 널 문자포함 2
+
+	// 끝에 보이지 않는 널 문자포함 14
+	printf("%d\n", sizeof("Samsung\0SCSA\n")); 
+	
+	char aaa[] = "Samsung\0SCSA\n";
+	printf("%d\n", aaa);
+
+	int a = 0x123456;
+	printf("%x\n", a & (~0x1f << 4) | (0x18 << 4)); // 123580
+	printf("%x\n", a & (~0x1f << 4 | 0x18 << 4 ));  // 123400
 	return 0;
 }
 #endif
