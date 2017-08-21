@@ -83,6 +83,7 @@
     <ClCompile Include="datastructure-lab-170821.c" />
     <ClCompile Include="datastructure-sol-170821.c" />
     <ClCompile Include="remind.c" />
+    <ClCompile Include="remind_algo.c" />
     <ClCompile Include="test_driven_development.c" />
   </ItemGroup>
   <ItemGroup>
