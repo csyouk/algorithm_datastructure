@@ -482,14 +482,34 @@ void main(void)
 // [1-1.11] 자료를 선택 정렬로 정렬하는 함수
 /***********************************************************/
 
-#if 0
+#if 1
 
 int Sort_Select(SCORE * d, int order, int(*comp)(SCORE * x, SCORE * y))
 {
+	int i, j, t, max;
+	SCORE tmp;
+	if (!d[0].id) return 0;
+
+	for (max = 0; max < MAX_ST; max++)
+	{
+		if (d[max].id == 0) break;
+	}
 
 
-
-
+	for (i = 0; i < max - 1; i++)
+	{
+		for (t = 0, j = 0; j < max - 1 - j; j++)
+		{
+			if (comp(&d[t], &d[j + 1]) == order) t = j + 1;
+		}
+		if (j != t)
+		{
+			tmp = d[j];
+			d[j] = d[t];
+			d[t] = d[j];
+		}
+	}
+	return max;
 }
 
 #endif
