@@ -89,7 +89,7 @@
 */
 #endif
 
-#if 1
+#if 0
 
 #include <stdio.h>
 #pragma warning( disable : 4996 )  
@@ -341,6 +341,7 @@ void make_test_data(int cnt)
 		parts[i] = test_data[i];
 	}
 }
+
 int main(void){
 
 
