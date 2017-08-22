@@ -823,30 +823,28 @@ void main(void)
 
 int Copy_All_Data(SCORE * p, int max)
 {
-	int i;
-
-	if (max > MAX_ST){
-		max = MAX_ST;
-	}
-
-	for (i = 0; i < max; i++)
-	{
-		p[i] = exam[i];
-	}
-
-	return i;
+	int i, cnt;
+	cnt = Count_Data();
+	max = (max > cnt) ? cnt : max;
+	// source, destination, memory-size
+	memcpy(p, exam, max*sizeof(SCORE));
+	return max;
+	//for (i = 0; i < max; i++)
+	//{
+	//	p[i] = exam[i];
+	//}
+	//return i;
 }
 
 #endif
 
-#if 1
+#if 0
 
 void main(void)
 {
 	//SCORE tmp[MAX_ST] = { 0, }; 
 	SCORE tmp[MAX_ST];
-	SCORE *p = tmp;
-	memset(p, 0, 20 * 20);
+	memset(tmp, 0, sizeof(tmp));
 
 	Make_Test_Data(10);
 	//printf("Printed Data Count = %d\n", Print_All_Data());
