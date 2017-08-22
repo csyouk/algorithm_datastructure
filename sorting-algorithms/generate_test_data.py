@@ -1,7 +1,7 @@
 import sys
 from random import randint
 
-DATA_LEN = 10000
+DATA_LEN = 20000
 
 f = open("test_data.txt", 'w')
 sys.stdout = f
