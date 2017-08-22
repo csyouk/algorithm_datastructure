@@ -6,3 +6,10 @@
 
 ## 단점
 - 제어가 sequence list 기반 자료구조보다 복잡하다.
+- node의 next를 잘못 지정하면, 데이터가 유실 되기도 한다.
+
+
+## 용어
+- **Node** :
+- **Link** : 
+- **Head** : Linked list node의 시작 node를 가리키는 여분의 node이다.
