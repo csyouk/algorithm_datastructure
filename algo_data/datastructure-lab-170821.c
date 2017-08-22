@@ -4,7 +4,7 @@
 // [1-1] 배열 기반 순차 리스트
 /***********************************************************/
 
-#if 1
+#if 0
 
 /***********************************************************/
 // [1-1.1] 데이터 모델링
@@ -865,7 +865,19 @@ void main(void)
 #if 0
 
 /* 위의 예제에서 #if 0로 선언된 모든 main 함수는 #if 0로 만든후 여기에 main 함수 설계 */
-
+int menu_disp()
+{
+	int sel; system("cls");
+	printf("==== 성적처리 ====\n");
+	printf("1 : 자료추가 \n");
+	printf("2 : 자료추가 \n");
+	printf("3 : 자료추가 \n");
+	printf("4 : 자료추가 \n");
+	printf("5 : 자료추가 \n");
+	printf("6 : 자료추가 \n");
+	printf("1 : 자료추가 \n");
+	printf("1 : 자료추가 \n");
+}
 void main(void)
 {
 
@@ -884,10 +896,42 @@ void main(void)
 
 #if 0
 
-int Sort_Quick(SCORE *d, int order, int m, int n, int(*comp)(SCORE * x, SCORE * y))
+int Sort_Quick(SCORE *d, int order, int start, int end, int(*comp)(SCORE * x, SCORE * y))
 {
+	SCORE tmp;
+	int left, target, pivot;
+	pivot = end;
+	target = start;
+	if (end == start) return 1; // 정렬이 완료되면 총 요소수를 리턴한다.
+	if (end < start) return 0;
+	// left는 넘어온 배열의 start요소부터 pivot - 1 요소 까지 돌린다.
+	for (int left = start; left < pivot; left++)
+	{
+		if (comp(&d[pivot], &d[left]) == order){
+			if (left != target){
+				tmp = d[left];
+				d[left] = d[target];
+				d[target] = tmp;
+			}
+			target++;
+		}
+	}
+
+	// pivot을 기준으로 left를 전부 비교한 후, 
+	// 마지막 행위로 target과 pivot을 교환한다.
+	if (target < pivot)
+	{
+		tmp = d[pivot];
+		d[pivot] = d[target];
+		d[target] = tmp;
+	}
+
+	return Sort_Quick(d, order, start, target - 1, comp) + Sort_Quick(d, order, target + 1, end, comp) + 1;
 
 
+	//Sort_Quick(d, order, start, target - 1, comp);
+	//Sort_Quick(d, order, target + 1, end, comp);
+	//return end - (start - 1);
 }
 
 #endif
@@ -897,24 +941,29 @@ int Sort_Quick(SCORE *d, int order, int m, int n, int(*comp)(SCORE * x, SCORE * 
 void main(void)
 {
 	Make_Test_Data(8);
-	printf("Printed Data Count = %d\n", Print_All_Data());
+	//printf("Printed Data Count = %d\n", Print_All_Data());
 
 	printf("===================================================\n");
-	printf("Sorted Data Count = %d\n", Sort_Quick(exam, 1, 0, MAX_ST - 1, Compare_Id));
+	printf("Quick Sorted Data Count = %d\n", Sort_Quick(exam, 1, 0, 8 - 1, Compare_Id));
 	printf("Printed Data Count = %d\n", Print_All_Data());
-	printf("Sorted Data Count = %d\n", Sort_Quick(exam, -1, 0, MAX_ST - 1, Compare_Id));
-	printf("Printed Data Count = %d\n", Print_All_Data());
-	printf("===================================================\n");
-	printf("Sorted Data Count = %d\n", Sort_Quick(exam, 1, 0, MAX_ST - 1, Compare_Name));
-	printf("Printed Data Count = %d\n", Print_All_Data());
-	printf("Sorted Data Count = %d\n", Sort_Quick(exam, -1, 0, MAX_ST - 1, Compare_Name));
-	printf("Printed Data Count = %d\n", Print_All_Data());
-	printf("===================================================\n");
-	printf("Sorted Data Count = %d\n", Sort_Quick(exam, 1, 0, MAX_ST - 1, Compare_Jumsu));
-	printf("Printed Data Count = %d\n", Print_All_Data());
-	printf("Sorted Data Count = %d\n", Sort_Quick(exam, -1, 0, MAX_ST - 1, Compare_Jumsu));
-	printf("Printed Data Count = %d\n", Print_All_Data());
-	printf("===================================================\n");
+
+
+	//printf("===================================================\n");
+	//printf("Sorted Data Count = %d\n", Sort_Quick(exam, 1, 0, MAX_ST - 1, Compare_Id));
+	//printf("Printed Data Count = %d\n", Print_All_Data());
+	//printf("Sorted Data Count = %d\n", Sort_Quick(exam, -1, 0, MAX_ST - 1, Compare_Id));
+	//printf("Printed Data Count = %d\n", Print_All_Data());
+	//printf("===================================================\n");
+	//printf("Sorted Data Count = %d\n", Sort_Quick(exam, 1, 0, MAX_ST - 1, Compare_Name));
+	//printf("Printed Data Count = %d\n", Print_All_Data());
+	//printf("Sorted Data Count = %d\n", Sort_Quick(exam, -1, 0, MAX_ST - 1, Compare_Name));
+	//printf("Printed Data Count = %d\n", Print_All_Data());
+	//printf("===================================================\n");
+	//printf("Sorted Data Count = %d\n", Sort_Quick(exam, 1, 0, MAX_ST - 1, Compare_Jumsu));
+	//printf("Printed Data Count = %d\n", Print_All_Data());
+	//printf("Sorted Data Count = %d\n", Sort_Quick(exam, -1, 0, MAX_ST - 1, Compare_Jumsu));
+	//printf("Printed Data Count = %d\n", Print_All_Data());
+	//printf("===================================================\n");
 }
 
 #endif
@@ -923,13 +972,13 @@ void main(void)
 // [1-3] 배열 기반 연결 리스트
 /***********************************************************/
 
-#if 0
+#if 1
 
 /***********************************************************/
 // [1-3.1] 데이터 모델링
 /***********************************************************/
 
-#if 0
+#if 1
 
 #include <stdio.h>
 #include <string.h>
@@ -991,7 +1040,7 @@ void Make_Test_Data(int n)
 // [1-3.2] 데이터 생성, 인쇄, 계수 함수 설계
 /***********************************************************/
 
-#if 0
+#if 1
 
 int Create_Data(SCORE * p)
 {
@@ -1070,21 +1119,118 @@ int Insert_Data(SCORE * p)
 // [1-3.3] 데이터 하나를 생성하여 Linked List에 추가하는 함수
 /***********************************************************/
 
-#if 0
+#if 1
+
+int Insert_Node_Recursively(SCORE * head, SCORE *d)
+{
+	static int cnt = 0;
+
+	// 노드의 마지막(종단점)에 도착했을 때 멈춘다.
+	if (cnt == MAX_ST) return -1;
+
+	// 노드를 처음 추가하거나, linked list node의 마지막에 추가할 때,
+	if (head->next == NULL){
+		d->next = head->next;
+		head->next = d;
+		cnt++;
+		printf("invoked cnt : %d\n", cnt);
+		return 1;
+	}
+	// d node를 nodes의 중간에 삽입할 때. 
+	if (head->next->id > d->id){
+		d->next = head->next;
+		head->next = d;
+		cnt++;
+		printf("invoked cnt : %d\n", cnt);
+		return 1;
+	}
+	// 이미 동일한 사번이 존재할 경우.
+	if (head->next->id == d->id) return -2;
+
+	// 노드 이동
+	return Insert_Node_Recursively(head->next, d);
+
+
+	//// 노드를 처음 추가하거나, linked list node의 마지막에 추가할 때,
+	//// d node를 nodes의 중간에 삽입할 때. 
+	//// 2가지 행위를 하나의 코드로 합쳤다. 
+	//// 주의할 점은 head->next가 NULL인지를 우선적으로 체크해야 한다는 점이다. 
+	//// short circuit을 사용할 때, 참일 확률이 높은 조건을 우선적으로 배치한다. 
+	//if (head->next == NULL || head->next->id > d->id){
+	//	d->next = head->next;
+	//	head->next = d;
+	//	cnt++;
+	//	//printf("invoked cnt : %d\n", cnt);
+	//	return 1;
+	//}
+
+	//// 이미 동일한 사번이 존재할 경우.
+	//if (head->next->id == d->id) return -2;
+
+	//// 노드 이동
+	//return Insert_Node_Recursively(head->next, d);
+}
 
 int Insert_Node(SCORE * head, SCORE * d)
 {
+	int rep = 0;
+	// 첫 노드 혹은 마지막 노드에 추가하는 경우이다.
+	if (head->next == NULL)
+	{
+		d->next = head->next;
+		head->next = d;
+		return 1;
+	}
 
+	// 동일한 사번이 존재할 시에는 -2를 return 한다.
+	if (head->next->id == d->id) return -2;
 
+	while (head->next->id < d->id){
+		head = head->next; // node 이동
+		rep++;
+		if (rep > MAX_ST) return -1;
+	}
+	d->next = head->next;
+	head->next = d;
+	return 1;
 
+	//int i;
+	//
+	//for (i = 0; i<MAX_ST; i++)
+	//{
+	//	if ((head->next == NULL) || (d->id < head->next->id))
+	//	{
+	//		d->next = head->next;
+	//		head->next = d;
+	//		return 1;
+	//	}
+	//
+	//	if (d->id == head->next->id) return -2;
+	//
+	//	head = head->next;
+	//}
+	//
+	//return -1;
+}
 
+int Print_All_Node(SCORE * head)
+{
+	int n = 0;
 
-
+	printf("Head.next(1-st Node address) = 0x%.8X\n", head->next);
+	if (head->next == (SCORE *)0x0) return 0;
+	for (;;)
+	{
+		n++;
+		head = head->next;
+		printf("Node %2dth address = 0x%.8X, ID=%2d, NAME=%4s, SCORE=%3d, next = 0x%.8X\n", n, head, head->id, head->name, head->jumsu, head->next);
+		if (head->next == (SCORE *)0x0) return n;
+	}
 }
 
 #endif
 
-#if 0
+#if 1
 
 void main(void)
 {
@@ -1094,10 +1240,12 @@ void main(void)
 	for (i = 0; i<8; i++)
 	{
 		printf("[Loop: %d] Insert Result = %d\n", i, r = Insert_Data(&test[i]));
-		printf("Printed Data Count = %d\n", Print_All_Data());
-		printf("Insert Node Result = %d\n", Insert_Node(&Head, &exam[r]));
-		printf("Printed Data Count = %d\n", Print_All_Data());
+		//printf("Printed Data Count = %d\n", Print_All_Data());
+		//printf("Insert Node Result = %d\n", Insert_Node(&Head, &exam[r]));
+		printf("Insert Node Result = %d\n", Insert_Node_Recursively(&Head, &exam[r]));
+		//printf("Printed Data Count = %d\n", Print_All_Data());
 	}
+	Print_All_Node(&Head);
 }
 
 #endif
