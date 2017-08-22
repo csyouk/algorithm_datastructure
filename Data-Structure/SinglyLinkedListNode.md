@@ -144,21 +144,4 @@ void Insert_Node_Recursively(Node * head, Node *node)
 	return Insert_Node_Recursively(head->next, d);
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ```
