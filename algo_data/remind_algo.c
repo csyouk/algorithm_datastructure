@@ -1,3 +1,4 @@
+#if 0
 #include <stdio.h>
 #define MAX 200
 #define ULL unsigned long long int
@@ -83,3 +84,4 @@ int main(void)
 
 	return 0;
 }
+#endif

@@ -363,7 +363,7 @@ int Compare_Name(SCORE * x, SCORE* y)
 
 int Compare_Jumsu(SCORE * x, SCORE* y)
 {
-	int diff = (x->jumsu && y->jumsu);
+	int diff = (x->jumsu - y->jumsu);
 	if (!diff) return diff;
 	return diff / ABS(diff);
 }
@@ -500,7 +500,8 @@ int Sort_Select(SCORE * d, int order, int(*comp)(SCORE * x, SCORE * y))
 	{
 		for (t = 0, j = 0; j < max - 1 - j; j++)
 		{
-			if (comp(&d[t], &d[j + 1]) == order) t = j + 1;
+			//if (comp(&d[t], &d[j + 1]) == order) t = j + 1; // t와 j+1의 위치를 바꿔도 정렬값이 동일한가?
+			if (comp(&d[j+1], &d[t]) == order) t = j + 1;
 		}
 		if (j != t)
 		{
@@ -563,15 +564,55 @@ void main(void)
 // [1-1.12] 자료를 삽입 정렬로 정렬하는 함수
 /***********************************************************/
 
-#if 0
+#if 1
 
 int Sort_Insertion(SCORE * d, int order, int(*comp)(SCORE * x, SCORE * y))
 {
+	// i는 정렬대상, 데이터의 크기를 결정함. 
+	// j는 비교대상
+	// k는 
+	int i, j, k;
+	SCORE tmp;
+	//for ( i = 1; i < MAX_ST; i++)
+	//{
+	//	if (d[i].id == 0) break;
+	//	for ( j = 0; j < i; j++)
+	//	{
+	//		// i와 j를 비교하며, i번째 요소의 값보다 큰 j번째 요소를 맞닥뜨렸을 때,
+	//		// 데이터를 밀기 시작한다.
+	//		if (comp(&d[j], &d[i]) == order) 
+	//		{
+	//			tmp = d[i];
+	//			for (k = i; k > j; k--)
+	//			{
+	//				d[k] = d[k-1];
+	//			}
+	//			d[j] = tmp;
+	//			break;
+	//		}
+	//	}
+	//}
 
 
+	for (i = 1; i < MAX_ST; i++)
+	{
+		if (d[i].id == 0) break;
+		for (j = 0; j < i; j++)
+		{
+			// i와 j를 비교하며, i번째 요소의 값보다 큰 j번째 요소를 맞닥뜨렸을 때,
+			// 데이터를 밀기 시작한다.
+			if (comp(&d[j], &d[i]) == order) break;
+		}
 
+		tmp = d[i];
+		for (k = i; k > j; k--)
+		{
+			d[k] = d[k - 1];
+		}
+		d[j] = tmp;
+	}
 
-
+	return i;
 }
 
 #endif
@@ -594,7 +635,7 @@ void main(void)
 
 #endif 
 
-#if 0
+#if 1
 
 	Make_Test_Data(8);
 	printf("Printed Data Count = %d\n", Print_All_Data());
@@ -604,19 +645,19 @@ void main(void)
 	printf("===================================================\n");
 	printf("Sorted Data Count = %d\n", Sort_Insertion(exam, 1, Compare_Id));
 	printf("Printed Data Count = %d\n", Print_All_Data());
-	printf("Sorted Data Count = %d\n", Sort_Insertion(exam, -1, Compare_Id));
-	printf("Printed Data Count = %d\n", Print_All_Data());
-	printf("===================================================\n");
-	printf("Sorted Data Count = %d\n", Sort_Insertion(exam, 1, Compare_Name));
-	printf("Printed Data Count = %d\n", Print_All_Data());
-	printf("Sorted Data Count = %d\n", Sort_Insertion(exam, -1, Compare_Name));
-	printf("Printed Data Count = %d\n", Print_All_Data());
-	printf("===================================================\n");
-	printf("Sorted Data Count = %d\n", Sort_Insertion(exam, 1, Compare_Jumsu));
-	printf("Printed Data Count = %d\n", Print_All_Data());
-	printf("Sorted Data Count = %d\n", Sort_Insertion(exam, -1, Compare_Jumsu));
-	printf("Printed Data Count = %d\n", Print_All_Data());
-	printf("===================================================\n");
+	//printf("Sorted Data Count = %d\n", Sort_Insertion(exam, -1, Compare_Id));
+	//printf("Printed Data Count = %d\n", Print_All_Data());
+	//printf("===================================================\n");
+	//printf("Sorted Data Count = %d\n", Sort_Insertion(exam, 1, Compare_Name));
+	//printf("Printed Data Count = %d\n", Print_All_Data());
+	//printf("Sorted Data Count = %d\n", Sort_Insertion(exam, -1, Compare_Name));
+	//printf("Printed Data Count = %d\n", Print_All_Data());
+	//printf("===================================================\n");
+	//printf("Sorted Data Count = %d\n", Sort_Insertion(exam, 1, Compare_Jumsu));
+	//printf("Printed Data Count = %d\n", Print_All_Data());
+	//printf("Sorted Data Count = %d\n", Sort_Insertion(exam, -1, Compare_Jumsu));
+	//printf("Printed Data Count = %d\n", Print_All_Data());
+	//printf("===================================================\n");
 }
 
 #endif
@@ -625,14 +666,59 @@ void main(void)
 // [1-1.13] 사번순 정렬을 유지하면서 데이터를 배열에 추가하는 함수
 /***********************************************************/
 
-#if 0
+#if 1
 
 int Insert_and_Sort_Data(SCORE * p)
 {
+	//int i, j, max;
+	//SCORE tmp;
+	//if (exam[MAX_ST - 1].id == 0) return -1;
+
+	//for (max = 0; max < MAX_ST; max++)
+	//{
+	//	if (exam[max].id == 0) break;
+	//	if (exam[max].id == p->id) return -2;
+	//}
+
+	//for ( i = 1; i < max; i++)
+	//{
+	//	if (Compare_Id(&exam[i], p) > 0)
+	//	{
+	//		for ( j = max; j > i; j--)
+	//		{
+	//			exam[j] = exam[j-1];
+	//		}
+	//		exam[i] = *p;
+	//		return i;
+	//	}
+	//}
+
+	//exam[max] = *p;
+	//return max;
 
 
+	int i, j, max;
+	SCORE tmp;
+	if (exam[MAX_ST - 1].id == 0) return -1;
+
+	for (max = 0; max < MAX_ST; max++)
+	{
+		if (exam[max].id == 0) break;
+		if (exam[max].id == p->id) return -2;
+	}
+
+	for (i = 1; i < max; i++)
+	{
+		if (Compare_Id(&exam[i], p) > 0) break;
+	}
 
 
+	for (j = max; j > i; j--)
+	{
+		exam[j] = exam[j - 1];
+	}
+	exam[i] = *p;
+	return i;
 
 }
 
@@ -662,13 +748,15 @@ void main(void)
 // [1-1.14] 지정한 데이터를 구조체에 복사하여 주는 함수를 
 /***********************************************************/
 
-#if 0
+#if 1
 
 int Copy_Data(int n, SCORE * p)
 {
+	if (exam[n].id == 0) return -1;
 
+	*p = exam[n];
 
-
+	return 0;
 }
 
 #endif
@@ -693,14 +781,24 @@ void main(void)
 // [1-1.15] 지정한 수 만큼 자료를 주어진 buffer에서 꺼내어 인쇄하는 함수
 /***********************************************************/
 
-#if 0
+#if 1
 
 int Print_All_Buffer(SCORE * d, int max)
 {
+	int i;
 
+	if (max > MAX_ST)
+	{
+		max = MAX_ST;
+	}
 
+	for (i = 0; i < max; i++)
+	{
+		if (d[i].id == 0) return i;
+		printf("ID : %d / NAME : %s / SCORE : %d\n", d[i].id, d[i].name, d[i].jumsu);
+	}
 
-
+	return i;
 }
 
 #endif
@@ -709,7 +807,7 @@ int Print_All_Buffer(SCORE * d, int max)
 
 void main(void)
 {
-	Make_Test_Data(10);
+	Make_Test_Data(7);
 	printf("Printed Data Count = %d\n", Print_All_Data());
 	printf("All Buffer Print = %d\n", Print_All_Buffer(exam, 10));
 	printf("All Buffer Print = %d\n", Print_All_Buffer(exam, 4));
@@ -721,29 +819,42 @@ void main(void)
 // [1-1.16] 주어진 수 만큼의 자료를 전달받은 buffer에 복사하여 주는 함수
 /***********************************************************/
 
-#if 0
+#if 1
 
 int Copy_All_Data(SCORE * p, int max)
 {
+	int i;
 
+	if (max > MAX_ST){
+		max = MAX_ST;
+	}
 
+	for (i = 0; i < max; i++)
+	{
+		p[i] = exam[i];
+	}
 
-
+	return i;
 }
 
 #endif
 
-#if 0
+#if 1
 
 void main(void)
 {
+	//SCORE tmp[MAX_ST] = { 0, }; 
 	SCORE tmp[MAX_ST];
+	SCORE *p = tmp;
+	memset(p, 0, 20 * 20);
 
 	Make_Test_Data(10);
-	printf("Printed Data Count = %d\n", Print_All_Data());
+	//printf("Printed Data Count = %d\n", Print_All_Data());
 	printf("All Data Copy Result = %d\n", Copy_All_Data(tmp, 10));
-	printf("All Buffer Print = %d\n", Print_All_Buffer(tmp, 10));
+	//printf("All Buffer Print = %d\n", Print_All_Buffer(tmp, 8));
 	printf("Sorted Data Count = %d\n", Sort_Bubble(tmp, 1, Compare_Name));
+	//printf("All Buffer Print = %d\n", Print_All_Buffer(tmp, 8));
+	printf("Sorted Data Count = %d\n", Sort_Bubble(tmp, 1, Compare_Jumsu));
 	printf("All Buffer Print = %d\n", Print_All_Buffer(tmp, 10));
 }
 
