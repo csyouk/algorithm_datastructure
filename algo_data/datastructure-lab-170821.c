@@ -1188,6 +1188,7 @@ int Insert_Node(SCORE * head, SCORE * d)
 	while (head->next->id < d->id){
 		head = head->next; // node 이동
 		rep++;
+		if (head->next == NULL) return 1;
 		if (rep > MAX_ST) return -1;
 	}
 	d->next = head->next;
@@ -1223,7 +1224,7 @@ int Print_All_Node(SCORE * head)
 	{
 		n++;
 		head = head->next;
-		printf("Node %2dth address = 0x%.8X, ID=%2d, NAME=%4s, SCORE=%3d, next = 0x%.8X\n", n, head, head->id, head->name, head->jumsu, head->next);
+		printf("[%2dth node address = 0x%.8X ] ID=%2d, NAME=%4s, SCORE=%3d, next = 0x%.8X\n", n, head, head->id, head->name, head->jumsu, head->next);
 		if (head->next == (SCORE *)0x0) return n;
 	}
 }
