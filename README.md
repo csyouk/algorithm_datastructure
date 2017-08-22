@@ -11,4 +11,4 @@
 
 ## 자료구조
 - [Array (homogeneous)](https://github.com/csyouk/algorithm_datastructure/blob/master/Data-Structure/Array.md)
-- [Linked list node (heterogeneous)](https://github.com/csyouk/algorithm_datastructure/blob/master/Data-Structure/SinglyLinkedListNode.md)
+- [Singly Linked List Node (heterogeneous)](https://github.com/csyouk/algorithm_datastructure/blob/master/Data-Structure/SinglyLinkedListNode.md)
