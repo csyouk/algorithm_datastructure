@@ -10,5 +10,5 @@
 
 
 ## 자료구조
-- [Array (homogeneous)][]
-- [Linked list node (heterogeneous)][]
+- [Array (homogeneous)]()
+- [Linked list node (heterogeneous)]()

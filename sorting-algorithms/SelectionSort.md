@@ -20,7 +20,7 @@ SCORE exam[MAX_ST];
 함수의 원형은 다음과 같다.
 int Sort_Select(SCORE *d, int order, int (*comp)(SCORE *x, SCORE *y))
 parameter분석을 해보자.
-- d는 정렬한 대상의 첫 요소 주소가 들어간다.
+- d는 정렬할 대상인 배열의 주소이다.
 - order는 내림차순, 오름차순 옵션을 넘긴다.(1 : 오름차순, -1 : 내림차순)
 - comp는 포인터 함수이다. 정렬의 기준에 해당하는 함수를 넘겨준다.(Id, Score, Name)
 

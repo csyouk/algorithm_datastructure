@@ -39,14 +39,15 @@ def selection_sort(arr):
 
 def insertion_sort(arr):
     tmp = 0
-    # arr = [33,7,2,3,-3,0]
-    for i in range(1, len(arr)):
+    # arr = [33,7,2,3,-3,0, -2,-9, 100]
+    for i in range(1, len(arr)-1):
         for j in range(0, i):
             if arr[j] > arr[i]: break;
         tmp = arr[i]
         for k  in range(i, j, -1):
             arr[k] = arr[k-1]
         arr[j] = tmp
+        # print(arr, tmp, i, j, k)
     # print(arr)
 
 

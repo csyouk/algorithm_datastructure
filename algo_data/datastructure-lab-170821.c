@@ -595,7 +595,7 @@ int Sort_Insertion(SCORE * d, int order, int(*comp)(SCORE * x, SCORE * y))
 
 
 	for (i = 1; i < MAX_ST; i++)
-	{
+	{	
 		if (d[i].id == 0) break;
 		for (j = 0; j < i; j++)
 		{
@@ -905,7 +905,7 @@ int Sort_Quick(SCORE *d, int order, int start, int end, int(*comp)(SCORE * x, SC
 	if (end == start) return 1; // 정렬이 완료되면 총 요소수를 리턴한다.
 	if (end < start) return 0;
 	// left는 넘어온 배열의 start요소부터 pivot - 1 요소 까지 돌린다.
-	for (int left = start; left < pivot; left++)
+	for (left = start; left < pivot; left++)
 	{
 		if (comp(&d[pivot], &d[left]) == order){
 			if (left != target){
@@ -1231,7 +1231,7 @@ int Print_All_Node(SCORE * head)
 
 #endif
 
-#if 1
+#if 0
 
 void main(void)
 {

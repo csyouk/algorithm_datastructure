@@ -80,6 +80,7 @@
     <ClCompile Include="170817-workshop.c" />
     <ClCompile Include="170818.c" />
     <ClCompile Include="170820-주말워크샵.c" />
+    <ClCompile Include="170822-workshop-datastructure.c" />
     <ClCompile Include="datastructure-lab-170821.c" />
     <ClCompile Include="datastructure-sol-170821.c" />
     <ClCompile Include="remind.c" />
