@@ -21,6 +21,8 @@
   - pivot이 설정되면, pivot을 기준으로
     - 좌측의 값들을 QuickSort로 정렬한다.
     - 우측의 값들을 QuickSort로 정렬한다.
+  - 비교는 left와 pivot의 값을 비교하고
+  - 교환은 left와 target의 값을 서로 교환한다.
 
 
 ```cpp
@@ -56,7 +58,7 @@ target = start;
 ===> 2단계
 left 요소수를 순차적으로 늘려 나가며 pivot과 값을 비교한다.
 
-for (left = 0; left < pivot; left++) {
+for (left = start; left < pivot; left++) {
   ...
 }
 
