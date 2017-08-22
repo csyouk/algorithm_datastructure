@@ -95,23 +95,22 @@ if __name__ == '__main__':
 '''
 # Bench mark @ window
 
->>>> CPU :
->>>> RAM :
+>>>> CPU : Intel R Duo 2.83GHz
+>>>> RAM : 4GB
 
    bubble sort time for 10000 data : 20.977199
 selection sort time for 10000 data : 14.92385
 insertion sort time for 10000 data : 9.346534490
-    quick sort time for 10000 data : 
+    quick sort time for 10000 data : 0.0740041732
 
    bubble sort time for 20000 data : 87.0769805
 selection sort time for 20000 data : 57.98831677
 insertion sort time for 20000 data : 33.8139338
-    quick sort time for 20000 data :
-'''
+    quick sort time for 20000 data : 0.1500084401
 
 
-'''
-# Bench mark @ Macintishi
+
+# Bench mark @ Machintoshi
 
 >>>> CPU : 2 GHz Intel Core i5
 >>>> RAM : 16GB 1867 MHz LPDDR3
