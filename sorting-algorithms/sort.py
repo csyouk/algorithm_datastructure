@@ -47,36 +47,22 @@ def insertion_sort(arr):
         for k  in range(i, j, -1):
             arr[k] = arr[k-1]
         arr[j] = tmp
-    print(arr)
+    # print(arr)
+
+
+def quick_sort(arr):
+    raise("Not yet implemented")
 
 # command : python sort.py ALGORITHM_NAME
 # ex : python sort.py bubble
 if __name__ == '__main__':
     main()
-    # print("arg : ", sys.argv)
-    if(sys.argv[1] == "bubble"):
-        print("start bubble sort")
-        startTime = time.time()
-        bubble_sort(data)
-        endTime = time.time()
-        print("execution time : ", endTime - startTime)
-        # represent()
-
-    if(sys.argv[1] == "selection"):
-        print("start selection sort")
-        startTime = time.time()
-        selection_sort(data)
-        endTime = time.time()
-        print("execution time : ", endTime - startTime)
-        # represent()
-
-    if(sys.argv[1] == "insertion"):
-        print("start insertion sort")
-        startTime = time.time()
-        insertion_sort(data)
-        endTime = time.time()
-        print("execution time : ", endTime - startTime)
-        # represent()
+    print("start %s sort" % (sys.argv[1]))
+    startTime = time.time()
+    eval(sys.argv[1] + "_sort(data)")
+    # quick_sort(data)
+    endTime = time.time()
+    print("execution time : ", endTime - startTime)
 
 
 
