@@ -978,7 +978,7 @@ void main(void)
 // [1-3.1] 데이터 모델링
 /***********************************************************/
 
-#if 1
+#if 0
 
 #include <stdio.h>
 #include <string.h>
@@ -1040,7 +1040,7 @@ void Make_Test_Data(int n)
 // [1-3.2] 데이터 생성, 인쇄, 계수 함수 설계
 /***********************************************************/
 
-#if 1
+#if 0
 
 int Create_Data(SCORE * p)
 {
@@ -1119,7 +1119,7 @@ int Insert_Data(SCORE * p)
 // [1-3.3] 데이터 하나를 생성하여 Linked List에 추가하는 함수
 /***********************************************************/
 
-#if 1
+#if 0
 
 int Insert_Node_Recursively(SCORE * head, SCORE *d)
 {
@@ -1260,8 +1260,7 @@ void main(void)
 // [1-3.5] link에 따라서 주어진 사번에 맞는 노드 를 찾아 주소를 리턴하는 함수
 /***********************************************************/
 
-#if 1
-
+#if 0
 int Print_All_Node(SCORE * head)
 {
 	int nodes = 0;
@@ -1324,7 +1323,7 @@ void main(void)
 // [1-3.6] list에 저장된 자료의 총수를 계산하는 함수
 /***********************************************************/
 
-#if 1
+#if 0
 
 int Count_Node(SCORE * head)
 {
@@ -1343,7 +1342,7 @@ int Count_Node(SCORE * head)
 // [1-3.7] link에 따라서 주어진 사번에 맞는 자료를 인쇄하는 함수
 /***********************************************************/
 
-#if 1
+#if 0
 
 int Print_Node(SCORE * head, int id)
 {
@@ -1382,7 +1381,7 @@ void main(void)
 // [1-3.8] link에 따라서 주어진 사번의 node를 찾아서 삭제하는 함수
 /***********************************************************/
 
-#if 1
+#if 0
 
 int Delete_Node(SCORE * head, int id)
 {
@@ -2079,14 +2078,14 @@ void main(void)
 // [1-5] 배열 기반 연결 리스트 - 더블 링크
 /***********************************************************/
 
-#if 0
+#if 1
 
 /***********************************************************/
 // [1-5.1] 기존 Linked List 방식중 그대로 사용하는 함수들
 // 단, 인쇄할 때 Prev Node 값도 인쇄하도록 추가한다
 /***********************************************************/
 
-#if 0
+#if 1
 
 #include <stdio.h>
 #include <string.h>
@@ -2102,7 +2101,7 @@ typedef struct _score
 	struct _score  * prev;
 }SCORE;
 
-SCORE Head;
+SCORE Head, Tail;
 
 #define MAX_ST		20
 
@@ -2137,6 +2136,7 @@ SCORE test[MAX_ST] = { { 10, 50, "kim" }, { 2, 80, "lew" }, { 8, 50, "lew" }, { 
 {15, 90, "ki"}, { 11, 20, "kong" }, { 14, 40, "shin" }, { 12, 50, "son" }, { 17, 48, "lee" }, \
 {20, 100, "min"}, { 19, 80, "you" }, { 13, 45, "song" }, { 16, 54, "no" }, { 18, 100, "yang" } };
 
+#if 1
 void Make_Test_Data(int n)
 {
 	int i;
@@ -2168,7 +2168,7 @@ int Print_All_Data(void)
 {
 	int i;
 
-	printf("Head= 0x%.8X, Head.next=0x%.8X, Head.prev=0x%.8X\n", &Head, Head.prev, Head.next);
+	printf("Head= 0x%.8X, Head.prev=0x%.8X, Head.next=0x%.8X\n", &Head, Head.prev, Head.next);
 
 	for (i = 0; i<MAX_ST; i++)
 	{
@@ -2350,26 +2350,68 @@ int Copy_Score_Node(SCORE * head, int jumsu, SCORE * buf)
 	return n;
 }
 
+SCORE * Search_Id_Node(SCORE * head, int id)
+{
+	while (1)
+	{
+		if (head->next == NULL) return NULL;
+		if (head->next->id == id) return head->next;
+		head = head->next;
+	}
+}
+#endif
+
 #endif
 
 /***********************************************************/
 // [1-5.2] 데이터 하나를 생성하여 Linked List에 추가하는 함수
 /***********************************************************/
 
-#if 0
+#if 1
 
 int Insert_Node(SCORE * head, SCORE * d)
 {
+	int cnt = 0;
+	while (1)
+	{
+		if (head->next == NULL || head->next->id > d->id)
+		{
+			d->next = head->next;
+			d->prev = head;
+			if (head->next != NULL) head->next->prev = d;
+			head->next = d;
+			return 1;
+		}
+		if (head->next->id == d->id) return -2;
+		head = head->next;
+		cnt++;
+		if (cnt == 20) return -1;
+	}
 
-
-
-
-
+	//int i;
+	//
+	//for (i = 0; i<MAX_ST; i++)
+	//{
+	//	if ((head->next == (SCORE *)0x0) || (d->id < head->next->id))
+	//	{
+	//		d->next = head->next;
+	//		d->prev = head;
+	//		if (head->next) head->next->prev = d;
+	//		head->next = d;
+	//		return 1;
+	//	}
+	//
+	//	if (d->id == head->next->id) return -2;
+	//
+	//	head = head->next;
+	//}
+	//
+	//return -1;
 }
 
 #endif
 
-#if 0
+#if 1
 
 void main(void)
 {
