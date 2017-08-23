@@ -17,6 +17,6 @@
 ## 자료구조
 - [Array (homogeneous)](https://github.com/csyouk/algorithm_datastructure/blob/master/Data-Structure/Array.md)
 - [Singly Linked List Node (heterogeneous)](https://github.com/csyouk/algorithm_datastructure/blob/master/Data-Structure/SinglyLinkedListNode.md)
-- [Doubly Linked List Node)](https://github.com/csyouk/algorithm_datastructure/blob/master/Data-Structure/DoublyLinkedListNode.md)
+- [Doubly Linked List Node](https://github.com/csyouk/algorithm_datastructure/blob/master/Data-Structure/DoublyLinkedListNode.md)
 - [Stack](https://github.com/csyouk/algorithm_datastructure/blob/master/Data-Structure/Stack.md)
 - [Queue](https://github.com/csyouk/algorithm_datastructure/blob/master/Data-Structure/Queue.md)
