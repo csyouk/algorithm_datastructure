@@ -85,3 +85,11 @@ int main(void)
 	return 0;
 }
 #endif
+
+
+// remind 더블 링크 리스트,
+// stack, queue
+#if 1
+
+
+#endif
