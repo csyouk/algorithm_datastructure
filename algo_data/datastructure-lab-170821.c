@@ -2779,10 +2779,11 @@ int Rdptr = Q_EMPTY;
 
 int Inqueue(int data)
 {
-	// 큐에 데이터를 넣을 때, 버퍼정리를 해줘야 한다. 
 	int cnt;
+	// 큐에 데이터가 꽉 차있는지 확인한다.
 	if (Wrptr == Q_FULL && Rdptr == Q_EMPTY) return -1;
 	cnt = Wrptr - Rdptr;
+	// 큐에 데이터를 넣을 때, 버퍼정리를 해줘야 한다.
 	for (int i = 0; i < cnt; i++)
 	{
 		Queue[i] = Queue[Rdptr + i];
@@ -2791,6 +2792,20 @@ int Inqueue(int data)
 	Rdptr = Q_EMPTY; // read pointer의 위치를 큐의 초기 위치로 옮긴다.
 	Queue[Wrptr++] = data; // data를 write pointer의 위치에 삽입한 후, 포인터 위치를 증가시킨다.
 	return 1;
+
+
+	//if (Wrptr == Q_FULL)
+	//{
+	//	if (Rdptr == Q_EMPTY) return -1;
+	//	for (int i = 0; i < (Wrptr - Rdptr); i++)
+	//	{
+	//		Queue[i] = Queue[Rdptr + i];
+	//	}
+	//	Wrptr -= Rdptr;
+	//	Rdptr = Q_EMPTY;
+	//}
+	//Queue[Wrptr++] = data;
+	//return 1;
 }
 
 int Dequeue(int *p)
