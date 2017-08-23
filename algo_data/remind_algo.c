@@ -89,7 +89,7 @@ int main(void)
 
 // remind 더블 링크 리스트,
 // stack, queue
-#if 1
+#if 0
 
 
 #endif

@@ -46,6 +46,7 @@ Insert_Data 함수를 이용해서 저장한 후 Insert_Node 함수를 이용하여 링크를 구성하�
 #include <stdio.h>
 #include <stdlib.h>
 #include <conio.h>
+#include <string.h>
 #pragma warning( disable : 4996 )
 
 #define MAX_ST 10
@@ -59,12 +60,13 @@ typedef struct _student
 	short math;
 	double avg;
 	struct _student * next;
+	struct _student * prev;
 }STUDENT;
 
 STUDENT students[MAX_ST];
 STUDENT Head;
 
-// 자료 추가
+// 자료 추가 / 배열에 추가, 노드에 추가
 #if 1
 int Insert_Data(STUDENT *p)
 {
@@ -82,22 +84,27 @@ int Insert_Data(STUDENT *p)
 	return i;
 }
 
-int Insert_Node(STUDENT *head, STUDENT *p)
+int Insert_Node(STUDENT *head, STUDENT *d)
 {
 	// return -1 : 노드가 꽉 차있을 때.
-	// return insert_pos : 노드 추가 성공 시, 위치를 적어준다.
+	// return 1 : 노드 추가 성공 시
+	// 동일한 id 존재시 -2
 
-	int insert_pos = 0;
-	while (head->next )
+	int i;
+
+	for (i = 0; i < MAX_ST; i++)
 	{
-		if (insert_pos == MAX_ST) return -1;
-		if (head->next == NULL || head->next->id > p->id) break;
+		if ((head->next == NULL) || (d->id < head->next->id))
+		{
+			d->next = head->next;
+			head->next = d;
+			return 1;
+		}
+		if (head->next->id == d->id) return -2;
 		head = head->next;
-		insert_pos++;
 	}
-	p->next = head->next;
-	head->next = p;
-	return insert_pos;
+
+	return 1;
 }
 
 void Print_Node(STUDENT * d)
@@ -112,39 +119,44 @@ void Print_Node(STUDENT * d)
 
 int Create_Data(void)
 {
-	STUDENT *p;
+	STUDENT tmp;
 	int id;
+
+	printf("데이터를 생성합니다. ID, 이름, 국어,영어 수학 점수를 기입해주세요. \n");
 
 	// 입력 성공시 1
 	printf("ID : ");
-	scanf("%d", &p->id);
+	scanf("%d", &tmp.id);
 	printf("이름 : ");
-	scanf("%s", p->name);
+	scanf("%s", tmp.name);
 	printf("국어점수 : ");
-	scanf("%d", &p->korean);
+	scanf("%d", &tmp.korean);
 	printf("영어점수 : ");
-	scanf("%d", &p->english);
+	scanf("%d", &tmp.english);
 	printf("수학점수 : ");
-	scanf("%d", &p->math);
+	scanf("%d", &tmp.math);
+	tmp.next = NULL;
+	tmp.prev = NULL;
 
-	p->avg = (p->math + p->korean + p->english) / 3.0;
-	if (Insert_Data(p) < 0)
+	tmp.avg = (tmp.math + tmp.korean + tmp.english) / 3.0;
+	if (Insert_Data(&tmp) < 0)
 	{
 		printf("저장공간이 부족합니다.\n");
 		return -1;
 	}
-	print("데이터를 배열에 성공적으로 저장했습니다.\n");
-	id = Insert_Node(&Head, p);
+	printf("데이터를 배열에 성공적으로 저장했습니다.\n");
+	id = Insert_Node(&Head, &tmp);
 	if (id < 0)
 	{
 		printf("저장공간이 부족합니다.\n");
 		return -1;
 	}
-	Print_Node(p);
-	print("데이터를 노드에 성공적으로 저장했습니다.\n");
+	Print_Node(&tmp);
+	printf("데이터를 노드에 성공적으로 저장했습니다.\n");
 	return 1;
 }
-
+// 메뉴 출력
+#if 1
 void Print_Menu()
 {
 	printf("1 : 자료 추가\n");
@@ -154,7 +166,7 @@ void Print_Menu()
 	printf("5 : 자료 인쇄\n");
 	printf("6 : 정렬 인쇄\n");
 }
-
+#endif
 #endif
 
 // 자료 삭제
@@ -170,6 +182,7 @@ int Delete_Data(void)
 		{
 		case 1: {
 			int id;
+			printf("ID를 입력해주세요. ");
 			scanf("%d", &id);
 			for (int i = 0; i < MAX_ST; i++)
 			{
@@ -182,6 +195,7 @@ int Delete_Data(void)
 		}break;
 		case 2: {
 			char name[12];
+			printf("이름을 입력해주세요. ");
 			scanf("%s", name);
 			for (int i = 0; i < MAX_ST; i++)
 			{
@@ -199,10 +213,10 @@ int Delete_Data(void)
 #endif
 
 // 자료 수정
-#if 1
+#if 0
 void Modify_Data(void)
 {
-	STUDENT *p;
+	STUDENT p;
 	int id;
 
 	printf("사번을 입력해주세요. : \n");
@@ -214,18 +228,51 @@ void Modify_Data(void)
 		{
 			printf("수정할 데이터를 입력해주세요.\n");
 			printf("이름 : ");
-			scanf("%s", p->name);
+			scanf("%s", p.name);
 			printf("국어점수 : ");
-			scanf("%d", &p->korean);
+			scanf("%d", &p.korean);
 			printf("영어점수 : ");
-			scanf("%d", &p->english);
+			scanf("%d", &p.english);
 			printf("수학점수 : ");
-			scanf("%d", &p->math);
+			scanf("%d", &p.math);
 			return;
 		}
 	}
 }
 #endif
+
+// 모든 데이터 출력
+#if 1
+int Print_All_Node(STUDENT * head)
+{
+	int i;
+	printf("Head.next = %#.8x\n", head->next);
+
+	for (i = 0; i < MAX_ST; i++)
+	{
+		if (head->next == NULL) break;
+		if (head->next->id == 0) break;
+		Print_Node(head);
+		//printf("ID : %d / Name : %s / 국어 : %hd / 영어 : %hd / 수학 : %hd \n",
+		//	head->next->id, head->next->name, head->next->korean, head->next->english, head->next->math);
+		head = head->next;
+	}
+	return i;
+}
+#endif
+
+#if 1
+void Print_All_Data(void)
+{
+	for (int i = 0; i < MAX_ST; i++)
+	{
+		if (students[i].id == 0) break;
+		printf("ID : %d / Name : %s / 국어 : %hd / 영어 : %hd / 수학 : %hd \n",
+			students[i].id, students[i].name, students[i].korean, students[i].english, students[i].math);
+	}
+}
+#endif
+
 int main(void)
 {
 	int sel;
@@ -236,13 +283,15 @@ int main(void)
 		sel = getch() - '0';
 		switch (sel)
 		{
-		case 1: Create_Data(); break;
+		case 1: {
+			Create_Data();
+		}break;
 		case 2: Delete_Data(); break;
-		case 3: Modify_Data(); break;
-		case 4: Print_All_Data(); break;
-		case 5: Print_Data(); break;
-		case 6: Print_Sorted_Data(); break;
-
+		//case 3: Modify_Data(); break;
+		case 4: Print_All_Node(&Head); break;
+		//case 5: Print_Data(); break;
+		//case 6: Print_Sorted_Data(); break;
+		case 7: Print_All_Data(); break;
 		default: printf("1~6번 사이의 메뉴를 선택해주세요.\n"); break;
 		}
 	}
