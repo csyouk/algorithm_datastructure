@@ -2634,7 +2634,7 @@ void main(void)
 // [1-6] 선형 리스트 - stack
 /***********************************************************/
 
-#if 1
+#if 0
 
 #include <stdio.h>
 
@@ -2654,30 +2654,30 @@ int Sptr = STACK_EMPTY;
 
 int Push_Stack(int data)
 {
-
-
-
-
+	if (Sptr == STACK_FULL) return -1;
+	Sptr--;
+	Stack[Sptr] = data;
+	return 1;
 }
 
 int Pop_Stack(int *p)
 {
-
-
-
-
+	if (Sptr == STACK_EMPTY) return -1;
+	*p = Stack[Sptr];
+	Sptr++;
+	return 1;
 }
 
 int Print_Stack(void)
 {
 	int i;
 
-	for (i = Sptr + 1; i < MAX_STACK; i++)
+	for (i = Sptr; i < MAX_STACK; i++)
 	{
 		printf("STACK[%d] = %d\n", i, Stack[i]);
 	}
 
-	return MAX_STACK - Sptr - 1;
+	return MAX_STACK - Sptr;
 }
 
 int Count_Full_Data_Stack(void)
@@ -2699,20 +2699,36 @@ void main(void)
 		printf("%d, ", a[i]);
 	}
 
-	printf("\n");
+	//printf("\n");
 
-	for (i = 0; i<5; i++)
-	{
-		printf("Push Result = %d\n", Push_Stack(a[i]));
-		printf("Print Result = %d, ", Print_Stack());
-		printf("Full = %d ", Count_Full_Data_Stack());
-		printf("Empty = %d\n", Count_Empty_Data_Stack());
-		printf("Sptr = %d\n", Sptr);
-	}
+	//for (i = 0; i<5; i++)
+	//{
+	//	printf("Push Result = %s\n", (Push_Stack(a[i]) > 0)?  "Success" : "Fail" );
+	//	printf("Print Result = %d, ", Print_Stack());
+	//	printf("Full = %d ", Count_Full_Data_Stack());
+	//	printf("Empty = %d\n", Count_Empty_Data_Stack());
+	//	printf("Sptr = %d\n", Sptr);
+	//}
 
-	for (i = 0; i<5; i++)
+	//for (i = 0; i<5; i++)
+	//{
+	//	printf("Pop Result = %s\n", (Pop_Stack(&a[i]) > 0 ) ? "Success":"Fail"  );
+	//	printf("Print Result = %d, ", Print_Stack());
+	//	printf("Full = %d ", Count_Full_Data_Stack());
+	//	printf("Empty = %d\n", Count_Empty_Data_Stack());
+	//	printf("Sptr = %d\n", Sptr);
+	//}
+
+	//for (i = 0; i<(MAX_STACK + 1); i++)
+	//{
+	//	printf("%d, ", a[i]);
+	//}
+
+	//printf("\n");
+
+	for (i = 0; i<(MAX_STACK + 1); i++)
 	{
-		printf("Pop Result = %d\n", Pop_Stack(&a[i]));
+		printf("Push %d , Result = %s\n", a[i], (Push_Stack(a[i]) > 0) ? "Success" : "Fail");
 		printf("Print Result = %d, ", Print_Stack());
 		printf("Full = %d ", Count_Full_Data_Stack());
 		printf("Empty = %d\n", Count_Empty_Data_Stack());
@@ -2721,23 +2737,7 @@ void main(void)
 
 	for (i = 0; i<(MAX_STACK + 1); i++)
 	{
-		printf("%d, ", a[i]);
-	}
-
-	printf("\n");
-
-	for (i = 0; i<(MAX_STACK + 1); i++)
-	{
-		printf("Push Result = %d\n", Push_Stack(a[i]));
-		printf("Print Result = %d, ", Print_Stack());
-		printf("Full = %d ", Count_Full_Data_Stack());
-		printf("Empty = %d\n", Count_Empty_Data_Stack());
-		printf("Sptr = %d\n", Sptr);
-	}
-
-	for (i = 0; i<(MAX_STACK + 1); i++)
-	{
-		printf("Pop Result = %d\n", Pop_Stack(&a[i]));
+		printf("Pop %d , Result = %s\n", a[i], (Pop_Stack(&a[i]) > 0) ? "Success" : "Fail");
 		printf("Print Result = %d, ", Print_Stack());
 		printf("Full = %d ", Count_Full_Data_Stack());
 		printf("Empty = %d\n", Count_Empty_Data_Stack());
@@ -2758,7 +2758,7 @@ void main(void)
 // [1-7] 선형 리스트 - Linear Queue
 /***********************************************************/
 
-#if 0
+#if 1
 
 #include <stdio.h>
 
@@ -2766,8 +2766,8 @@ void main(void)
 #define Q_EMPTY		0
 #define Q_FULL			MAX_Q
 
-int In_Queue(int data);
-int Out_Queue(int *p);
+int Inqueue(int data);
+int Dequeue(int *p);
 int Print_Queue(void);
 int Count_Full_Data_Queue(void);
 int Count_Empty_Data_Queue(void);
@@ -2777,19 +2777,29 @@ int Queue[MAX_Q];
 int Wrptr = Q_EMPTY;
 int Rdptr = Q_EMPTY;
 
-int In_Queue(int data)
+int Inqueue(int data)
 {
-
-
-
-
+	// 큐에 데이터를 넣을 때, 버퍼정리를 해줘야 한다. 
+	int cnt;
+	if (Wrptr == Q_FULL && Rdptr == Q_EMPTY) return -1;
+	cnt = Wrptr - Rdptr;
+	for (int i = 0; i < cnt; i++)
+	{
+		Queue[i] = Queue[Rdptr + i];
+	}
+	Wrptr -= Rdptr;  // write pointer의 위치를 옮긴다. (read pointer 만큼 좌로 이동한다.)
+	Rdptr = Q_EMPTY; // read pointer의 위치를 큐의 초기 위치로 옮긴다.
+	Queue[Wrptr++] = data; // data를 write pointer의 위치에 삽입한 후, 포인터 위치를 증가시킨다.
+	return 1;
 }
 
-int Out_Queue(int *p)
+int Dequeue(int *p)
 {
-
-
-
+	// Wrptr과 Rdptr가 같다는 것은, 데이터가 비어 있다는 뜻이다.
+	if (Wrptr == Rdptr) return -1;
+	// 큐에서 read pointer가 가리키고 있는 정보를 *p에 담은 후, read pointer의 위치를 증가시킨다.
+	*p = Queue[Rdptr++]; 
+	return 1;
 }
 
 int Print_Queue(void)
@@ -2818,6 +2828,36 @@ void main(void)
 {
 	int i;
 
+	//for (i = 0; i<(MAX_Q + 1); i++)
+	//{
+	//	printf("%d, ", a[i]);
+	//}
+
+	//printf("\n");
+
+	//for (i = 0; i<3; i++)
+	//{
+	//	printf("Queue Result = %d\n", Inqueue(a[i]));
+	//	printf("Print Result = %d, ", Print_Queue());
+	//	printf("Full = %d ", Count_Full_Data_Queue());
+	//	printf("Empty = %d\n", Count_Empty_Data_Queue());
+	//	printf("Wrptr = %d, Rdptr = %d\n", Wrptr, Rdptr);
+	//}
+
+	//for (i = 0; i<3; i++)
+	//{
+	//	a[i] = 0;
+	//}
+
+	//for (i = 0; i<3; i++)
+	//{
+	//	printf("Dequeue Result = %d\n", Dequeue(&a[i]));
+	//	printf("Print Result = %d, ", Print_Queue());
+	//	printf("Full = %d ", Count_Full_Data_Queue());
+	//	printf("Empty = %d\n", Count_Empty_Data_Queue());
+	//	printf("Wrptr = %d, Rdptr = %d\n", Wrptr, Rdptr);
+	//}
+
 	for (i = 0; i<(MAX_Q + 1); i++)
 	{
 		printf("%d, ", a[i]);
@@ -2825,39 +2865,9 @@ void main(void)
 
 	printf("\n");
 
-	for (i = 0; i<3; i++)
-	{
-		printf("Queue Result = %d\n", In_Queue(a[i]));
-		printf("Print Result = %d, ", Print_Queue());
-		printf("Full = %d ", Count_Full_Data_Queue());
-		printf("Empty = %d\n", Count_Empty_Data_Queue());
-		printf("Wrptr = %d, Rdptr = %d\n", Wrptr, Rdptr);
-	}
-
-	for (i = 0; i<3; i++)
-	{
-		a[i] = 0;
-	}
-
-	for (i = 0; i<3; i++)
-	{
-		printf("Dequeue Result = %d\n", Out_Queue(&a[i]));
-		printf("Print Result = %d, ", Print_Queue());
-		printf("Full = %d ", Count_Full_Data_Queue());
-		printf("Empty = %d\n", Count_Empty_Data_Queue());
-		printf("Wrptr = %d, Rdptr = %d\n", Wrptr, Rdptr);
-	}
-
 	for (i = 0; i<(MAX_Q + 1); i++)
 	{
-		printf("%d, ", a[i]);
-	}
-
-	printf("\n");
-
-	for (i = 0; i<(MAX_Q + 1); i++)
-	{
-		printf("Queue Result = %d\n", In_Queue(a[i]));
+		printf("Queue Result = %s\n", (Inqueue(a[i]) > 0)? "Success" : "Fail" );
 		printf("Print Result = %d, ", Print_Queue());
 		printf("Full = %d ", Count_Full_Data_Queue());
 		printf("Empty = %d\n", Count_Empty_Data_Queue());
@@ -2871,7 +2881,7 @@ void main(void)
 
 	for (i = 0; i<(MAX_Q + 1); i++)
 	{
-		printf("Dequeue Result = %d\n", Out_Queue(&a[i]));
+		printf("Dequeue Result = %s\n", (Dequeue(&a[i]) > 0) ? "Success" : "Fail");
 		printf("Print Result = %d, ", Print_Queue());
 		printf("Full = %d ", Count_Full_Data_Queue());
 		printf("Empty = %d\n", Count_Empty_Data_Queue());
