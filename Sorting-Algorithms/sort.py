@@ -1,4 +1,37 @@
 #-*- coding: utf-8 -*-
+'''
+# Bench mark @ window
+
+>>>> CPU : Intel R Duo 2.83GHz
+>>>> RAM : 4GB
+
+   bubble sort time for 10000 data : 20.977199
+selection sort time for 10000 data : 14.92385
+insertion sort time for 10000 data : 9.346534490
+    quick sort time for 10000 data : 0.0740041732
+
+   bubble sort time for 20000 data : 87.0769805
+selection sort time for 20000 data : 57.98831677
+insertion sort time for 20000 data : 33.8139338
+    quick sort time for 20000 data : 0.1500084401
+
+
+# Bench mark @ Machintoshi
+
+>>>> CPU : 2 GHz Intel Core i5
+>>>> RAM : 16GB 1867 MHz LPDDR3
+
+   bubble sort time for 10000 data : 7.007555961608887
+selection sort time for 10000 data : 4.786497116088867
+insertion sort time for 10000 data : 3.345464944839477
+    quick sort time for 10000 data : 0.02640700340270996
+
+   bubble sort time for 20000 data : 29.793501138687134
+selection sort time for 20000 data : 18.135602951049805
+insertion sort time for 20000 data : 15.205499172210693
+    quick sort time for 20000 data : 0.059430837631225586
+'''
+
 
 import sys, time
 data = []
@@ -91,37 +124,3 @@ if __name__ == '__main__':
     # quick_sort(data)
     endTime = time.time()
     print("execution time : ", endTime - startTime)
-
-'''
-# Bench mark @ window
-
->>>> CPU : Intel R Duo 2.83GHz
->>>> RAM : 4GB
-
-   bubble sort time for 10000 data : 20.977199
-selection sort time for 10000 data : 14.92385
-insertion sort time for 10000 data : 9.346534490
-    quick sort time for 10000 data : 0.0740041732
-
-   bubble sort time for 20000 data : 87.0769805
-selection sort time for 20000 data : 57.98831677
-insertion sort time for 20000 data : 33.8139338
-    quick sort time for 20000 data : 0.1500084401
-
-
-
-# Bench mark @ Machintoshi
-
->>>> CPU : 2 GHz Intel Core i5
->>>> RAM : 16GB 1867 MHz LPDDR3
-
-   bubble sort time for 10000 data : 7.007555961608887
-selection sort time for 10000 data : 4.786497116088867
-insertion sort time for 10000 data : 3.345464944839477
-    quick sort time for 10000 data : 0.02640700340270996
-
-   bubble sort time for 20000 data : 29.793501138687134
-selection sort time for 20000 data : 18.135602951049805
-insertion sort time for 20000 data : 15.205499172210693
-    quick sort time for 20000 data : 0.059430837631225586
-'''

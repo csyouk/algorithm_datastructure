@@ -2758,7 +2758,7 @@ void main(void)
 // [1-7] 선형 리스트 - Linear Queue
 /***********************************************************/
 
-#if 1
+#if 0
 
 #include <stdio.h>
 
@@ -2917,16 +2917,17 @@ void main(void)
 // [1-8] 선형 리스트 - Circular Queue
 /***********************************************************/
 
-#if 0
+#if 1
 
 #include <stdio.h>
 
 #define MAX_Q		8
 #define Q_MIN		0
 #define Q_MAX		MAX_Q
+#define Q_FULL      1
 
-int In_Queue(int data);
-int Out_Queue(int *p);
+int Inqueue(int data);
+int Dequeue(int *p);
 int Print_Queue(void);
 int Count_Full_Data_Queue(void);
 int Count_Empty_Data_Queue(void);
@@ -2936,21 +2937,20 @@ int Queue[MAX_Q];
 int Wrptr = Q_MIN;
 int Rdptr = Q_MIN;
 
-int In_Queue(int data)
+int Inqueue(int data)
 {
-
-
-
-
-
+	if ((Wrptr + 1) % MAX_Q == Rdptr) return -1;
+	Queue[Wrptr++] = data;
+	Wrptr %= MAX_Q;
+	return 1;
 }
 
-int Out_Queue(int *p)
+int Dequeue(int *p)
 {
-
-
-
-
+	if (Wrptr == Rdptr) return -2;
+	*p = Queue[Rdptr++];
+	Rdptr %= MAX_Q;
+	return 1;
 }
 
 int Print_Queue(void)
@@ -2983,6 +2983,38 @@ void main(void)
 {
 	int i;
 
+	//for (i = 0; i<(MAX_Q + 1); i++)
+	//{
+	//	printf("%d, ", a[i]);
+	//}
+
+	//printf("\n");
+
+	//for (i = 0; i<3; i++)
+	//{
+	//	printf("Queue Result = %d\n", Inqueue(a[i]));
+	//	printf("Print Result = %d, ", Print_Queue());
+	//	printf("Full = %d ", Count_Full_Data_Queue());
+	//	printf("Empty = %d\n", Count_Empty_Data_Queue());
+	//	printf("Wrptr = %d, Rdptr = %d\n", Wrptr, Rdptr);
+	//}
+
+	//for (i = 0; i<3; i++)
+	//{
+	//	a[i] = 0;
+	//}
+
+	//for (i = 0; i<3; i++)
+	//{
+	//	printf("Dequeue Result = %d\n", Inqueue(&a[i]));
+	//	printf("Print Result = %d, ", Print_Queue());
+	//	printf("Full = %d ", Count_Full_Data_Queue());
+	//	printf("Empty = %d\n", Count_Empty_Data_Queue());
+	//	printf("Wrptr = %d, Rdptr = %d\n", Wrptr, Rdptr);
+	//}
+
+
+	printf("Insert data into Queue : ");
 	for (i = 0; i<(MAX_Q + 1); i++)
 	{
 		printf("%d, ", a[i]);
@@ -2990,39 +3022,9 @@ void main(void)
 
 	printf("\n");
 
-	for (i = 0; i<3; i++)
-	{
-		printf("Queue Result = %d\n", In_Queue(a[i]));
-		printf("Print Result = %d, ", Print_Queue());
-		printf("Full = %d ", Count_Full_Data_Queue());
-		printf("Empty = %d\n", Count_Empty_Data_Queue());
-		printf("Wrptr = %d, Rdptr = %d\n", Wrptr, Rdptr);
-	}
-
-	for (i = 0; i<3; i++)
-	{
-		a[i] = 0;
-	}
-
-	for (i = 0; i<3; i++)
-	{
-		printf("Dequeue Result = %d\n", Out_Queue(&a[i]));
-		printf("Print Result = %d, ", Print_Queue());
-		printf("Full = %d ", Count_Full_Data_Queue());
-		printf("Empty = %d\n", Count_Empty_Data_Queue());
-		printf("Wrptr = %d, Rdptr = %d\n", Wrptr, Rdptr);
-	}
-
 	for (i = 0; i<(MAX_Q + 1); i++)
 	{
-		printf("%d, ", a[i]);
-	}
-
-	printf("\n");
-
-	for (i = 0; i<(MAX_Q + 1); i++)
-	{
-		printf("Queue Result = %d\n", In_Queue(a[i]));
+		printf("Inqueue %d Result = %s\n", a[i], (Inqueue(a[i]) > 0) ? "Success" : "Fail");
 		printf("Print Result = %d, ", Print_Queue());
 		printf("Full = %d ", Count_Full_Data_Queue());
 		printf("Empty = %d\n", Count_Empty_Data_Queue());
@@ -3036,7 +3038,7 @@ void main(void)
 
 	for (i = 0; i<(MAX_Q + 1); i++)
 	{
-		printf("Dequeue Result = %d\n", Out_Queue(&a[i]));
+		printf("Dequeue %d Result = %s\n", a[i], (Dequeue(&a[i]) > 0) ? "Success" : "Fail"  );
 		printf("Print Result = %d, ", Print_Queue());
 		printf("Full = %d ", Count_Full_Data_Queue());
 		printf("Empty = %d\n", Count_Empty_Data_Queue());
