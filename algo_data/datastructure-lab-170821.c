@@ -2350,15 +2350,15 @@ int Copy_Score_Node(SCORE * head, int jumsu, SCORE * buf)
 	return n;
 }
 
-SCORE * Search_Id_Node(SCORE * head, int id)
-{
-	while (1)
-	{
-		if (head->next == NULL) return NULL;
-		if (head->next->id == id) return head->next;
-		head = head->next;
-	}
-}
+//SCORE * Search_Id_Node(SCORE * head, int id)
+//{
+//	while (1)
+//	{
+//		if (head->next == NULL) return NULL;
+//		if (head->next->id == id) return head->next;
+//		head = head->next;
+//	}
+//}
 #endif
 
 #endif
@@ -2382,7 +2382,11 @@ int Insert_Node(SCORE * head, SCORE * d)
 			head->next = d;
 			return 1;
 		}
+
+		// head->next가 NULL이 아니라는 전제하에 할 수 있는 행위이다.
 		if (head->next->id == d->id) return -2;
+
+		// 노드 이동은 언제나 마지막에.
 		head = head->next;
 		cnt++;
 		if (cnt == 20) return -1;
@@ -2411,7 +2415,7 @@ int Insert_Node(SCORE * head, SCORE * d)
 
 #endif
 
-#if 1
+#if 0
 
 void main(void)
 {
@@ -2433,22 +2437,26 @@ void main(void)
 // [1-5.3] 주어진 사번의 node를 찾아서 삭제하는 함수
 /***********************************************************/
 
-#if 0
-
+#if 1
 SCORE * Search_Id_Node(SCORE * head, int id)
 {
-
-
-
-
+	while (1)
+	{
+		if (head->next == NULL) return NULL;
+		if (head->next->id == id) return head->next;
+		head = head->next;
+	}
 }
 
 int Delete_Node(SCORE * head, int id)
 {
+	SCORE *p = Search_Id_Node(head, id);
+	if (p == NULL) return -1;
 
-
-
-
+	if (p->prev) p->prev->next = p->next;
+	if (p->next) p->next->prev = p->prev;
+	p->id = 0;
+	return 1;
 }
 
 #endif
@@ -2483,15 +2491,25 @@ void main(void)
 // [1-5.4] 더블 링크 사용의 장점 1, 내림차순 검색
 /***********************************************************/
 
-#if 0
+#if 1
 
 int Print_All_Node_Reverse(SCORE * head)
 {
+	int cnt=0;
+	SCORE * tail;
+	while (head->next) head = head->next;
 
+	tail = head;
 
-
-
-
+	while (tail)
+	{
+		if (tail->prev == NULL) break;
+		printf("ID : %d / Score : %d / Name : %s / prev : %#.8x / next : %#.8x\n",
+			tail->id, tail->jumsu, tail->name, tail->prev, tail->next);
+		tail = tail->prev;
+		cnt++;
+	}
+	return cnt;
 }
 
 #endif
@@ -2521,26 +2539,60 @@ void main(void)
 // [1-5.5] 더블 링크 사용의 장점 2, 역방향으로 일정 범위 인쇄
 /***********************************************************/
 
-#if 0
+#if 1
 
 int Print_Selected_Node(SCORE * head, int id, int num)
 {
+	int rep = 0;
+	SCORE *p = Search_Id_Node(head, id);
+	if (!p) return -1;
+	while (num-- && p->next)
+	{
+		printf("ID : %d / Score : %d / Name : %s / prev : %#.8x / next : %#.8x\n",
+			p->id, p->jumsu, p->name, p->prev, p->next);
+		p = p->next;
+		rep++;
+	}
+	return rep;
 
-
-
-
-
-
+	//int i = 0;
+	//head = Search_Id_Node(head, id);
+	//if (!head) return -1;
+	//for (i = 0; i < num; i++)
+	//{
+	//	if (!head) break;
+	//	printf("ID : %d / Score : %d / Name : %s / prev : %#.8x / next : %#.8x\n",
+	//		head->id, head->jumsu, head->name, head->prev, head->next);
+	//	head = head->next;
+	//}
+	//return i;
 }
 
 int Print_Selected_Node_Reverse(SCORE *head, int id, int num)
 {
+	//int rep = 0;
+	//SCORE *p = Search_Id_Node(head, id);
+	//if (!p) return -1;
+	//while (num-- && p->prev)
+	//{
+	//	printf("ID : %d / Score : %d / Name : %s / prev : %#.8x / next : %#.8x\n",
+	//		p->id, p->jumsu, p->name, p->prev, p->next);
+	//	p = p->prev;
+	//	rep++;
+	//}
+	//return rep;
 
-
-
-
-
-
+	int i;
+	head = Search_Id_Node(head, id);
+	if(!head) return -1;
+	for (i = 0; i < num; i++)
+	{
+		if (!head->prev) break;
+		printf("ID : %d / Score : %d / Name : %s / prev : %#.8x / next : %#.8x\n",
+			head->id, head->jumsu, head->name, head->prev, head->next);
+		head = head->prev;
+	}
+	return i;
 }
 
 #endif
@@ -2582,7 +2634,7 @@ void main(void)
 // [1-6] 선형 리스트 - stack
 /***********************************************************/
 
-#if 0
+#if 1
 
 #include <stdio.h>
 

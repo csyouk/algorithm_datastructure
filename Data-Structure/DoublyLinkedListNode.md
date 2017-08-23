@@ -1,0 +1,16 @@
+# Singly Linked List Node
+
+## 장점
+- sequence list 기반의 자료구조(array)에 비해서 자료의 이동이 적다.
+- 메모리를 원하는 만큼만 사용한다.
+
+## 단점
+- 제어가 sequence list 기반 자료구조보다 복잡하다.
+- node의 next를 잘못 지정하면, 데이터가 유실 되기도 한다.
+
+## 용어
+- **Node** : 자료 그 자체를 나타냄.
+- **Next** : 다음 노드를 나타내는 연결 주소.
+- **Prev** : 이전 노드를 나타내는 연결 주소.
+- **Head** : Linked list node의 시작 node를 가리키는 여분의 node이다.
+- **Tail** : Linked list node의 마지막 node를 가리키는 여분의 node이다.

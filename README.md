@@ -12,7 +12,7 @@
 - [Quick Sort](https://github.com/csyouk/algorithm_datastructure/blob/master/Sorting-Algorithms/QuickSort.md)
   - 기준점(pivot)을 잡아서 기준점의 좌측(left)과 기준점을 지속적으로 비교하며 데이터의 크기가 있다면
   - 기준점(pivot)을 타겟(target)과 바꾸는 방법.
-  - target을 기준점과 바꾼 후, pivot을 기준으로 좌측과 우측을 재귀적으로 quick sort를 시키는 방법. 
+  - target을 기준점과 바꾼 후, pivot을 기준으로 좌측과 우측을 재귀적으로 quick sort를 시키는 방법.
 
 ## 자료구조
 - [Array (homogeneous)](https://github.com/csyouk/algorithm_datastructure/blob/master/Data-Structure/Array.md)
