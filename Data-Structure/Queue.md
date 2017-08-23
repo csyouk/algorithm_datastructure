@@ -106,7 +106,7 @@ int Dequeue(Object *tmp)
 - 장점 : 버퍼 이동이 일어나지 않기 때문에, 연산 속도가 상대적으로 빠르고 코드가 간결하다.
 - 단점 : 어디가 시작이고 어디가 끝인지 모른다. 잘못 짜면 제대로 동작하지 않는 수가 있다.
 - 환형 큐의 그림을 그려보면 다음과 같다.
-![Circular Queue](https://raw.githubusercontent.com/csyouk/algorithm_datastructure/master/Data-Structure/img/circular-queue.jpg)
+![Circular Queue](http://www.includehelp.com/screen-shots/circular-queue-2.jpg)
 - 환형 큐의 아이디어는, 큐의 Front와 Read가 서로 이어져 있다는 전제하에 데이터의 입출입 행위를 진행한다는 것이다.
 - 대신, 환형 큐를 사용하려면, 특별한 규칙이 추가로 필요하다.
   - RP 와 WP가 동일한 경우는 EMPTY상태라고만 정의해야 한다.
