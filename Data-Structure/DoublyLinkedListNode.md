@@ -1,4 +1,4 @@
-# Singly Linked List Node
+# Doubly Linked List Node
 
 ## 장점
 - sequence list 기반의 자료구조(array)에 비해서 자료의 이동이 적다.
