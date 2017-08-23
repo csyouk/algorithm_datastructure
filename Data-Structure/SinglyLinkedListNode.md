@@ -19,8 +19,17 @@
 - struct에 next 라는 멤버를 가지고 있음으로써, 다음 node에 접근할 수 있다.
 - next 멤버는 자신과 동일한 타입을 가진 데이터만 지시할 수 있다.
 - 자기 참조 구조체의 형식을 띌 수 밖에 없다.
+- 이와 같이 언어에서 제공하는 기본 연산자를 통해서 데이터의 연산을 할 수 없는 데이터의 타입을 ADT(Abstract Data Type)라고 한다.
+- 데이터의 CRUD 행위를 기본 연산자로 처리할 수 없기 때문에, 구현은 사용자(프로그래머)가 직접 해야 한다.
 
-코드로 나타내면 다음과 같은 형태를 띈다.
+## 예시
+- Head 노드에 id 1인 노드를 추가한다.
+- Linked list node에 id 3인 노드를 추가한다.
+- Linked list node에 id 2인 노드를 추가한다.
+
+
+
+코드로 나타내면 다음과 같은 형태를 가진다.
 ```cpp
 
 typedef struct node{
@@ -63,7 +72,8 @@ void Insert_Node(Node * head, Node * node)
 ```cpp
   while (head->next->id < node->id) {
     head = head->next;
-    첫 노드 혹은 마지막 노드에 추가시키기 위해서는 분명, head의 next가 NULL값 이어야 한다.
+    // 첫 노드 혹은 마지막 노드에 추가시키기 위해서는 분명, head의 next가 NULL값 이어야 한다.
+    // head의 next를 꺼내는 이유는 Head 노드는 단지 노드의 주소만 가지고 있기 때문이다.
     if(head->next == NULL)
     {
       d->next = head->next;

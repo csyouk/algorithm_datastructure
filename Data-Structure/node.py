@@ -4,6 +4,8 @@ class LinkedList(object):
 
     def insert(self, data):
         new = Node(data)
+        # for node in self.head:
+        #     pass
         new.set_next(self.head)
         self.head = new
 
@@ -49,9 +51,8 @@ class LinkedList(object):
         cnt = 0
         while current:
             cnt += 1
+            if current is not None: print(current.get_data())
             current = current.get_next()
-            if current is not None:
-                print("node has data : ", current.get_data())
 
 class Node(object):
     def __init__(self, data=None, next_node = None):
@@ -59,7 +60,7 @@ class Node(object):
         self.next_node = next_node
 
     def __str__(self):
-        return str(self.data)
+        return "Node ID is " + str(self.data) + ", and it's located in " + str(hex(id(self)))
 
     def get_data(self):
         return self.data

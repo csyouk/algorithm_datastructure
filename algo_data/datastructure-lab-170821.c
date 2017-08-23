@@ -1213,7 +1213,9 @@ int Insert_Node(SCORE * head, SCORE * d)
 	//
 	//return -1;
 }
+#endif
 
+#if 0
 int Print_All_Node(SCORE * head)
 {
 	int n = 0;
@@ -1258,24 +1260,29 @@ void main(void)
 // [1-3.5] link에 따라서 주어진 사번에 맞는 노드 를 찾아 주소를 리턴하는 함수
 /***********************************************************/
 
-#if 0
+#if 1
 
 int Print_All_Node(SCORE * head)
 {
-
-
-
-
-
+	int nodes = 0;
+	if (head->next == NULL) return 0;
+	while (1)
+	{
+		printf("ID = %d / Score = %d / Name = %s \n", head->next->id, head->next->jumsu, head->next->name);
+		head = head->next;
+		nodes++;
+		if (head->next == NULL) return nodes;
+	}
 }
 
 SCORE * Search_Id_Node(SCORE * head, int id)
 {
-
-
-
-
-
+	while (1)
+	{
+		if (head->next == NULL) return NULL;
+		if (head->next->id == id) return head->next;
+		head = head->next;
+	}
 }
 
 #endif
@@ -1291,19 +1298,19 @@ void main(void)
 	for (i = 0; i<8; i++)
 	{
 		printf("[Loop: %d] Insert Result = %d\n", i, r = Insert_Data(&test[i]));
-		printf("Printed Data Count = %d\n", Print_All_Data());
+		//printf("Printed Data Count = %d\n", Print_All_Data());
 		printf("Insert Node Result = %d\n", Insert_Node(&Head, &exam[r]));
 		printf("Printed Node Count = %d\n", Print_All_Node(&Head));
 	}
 
-	printf("Searched Node Address = 0x%.8X\n", p = Search_Id_Node(&Head, 8));
+	printf("Searched Node Address = 0x%.8X\n", p = Search_Id_Node(&Head, 8)); // node에 존재 하는 경우.
 
 	if (p != (SCORE *)0x0)
 	{
 		printf("ID=%d, NAME=%s, SCORE=%d, next = 0x%.8X\n", p->id, p->name, p->jumsu, p->next);
 	}
 
-	printf("Searched Node Address = 0x%.8X\n", p = Search_Id_Node(&Head, 7));
+	printf("Searched Node Address = 0x%.8X\n", p = Search_Id_Node(&Head, 7)); // node에 존재 하지 않는 경우.
 
 	if (p != (SCORE *)0x0)
 	{
@@ -1317,15 +1324,17 @@ void main(void)
 // [1-3.6] list에 저장된 자료의 총수를 계산하는 함수
 /***********************************************************/
 
-#if 0
+#if 1
 
 int Count_Node(SCORE * head)
 {
-
-
-
-
-
+	int nodes = 0;
+	while (1)
+	{
+		if (head->next == NULL) return nodes;
+		head = head->next;
+		nodes++;
+	}
 }
 
 #endif
@@ -1334,15 +1343,14 @@ int Count_Node(SCORE * head)
 // [1-3.7] link에 따라서 주어진 사번에 맞는 자료를 인쇄하는 함수
 /***********************************************************/
 
-#if 0
+#if 1
 
 int Print_Node(SCORE * head, int id)
 {
-
-
-
-
-
+	SCORE * node = Search_Id_Node(head, id);
+	if (node == NULL) return -1;
+	printf("ID=%d, NAME=%s, SCORE=%d \n", node->id, node->name, node->jumsu);
+	return 1;
 }
 
 #endif
@@ -1361,6 +1369,7 @@ void main(void)
 		printf("Insert Node Result = %d\n", Insert_Node(&Head, &exam[r]));
 		printf("Printed Node Count = %d\n", Print_All_Node(&Head));
 		printf("Node Count = %d\n", Count_Node(&Head));
+		printf("==============================================================================\n");
 	}
 
 	printf("Print Node Result = %d\n", Print_Node(&Head, 8));
@@ -1373,16 +1382,24 @@ void main(void)
 // [1-3.8] link에 따라서 주어진 사번의 node를 찾아서 삭제하는 함수
 /***********************************************************/
 
-#if 0
+#if 1
 
 int Delete_Node(SCORE * head, int id)
 {
-
-
-
-
-
-
+	SCORE *p;
+	while (1)
+	{
+		if (head->next == NULL) return -1;
+		if (head->next->id > id) return -1; // node가 사번 순으로 연결되어 있다는 가정 하에 짜는 코드이다.
+		if (head->next->id == id){
+			p = head->next->next;
+			head->next->id = 0;
+			head->next = p;
+			p = NULL;
+			return 1;
+		}
+		head = head->next;
+	}
 }
 
 #endif
