@@ -4,6 +4,16 @@
   - 가장 작은 값을 뒤로 보내면서 정렬을 시키거나(내림차순)
 - 즉, 정렬을 시키는 기준이 데이터의 종단점이다.
 
+## 장점
+- 단순하다.
+
+## 단점
+- 느리다.
+
+- 참고
+  - 첫 loop를 통해서 반복을 시킬 횟수를 정했다면,
+  - 두번째 loop j를 통해서는 i+1번째 위치에 기준이 되는수(가장 크거나, 작거나)를 배치한다. 
+
 ```cpp
 
 다음과 같은 데이터가 있다고 가정해보자.
@@ -57,7 +67,7 @@ for (int j = 0; j <= max - 1 -1 - i; j++) {
 
 
 두 번째 loop의 안쪽에서는 index j를 기준으로 j와 j+1의 요소를 비교해서 자리를 교체한다.
-if(comp(d[j], d[j+1]) == order)
+if(comp(&d[j], &d[j+1]) == order)
 {
   tmp = d[j];
   d[j] = d[j+1];
@@ -85,7 +95,7 @@ int Sort_Bubble(SCORE *d, int order, int (* comp)(SCORE *x, SCORE *y))
 
   for (int i = 0; i < max - 1; i++) {
     for (int j = 0; j < max - 1 - i; j++) {
-      if(comp(d[j], d[j+1]) == order)
+      if(comp(&d[j], &d[j+1]) == order)
       {
         tmp = d[j];
         d[j] = d[j+1];
