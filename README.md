@@ -40,4 +40,5 @@
 - [Queue](https://github.com/csyouk/algorithm_datastructure/blob/master/Data-Structure/Linear/Heap-Segment/Queue.md)
 
 ## Non-Linear
-- [Tree]()
+- [Tree](https://github.com/csyouk/algorithm_datastructure/blob/master/Data-Structure/None-Linear/HashTable.md)
+- [Hash Table](https://github.com/csyouk/algorithm_datastructure/blob/master/Data-Structure/None-Linear/HashTable.md)
