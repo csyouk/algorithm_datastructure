@@ -26,3 +26,5 @@
 **Stored in Heap segment case**
 - [Singly Linked List Node](https://github.com/csyouk/algorithm_datastructure/blob/master/Data-Structure/SinglyLinkedListInHeap.md)
 - [Doubly Linked List Node](https://github.com/csyouk/algorithm_datastructure/blob/master/Data-Structure/DoublyLinkedListNodeInHeap.md)
+- [Stack](https://github.com/csyouk/algorithm_datastructure/blob/master/Data-Structure/StackInHeap.md)
+- [Queue](https://github.com/csyouk/algorithm_datastructure/blob/master/Data-Structure/QueueInHeap.md)
