@@ -2,7 +2,7 @@
 '''
 # Bench mark @ window
 
->>>> CPU : Intel R Duo 2.83GHz
+>>>> CPU : Intel R Duo 2.83GHz (Dual Core)
 >>>> RAM : 4GB
 
    bubble sort time for 10000 data : 20.977199
@@ -16,9 +16,9 @@ insertion sort time for 20000 data : 33.8139338
     quick sort time for 20000 data : 0.1500084401
 
 
-# Bench mark @ Machintoshi
+# Bench mark @ Macintosh
 
->>>> CPU : 2 GHz Intel Core i5
+>>>> CPU : 2 GHz Intel Core i5 (Quad Core)
 >>>> RAM : 16GB 1867 MHz LPDDR3
 
    bubble sort time for 10000 data : 7.007555961608887
@@ -114,7 +114,8 @@ if __name__ == '__main__':
     startTime = time.time()
     algorithm = sys.argv[1]
     if(algorithm == "quick"):
-        # quick sort의 stack overflowr가 날 수 있어서, 이렇게 설정을 풀어줘야 한다.
+        # quick sort의 경우 stack overflowr가 생길수 있어서
+        # 설정을 풀어줘야 한다.
         sys.setrecursionlimit(100000)
         # data = [10,9,8,7,33,6,5,4,3,2,1,-1]
         quick_sort(data, 0,len(data)-1);
