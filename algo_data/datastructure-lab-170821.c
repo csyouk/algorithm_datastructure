@@ -5549,9 +5549,6 @@ int Delete_Data(int id)
 	if (p == NULL) return NOT_EXIST;
 	p->id = DELETED;
 	return EXIST;
-
-
-
 }
 
 int Insert_Data(SCORE * d)
@@ -5627,13 +5624,13 @@ void main(void)
 // [3-3.6] Hash Table => 해시 키 발생 함수의 변경
 /***********************************************************/
 
-#if 1
+#if 0
 
 /***********************************************************/
 // [3-3.6] Hash Table을 위한 기본 함수들
 /***********************************************************/
 
-#if 1
+#if 0
 
 #include <stdio.h>
 #include <string.h>
@@ -5785,7 +5782,7 @@ SCORE * Search_Data(int id)
 // [3-3.6] Insert 효율
 /***********************************************************/
 
-#if 1
+#if 0
 
 void main(void)
 {
@@ -5872,13 +5869,13 @@ void main(void)
 // [3-3.9] Hash Table => Chainning 방법의 구현
 /***********************************************************/
 
-#if 0
+#if 1
 
 /***********************************************************/
 // [3-3.9] Hash Table을 위한 기본 함수들
 /***********************************************************/
 
-#if 0
+#if 1
 
 #include <stdio.h>
 #include <string.h>
@@ -5896,6 +5893,7 @@ typedef struct _score
 #define MAX_ST		20
 #define HASH_KEY	5
 
+// 큰 Head가 5개.
 SCORE Hash_table[HASH_KEY];
 
 
@@ -5972,12 +5970,24 @@ void Print_All_Data(void)
 
 int Insert_Data(SCORE * d)
 {
+	int pos, key;
+	pos = key = Get_Hash_Key(d->id);
 
+	SCORE *head = &Hash_table[key];
+	SCORE *p = calloc(1, sizeof(SCORE));
+	if (!p) return -1;
 
+	*p = *head;
+	while (1)
+	{
+		if (head->next == NULL) break; // 맨 뒤에 추가하는 방식. 
+		//if (head->next == NULL || head->next->id > d->id) break; // 맨 뒤에 혹은 id순으로 삽입하는 방법.
+		p = p->next;
+	}
 
-
-
-
+	head->next = p;
+	p->next = NULL;
+	return 1;
 }
 
 #endif
@@ -6008,11 +6018,21 @@ void main(void)
 
 int Delete_Data(int id)
 {
-
-
-
-
-
+	SCORE * p;
+	SCORE * head;
+	
+	head = &Hash_table[Get_Hash_Key(id)];
+	while (1)
+	{
+		if (head->next == NULL) return -1;
+		if (head->next->id == id)
+		{
+			p = head->next;
+			head->next = head->next->next;
+			free(p);
+		}
+		head = head->next;
+	}
 }
 
 #endif
