@@ -3059,7 +3059,7 @@ void main(void)
 // [2-1] 힙 기반 Linked List
 /***********************************************************/
 
-#if 1
+#if 0
 
 /***********************************************************/
 // [2-1.1] 기존 배열 기반 linked list 방식중 그대로 사용하는 함수들
@@ -3302,7 +3302,6 @@ int Insert_Node(SCORE * head, SCORE * d)
 			if (p == NULL) return -1; // 저장공간이 부족할 수도 있으니, 예외처리를 한다.
 			*p = *d; // 할당 받은 힙 공간에 데이터를 부어준다. 이제 p는 data처럼 사용이 가능하다.
 
-			
 			p->next = head->next; // 삽입할 노드의 next를 이전 head의 next로 치환한다.
 			head->next = p;  // head next를 새로 삽입한 노드로 지정한다.
 			return 1;
@@ -3367,7 +3366,7 @@ int Delete_Node(SCORE * head, int id)
 
 #endif
 
-#if 1
+#if 0
 
 void main(void)
 {
@@ -3754,7 +3753,7 @@ void main(void)
 // [2-2.3] 기존 Linked List 방식중 그대로 사용하는 함수들
 /***********************************************************/
 
-#if 0
+#if 1
 
 #include <stdio.h>
 #include <string.h>
@@ -4034,17 +4033,25 @@ int Print_Selected_Node_Reverse(SCORE *head, int id, int num)
 // [2-2.3] 데이터 하나를 생성하여 Linked List에 추가하는 함수 (calloc 사용)
 /***********************************************************/
 
-#if 0
+#if 1
 
 int Insert_Node(SCORE * head, SCORE * d)
 {
-
-
-
-
-
-
-
+	while (1)
+	{
+		if (head->next == NULL || head->next->id > d->id)
+		{
+			SCORE *p = calloc(1, sizeof(SCORE));
+			*p = *d;
+			p->next = head->next;
+			p->prev = head;
+			if(head->next) head->next->prev = p;
+			head->next = p;
+			return 1;
+		}
+		if (head->next->id == d->id) return -2;
+		head = head->next;
+	}
 }
 
 #endif
@@ -4068,16 +4075,17 @@ void main(void)
 // [2-2.4] 주어진 사번의 node를 찾아서 삭제하는 함수
 /***********************************************************/
 
-#if 0
+#if 1
 
 int Delete_Node(SCORE * head, int id)
 {
+	SCORE *p = Search_Id_Node(head, id);
+	if (!p) return -1;
 
-
-
-
-
-
+	p->prev->next = p->next;
+	if (p->next)p->next->prev = p->prev;
+	free(p);
+	return 1;
 }
 
 #endif
@@ -4094,12 +4102,16 @@ void main(void)
 	}
 
 	printf("Printed Node Count = %d\n", Print_All_Node(&Head));
+
 	printf("Delete Node Result = %d\n", Delete_Node(&Head, 8));
 	printf("Printed Node Count = %d\n", Print_All_Node(&Head));
+
 	printf("Delete Node Result = %d\n", Delete_Node(&Head, 7));
 	printf("Printed Node Count = %d\n", Print_All_Node(&Head));
+
 	printf("Delete Node Result = %d\n", Delete_Node(&Head, 1));
 	printf("Printed Node Count = %d\n", Print_All_Node(&Head));
+
 	printf("Delete Node Result = %d\n", Delete_Node(&Head, 10));
 	printf("Printed Node Count = %d\n", Print_All_Node(&Head));
 }
