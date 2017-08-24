@@ -3753,7 +3753,7 @@ void main(void)
 // [2-2.3] 기존 Linked List 방식중 그대로 사용하는 함수들
 /***********************************************************/
 
-#if 1
+#if 0
 
 #include <stdio.h>
 #include <string.h>
@@ -4257,13 +4257,25 @@ int Count_Full_Data_Queue(void);
 
 int Enqueue(QUEUE * data)
 {
+	//QUEUE * p = calloc(1, sizeof(QUEUE));
+	//if (!p) return -1;
+	//*p = *data;
+	//p->next = (QUEUE *) 0x0;
+	//if (Wrptr) Wrptr->next = p;
+	//Wrptr = p;
+	//if (Rdptr == NULL) Rdptr = p;
 	QUEUE * p = calloc(1, sizeof(QUEUE));
 	if (!p) return -1;
 	*p = *data;
-	p->next = (QUEUE *) 0x0;
-	if (Wrptr) Wrptr->next = p;
+	p->next = NULL;
+
+	if (Wrptr == NULL) {
+		Rdptr = p;
+		Wrptr = p;
+		return 1;
+	}
+	Wrptr->next = p;
 	Wrptr = p;
-	if (Rdptr == NULL) Rdptr = p;
 	return 1;
 }
 
@@ -4306,19 +4318,19 @@ void main(void)
 {
 	int i;
 
-	//for (i = 0; i<3; i++)
-	//{
-	//	printf("Queue Result = %s\n", (Enqueue(&a[i]) > 0) ? "SUCCESS":"FAIL");
-	//	Print_Queue();
-	//	printf("Full = %d\n", Count_Full_Data_Queue());
-	//}
+	for (i = 0; i<3; i++)
+	{
+		printf("Queue Result = %s\n", (Enqueue(&a[i]) > 0) ? "SUCCESS":"FAIL");
+		Print_Queue();
+		printf("Full = %d\n", Count_Full_Data_Queue());
+	}
 
-	//for (i = 0; i<2; i++)
-	//{
-	//	printf("Dequeue Result = %s\n", (Dequeue(&a[i]) > 0)?"SUCCESS":"QUEUE EMPTY");
-	//	Print_Queue();
-	//	printf("Full = %d\n", Count_Full_Data_Queue());
-	//}
+	for (i = 0; i<2; i++)
+	{
+		printf("Dequeue Result = %s\n", (Dequeue(&a[i]) > 0)?"SUCCESS":"QUEUE EMPTY");
+		Print_Queue();
+		printf("Full = %d\n", Count_Full_Data_Queue());
+	}
 
 	//for (i = 0; i<4; i++)
 	//{
@@ -4334,19 +4346,19 @@ void main(void)
 	//	printf("Full = %d\n", Count_Full_Data_Queue());
 	//}
 
-	for (i = 0; i<1000; i++)
-	{
-		printf("Queue Result = %s\n", (Enqueue(&a[i%10]) > 0) ? "SUCCESS" : "FAIL");
+	//for (i = 0; i<1000; i++)
+	//{
+	//	printf("Queue Result = %s\n", (Enqueue(&a[i%10]) > 0) ? "SUCCESS" : "FAIL");
 
-		printf("Full = %d\n", Count_Full_Data_Queue());
-	}
-	Print_Queue();
-	for (i = 0; i<995; i++)
-	{
-		printf("Dequeue Result = %s\n", (Dequeue(&a[i % 10]) > 0) ? "SUCCESS" : "QUEUE EMPTY");
-		printf("Full = %d\n", Count_Full_Data_Queue());
-	}
-	Print_Queue();
+	//	printf("Full = %d\n", Count_Full_Data_Queue());
+	//}
+	//Print_Queue();
+	//for (i = 0; i<995; i++)
+	//{
+	//	printf("Dequeue Result = %s\n", (Dequeue(&a[i % 10]) > 0) ? "SUCCESS" : "QUEUE EMPTY");
+	//	printf("Full = %d\n", Count_Full_Data_Queue());
+	//}
+	//Print_Queue();
 }
 
 #endif
@@ -5312,10 +5324,10 @@ void main(void)
 #endif
 
 /***********************************************************/
-// [3-3] Hash Table
+// [3-3] Hash Table - Open Addressing / Chaining Method
 /***********************************************************/
 
-#if 1
+#if 0
 
 /***********************************************************/
 // [3-3.1] Hash Table을 위한 기본 함수들
@@ -5869,13 +5881,13 @@ void main(void)
 // [3-3.9] Hash Table => Chainning 방법의 구현
 /***********************************************************/
 
-#if 1
+#if 0
 
 /***********************************************************/
 // [3-3.9] Hash Table을 위한 기본 함수들
 /***********************************************************/
 
-#if 1
+#if 0
 
 #include <stdio.h>
 #include <string.h>
@@ -5970,8 +5982,8 @@ void Print_All_Data(void)
 
 int Insert_Data(SCORE * d)
 {
-	int pos, key;
-	pos = key = Get_Hash_Key(d->id);
+	int key;
+	key = Get_Hash_Key(d->id);
 
 	SCORE *head = &Hash_table[key];
 	SCORE *p = calloc(1, sizeof(SCORE));
@@ -6018,7 +6030,7 @@ void main(void)
 
 int Delete_Data(int id)
 {
-	SCORE * p;
+	SCORE * target;
 	SCORE * head;
 	
 	head = &Hash_table[Get_Hash_Key(id)];
@@ -6027,9 +6039,9 @@ int Delete_Data(int id)
 		if (head->next == NULL) return -1;
 		if (head->next->id == id)
 		{
-			p = head->next;
+			target = head->next;
 			head->next = head->next->next;
-			free(p);
+			free(target);
 		}
 		head = head->next;
 	}

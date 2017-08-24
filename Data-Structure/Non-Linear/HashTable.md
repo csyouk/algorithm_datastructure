@@ -34,7 +34,7 @@ typedef struct _score
 #define EMPTY -1
 #define EXIST 1
 #define NOT_EXIST -1
-#define DELETED -2
+#define DELETE_SUCCESS -2
 SCORE Hash_table[MAX_ST];
 ```
 
@@ -60,6 +60,7 @@ void Init_Hash_Table(void)
 ```
 
 #### STEP에 따른 검색 속도의 차이
+- STEP의 수를 HASH_KEY와 서로수인 수를 선택해주면, 검색 속도가 빨라진다.
 ```cpp
 #if 1
 
@@ -133,7 +134,7 @@ int Delete_Data(int id)
 	p = Search_Data(id);
 	if (p == NULL) return NOT_EXIST;
 	p->id = DELETED;
-	return EXIST;
+	return DELETE_SUCCESS;
 }
 
 ```
@@ -193,23 +194,33 @@ void Init_Hash_Table(void)
 ```cpp
 int Insert_Data(SCORE * d)
 {
-	int pos, key;
-	pos = key = Get_Hash_Key(d->id);
+	int key;
+	key = Get_Hash_Key(d->id);
 
 	SCORE *head = &Hash_table[key];
-	SCORE *p = calloc(1, sizeof(SCORE));
+	SCORE *node = calloc(1, sizeof(SCORE));
 	if (!p) return -1;
 
-	*p = *head;
+	*node = *d;
 	while (1)
 	{
-		if (head->next == NULL) break; // 무조건적으로 node의 맨 뒤에 추가하는 방식.
-		//if (head->next == NULL || head->next->id > d->id) break; // id순으로 삽입하는 방법.
-		p = p->next;
+    if(head->next == NULL) // 무조건적으로 node의 맨 뒤에 추가하는 방식.
+    {
+      node = node->next;
+      head->next = node;
+      node->next = NULL;
+      return 1 ;
+    }
+		if (head->next == NULL || head->next->id > node->id) // id순으로 삽입하는 방법.
+		{
+      node->next = head->next;
+      head->next = node;
+      return 1;      
+    }
 	}
 
-	head->next = p;
-	p->next = NULL;
+	head->next = node;
+	node->next = NULL;
 	return 1;
 }
 ```
@@ -240,7 +251,7 @@ SCORE * Search_Data(int id)
 ```cpp
 int Delete_Data(int id)
 {
-	SCORE * p;
+	SCORE * target;
 	SCORE * head;
 
 	head = &Hash_table[Get_Hash_Key(id)];
@@ -249,9 +260,9 @@ int Delete_Data(int id)
 		if (head->next == NULL) return -1;
 		if (head->next->id == id)
 		{
-			p = head->next;
+			target = head->next;
 			head->next = head->next->next;
-			free(p);
+			free(target);
 		}
 		head = head->next;
 	}

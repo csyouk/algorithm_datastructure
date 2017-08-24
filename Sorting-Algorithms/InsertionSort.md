@@ -97,7 +97,7 @@ d[j] = tmp;
 int Sort_Insertion(SCORE * d, int order, int(*comp)(SCORE * x, SCORE * y))
 {
 	// i는 정렬대상, 데이터의 크기를 결정함.
-	// j는 비교대상
+	// j는 비교대상, j가 삽입할 위치를 가지고 있게 된다.!!
 	// k는 데이터를 뒤로 미는 작업을 할 때 쓰는 제어 변수이다.
 	for (i = 1; i < MAX_ST; i++)
 	{

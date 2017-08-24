@@ -1,43 +1,43 @@
-#if 0
+ï»¿#if 0
 /*
-2017³â 8¿ù 23ÀÏ ¿öÅ©¼¥¹®Á¦
+2017ë…„ 8ì›” 23ì¼ ì›Œí¬ìƒµë¬¸ì œ
 
-0. ¹è¿­±â¹Ý ¸µÅ©µå ¸®½ºÆ® ÀÚ·á±¸Á¶ ÀÌ¿ë
+0. ë°°ì—´ê¸°ë°˜ ë§í¬ë“œ ë¦¬ìŠ¤íŠ¸ ìžë£Œêµ¬ì¡° ì´ìš©
 
-0. ±¸Á¶Ã¼ ¸â¹ö´Â »ç¹ø(int), ÀÌ¸§(char [12]), ±¹¾î(short), ¿µ¾î(short), ¼öÇÐ(short),
-Æò±Õ(double) (Æò±ÕÀº ÀÚµ¿°è»ê) , next(ÀÚ±âÂüÁ¶ ±¸Á¶Ã¼)
-¸Þ¸ð¸® Àý¾àÀ» »ý°¢ÇØ¼­ ÃÖ´ëÇÑ Àû°Ô »ç¿ëÇÏµµ·Ï ¼ø¼­Á¤ÇÒ °Í. 36B µÇµµ·Ï ÇÒ°Í
+0. êµ¬ì¡°ì²´ ë©¤ë²„ëŠ” ì‚¬ë²ˆ(int), ì´ë¦„(char [12]), êµ­ì–´(short), ì˜ì–´(short), ìˆ˜í•™(short),
+í‰ê· (double) (í‰ê· ì€ ìžë™ê³„ì‚°) , next(ìžê¸°ì°¸ì¡° êµ¬ì¡°ì²´)
+ë©”ëª¨ë¦¬ ì ˆì•½ì„ ìƒê°í•´ì„œ ìµœëŒ€í•œ ì ê²Œ ì‚¬ìš©í•˜ë„ë¡ ìˆœì„œì •í•  ê²ƒ. 36B ë˜ë„ë¡ í• ê²ƒ
 
-0. ¸Þ´º¸¦ ±¸¼ºÇÑ´Ù
-(1.ÀÚ·áÃß°¡, 2.ÀÚ·á»èÁ¦, 3. ÀÚ·á¼öÁ¤, 4.ÀüÃ¼ÀÎ¼â, 5.ÀÚ·áÀÎ¼â, 6.Á¤·ÄÀÎ¼â)
+0. ë©”ë‰´ë¥¼ êµ¬ì„±í•œë‹¤
+(1.ìžë£Œì¶”ê°€, 2.ìžë£Œì‚­ì œ, 3. ìžë£Œìˆ˜ì •, 4.ì „ì²´ì¸ì‡„, 5.ìžë£Œì¸ì‡„, 6.ì •ë ¬ì¸ì‡„)
 
-1. ÀÚ·áÃß°¡
-Create_Data ÇÔ¼ö¸¦ ÀÌ¿ëÇØ¼­ ÀÚ·á¸¦ ÀÔ·Â¹Þ¾Æ
-Insert_Data ÇÔ¼ö¸¦ ÀÌ¿ëÇØ¼­ ÀúÀåÇÑ ÈÄ Insert_Node ÇÔ¼ö¸¦ ÀÌ¿ëÇÏ¿© ¸µÅ©¸¦ ±¸¼ºÇÏ¶ó. »ç¹ø¼øÀ¸·Î ¿À¸§Â÷¼ø Á¤·ÄµÇµµ·Ï ÇÒ °Í
-¹è¿­ÀÌ ²Ë Â÷ÀÖ´Â °æ¿ì ÀÚ·áÃß°¡ ¸øÇÑ´Ù´Â ¸Þ½ÃÁö¸¦ º¸¿©Áà¶ó
-°°Àº »ç¹øÀÎ °æ¿ìµµ ¸Þ½ÃÁö¸¦ º¸¿©ÁÜ
-Á¤»óÀûÀ¸·Î ÀúÀå½Ã °¢ ³ëµåÀÇ Á¤º¸¸¦ ¸ðµÎ Ãâ·ÂÇÑ´Ù
+1. ìžë£Œì¶”ê°€
+Create_Data í•¨ìˆ˜ë¥¼ ì´ìš©í•´ì„œ ìžë£Œë¥¼ ìž…ë ¥ë°›ì•„
+Insert_Data í•¨ìˆ˜ë¥¼ ì´ìš©í•´ì„œ ì €ìž¥í•œ í›„ Insert_Node í•¨ìˆ˜ë¥¼ ì´ìš©í•˜ì—¬ ë§í¬ë¥¼ êµ¬ì„±í•˜ë¼. ì‚¬ë²ˆìˆœìœ¼ë¡œ ì˜¤ë¦„ì°¨ìˆœ ì •ë ¬ë˜ë„ë¡ í•  ê²ƒ
+ë°°ì—´ì´ ê½‰ ì°¨ìžˆëŠ” ê²½ìš° ìžë£Œì¶”ê°€ ëª»í•œë‹¤ëŠ” ë©”ì‹œì§€ë¥¼ ë³´ì—¬ì¤˜ë¼
+ê°™ì€ ì‚¬ë²ˆì¸ ê²½ìš°ë„ ë©”ì‹œì§€ë¥¼ ë³´ì—¬ì¤Œ
+ì •ìƒì ìœ¼ë¡œ ì €ìž¥ì‹œ ê° ë…¸ë“œì˜ ì •ë³´ë¥¼ ëª¨ë‘ ì¶œë ¥í•œë‹¤
 
-2. ÀÚ·á»èÁ¦
-»ç¹ø ¶Ç´Â ÀÌ¸§À¸·Î »èÁ¦ÇÏµµ·Ï ¼­ºê ¸Þ´º ±¸¼º
-µ¿ÀÏ ÀÌ¸§½Ã ¸ðµÎ »èÁ¦
+2. ìžë£Œì‚­ì œ
+ì‚¬ë²ˆ ë˜ëŠ” ì´ë¦„ìœ¼ë¡œ ì‚­ì œí•˜ë„ë¡ ì„œë¸Œ ë©”ë‰´ êµ¬ì„±
+ë™ì¼ ì´ë¦„ì‹œ ëª¨ë‘ ì‚­ì œ
 
-3. ÀÚ·á¼öÁ¤
-»ç¹øÀ» ÀÔ·ÂÇÏ¸é ÀÌ¸§, ±¹¾î, ¿µ¾î, ¼öÇÐÀ» ¼öÁ¤ÇÒ ¼ö ÀÖ´Ù(´Ü, »ç¹ø ¼öÁ¤ ºÒ°¡)
+3. ìžë£Œìˆ˜ì •
+ì‚¬ë²ˆì„ ìž…ë ¥í•˜ë©´ ì´ë¦„, êµ­ì–´, ì˜ì–´, ìˆ˜í•™ì„ ìˆ˜ì •í•  ìˆ˜ ìžˆë‹¤(ë‹¨, ì‚¬ë²ˆ ìˆ˜ì • ë¶ˆê°€)
 
-4. ÀüÃ¼ÀÎ¼â
-°¢ ³ëµåÀÇ Á¤º¸¸¦ ¸ðµÎ Ãâ·ÂÇÑ´Ù
+4. ì „ì²´ì¸ì‡„
+ê° ë…¸ë“œì˜ ì •ë³´ë¥¼ ëª¨ë‘ ì¶œë ¥í•œë‹¤
 
-5. ÀÚ·áÀÎ¼â
-¼­ºê ¸Þ´º ±¸¼º ÇÊ¿ä (»ç¹ø, ÀÌ¸§, ±¹¾î, ¿µ¾î, ¼öÇÐ, Æò±Õ)
-»ç¹ø ¶Ç´Â ÀÌ¸§À» ÀÔ·ÂÇÏ¸é ÇØ´ç ÀÚ·á¸¦ ¸ðµÎ ÀÎ¼â
-±¹¾î, ¿µ¾î, ¼öÇÐ, Æò±ÕÀ» µÎ°³ÀÇ °ª(ÀÌ»ó, ÀÌÇÏ) ÀÔ·Â¹Þ¾Æ ±× °ª ÀÌ»ó~ÀÌÇÏÀÎ ÀÚ·á¸¦ ¸ðµÎ ÀÎ¼â
+5. ìžë£Œì¸ì‡„
+ì„œë¸Œ ë©”ë‰´ êµ¬ì„± í•„ìš” (ì‚¬ë²ˆ, ì´ë¦„, êµ­ì–´, ì˜ì–´, ìˆ˜í•™, í‰ê· )
+ì‚¬ë²ˆ ë˜ëŠ” ì´ë¦„ì„ ìž…ë ¥í•˜ë©´ í•´ë‹¹ ìžë£Œë¥¼ ëª¨ë‘ ì¸ì‡„
+êµ­ì–´, ì˜ì–´, ìˆ˜í•™, í‰ê· ì„ ë‘ê°œì˜ ê°’(ì´ìƒ, ì´í•˜) ìž…ë ¥ë°›ì•„ ê·¸ ê°’ ì´ìƒ~ì´í•˜ì¸ ìžë£Œë¥¼ ëª¨ë‘ ì¸ì‡„
 
-6. Á¤·ÄÀÎ¼â
-¼­ºê ¸Þ´º ±¸¼º ÇÊ¿ä (»ç¹ø, ÀÌ¸§, ±¹¾î, ¿µ¾î, ¼öÇÐ, Æò±Õ, ¿À¸§Â÷¼ø, ³»¸²Â÷¼ø)
-ÇØ´ç ÀÚ·á¸¦ ¿øÇÏ´Â ¹æ¹ýÀ¸·Î Á¤·ÄÇØ¼­ Ãâ·ÂÇÔ
+6. ì •ë ¬ì¸ì‡„
+ì„œë¸Œ ë©”ë‰´ êµ¬ì„± í•„ìš” (ì‚¬ë²ˆ, ì´ë¦„, êµ­ì–´, ì˜ì–´, ìˆ˜í•™, í‰ê· , ì˜¤ë¦„ì°¨ìˆœ, ë‚´ë¦¼ì°¨ìˆœ)
+í•´ë‹¹ ìžë£Œë¥¼ ì›í•˜ëŠ” ë°©ë²•ìœ¼ë¡œ ì •ë ¬í•´ì„œ ì¶œë ¥í•¨
 
-ÇÁ·Î±×·¥À» Á¾·áÇÏ±â Àü±îÁö °è¼Ó ½ÇÇàµÇµµ·Ï ¸¸µé°Í
+í”„ë¡œê·¸ëž¨ì„ ì¢…ë£Œí•˜ê¸° ì „ê¹Œì§€ ê³„ì† ì‹¤í–‰ë˜ë„ë¡ ë§Œë“¤ê²ƒ
 
 */
 #endif
@@ -64,14 +64,15 @@ typedef struct _student
 }STUDENT;
 
 STUDENT students[MAX_ST];
+
 STUDENT Head;
 
-// ÀÚ·á Ãß°¡ / ¹è¿­¿¡ Ãß°¡, ³ëµå¿¡ Ãß°¡
+// ìžë£Œ ì¶”ê°€ / ë°°ì—´ì— ì¶”ê°€, ë…¸ë“œì— ì¶”ê°€
 #if 1
 int Insert_Data(STUDENT *p)
 {
-	// ¹è¿­¿¡ µ¥ÀÌÅÍ°¡ Â÷ÀÖÀ¸¸é, -1
-	// ÀúÀå ¼º°ø½Ã ¹è¿­ÀÇ ¿ä¼Ò¸¦ ¹ÝÈ¯.
+	// ë°°ì—´ì— ë°ì´í„°ê°€ ì°¨ìžˆìœ¼ë©´, -1
+	// ì €ìž¥ ì„±ê³µì‹œ ë°°ì—´ì˜ ìš”ì†Œë¥¼ ë°˜í™˜.
 	int i;
 	if (students[MAX_ST - 1].id != 0) return -1;
 
@@ -86,9 +87,9 @@ int Insert_Data(STUDENT *p)
 
 int Insert_Node(STUDENT *head, STUDENT *d)
 {
-	// return -1 : ³ëµå°¡ ²Ë Â÷ÀÖÀ» ¶§.
-	// return 1 : ³ëµå Ãß°¡ ¼º°ø ½Ã
-	// µ¿ÀÏÇÑ id Á¸Àç½Ã -2
+	// return -1 : ë…¸ë“œê°€ ê½‰ ì°¨ìžˆì„ ë•Œ.
+	// return 1 : ë…¸ë“œ ì¶”ê°€ ì„±ê³µ ì‹œ
+	// ë™ì¼í•œ id ì¡´ìž¬ì‹œ -2
 
 	int i;
 
@@ -122,18 +123,18 @@ int Create_Data(void)
 	STUDENT tmp;
 	int id;
 
-	printf("µ¥ÀÌÅÍ¸¦ »ý¼ºÇÕ´Ï´Ù. ID, ÀÌ¸§, ±¹¾î,¿µ¾î ¼öÇÐ Á¡¼ö¸¦ ±âÀÔÇØÁÖ¼¼¿ä. \n");
+	printf("ë°ì´í„°ë¥¼ ìƒì„±í•©ë‹ˆë‹¤. ID, ì´ë¦„, êµ­ì–´,ì˜ì–´ ìˆ˜í•™ ì ìˆ˜ë¥¼ ê¸°ìž…í•´ì£¼ì„¸ìš”. \n");
 
-	// ÀÔ·Â ¼º°ø½Ã 1
+	// ìž…ë ¥ ì„±ê³µì‹œ 1
 	printf("ID : ");
 	scanf("%d", &tmp.id);
-	printf("ÀÌ¸§ : ");
+	printf("ì´ë¦„ : ");
 	scanf("%s", tmp.name);
-	printf("±¹¾îÁ¡¼ö : ");
+	printf("êµ­ì–´ì ìˆ˜ : ");
 	scanf("%d", &tmp.korean);
-	printf("¿µ¾îÁ¡¼ö : ");
+	printf("ì˜ì–´ì ìˆ˜ : ");
 	scanf("%d", &tmp.english);
-	printf("¼öÇÐÁ¡¼ö : ");
+	printf("ìˆ˜í•™ì ìˆ˜ : ");
 	scanf("%d", &tmp.math);
 	tmp.next = NULL;
 	tmp.prev = NULL;
@@ -141,99 +142,102 @@ int Create_Data(void)
 	tmp.avg = (tmp.math + tmp.korean + tmp.english) / 3.0;
 	if (Insert_Data(&tmp) < 0)
 	{
-		printf("ÀúÀå°ø°£ÀÌ ºÎÁ·ÇÕ´Ï´Ù.\n");
+		printf("ì €ìž¥ê³µê°„ì´ ë¶€ì¡±í•©ë‹ˆë‹¤.\n");
 		return -1;
 	}
-	printf("µ¥ÀÌÅÍ¸¦ ¹è¿­¿¡ ¼º°øÀûÀ¸·Î ÀúÀåÇß½À´Ï´Ù.\n");
+	printf("ë°ì´í„°ë¥¼ ë°°ì—´ì— ì„±ê³µì ìœ¼ë¡œ ì €ìž¥í–ˆìŠµë‹ˆë‹¤.\n");
 	id = Insert_Node(&Head, &tmp);
 	if (id < 0)
 	{
-		printf("ÀúÀå°ø°£ÀÌ ºÎÁ·ÇÕ´Ï´Ù.\n");
+		printf("ì €ìž¥ê³µê°„ì´ ë¶€ì¡±í•©ë‹ˆë‹¤.\n");
 		return -1;
 	}
 	Print_Node(&tmp);
-	printf("µ¥ÀÌÅÍ¸¦ ³ëµå¿¡ ¼º°øÀûÀ¸·Î ÀúÀåÇß½À´Ï´Ù.\n");
+	printf("ë°ì´í„°ë¥¼ ë…¸ë“œì— ì„±ê³µì ìœ¼ë¡œ ì €ìž¥í–ˆìŠµë‹ˆë‹¤.\n");
 	return 1;
 }
-// ¸Þ´º Ãâ·Â
+// ë©”ë‰´ ì¶œë ¥
 #if 1
 void Print_Menu()
 {
-	printf("1 : ÀÚ·á Ãß°¡\n");
-	printf("2 : ÀÚ·á »èÁ¦\n");
-	printf("3 : ÀÚ·á ¼öÁ¤\n");
-	printf("4 : ÀüÃ¼ ÀÎ¼â\n");
-	printf("5 : ÀÚ·á ÀÎ¼â\n");
-	printf("6 : Á¤·Ä ÀÎ¼â\n");
+	printf("1 : ìžë£Œ ì¶”ê°€\n");
+	printf("2 : ìžë£Œ ì‚­ì œ\n");
+	printf("3 : ìžë£Œ ìˆ˜ì •\n");
+	printf("4 : ì „ì²´ ì¸ì‡„\n");
+	printf("5 : ìžë£Œ ì¸ì‡„\n");
+	printf("6 : ì •ë ¬ ì¸ì‡„\n");
 }
 #endif
 #endif
 
-// ÀÚ·á »èÁ¦
+// ìžë£Œ ì‚­ì œ
 #if 1
 int Delete_Data(void)
 {
-	printf("»ç¹ø ¶Ç´Â ÀÌ¸§À» ¼±ÅÃÇØ ÁÖ¼¼¿ä. »ç¹ø=1, ÀÌ¸§=2\n");
+	// -1 í•´ë‹¹í•˜ëŠ” ì‚¬ë²ˆì´ ì—†ìŒ.
+	// 1 ì‚­ì œ ì„±ê³µì‹œ.
+	printf("ì‚¬ë²ˆ ë˜ëŠ” ì´ë¦„ì„ ì„ íƒí•´ ì£¼ì„¸ìš”. ì‚¬ë²ˆ=1, ì´ë¦„=2\n");
 
-	for (;;)
+	int sel = getch() - '0';
+	switch (sel)
 	{
-		int sel = getch() - '0';
-		switch (sel)
+	case 1: {
+		int id;
+		printf("IDë¥¼ ìž…ë ¥í•´ì£¼ì„¸ìš”. ");
+		scanf("%d", &id);
+		for (int i = 0; i < MAX_ST; i++)
 		{
-		case 1: {
-			int id;
-			printf("ID¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä. ");
-			scanf("%d", &id);
-			for (int i = 0; i < MAX_ST; i++)
-			{
-				if (students[i].id == 0) break;
-				if (students[i].id == id){
-					students[i].id = 0;
-				}
+			if (students[i].id == 0) return -1;
+			if (students[i].id == id){
+				printf("ID : %d / Name : %s \n", students[i].id, students[i].name);
+				students[i].id = 0;
+				return 1;
 			}
-			//Update_Node(&Head);
-		}break;
-		case 2: {
-			char name[12];
-			printf("ÀÌ¸§À» ÀÔ·ÂÇØÁÖ¼¼¿ä. ");
-			scanf("%s", name);
-			for (int i = 0; i < MAX_ST; i++)
-			{
-				if (students[i].name[0] == 0) break;
-				if (strcmp(students[i].name, name) == 0){
-					students[i].name[0] = 0;
-				}
-			}
-		}break;
-		default:
-			break;
 		}
+		return -1;
+		//Update_Node(&Head);
+	}break;
+	case 2: {
+		char name[12];
+		printf("ì´ë¦„ì„ ìž…ë ¥í•´ì£¼ì„¸ìš”. ");
+		scanf("%s", name);
+		for (int i = 0; i < MAX_ST; i++)
+		{
+			if (students[i].name[0] == 0) break;
+			if (strcmp(students[i].name, name) == 0){
+				students[i].name[0] = 0;
+			}
+		}
+	}break;
+	default:
+		break;
 	}
+	
 }
 #endif
 
-// ÀÚ·á ¼öÁ¤
+// ìžë£Œ ìˆ˜ì •
 #if 0
 void Modify_Data(void)
 {
 	STUDENT p;
 	int id;
 
-	printf("»ç¹øÀ» ÀÔ·ÂÇØÁÖ¼¼¿ä. : \n");
+	printf("ì‚¬ë²ˆì„ ìž…ë ¥í•´ì£¼ì„¸ìš”. : \n");
 	scanf("%d", &id);
 
 	for (int i = 0; i < MAX_ST; i++)
 	{
 		if (students[i].id == id)
 		{
-			printf("¼öÁ¤ÇÒ µ¥ÀÌÅÍ¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä.\n");
-			printf("ÀÌ¸§ : ");
+			printf("ìˆ˜ì •í•  ë°ì´í„°ë¥¼ ìž…ë ¥í•´ì£¼ì„¸ìš”.\n");
+			printf("ì´ë¦„ : ");
 			scanf("%s", p.name);
-			printf("±¹¾îÁ¡¼ö : ");
+			printf("êµ­ì–´ì ìˆ˜ : ");
 			scanf("%d", &p.korean);
-			printf("¿µ¾îÁ¡¼ö : ");
+			printf("ì˜ì–´ì ìˆ˜ : ");
 			scanf("%d", &p.english);
-			printf("¼öÇÐÁ¡¼ö : ");
+			printf("ìˆ˜í•™ì ìˆ˜ : ");
 			scanf("%d", &p.math);
 			return;
 		}
@@ -241,7 +245,7 @@ void Modify_Data(void)
 }
 #endif
 
-// ¸ðµç µ¥ÀÌÅÍ Ãâ·Â
+// ëª¨ë“  ë°ì´í„° ì¶œë ¥
 #if 1
 int Print_All_Node(STUDENT * head)
 {
@@ -253,7 +257,7 @@ int Print_All_Node(STUDENT * head)
 		if (head->next == NULL) break;
 		if (head->next->id == 0) break;
 		Print_Node(head);
-		//printf("ID : %d / Name : %s / ±¹¾î : %hd / ¿µ¾î : %hd / ¼öÇÐ : %hd \n",
+		//printf("ID : %d / Name : %s / êµ­ì–´ : %hd / ì˜ì–´ : %hd / ìˆ˜í•™ : %hd \n",
 		//	head->next->id, head->next->name, head->next->korean, head->next->english, head->next->math);
 		head = head->next;
 	}
@@ -267,9 +271,45 @@ void Print_All_Data(void)
 	for (int i = 0; i < MAX_ST; i++)
 	{
 		if (students[i].id == 0) break;
-		printf("ID : %d / Name : %s / ±¹¾î : %hd / ¿µ¾î : %hd / ¼öÇÐ : %hd \n",
+		printf("ID : %d / Name : %s / êµ­ì–´ : %hd / ì˜ì–´ : %hd / ìˆ˜í•™ : %hd \n",
 			students[i].id, students[i].name, students[i].korean, students[i].english, students[i].math);
 	}
+}
+#endif
+
+
+#if 1
+
+void Sort(STUDENT *d, int order, int (* comp)(STUDENT *x, STUDENT *y), int )
+{
+	int max, i,j,k,t;
+	for (max = 0; max < MAX_ST; max++);
+	STUDENT tmp;
+
+	// Insertion Sort
+	for ( i = 1; i < MAX_ST; i++)
+	{
+		if (d[i].id == 0) break;
+		for (j = 0; j < i; j++)
+		{
+			if (comp(&d[j], &d[i]) == order) break;
+		}
+		
+		tmp = d[i];
+		for ( k = i; k > j; k--)
+		{
+			d[k] = d[k - 1];
+		}
+		d[j] = tmp;
+	}
+
+	for ( t = 0; t < max; t++)
+	{
+		if (d[t].)
+	}
+
+
+	return;
 }
 #endif
 
@@ -286,13 +326,13 @@ int main(void)
 		case 1: {
 			Create_Data();
 		}break;
-		case 2: Delete_Data(); break;
+		case 2: printf((Delete_Data() > 0) ? "ë°ì´í„°ë¥¼ ì„±ê³µì ìœ¼ë¡œ ì‚­ì œ í–ˆìŠµë‹ˆë‹¤.\n" : "í•´ë‹¹ ë°ì´í„°ëŠ” ì¡´ìž¬í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.\n"); break;
 		//case 3: Modify_Data(); break;
 		case 4: Print_All_Node(&Head); break;
 		//case 5: Print_Data(); break;
 		//case 6: Print_Sorted_Data(); break;
 		case 7: Print_All_Data(); break;
-		default: printf("1~6¹ø »çÀÌÀÇ ¸Þ´º¸¦ ¼±ÅÃÇØÁÖ¼¼¿ä.\n"); break;
+		default: printf("1~6ë²ˆ ì‚¬ì´ì˜ ë©”ë‰´ë¥¼ ì„ íƒí•´ì£¼ì„¸ìš”.\n"); break;
 		}
 	}
 
