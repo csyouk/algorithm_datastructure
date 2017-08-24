@@ -18,13 +18,13 @@
 ## 자료구조
 **Stored in Stack segment case**   
 - [Array (homogeneous)](https://github.com/csyouk/algorithm_datastructure/blob/master/Data-Structure/Array.md)
-- [Singly Linked List Node](https://github.com/csyouk/algorithm_datastructure/blob/master/Data-Structure/SinglyLinkedListNodeInStack.md)
-- [Doubly Linked List Node](https://github.com/csyouk/algorithm_datastructure/blob/master/Data-Structure/DoublyLinkedListNodeInStack.md)
-- [Stack](https://github.com/csyouk/algorithm_datastructure/blob/master/Data-Structure/StackInStackSegment.md)
-- [Queue](https://github.com/csyouk/algorithm_datastructure/blob/master/Data-Structure/QueueInStack.md)
+- [Singly Linked List Node](https://github.com/csyouk/algorithm_datastructure/blob/master/Data-Structure/Stack-Segment/SinglyLinkedListNode.md)
+- [Doubly Linked List Node](https://github.com/csyouk/algorithm_datastructure/blob/master/Data-Structure/Stack-Segment/DoublyLinkedListNode.md)
+- [Stack](https://github.com/csyouk/algorithm_datastructure/blob/master/Data-Structure/Stack-Segment/Stack.md)
+- [Queue](https://github.com/csyouk/algorithm_datastructure/blob/master/Data-Structure/Stack-Segment/Queue.md)
 
 **Stored in Heap segment case**
-- [Singly Linked List Node](https://github.com/csyouk/algorithm_datastructure/blob/master/Data-Structure/SinglyLinkedListInHeap.md)
-- [Doubly Linked List Node](https://github.com/csyouk/algorithm_datastructure/blob/master/Data-Structure/DoublyLinkedListNodeInHeap.md)
-- [Stack](https://github.com/csyouk/algorithm_datastructure/blob/master/Data-Structure/StackInHeap.md)
-- [Queue](https://github.com/csyouk/algorithm_datastructure/blob/master/Data-Structure/QueueInHeap.md)
+- [Singly Linked List Node](https://github.com/csyouk/algorithm_datastructure/blob/master/Data-Structure/Heap-Segment/SinglyLinkedList.md)
+- [Doubly Linked List Node](https://github.com/csyouk/algorithm_datastructure/blob/master/Data-Structure/Heap-Segment/DoublyLinkedListNode.md)
+- [Stack](https://github.com/csyouk/algorithm_datastructure/blob/master/Data-Structure/Heap-Segment/Stack.md)
+- [Queue](https://github.com/csyouk/algorithm_datastructure/blob/master/Data-Structure/Heap-Segment/Queue.md)
