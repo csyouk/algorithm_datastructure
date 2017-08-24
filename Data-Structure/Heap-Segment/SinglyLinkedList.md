@@ -1,4 +1,4 @@
-# Singly Linked List Node In Heap
+# Singly Linked List In Heap
 
 ## 장점
 - 노드를 생성할 때 동적으로 힙 공간에 메모리를 할당받아서 데이터를 넣기 때문에, 메모리를
