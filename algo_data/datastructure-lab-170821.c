@@ -2766,7 +2766,7 @@ void main(void)
 #define Q_EMPTY		0
 #define Q_FULL			MAX_Q
 
-int Inqueue(int data);
+int Enqueue(int data);
 int Dequeue(int *p);
 int Print_Queue(void);
 int Count_Full_Data_Queue(void);
@@ -2777,7 +2777,7 @@ int Queue[MAX_Q];
 int Wrptr = Q_EMPTY;
 int Rdptr = Q_EMPTY;
 
-int Inqueue(int data)
+int Enqueue(int data)
 {
 	int cnt;
 	// 큐에 데이터가 꽉 차있는지 확인한다.
@@ -2852,7 +2852,7 @@ void main(void)
 
 	//for (i = 0; i<3; i++)
 	//{
-	//	printf("Queue Result = %d\n", Inqueue(a[i]));
+	//	printf("Queue Result = %d\n", Enqueue(a[i]));
 	//	printf("Print Result = %d, ", Print_Queue());
 	//	printf("Full = %d ", Count_Full_Data_Queue());
 	//	printf("Empty = %d\n", Count_Empty_Data_Queue());
@@ -2882,7 +2882,7 @@ void main(void)
 
 	for (i = 0; i<(MAX_Q + 1); i++)
 	{
-		printf("Queue Result = %s\n", (Inqueue(a[i]) > 0)? "Success" : "Fail" );
+		printf("Queue Result = %s\n", (Enqueue(a[i]) > 0)? "Success" : "Fail" );
 		printf("Print Result = %d, ", Print_Queue());
 		printf("Full = %d ", Count_Full_Data_Queue());
 		printf("Empty = %d\n", Count_Empty_Data_Queue());
@@ -2926,7 +2926,7 @@ void main(void)
 #define Q_MAX		MAX_Q
 #define Q_FULL      1
 
-int Inqueue(int data);
+int Enqueue(int data);
 int Dequeue(int *p);
 int Print_Queue(void);
 int Count_Full_Data_Queue(void);
@@ -2937,7 +2937,7 @@ int Queue[MAX_Q];
 int Wrptr = Q_MIN;
 int Rdptr = Q_MIN;
 
-int Inqueue(int data)
+int Enqueue(int data)
 {
 	if ((Wrptr + 1) % MAX_Q == Rdptr) return -1;
 	Queue[Wrptr++] = data;
@@ -2992,7 +2992,7 @@ void main(void)
 
 	//for (i = 0; i<3; i++)
 	//{
-	//	printf("Queue Result = %d\n", Inqueue(a[i]));
+	//	printf("Queue Result = %d\n", Enqueue(a[i]));
 	//	printf("Print Result = %d, ", Print_Queue());
 	//	printf("Full = %d ", Count_Full_Data_Queue());
 	//	printf("Empty = %d\n", Count_Empty_Data_Queue());
@@ -3006,7 +3006,7 @@ void main(void)
 
 	//for (i = 0; i<3; i++)
 	//{
-	//	printf("Dequeue Result = %d\n", Inqueue(&a[i]));
+	//	printf("Dequeue Result = %d\n", Enqueue(&a[i]));
 	//	printf("Print Result = %d, ", Print_Queue());
 	//	printf("Full = %d ", Count_Full_Data_Queue());
 	//	printf("Empty = %d\n", Count_Empty_Data_Queue());
@@ -3024,7 +3024,7 @@ void main(void)
 
 	for (i = 0; i<(MAX_Q + 1); i++)
 	{
-		printf("Inqueue %d Result = %s\n", a[i], (Inqueue(a[i]) > 0) ? "Success" : "Fail");
+		printf("Enqueue %d Result = %s\n", a[i], (Enqueue(a[i]) > 0) ? "Success" : "Fail");
 		printf("Print Result = %d, ", Print_Queue());
 		printf("Full = %d ", Count_Full_Data_Queue());
 		printf("Empty = %d\n", Count_Empty_Data_Queue());
@@ -4250,12 +4250,12 @@ QUEUE * Rdptr = (QUEUE *)0;;
 
 QUEUE a[10] = { { 1, 0 }, { 2, 0 }, { 3, 0 }, { 4, 0 }, { 5, 0 }, { 6, 0 }, { 7, 0 }, { 8, 0 }, { 9, 0 }, { 10, 0 } };
 
-int Inqueue(QUEUE * data);
+int Enqueue(QUEUE * data);
 int Dequeue(QUEUE * p);
 void Print_Queue(void);
 int Count_Full_Data_Queue(void);
 
-int Inqueue(QUEUE * data)
+int Enqueue(QUEUE * data)
 {
 	QUEUE * p = calloc(1, sizeof(QUEUE));
 	if (!p) return -1;
@@ -4308,7 +4308,7 @@ void main(void)
 
 	//for (i = 0; i<3; i++)
 	//{
-	//	printf("Queue Result = %s\n", (Inqueue(&a[i]) > 0) ? "SUCCESS":"FAIL");
+	//	printf("Queue Result = %s\n", (Enqueue(&a[i]) > 0) ? "SUCCESS":"FAIL");
 	//	Print_Queue();
 	//	printf("Full = %d\n", Count_Full_Data_Queue());
 	//}
@@ -4322,7 +4322,7 @@ void main(void)
 
 	//for (i = 0; i<4; i++)
 	//{
-	//	printf("Queue Result = %s\n", (Inqueue(&a[i]) > 0) ? "SUCCESS" : "FAIL");
+	//	printf("Queue Result = %s\n", (Enqueue(&a[i]) > 0) ? "SUCCESS" : "FAIL");
 	//	Print_Queue();
 	//	printf("Full = %d\n", Count_Full_Data_Queue());
 	//}
@@ -4336,7 +4336,7 @@ void main(void)
 
 	for (i = 0; i<1000; i++)
 	{
-		printf("Queue Result = %s\n", (Inqueue(&a[i%10]) > 0) ? "SUCCESS" : "FAIL");
+		printf("Queue Result = %s\n", (Enqueue(&a[i%10]) > 0) ? "SUCCESS" : "FAIL");
 
 		printf("Full = %d\n", Count_Full_Data_Queue());
 	}

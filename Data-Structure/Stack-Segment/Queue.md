@@ -19,7 +19,7 @@
 
 ## 선형 큐(Linear Queue)
 - 선형 큐는 버퍼가 선형적이라는 가정하에 구현된 자료구조이다.
-- Inqueue와 Dequeue행위를 할때, WP와 RP가 어떻게 움직이는지 유심히 봐야 한다.
+- Enqueue와 Dequeue행위를 할때, WP와 RP가 어떻게 움직이는지 유심히 봐야 한다.
 
 다음과 같은 그림을 생각해보자.
 
@@ -44,7 +44,7 @@ typedef struct{
   char name[20];
 } Object;
 
-int Inqueue(int data);
+int Enqueue(int data);
 int Dequeue(int *p);
 
 
@@ -55,7 +55,7 @@ int Rdptr = Q_EMPTY;
 
 큐에서 데이터를 꺼내는 행위와 넣는 행위를 구현해보자.
 
-int Inqueue(Object *data)
+int Enqueue(Object *data)
 {
   // 큐에 삽입 실패시 -1
 
@@ -129,7 +129,7 @@ typedef struct{
   char name[20];
 } Object;
 
-int Inqueue(int data);
+int Enqueue(int data);
 int Dequeue(int *p);
 
 
@@ -141,7 +141,7 @@ int Rdptr = Q_EMPTY;
 
 큐에서 데이터를 꺼내는 행위와 넣는 행위를 구현해보자.
 
-int Inqueue(Object *data)
+int Enqueue(Object *data)
 {
   // 큐에 삽입 실패시 -1
   int full = (Wrptr + 1) % MAX_Q == Rdptr;

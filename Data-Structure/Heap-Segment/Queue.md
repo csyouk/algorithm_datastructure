@@ -40,7 +40,7 @@ QUEUE * Rdptr = (QUEUE *)0;;
 ## Create
 ```cpp
 
-int Inqueue(QUEUE * data)
+int Enqueue(QUEUE * data)
 {
   // 할당받은 메모리의 시작주소를 p에 저장한다.
 	QUEUE * p = calloc(1, sizeof(QUEUE));
