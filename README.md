@@ -41,6 +41,6 @@
 
 ## Non-Linear
 - [Tree](https://github.com/csyouk/algorithm_datastructure/blob/master/Data-Structure/None-Linear/HashTable.md)
-- [Hash Table](https://github.com/csyouk/algorithm_datastructure/blob/master/Data-Structure/None-Linear/HashTable.md)
+- [Hash Table](https://github.com/csyouk/algorithm_datastructure/blob/master/Data-Structure/Non-Linear/HashTable.md)
   - Open Addressing
   - Chaining Method
