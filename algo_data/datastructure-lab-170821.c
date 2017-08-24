@@ -5321,7 +5321,7 @@ void main(void)
 // [3-3.1] Hash Table을 위한 기본 함수들
 /***********************************************************/
 
-#if 1
+#if 0
 
 #include <stdio.h>
 #include <string.h>
@@ -5340,7 +5340,9 @@ typedef struct _score
 #define HASH_KEY	10
 #define STEP		1
 #define EMPTY -1
+#define EXIST 1
 #define NOT_EXIST -1
+#define DELETED -2
 SCORE Hash_table[MAX_ST];
 
 // 이제부터 설계되는 모든 함수는 이 부분에 선언을 추가한다
@@ -5393,7 +5395,7 @@ void Init_Hash_Table(void)
 
 #endif
 
-#if 1
+#if 0
 
 void Print_All_Data(void)
 {
@@ -5401,7 +5403,7 @@ void Print_All_Data(void)
 
 	for (i = 0; i<MAX_ST; i++)
 	{
-		if (Hash_table[i].id != -1) printf("[%d] ID: %d, NAME: %s\n", i, Hash_table[i].id, Hash_table[i].name);
+		if (Hash_table[i].id != NOT_EXIST) printf("[%d] ID: %d, NAME: %s\n", i, Hash_table[i].id, Hash_table[i].name);
 	}
 }
 
@@ -5411,7 +5413,7 @@ void Print_All_Data(void)
 // [3-3.2] Insert => Open Address 방법
 /***********************************************************/
 
-#if 1
+#if 0
 
 int Insert_Data(SCORE * d)
 {
@@ -5461,7 +5463,7 @@ void main(void)
 // [3-3.3] Search
 /***********************************************************/
 
-#if 1
+#if 0
 
 SCORE * Search_Data(int id)
 {
@@ -5485,7 +5487,7 @@ SCORE * Search_Data(int id)
 
 #endif
 
-#if 1
+#if 0
 
 void main(void)
 {
@@ -5542,7 +5544,11 @@ int Delete_Data(int id)
 
 int Delete_Data(int id)
 {
-
+	SCORE *p;
+	p = Search_Data(id);
+	if (p == NULL) return NOT_EXIST;
+	p->id = DELETED;
+	return EXIST;
 
 
 
@@ -5557,7 +5563,7 @@ int Insert_Data(SCORE * d)
 
 	for (;;)
 	{
-		if ((Hash_table[pos].id == -1) || (Hash_table[pos].id == -2))
+		if ((Hash_table[pos].id == NOT_EXIST) || (Hash_table[pos].id == DELETED))
 		{
 			Hash_table[pos] = *d;
 			return pos;
@@ -5575,7 +5581,7 @@ void Print_All_Data(void)
 
 	for (i = 0; i<MAX_ST; i++)
 	{
-		if ((Hash_table[i].id != -1) && (Hash_table[i].id != -2)) printf("[%d] ID: %d, NAME: %s\n", i, Hash_table[i].id, Hash_table[i].name);
+		if ((Hash_table[i].id != NOT_EXIST) && (Hash_table[i].id != DELETED)) printf("[%d] ID: %d, NAME: %s\n", i, Hash_table[i].id, Hash_table[i].name);
 	}
 }
 
@@ -5595,17 +5601,22 @@ void main(void)
 		printf("[Loop: %d] Inserted Position=%d, ID=%d\n", i, r = Insert_Data(&test[i]), test[i].id);
 	}
 
-	Print_All_Data();
+	//Print_All_Data();
+
+	// 삭제 성공
 	printf("[3] Delete Result=%d\n", r = Delete_Data(3));
 	printf("[12] Delete Result=%d\n", r = Delete_Data(12));
+	
+
+	// 삭제 실패
+	printf("[3] Delete Result=%d\n", r = Delete_Data(3));
 	printf("[25] Delete Result=%d\n", r = Delete_Data(25));
-	printf("[3] Delete Result=%d\n", r = Delete_Data(3));
 	printf("[12] Delete Result=%d\n", r = Delete_Data(12));
-	Print_All_Data();
+	//Print_All_Data();
 
 	printf("Inserted Position=%d, ID=%d\n", r = Insert_Data(&test[13]), test[13].id);
 	printf("Inserted Position=%d, ID=%d\n", r = Insert_Data(&test[5]), test[5].id);
-	Print_All_Data();
+	//Print_All_Data();
 }
 
 #endif
@@ -5616,13 +5627,13 @@ void main(void)
 // [3-3.6] Hash Table => 해시 키 발생 함수의 변경
 /***********************************************************/
 
-#if 0
+#if 1
 
 /***********************************************************/
 // [3-3.6] Hash Table을 위한 기본 함수들
 /***********************************************************/
 
-#if 0
+#if 1
 
 #include <stdio.h>
 #include <string.h>
@@ -5639,11 +5650,17 @@ typedef struct _score
 #define MAX_ST		20
 
 #if 0
+
+// 누적 loop횟수 120번
 #define HASH_KEY	10
-#define STEP				1
+#define STEP 1
+
 #else
+
+// 누적 loop횟수 63번
 #define HASH_KEY	7  // 가급적 소수
 #define STEP				8  // 테이블의 요소수와 서로 소 관계인 수
+
 #endif
 
 SCORE Hash_table[MAX_ST];
@@ -5768,7 +5785,7 @@ SCORE * Search_Data(int id)
 // [3-3.6] Insert 효율
 /***********************************************************/
 
-#if 0
+#if 1
 
 void main(void)
 {
