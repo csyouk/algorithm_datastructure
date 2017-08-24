@@ -3313,7 +3313,7 @@ int Insert_Node(SCORE * head, SCORE * d)
 }
 #endif
 
-#if 1
+#if 0
 
 void main(void)
 {
@@ -3348,23 +3348,26 @@ void main(void)
 // [2-1.3] 전달받은 사번의 자료를 링크와 힙에서 삭제하는 함수 (free 사용)
 /***********************************************************/
 
-#if 0
+#if 1
 
 int Delete_Node(SCORE * head, int id)
 {
-
-
-
-
-
-
-
-
+	while (1)
+	{
+		if (head->next == NULL) return -1;
+		if (head->next->id == id){
+			SCORE *tmp = head->next;
+			head->next = head->next->next;
+			free(tmp);
+			return 1;
+		}
+		head = head->next;
+	}
 }
 
 #endif
 
-#if 0
+#if 1
 
 void main(void)
 {
@@ -3376,10 +3379,12 @@ void main(void)
 	}
 
 	printf("Printed Node Count = %d\n", Print_All_Node(&Head));
-	printf("Delete Node Result = %d\n", Delete_Node(&Head, 8));
-	printf("Delete Node Result = %d\n", Delete_Node(&Head, 7));
-	printf("Delete Node Result = %d\n", Delete_Node(&Head, 1));
-	printf("Delete Node Result = %d\n", Delete_Node(&Head, 10));
+
+	printf("Delete Node Result = %s\n", (Delete_Node(&Head, 8) > 0) ? "SUCCESS":"FAIL"); // 노드에 존재
+	printf("Delete Node Result = %s\n", (Delete_Node(&Head, 7) > 0) ? "SUCCESS" : "FAIL"); // 노드에 없음
+	printf("Delete Node Result = %s\n", (Delete_Node(&Head, 1) > 0) ? "SUCCESS" : "FAIL"); // 노드에 존재
+	printf("Delete Node Result = %s\n", (Delete_Node(&Head, 10) > 0) ? "SUCCESS" : "FAIL"); // 노드에 존재
+
 	printf("Printed Node Count = %d\n", Print_All_Node(&Head));
 }
 

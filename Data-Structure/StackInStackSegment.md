@@ -1,4 +1,4 @@
-# Stack
+# Stack In Stack Segment
 - 스택은 Last In Fist Out (LIFO) 구조로 동작하는 자료구조이다.
 - 스택을 구현하기 위해서는 먼저 용어들을 알아야 한다.
 

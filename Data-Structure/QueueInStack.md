@@ -1,4 +1,4 @@
-# Queue
+# Queue In Stack Segment
 - 큐는 First In Fist Out (FIFO) 구조로 동작하는 자료구조이다.
 - 큐를 구현하는 방식은 2가지가 있다.
   - 선형 큐

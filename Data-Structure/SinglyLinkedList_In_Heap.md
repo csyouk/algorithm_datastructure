@@ -68,34 +68,28 @@ int Modify_Node(SCORE * head, SCORE * modifier, int id)
 
 ## Delete
 ```cpp
+int Delete_Node(SCORE * head, int id)
+{
+	while (1)
+	{
+    // id와 일치하는 노드를 발견하지 못한 경우.
+		if (head->next == NULL) return -1;
 
+    // id와 일치하는 노드를 발견한 경우.
+		if (head->next->id == id){
 
+      // 일치하는 노드를 삭제하기 전, 매칭하는 노드의 주소값을 잠시 벡업한다.
+			SCORE *tmp = head->next;
 
+      // 일치하는 노드의 이전 노드의 next에, 매칭하는 노드의 next 값을 넣어준다.
+			head->next = head->next->next;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+      // 링크를 교환하는 행위가 종료되면, 링크가 끊긴 노드를 메모리에서 해제시킨다.
+			free(tmp);
+			return 1;
+		}
+		head = head->next;
+	}
+}
 
 ```

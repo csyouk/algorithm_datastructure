@@ -14,11 +14,15 @@
   - 기준점(pivot)을 타겟(target)과 바꾸는 방법.
   - target을 기준점과 바꾼 후, pivot을 기준으로 좌측과 우측을 재귀적으로 quick sort를 시키는 방법.
 
+
 ## 자료구조
+**Stored in Stack segment case**   
 - [Array (homogeneous)](https://github.com/csyouk/algorithm_datastructure/blob/master/Data-Structure/Array.md)
-- [Singly Linked List Node - stack 기반 ](https://github.com/csyouk/algorithm_datastructure/blob/master/Data-Structure/SinglyLinkedListNode.md)
-- [Doubly Linked List Node - stack 기반](https://github.com/csyouk/algorithm_datastructure/blob/master/Data-Structure/DoublyLinkedListNode.md)
-- [Stack](https://github.com/csyouk/algorithm_datastructure/blob/master/Data-Structure/Stack.md)
-- [Queue](https://github.com/csyouk/algorithm_datastructure/blob/master/Data-Structure/Queue.md)
-- [Singly Linked List Node - heap 기반 ](https://github.com/csyouk/algorithm_datastructure/blob/master/Data-Structure/SinglyLinkedList_In_Heap.md)
-- [Doubly Linked List Node - heap 기반](https://github.com/csyouk/algorithm_datastructure/blob/master/Data-Structure/DoublyLinkedListNode_In_Heap.md)
+- [Singly Linked List Node](https://github.com/csyouk/algorithm_datastructure/blob/master/Data-Structure/SinglyLinkedListNodeInStack.md)
+- [Doubly Linked List Node](https://github.com/csyouk/algorithm_datastructure/blob/master/Data-Structure/DoublyLinkedListNodeInStack.md)
+- [Stack](https://github.com/csyouk/algorithm_datastructure/blob/master/Data-Structure/StackInStackSegment.md)
+- [Queue](https://github.com/csyouk/algorithm_datastructure/blob/master/Data-Structure/QueueInStack.md)
+
+**Stored in Heap segment case**
+- [Singly Linked List Node](https://github.com/csyouk/algorithm_datastructure/blob/master/Data-Structure/SinglyLinkedListInHeap.md)
+- [Doubly Linked List Node](https://github.com/csyouk/algorithm_datastructure/blob/master/Data-Structure/DoublyLinkedListNodeInHeap.md)
