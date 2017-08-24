@@ -96,11 +96,48 @@ int Delete_Node(SCORE * head, int id)
 
 
 ## Print All Nodes
+
 ```cpp
+int Print_All_Node(SCORE * head)
+{
+	int n = 0;
 
+	printf("Head.next = 0x%.8X\n", head->next);
+	if (head->next == (SCORE *)0x0) return 0;
+	head = head->next;
 
+	for (;;)
+	{
+		printf("addr = 0x%.8X, ID=%d, NAME=%s, SCORE=%d, next = 0x%.8X\n", head, head->id, head->name, head->jumsu, head->next);
+		n++;
+		if (head->next == (SCORE *)0x0) return n;
+		head = head->next;
+	}
+}
+```
 
+## Counting
+```cpp
+int Count_Node(SCORE * head)
+{
+	int n = 0;
+	while (1) {
+		if(head->next == NULL) return n;
+		head = head->next;
+		n++
+	}
+}
 
+```
 
+## Print Node
+```cpp
+int Print_Node(SCORE * head, int id)
+{
+	SCORE * p = Search_Id_Node(head, id);
+	if(!p) return -1;
+	printf("ID=%d, NAME=%s, SCORE=%d, next = 0x%.8X\n", p->id, p->name, p->jumsu, p->next);
+	return 1;
+}
 
 ```
