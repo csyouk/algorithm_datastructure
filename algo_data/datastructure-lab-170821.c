@@ -10,7 +10,7 @@
 // [1-1.1] 데이터 모델링
 /***********************************************************/
 
-#if 1
+#if 0
 
 #include <stdio.h>
 #include <string.h>
@@ -70,7 +70,7 @@ void Make_Test_Data(int n)
 // [1-1.2] 배열의 모든 자료 인쇄
 /***********************************************************/
 
-#if 1
+#if 0
 
 int Print_All_Data(void)
 {
@@ -334,7 +334,7 @@ void main(void)
 // [1-1.9] 원하는 멤버를 갖는 데이터를 탐색하는 함수, 비교를 위한 call back 함수도 설계
 /***********************************************************/
 
-#if 1
+#if 0
 
 int Search_Data(int n, SCORE * p, int(*comp)(SCORE * x, SCORE* y))
 {
@@ -5315,13 +5315,13 @@ void main(void)
 // [3-3] Hash Table
 /***********************************************************/
 
-#if 0
+#if 1
 
 /***********************************************************/
 // [3-3.1] Hash Table을 위한 기본 함수들
 /***********************************************************/
 
-#if 0
+#if 1
 
 #include <stdio.h>
 #include <string.h>
@@ -5339,7 +5339,8 @@ typedef struct _score
 #define MAX_ST		20
 #define HASH_KEY	10
 #define STEP		1
-
+#define EMPTY -1
+#define NOT_EXIST -1
 SCORE Hash_table[MAX_ST];
 
 // 이제부터 설계되는 모든 함수는 이 부분에 선언을 추가한다
@@ -5392,7 +5393,7 @@ void Init_Hash_Table(void)
 
 #endif
 
-#if 0
+#if 1
 
 void Print_All_Data(void)
 {
@@ -5410,16 +5411,23 @@ void Print_All_Data(void)
 // [3-3.2] Insert => Open Address 방법
 /***********************************************************/
 
-#if 0
+#if 1
 
 int Insert_Data(SCORE * d)
 {
-
-
-
-
-
-
+	int key = Get_Hash_Key(d->id);
+	int pos = key;
+	while (1)
+	{
+		if (Hash_table[pos].id == EMPTY) {
+			Hash_table[pos] = *d;
+			return pos;
+		}
+		pos += STEP;
+		//if (pos > MAX_ST-1) pos %= MAX_ST;
+		if (pos >= MAX_ST) pos = 0;
+		if (pos == key) return -1;
+	}
 }
 
 #endif
@@ -5435,9 +5443,16 @@ void main(void)
 
 	for (i = 0; i<(MAX_ST + 2); i++)
 	{
-		printf("[Loop: %d] Inserted Position=%d, ID=%d\n", i, r = Insert_Data(&test[i]), test[i].id);
+		printf("[Loop: %d] Inserted Position = %d, ID=%d\n", i, r = Insert_Data(&test[i]), test[i].id);
 		Print_All_Data();
 	}
+
+	//for (i = 0; i<(MAX_ST*1000); i++)
+	//{
+	//	printf("[Loop: %d] Inserted Position=%d, ID=%d\n", i, r = Insert_Data(&test[i%MAX_ST]), test[i%MAX_ST].id);
+	//	
+	//}
+	//Print_All_Data();
 }
 
 #endif
@@ -5446,21 +5461,31 @@ void main(void)
 // [3-3.3] Search
 /***********************************************************/
 
-#if 0
+#if 1
 
 SCORE * Search_Data(int id)
 {
+	int key, pos;
+	pos = key = Get_Hash_Key(id);
 
+	while (1)
+	{
+		if (Hash_table[pos].id == NOT_EXIST){
+			return NULL;
+		}
+		if (Hash_table[pos].id == id){
+			return &Hash_table[pos];
+		}
 
-
-
-
-
+		pos += STEP;
+		if (pos > MAX_ST - 1) pos = 0;
+		if (pos == key) return NULL;
+	}
 }
 
 #endif
 
-#if 0
+#if 1
 
 void main(void)
 {
@@ -5476,10 +5501,13 @@ void main(void)
 	}
 
 	Print_All_Data();
+	// 해당 ID가 존재하는 경우.
 	printf("Serch Result=0x%.8X\n", p = Search_Data(3));
 	if (p) printf("ID=%d, NAME=%s\n", p->id, p->name);
 	printf("Serch Result=0x%.8X\n", p = Search_Data(12));
 	if (p) printf("ID=%d, NAME=%s\n", p->id, p->name);
+
+	// 해당 ID가 없는 경우.
 	printf("Serch Result=0x%.8X\n", p = Search_Data(25));
 	if (p) printf("ID=%d, NAME=%s\n", p->id, p->name);
 }

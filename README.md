@@ -2,7 +2,8 @@
 - 문제 해결 전략들을 주로 기술한다.
 - 라이브러리 의존적으로 개발하는 습관에서 벗어나 스스로 모든 것을 만드는, 도구의 달인이 되어보자.
 
-## 배열 기반 선형 자료구조에서 사용하는 알고리즘
+## Array based algorithms
+- **배열 기반 선형 자료구조에서 사용하는 알고리즘**
 - [Bubble Sort](https://github.com/csyouk/algorithm_datastructure/blob/master/Sorting-Algorithms/BubbleSort.md)
   - 거품이 물 위로 떠오르듯, 가장 큰 데이터를 정렬하고자 하는 데이터의 가장 뒷 편으로 밀어내는 기법.
 - [Selection Sort](https://github.com/csyouk/algorithm_datastructure/blob/master/Sorting-Algorithms/SelectionSort.md)
@@ -15,9 +16,16 @@
   - target을 기준점과 바꾼 후, pivot을 기준으로 좌측과 우측을 재귀적으로 quick sort를 시키는 방법.
 
 
-## Data-Structure
+## Graph based algorithms
+- **그래프 기반 비선형 자료구조에서 사용하는 알고리즘**
+- DFS(Depth Frist Search, 깊이 우선 탐색)
+- BFS(Breadth Frist Search, 너비 우선 탐색)
+- Dijkstra Algorithm(최단 거리 알고리즘)
 
-### Linear
+
+# Data-Structure
+
+## Linear
 **Stored in Stack segment case**   
 - [Array (homogeneous)](https://github.com/csyouk/algorithm_datastructure/blob/master/Data-Structure/Linear/Array.md)
 - [Singly Linked List](https://github.com/csyouk/algorithm_datastructure/blob/master/Data-Structure/Linear/Stack-Segment/SinglyLinkedList.md)
@@ -31,5 +39,5 @@
 - [Stack](https://github.com/csyouk/algorithm_datastructure/blob/master/Data-Structure/Linear/Heap-Segment/Stack.md)
 - [Queue](https://github.com/csyouk/algorithm_datastructure/blob/master/Data-Structure/Linear/Heap-Segment/Queue.md)
 
-### Non-Linear
+## Non-Linear
 - [Tree]()
