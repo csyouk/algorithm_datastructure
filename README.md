@@ -15,16 +15,21 @@
   - target을 기준점과 바꾼 후, pivot을 기준으로 좌측과 우측을 재귀적으로 quick sort를 시키는 방법.
 
 
-## 자료구조
+## Data-Structure
+
+### Linear
 **Stored in Stack segment case**   
-- [Array (homogeneous)](https://github.com/csyouk/algorithm_datastructure/blob/master/Data-Structure/Array.md)
-- [Singly Linked List](https://github.com/csyouk/algorithm_datastructure/blob/master/Data-Structure/Stack-Segment/SinglyLinkedList.md)
-- [Doubly Linked List](https://github.com/csyouk/algorithm_datastructure/blob/master/Data-Structure/Stack-Segment/DoublyLinkedList.md)
-- [Stack](https://github.com/csyouk/algorithm_datastructure/blob/master/Data-Structure/Stack-Segment/Stack.md)
-- [Queue](https://github.com/csyouk/algorithm_datastructure/blob/master/Data-Structure/Stack-Segment/Queue.md)
+- [Array (homogeneous)](https://github.com/csyouk/algorithm_datastructure/blob/master/Data-Structure/Linear/Array.md)
+- [Singly Linked List](https://github.com/csyouk/algorithm_datastructure/blob/master/Data-Structure/Linear/Stack-Segment/SinglyLinkedList.md)
+- [Doubly Linked List](https://github.com/csyouk/algorithm_datastructure/blob/master/Data-Structure/Linear/Stack-Segment/DoublyLinkedList.md)
+- [Stack](https://github.com/csyouk/algorithm_datastructure/blob/master/Data-Structure/Linear/Stack-Segment/Stack.md)
+- [Queue](https://github.com/csyouk/algorithm_datastructure/blob/master/Data-Structure/Linear/Stack-Segment/Queue.md)
 
 **Stored in Heap segment case**
-- [Singly Linked List](https://github.com/csyouk/algorithm_datastructure/blob/master/Data-Structure/Heap-Segment/SinglyLinkedList.md)
-- [Doubly Linked List](https://github.com/csyouk/algorithm_datastructure/blob/master/Data-Structure/Heap-Segment/DoublyLinkedList.md)
-- [Stack](https://github.com/csyouk/algorithm_datastructure/blob/master/Data-Structure/Heap-Segment/Stack.md)
-- [Queue](https://github.com/csyouk/algorithm_datastructure/blob/master/Data-Structure/Heap-Segment/Queue.md)
+- [Singly Linked List](https://github.com/csyouk/algorithm_datastructure/blob/master/Data-Structure/Linear/Heap-Segment/SinglyLinkedList.md)
+- [Doubly Linked List](https://github.com/csyouk/algorithm_datastructure/blob/master/Data-Structure/Linear/Heap-Segment/DoublyLinkedList.md)
+- [Stack](https://github.com/csyouk/algorithm_datastructure/blob/master/Data-Structure/Linear/Heap-Segment/Stack.md)
+- [Queue](https://github.com/csyouk/algorithm_datastructure/blob/master/Data-Structure/Linear/Heap-Segment/Queue.md)
+
+### Non-Linear
+- [Tree]()
