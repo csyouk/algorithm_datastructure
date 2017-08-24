@@ -259,6 +259,5 @@ int Delete_Data(int id)
 ```
 
 #### 참고
-- Python에서 dict는 hash table의 일종이다.
-- [이곳](https://mail.python.org/pipermail/python-list/2000-March/048085.html)을 참고한다.
+- Python에서 dict는 hash table의 일종이다. [이곳](https://mail.python.org/pipermail/python-list/2000-March/048085.html)을 참고한다.
 - Java Collection Set에 있는 HashMap이 어떻게 구현되어 있는지 분석한 글은 [이곳](http://d2.naver.com/helloworld/831311)을 참고한다.
