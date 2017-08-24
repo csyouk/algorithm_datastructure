@@ -4234,7 +4234,7 @@ void main(void)
 // [2-3.2] 힙 기반  Linear Queue
 /***********************************************************/
 
-#if 1
+#if 0
 
 #include <stdio.h>
 #include <malloc.h>
@@ -4265,7 +4265,6 @@ int Inqueue(QUEUE * data)
 	Wrptr = p;
 	if (Rdptr == NULL) Rdptr = p;
 	return 1;
-
 }
 
 int Dequeue(QUEUE * p)
@@ -4277,7 +4276,6 @@ int Dequeue(QUEUE * p)
 	if (Rdptr == NULL) Wrptr = NULL;
 	free(tmp);
 	return 1;
-
 }
 
 void Print_Queue(void)
@@ -4308,47 +4306,47 @@ void main(void)
 {
 	int i;
 
-	for (i = 0; i<3; i++)
-	{
-		printf("Queue Result = %s\n", (Inqueue(&a[i]) > 0) ? "SUCCESS":"FAIL");
-		Print_Queue();
-		printf("Full = %d\n", Count_Full_Data_Queue());
-	}
+	//for (i = 0; i<3; i++)
+	//{
+	//	printf("Queue Result = %s\n", (Inqueue(&a[i]) > 0) ? "SUCCESS":"FAIL");
+	//	Print_Queue();
+	//	printf("Full = %d\n", Count_Full_Data_Queue());
+	//}
 
-	for (i = 0; i<2; i++)
-	{
-		printf("Dequeue Result = %s\n", (Dequeue(&a[i]) > 0)?"SUCCESS":"QUEUE EMPTY");
-		Print_Queue();
-		printf("Full = %d\n", Count_Full_Data_Queue());
-	}
+	//for (i = 0; i<2; i++)
+	//{
+	//	printf("Dequeue Result = %s\n", (Dequeue(&a[i]) > 0)?"SUCCESS":"QUEUE EMPTY");
+	//	Print_Queue();
+	//	printf("Full = %d\n", Count_Full_Data_Queue());
+	//}
 
-	for (i = 0; i<4; i++)
-	{
-		printf("Queue Result = %s\n", (Inqueue(&a[i]) > 0) ? "SUCCESS" : "FAIL");
-		Print_Queue();
-		printf("Full = %d\n", Count_Full_Data_Queue());
-	}
+	//for (i = 0; i<4; i++)
+	//{
+	//	printf("Queue Result = %s\n", (Inqueue(&a[i]) > 0) ? "SUCCESS" : "FAIL");
+	//	Print_Queue();
+	//	printf("Full = %d\n", Count_Full_Data_Queue());
+	//}
 
-	for (i = 0; i<7; i++)
-	{
-		printf("Dequeue Result = %s\n", (Dequeue(&a[i]) > 0) ? "SUCCESS" : "QUEUE EMPTY");
-		Print_Queue();
-		printf("Full = %d\n", Count_Full_Data_Queue());
-	}
+	//for (i = 0; i<7; i++)
+	//{
+	//	printf("Dequeue Result = %s\n", (Dequeue(&a[i]) > 0) ? "SUCCESS" : "QUEUE EMPTY");
+	//	Print_Queue();
+	//	printf("Full = %d\n", Count_Full_Data_Queue());
+	//}
 
-	for (i = 0; i<3; i++)
+	for (i = 0; i<1000; i++)
 	{
-		printf("Queue Result = %s\n", (Inqueue(&a[i]) > 0) ? "SUCCESS" : "FAIL");
-		Print_Queue();
-		printf("Full = %d\n", Count_Full_Data_Queue());
-	}
+		printf("Queue Result = %s\n", (Inqueue(&a[i%10]) > 0) ? "SUCCESS" : "FAIL");
 
-	for (i = 0; i<3; i++)
-	{
-		printf("Dequeue Result = %s\n", (Dequeue(&a[i]) > 0) ? "SUCCESS" : "QUEUE EMPTY");
-		Print_Queue();
 		printf("Full = %d\n", Count_Full_Data_Queue());
 	}
+	Print_Queue();
+	for (i = 0; i<995; i++)
+	{
+		printf("Dequeue Result = %s\n", (Dequeue(&a[i % 10]) > 0) ? "SUCCESS" : "QUEUE EMPTY");
+		printf("Full = %d\n", Count_Full_Data_Queue());
+	}
+	Print_Queue();
 }
 
 #endif
