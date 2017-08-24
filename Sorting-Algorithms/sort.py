@@ -87,6 +87,7 @@ def insertion_sort(arr):
 
 
 def quick_sort(arr, start, end):
+    quick_sort.cnt += 1
     tmp = 0
     pivot = end
     target = start
@@ -118,8 +119,10 @@ if __name__ == '__main__':
         # 설정을 풀어줘야 한다.
         sys.setrecursionlimit(100000)
         # data = [10,9,8,7,33,6,5,4,3,2,1,-1]
+        quick_sort.cnt = 0
         quick_sort(data, 0,len(data)-1);
         # print(data)
+        print(quick_sort.cnt)
     else:
         eval(algorithm + "_sort(data)")
     # quick_sort(data)

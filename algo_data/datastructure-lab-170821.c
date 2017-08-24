@@ -4128,7 +4128,7 @@ void main(void)
 // [2-3.1] 힙 기반 stack
 /***********************************************************/
 
-#if 1
+#if 0
 
 #include <stdio.h>
 #include <malloc.h>
@@ -4234,7 +4234,7 @@ void main(void)
 // [2-3.2] 힙 기반  Linear Queue
 /***********************************************************/
 
-#if 0
+#if 1
 
 #include <stdio.h>
 #include <malloc.h>
@@ -4250,41 +4250,58 @@ QUEUE * Rdptr = (QUEUE *)0;;
 
 QUEUE a[10] = { { 1, 0 }, { 2, 0 }, { 3, 0 }, { 4, 0 }, { 5, 0 }, { 6, 0 }, { 7, 0 }, { 8, 0 }, { 9, 0 }, { 10, 0 } };
 
-int In_Queue(QUEUE * data);
-int Out_Queue(QUEUE * p);
-int Print_Queue(void);
+int Inqueue(QUEUE * data);
+int Dequeue(QUEUE * p);
+void Print_Queue(void);
 int Count_Full_Data_Queue(void);
 
-int In_Queue(QUEUE * data)
+int Inqueue(QUEUE * data)
 {
-
-
-
+	QUEUE * p = calloc(1, sizeof(QUEUE));
+	if (!p) return -1;
+	*p = *data;
+	p->next = (QUEUE *) 0x0;
+	if (Wrptr) Wrptr->next = p;
+	Wrptr = p;
+	if (Rdptr == NULL) Rdptr = p;
+	return 1;
 
 }
 
-int Out_Queue(QUEUE * p)
+int Dequeue(QUEUE * p)
 {
-
-
-
+	QUEUE * tmp = Rdptr;
+	if (Rdptr == NULL) return -1;
+	*p = *Rdptr;
+	Rdptr = Rdptr->next;
+	if (Rdptr == NULL) Wrptr = NULL;
+	free(tmp);
+	return 1;
 
 }
 
-int Print_Queue(void)
+void Print_Queue(void)
 {
-
-
-
-
+	QUEUE *b_rdptr = Rdptr;
+	int index = 0;
+	while (b_rdptr)
+	{
+		printf("[%3d] value : %3d / addr : %#.8x\n", index, b_rdptr->num, b_rdptr);
+		b_rdptr = b_rdptr->next;
+		index++;
+	}
 }
 
 int Count_Full_Data_Queue(void)
 {
-
-
-
-
+	QUEUE *b_rdptr = Rdptr;
+	int n = 0;
+	while (b_rdptr)
+	{
+		b_rdptr = b_rdptr->next;
+		n++;
+	}
+	return n;
 }
 
 void main(void)
@@ -4293,43 +4310,43 @@ void main(void)
 
 	for (i = 0; i<3; i++)
 	{
-		printf("Queue Result = %d\n", In_Queue(&a[i]));
-		printf("Print Result = %d, ", Print_Queue());
+		printf("Queue Result = %s\n", (Inqueue(&a[i]) > 0) ? "SUCCESS":"FAIL");
+		Print_Queue();
 		printf("Full = %d\n", Count_Full_Data_Queue());
 	}
 
 	for (i = 0; i<2; i++)
 	{
-		printf("Dequeue Result = %d\n", Out_Queue(&a[i]));
-		printf("Print Result = %d, ", Print_Queue());
+		printf("Dequeue Result = %s\n", (Dequeue(&a[i]) > 0)?"SUCCESS":"QUEUE EMPTY");
+		Print_Queue();
 		printf("Full = %d\n", Count_Full_Data_Queue());
 	}
 
 	for (i = 0; i<4; i++)
 	{
-		printf("Queue Result = %d\n", In_Queue(&a[i]));
-		printf("Print Result = %d, ", Print_Queue());
+		printf("Queue Result = %s\n", (Inqueue(&a[i]) > 0) ? "SUCCESS" : "FAIL");
+		Print_Queue();
 		printf("Full = %d\n", Count_Full_Data_Queue());
 	}
 
 	for (i = 0; i<7; i++)
 	{
-		printf("Dequeue Result = %d\n", Out_Queue(&a[i]));
-		printf("Print Result = %d, ", Print_Queue());
+		printf("Dequeue Result = %s\n", (Dequeue(&a[i]) > 0) ? "SUCCESS" : "QUEUE EMPTY");
+		Print_Queue();
 		printf("Full = %d\n", Count_Full_Data_Queue());
 	}
 
 	for (i = 0; i<3; i++)
 	{
-		printf("Queue Result = %d\n", In_Queue(&a[i]));
-		printf("Print Result = %d, ", Print_Queue());
+		printf("Queue Result = %s\n", (Inqueue(&a[i]) > 0) ? "SUCCESS" : "FAIL");
+		Print_Queue();
 		printf("Full = %d\n", Count_Full_Data_Queue());
 	}
 
 	for (i = 0; i<3; i++)
 	{
-		printf("Dequeue Result = %d\n", Out_Queue(&a[i]));
-		printf("Print Result = %d, ", Print_Queue());
+		printf("Dequeue Result = %s\n", (Dequeue(&a[i]) > 0) ? "SUCCESS" : "QUEUE EMPTY");
+		Print_Queue();
 		printf("Full = %d\n", Count_Full_Data_Queue());
 	}
 }
