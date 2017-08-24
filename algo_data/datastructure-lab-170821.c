@@ -4128,7 +4128,7 @@ void main(void)
 // [2-3.1] 힙 기반 stack
 /***********************************************************/
 
-#if 0
+#if 1
 
 #include <stdio.h>
 #include <malloc.h>
@@ -4136,7 +4136,7 @@ void main(void)
 typedef struct _stk
 {
 	int num;
-	struct _stk * next;
+	struct _stk * prev;
 }STACK;
 
 STACK * Sptr = (STACK *)0;
@@ -4144,39 +4144,53 @@ STACK a[10] = { { 1, 0 }, { 2, 0 }, { 3, 0 }, { 4, 0 }, { 5, 0 }, { 6, 0 }, { 7,
 
 int Push_Stack(STACK * data);
 int Pop_Stack(STACK * p);
-int Print_Stack(void);
+void Print_Stack(void);
 int Count_Full_Data_Stack(void);
 
 int Push_Stack(STACK *data)
 {
-
-
-
-
+	STACK *p = calloc(1, sizeof(STACK));
+	if (!p) return  -1;
+	*p = *data;
+	p->prev = Sptr;
+	Sptr = p;
+	return 1;
 }
 
 int Pop_Stack(STACK *p)
 {
+	if (Sptr == NULL) return -1;
+	STACK *tmp = Sptr;
 
+	*p = *Sptr;
+	Sptr = p->prev;
+	free(tmp);
 
-
-
+	return 1;
 }
 
-int Print_Stack(void)
+void Print_Stack(void)
 {
-
-
-
-
+	STACK *b_sptr = Sptr;
+	int n = 1;
+	while (b_sptr)
+	{
+		//printf("number : %d, addr : &#.8x \n", b_sptr->num, b_sptr->prev);
+		printf("[%d] addr=0x%.8x, num=%d, next=0x%.8x\n", n, b_sptr, b_sptr->num, b_sptr->prev);
+		b_sptr = b_sptr->prev;
+		n++;
+	}
 }
 
 int Count_Full_Data_Stack(void)
 {
-
-
-
-
+	STACK *b_sptr = Sptr;
+	int n = 0;
+	while (b_sptr)
+	{
+		b_sptr = b_sptr->prev;
+		n++;
+	}
 }
 
 void main(void)
@@ -4186,29 +4200,29 @@ void main(void)
 	for (i = 0; i<5; i++)
 	{
 		printf("Push Result = %d\n", Push_Stack(&a[i]));
-		printf("Print Result = %d, ", Print_Stack());
-		printf("Full = %d\n", Count_Full_Data_Stack());
+		Print_Stack();
+		printf("Current Stack Cnt = %d\n", Count_Full_Data_Stack());
 	}
 
 	for (i = 0; i<6; i++)
 	{
-		printf("Pop Result = %d\n", Pop_Stack(&a[i]));
-		printf("Print Result = %d, ", Print_Stack());
-		printf("Full = %d\n ", Count_Full_Data_Stack());
+		printf("Pop Result = %s\n", (Pop_Stack(&a[i]) > 0)? "SUCCESS":"FAIL"  );
+		Print_Stack();
+		printf("Current Stack Cnt = %d\n ", Count_Full_Data_Stack());
 	}
 
 	for (i = 0; i<3; i++)
 	{
 		printf("Push Result = %d\n", Push_Stack(&a[i]));
-		printf("Print Result = %d, ", Print_Stack());
-		printf("Full = %d\n", Count_Full_Data_Stack());
+		Print_Stack();
+		printf("Current Stack Cnt = %d\n", Count_Full_Data_Stack());
 	}
 
 	for (i = 0; i<5; i++)
 	{
-		printf("Pop Result = %d\n", Pop_Stack(&a[i]));
-		printf("Print Result = %d, ", Print_Stack());
-		printf("Full = %d\n ", Count_Full_Data_Stack());
+		printf("Pop Result = %s\n", (Pop_Stack(&a[i]) > 0) ? "SUCCESS" : "FAIL");
+		Print_Stack();
+		printf("Current Stack Cnt = %d\n ", Count_Full_Data_Stack());
 	}
 
 	printf("\n");
