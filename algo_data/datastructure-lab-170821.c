@@ -3059,7 +3059,7 @@ void main(void)
 // [2-1] 힙 기반 Linked List
 /***********************************************************/
 
-#if 0
+#if 1
 
 /***********************************************************/
 // [2-1.1] 기존 배열 기반 linked list 방식중 그대로 사용하는 함수들
@@ -3289,21 +3289,31 @@ int Copy_Score_Node(SCORE * head, int jumsu, SCORE * buf)
 // [2-1.2] 전달받은 데이터를 힙에 생성하고 Linked List에 추가하는 함수 (calloc 사용)
 /***********************************************************/
 
-#if 0
+#if 1
 
 int Insert_Node(SCORE * head, SCORE * d)
 {
+	while (1)
+	{
+		if (head->next == NULL || head->next->id > d->id)
+		{
+			// 저장 공간을 할당 받아서 노드를 저장한다.
+			SCORE *p = calloc(1, sizeof(SCORE));
+			if (p == NULL) return -1; // 저장공간이 부족할 수도 있으니, 예외처리를 한다.
+			*p = *d; // 할당 받은 힙 공간에 데이터를 부어준다. 이제 p는 data처럼 사용이 가능하다.
 
-
-
-
-
-
+			
+			p->next = head->next; // 삽입할 노드의 next를 이전 head의 next로 치환한다.
+			head->next = p;  // head next를 새로 삽입한 노드로 지정한다.
+			return 1;
+		}
+		if (head->next->id == d->id) return -2;
+		head = head->next;
+	}
 }
-
 #endif
 
-#if 0
+#if 1
 
 void main(void)
 {
@@ -3312,20 +3322,20 @@ void main(void)
 
 	for (i = 0; i<8; i++)
 	{
-		printf("Insert Node Result = %d\n", Insert_Node(&Head, &test[i]));
+		printf("Insert Node Result = %s\n", (Insert_Node(&Head, &test[i]) == 1) ? "SUCCESS":"FAIL");
 	}
 
 	printf("Printed Node Count = %d\n", Print_All_Node(&Head));
 
+	// id 8인 노드가 존재하는 경우.
 	printf("Searched Node Address = 0x%.8X\n", p = Search_Id_Node(&Head, 8));
-
 	if (p != (SCORE *)0x0)
 	{
 		printf("ID=%d, NAME=%s, SCORE=%d, next = 0x%.8X\n", p->id, p->name, p->jumsu, p->next);
 	}
 
+	// id 7인 노드가 존재하지 않는 경우.
 	printf("Searched Node Address = 0x%.8X\n", p = Search_Id_Node(&Head, 7));
-
 	if (p != (SCORE *)0x0)
 	{
 		printf("ID=%d, NAME=%s, SCORE=%d, next = 0x%.8X\n", p->id, p->name, p->jumsu, p->next);
