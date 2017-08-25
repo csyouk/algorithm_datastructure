@@ -99,6 +99,7 @@ int main(void)
   - 좌측 하단의 탐색이 종료되면 스택이 해제되면서 부모 노드를 훑는다.
   - 탐색이 전부 종료되면 우측 하단을 찾는다.
   - 아래 코드의 인쇄 결과는 다음과 같다.
+  - Inorder Traver : N3 N1 N4 Root N5 N2 N6
 ```cpp
 void Inorder_Traverse(Node *p)
 {
@@ -109,6 +110,10 @@ void Inorder_Traverse(Node *p)
 ```
 
 - **Preorder Traverse**
+  - 전위 탐색의 경우 트리의 루트부터 좌측 하단을 우선적으로 탐색을 시작한다.
+  - 좌측 하단의 탐색이 종료되면 스택이 해제되면서 right edge를 탐색한다.
+  - 아래 코드의 인쇄 결과는 다음과 같다.
+  - Preorder Traver : Root N1 N3 N4 N2 N5 N6
 ```cpp
 void Preorder_Traverse(Node *p)
 {
@@ -119,6 +124,9 @@ void Preorder_Traverse(Node *p)
 ```
 
 - **Postorder Traverse**
+  - 후위 탐색의 경우 트리의 좌측 하단과 우측 하단부터 우선적으로 탐색을 시작한다.
+  - 아래 코드의 인쇄 결과는 다음과 같다.
+  - Postorder Traver : N3 N4 N1 N5 N6 N2 Root
 ```cpp
 void Postorder_Traverse(Node *p)
 {
