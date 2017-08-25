@@ -82,6 +82,7 @@
     <ClCompile Include="170820-주말워크샵.c" />
     <ClCompile Include="170822-workshop-datastructure.c" />
     <ClCompile Include="170823-workshop.datastructure.c" />
+    <ClCompile Include="170825-test.c" />
     <ClCompile Include="datastructure-lab-170821.c" />
     <ClCompile Include="datastructure-sol-170821.c" />
     <ClCompile Include="remind.c" />
@@ -90,6 +91,7 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="170814-3.txt" />
+    <Text Include="backup.txt" />
     <Text Include="student_data.txt" />
     <Text Include="test170818.txt" />
   </ItemGroup>

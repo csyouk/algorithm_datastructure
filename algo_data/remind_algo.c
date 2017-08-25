@@ -171,7 +171,7 @@ int QS(SCORE *d, int s, int e, int o, int(*comp)(SCORE *x, SCORE *y))
 // Hash Table - Open Addressing
 
 // doubly linked list in heap
-#if 1
+#if 0
 #include <malloc.h>
 typedef struct _score
 {
