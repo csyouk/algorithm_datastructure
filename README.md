@@ -40,7 +40,8 @@
 - [Queue](https://github.com/csyouk/algorithm_datastructure/blob/master/Data-Structure/Linear/Heap-Segment/Queue.md)
 
 ## Non-Linear
-- [Tree](https://github.com/csyouk/algorithm_datastructure/blob/master/Data-Structure/None-Linear/HashTable.md)
+- Tree
+  - [Binary Tree](https://github.com/csyouk/algorithm_datastructure/blob/master/Data-Structure/Non-Linear/BinaryTree.md)
 - [Hash Table](https://github.com/csyouk/algorithm_datastructure/blob/master/Data-Structure/Non-Linear/HashTable.md)
   - Open Addressing
   - Chaining Method

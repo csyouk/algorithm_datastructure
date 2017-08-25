@@ -1024,7 +1024,7 @@ int main(void)
 
 
 //[Data Structure] Linked List #2
-#if 1
+#if 0
 
 //Heap을 쓰지 않고 간단한 배열에 구조체를 저장하고 이를 연결 리스트(Linked List)로 관리하려 한다. 구조체 배열은 다음과 같은 초기값으로 되어 있다. 구조체에서 id가 0이면 빈 방, next가 -1이면 링크의 마지막 방을 의미한다.
 //struct st
@@ -1078,7 +1078,16 @@ struct st
 {
 	int id;
 	int next;
-}data[ROOM] = { { 0, -1 }, { 0, 0 }, { 0, 0 }, { 0, 0 }, { 0, 0 } };
+};
+struct st data[ROOM] = { { 0, -1 }, { 0, 0 }, { 0, 0 }, { 0, 0 }, { 0, 0 } };
+
+//int Insert2(int d)
+//{
+//	int pos = 0;
+//
+//	struct st head = data[pos];
+//	data[head.next].id
+//}
 
 int Insert(int d)
 {
@@ -1086,16 +1095,15 @@ int Insert(int d)
 	struct st * head = &data[0];
 	struct st tmp = { d, 0 };
 	struct st * node = &tmp;
-	//node->id = d;
-	//node->next = NULL;
+
 
 	for (pos = 1; pos < ROOM; pos++)
 	{
 		if (data[pos].id == node->id) return ERROR;
 		if (data[pos].id == 0) {
-			//data[pos].id = node->id;
-			//data[pos].next = node->next;
-			data[pos] = *node;
+			// 오류가 났던 이유는, struct st의 선언과 변수 선언을 분리시키지 않아서 그렇다.
+			// 분리시키면 오류가 없어진다.
+			data[pos] = *node; 
 			node = &data[pos];
 			break;
 		}
