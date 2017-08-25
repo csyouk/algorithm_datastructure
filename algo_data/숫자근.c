@@ -1,17 +1,9 @@
 #include <stdio.h>
 #include <string.h>
-
+// JUNG 1260
 #if 1
 int N;
-char num[1000001];
-char backup[1000001];
-int find(char *p)
-{
-	int total = 0;
-	if (*p == 0) return *p;
-	total += *p++ - '0';
-	return total + find(p);
-}
+unsigned long long int data;
 
 int main(void)
 {
@@ -21,14 +13,16 @@ int main(void)
 
 	for (int i = 0; i < N; i++)
 	{
-		scanf("%s", num);
-		tmp = find(num);
-		if (digit_root < tmp)
+		data = 0;
+		scanf("%llu", &data);
+		tmp = data;
+		while (data / 10)
 		{
-			strcpy(backup, num);
+			data = data / 10 + data % 10;
 		}
+		if (digit_root < data) digit_root = tmp; 
 	}
 
-	printf("result=%s\n", backup);
+	printf("result=%d\n", digit_root);
 }
 #endif
