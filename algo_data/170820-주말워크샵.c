@@ -64,6 +64,34 @@ int main(void)
 }
 #endif
 
+#if 0
+#include <stdio.h>
+#include <string.h>
+#define ULL unsigned long long int
+int main(void)
+{
+	// separator를 2개로 해서 만들어보기.
+	char test[] = "1245951324584536574355";
+	ULL sol = 57;
+	ULL A, B;
+	int i, j, k;
+	for (i = 0; i < strlen(test) - 1; i++)
+	{
+		A = 0;
+		for (j = 0; j <= i; j++)
+		{
+			A = A * 10 + (test[j] - '0');
+		}
+		B = 0;
+		for (k = j; k < strlen(test); k++)
+		{
+			B = B * 10 + (test[k] - '0');
+		}
+		printf("A=%20llu, B=%20llu, A+B=%20llu\n", A, B, A + B);
+	}
+}
+#endif
+
 // 문제 번호 B: [TST]두 수의 최대곱
 #if 0
 // 1, 2, 3, 4를 모두 사용하여 두 개의 정수를 만들고 그 곱을 구할 때 최대값은 얼마인가?
@@ -153,6 +181,14 @@ int main(void)
     printf("%llu", result);
 
     return 0;
+}
+#endif
+
+#if 0
+int main(void)
+{
+
+	return 0;
 }
 #endif
 
