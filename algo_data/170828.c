@@ -1,4 +1,4 @@
-#include <stdio.h>
+ï»¿#include <stdio.h>
 
 
 #if 0
@@ -7,7 +7,7 @@ unsigned int d[5000];
 
 int main(void)
 {
-	// ¿©±â¼­ºÎÅÍ ÀÛ¼º
+	// ì—¬ê¸°ì„œë¶€í„° ì‘ì„±
 	int N, tmp;
 
 	//freopen("test.txt", "r", stdin);
@@ -42,7 +42,7 @@ int main(void)
 
 #endif
 
-// ÀÛÀº ¼ö 4°³ Ã£±â
+// ì‘ì€ ìˆ˜ 4ê°œ ì°¾ê¸°
 #if 0
 
 unsigned int d[30000];
@@ -84,7 +84,7 @@ int main(void)
 #endif
 
 
-// ¸ğ¹ü»ı
+// ëª¨ë²”ìƒ
 #if 0
 
 typedef struct st
@@ -97,7 +97,7 @@ ST sts[30000];
 
 int main(void)
 {
-	// ¿©±â¼­ºÎÅÍ ÀÛ¼º
+	// ì—¬ê¸°ì„œë¶€í„° ì‘ì„±
 
 	int N;
 	ST tmp;
@@ -138,7 +138,7 @@ int main(void)
 #endif
 
 
-// ÇÕÀÌ °¡Àå Å« Çà°ú ¿­
+// í•©ì´ ê°€ì¥ í° í–‰ê³¼ ì—´
 #if 0
 int a[4][5] = { { 3, -5, 12, 3, -21 }, { -2, 11, 2, -7, -11 }, { 21, -21, -35, -93, -11 }, { 9, 14, 39, -98, -1 } };
 int row, col, s_r = 0x80000000, s_c = 0x80000000;
@@ -181,7 +181,7 @@ int main(void)
 #endif
 
 
-// »öÁ¾ÀÌ(ÃÊ)
+// ìƒ‰ì¢…ì´(ì´ˆ)
 #if 0
 #include <stdio.h>
 #define SIZE 10
@@ -189,7 +189,7 @@ int canvas[100][100];
 int N, area;
 int main(void)
 {
-	// ¿©±â¼­ºÎÅÍ ÀÛ¼º
+	// ì—¬ê¸°ì„œë¶€í„° ì‘ì„±
 	//freopen("test.txt", "r", stdin);
 	scanf("%d", &N);
 	int x, y;
@@ -220,7 +220,7 @@ int main(void)
 #endif
 
 
-// »öÁ¾ÀÌ(Áß)
+// ìƒ‰ì¢…ì´(ì¤‘)
 #if 0
 #include <stdio.h>
 //#define _CRT_SECURE_NO_WARINIGS
@@ -269,7 +269,7 @@ int main(void)
 #endif
 
 
-// ¼ıÀÚ±Ù
+// ìˆ«ìê·¼
 #if 0
 typedef struct _root
 {
@@ -313,7 +313,7 @@ int main(void)
 #endif
 
 
-// ¿¬¼ÓºÎºĞÃÖ´ë°ö
+// ì—°ì†ë¶€ë¶„ìµœëŒ€ê³±
 #if 0
 int N;
 double d[10000 + 10];
@@ -394,7 +394,7 @@ int main(void)
 }
 #endif
 
-// 100¸¸µé±â
+// 100ë§Œë“¤ê¸°
 #if 0
 int d[9];
 int main(void)
@@ -452,7 +452,7 @@ int main(void)
 #endif
 
 
-// ¾Ç¼ö
+// ì•…ìˆ˜
 #if 0
 char m[50 + 5][50 + 5];
 int R, C, max=0x80000000, maxi=54, maxj=54, shake;
@@ -518,7 +518,7 @@ int main(void)
 }
 #endif
 
-// ÃÖ¼Ò ºñ¿ëÀ¸·Î Æ÷Àå ´Ù½Ã ÇÏ±â
+// ìµœì†Œ ë¹„ìš©ìœ¼ë¡œ í¬ì¥ ë‹¤ì‹œ í•˜ê¸°
 #if 0
 int N, cost;
 int ni[5000 + 50];
@@ -579,7 +579,7 @@ int main(void)
 #endif
 
 
-// °æºñ¿ø
+// ê²½ë¹„ì›
 #if 0
 #define ABS(a) (((a) < (0))?-(a):(a))
 int W, H, S, round, sum;
@@ -657,8 +657,8 @@ int main(void)
 }
 #endif
 
-// Ãß°¡¹®Á¦
-// °í±âÀâÀÌ
+// ì¶”ê°€ë¬¸ì œ
+// ê³ ê¸°ì¡ì´
 #if 0
 #include <stdio.h>
 
@@ -670,7 +670,7 @@ int main(void)
 {
 	int i;
 
-	// ÀÔ·Â¹Ş´Â ºÎºĞ
+	// ì…ë ¥ë°›ëŠ” ë¶€ë¶„
 	scanf("%d %d %d", &N, &l, &M);
 
 	for (i = 0; i<M; i++)
@@ -678,14 +678,129 @@ int main(void)
 		scanf("%d %d", &y[i], &x[i]);
 	}
 
-	// ¿©±â¼­ºÎÅÍ ÀÛ¼º
+	// ì—¬ê¸°ì„œë¶€í„° ì‘ì„±
 
-	// Ãâ·ÂÇÏ´Â ºÎºĞ
+	// ì¶œë ¥í•˜ëŠ” ë¶€ë¶„
 	printf("%d", max);
 	return 0;
 }
 #endif
 
-//ºĞ¼ö Á¤·Ä
+//ë¶„ìˆ˜ ì •ë ¬
 #if 0
+int N;
+typedef struct fraction
+{
+	unsigned char numerator;
+	unsigned char delimeter;
+	double r;
+}Frac;
+Frac fracs[161*161], tmp;
+int gcd(int a, int b)
+{
+	if (a%b == 0) return b;
+	return gcd(b, a%b);
+}
+int main(void)
+{
+	double cursor = -1.0;
+	// ì…ë ¥ë°›ëŠ” ë¶€ë¶„
+	scanf("%d", &N);
+
+	// ì—¬ê¸°ì„œë¶€í„° ì‘ì„±
+	for (int i = 0; i < N+1; i++)
+	{
+		for (int j = 0; j < N+1; j++)
+		{
+			fracs[i*(N + 1) + j].numerator = i;
+			fracs[i*(N + 1) + j].delimeter = j;
+			if (fracs[i*(N + 1) + j].delimeter != 0) fracs[i*(N + 1) + j].r = (double)i / j;
+		}
+	}
+
+	for (int i = 0; i < (N + 1)*(N + 1) - 1; i++)
+	{
+		for (int j = i + 1; j < (N + 1)*(N + 1); j++)
+		{
+			if (fracs[i].r > fracs[j].r)
+			{
+				tmp = fracs[i];
+				fracs[i] = fracs[j];
+				fracs[j] = tmp;
+				if (fracs[i].numerator > fracs[j].delimeter);
+			}
+		}
+	}
+
+
+	for (int i = 0; i < (N+1)*(N+1); i++)
+	{
+		if (fracs[i].delimeter == 0) continue;
+		if (fracs[i].r > cursor && fracs[i].r <1.0)
+		{
+			cursor = fracs[i].r;
+			printf("%d/%d\n", fracs[i].numerator / gcd(fracs[i].numerator, fracs[i].delimeter), fracs[i].delimeter / gcd(fracs[i].numerator, fracs[i].delimeter), fracs[i].r);
+		}
+		if (fracs[i].r == 1.0)
+		{
+			printf("1/1\n");
+			break;
+		}
+	}
+
+	return 0;
+}
+#endif
+
+// íšŒì „ ì´ˆë°¥(ì¤‘)
+#if 1
+#include <malloc.h>
+int N, d, k, c;
+//int a[30000 + 10];
+int max;
+typedef struct _sushi
+{
+	unsigned short id;
+	struct _sushi *next;
+} Sushi;
+typedef struct _node
+{
+	struct _sushi *next;
+	struct _sushi *prev;
+} Node;
+Sushi Head, * sushi,  *tmp;
+Node Head, Tail, *head = &Head, *tail = &Tail;
+
+void Insert()
+{
+
+}
+void Init(void)
+{
+	head->next = tail;
+	tail->prev = head;
+}
+int main(void)
+{
+	int i;
+	Init();
+	// ì…ë ¥ë°›ëŠ” ë¶€ë¶„
+	scanf("%d %d %d %d", &N, &d, &k, &c);
+	for (i = 0; i<N; i++)
+	{
+		//scanf("%d", &a[i]);
+		sushi = (Sushi *)malloc(1, sizeof(Sushi));
+		
+	}
+
+	// ì—¬ê¸°ì„œë¶€í„° ì‘ì„±
+
+
+
+
+	// ì¶œë ¥í•˜ëŠ” ë¶€ë¶„
+	printf("%d", max);
+
+	return 0;
+}
 #endif

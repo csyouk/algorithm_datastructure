@@ -89,6 +89,7 @@
     <ClCompile Include="datastructure-sol-170821.c" />
     <ClCompile Include="remind.c" />
     <ClCompile Include="remind_algo.c" />
+    <ClCompile Include="sol-170828.c" />
     <ClCompile Include="test_driven_development.c" />
     <ClCompile Include="Tree-Structure.c" />
     <ClCompile Include="숫자근.c" />

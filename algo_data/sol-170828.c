@@ -1,11 +1,11 @@
-#define _CRT_SECURE_NO_WARNINGS
+ï»¿#define _CRT_SECURE_NO_WARNINGS
 
-//	¾Ç¼ö
-#if 01
+//	ì•…ìˆ˜
+#if 0
 #include <stdio.h>
 int R, C, sol;
 char a[50 + 10][50 + 10];
-//8¹æÇâ
+//8ë°©í–¥
 int Count(int i, int j){
 	int ni, nj, k, ret = 0;
 	static di[] = { -1, 1, 0, 0, -1, 1, 1, -1 };
@@ -23,18 +23,18 @@ int main(void){
 		scanf("%s", &a[i][1]);
 	}
 
-	for (i = 1; i <= R; i++){		//	¹ÎÇõ¾Ç¼ö(max)
+	for (i = 1; i <= R; i++){		//	ë¯¼í˜ì•…ìˆ˜(max)
 		for (j = 1; j <= C; j++){
 			if (a[i][j] != '.') continue;
 			cnt = Count(i, j);
 			if (sol < cnt) sol = cnt;
 		}
 	}
-	for (i = 1; i <= R; i++){		//	±âÁ¸»ç¶÷ ¾Ç¼ö
+	for (i = 1; i <= R; i++){		//	ê¸°ì¡´ì‚¬ëŒ ì•…ìˆ˜
 		for (j = 1; j <= C; j++){
 			if (a[i][j] != 'o')	continue;
 			sol += Count(i, j);
-			a[i][j] = '.';					//	Áßº¹¹æÁö(¿øº»»èÁ¦)
+			a[i][j] = '.';					//	ì¤‘ë³µë°©ì§€(ì›ë³¸ì‚­ì œ)
 		}
 	}
 	printf("%d", sol);
@@ -42,7 +42,7 @@ int main(void){
 }
 #endif
 
-//	¿¬¼ÓºÎºĞÃÖ´ë°ö
+//	ì—°ì†ë¶€ë¶„ìµœëŒ€ê³±
 #if 0
 #include <stdio.h>
 int N;
@@ -62,7 +62,7 @@ int main(void){
 }
 #endif
 
-//	¼ıÀÚ±Ù
+//	ìˆ«ìê·¼
 #if 0
 #include <stdio.h>
 int N, sol;
@@ -94,7 +94,7 @@ int main(void){
 }
 #endif
 
-//	»öÁ¾ÀÌ(Áß)
+//	ìƒ‰ì¢…ì´(ì¤‘)
 #if 0
 #include <stdio.h>
 int N, sol;
@@ -124,7 +124,7 @@ int main(void){
 }
 #endif
 
-//	»öÁ¾ÀÌ(ÃÊ)
+//	ìƒ‰ì¢…ì´(ì´ˆ)
 #if 0
 #include <stdio.h>
 int N, sol;
@@ -150,7 +150,7 @@ int main(void){
 }
 #endif
 
-//	Çà°ú¿­ÀÇ Å«°ª
+//	í–‰ê³¼ì—´ì˜ í°ê°’
 #if 0
 #include <stdio.h>
 int a[4][5] = { { 3, -5, 12, 3, -21 }, { -2, 11, 2, -7, -11 }, { 21, -21, -35, -93, -11 }, { 9, 14, 39, -98, -1 } };
@@ -182,7 +182,7 @@ int main(void){
 }
 #endif
 
-//	¸ğ¹ü»ı
+//	ëª¨ë²”ìƒ
 #if 0
 
 #include <stdio.h>
@@ -212,7 +212,7 @@ int main(void){
 }
 #endif
 
-//	¿À¸§Â÷¼ø Á¤·Ä (´Ü¼øÁ¤·Ä)
+//	ì˜¤ë¦„ì°¨ìˆœ ì •ë ¬ (ë‹¨ìˆœì •ë ¬)
 #if 0
 #include <stdio.h>
 
