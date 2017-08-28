@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 // JUNG 1260
-#if 1
+#if 0
 int N;
 unsigned long long int data;
 
