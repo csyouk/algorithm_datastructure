@@ -753,48 +753,49 @@ int main(void)
 #endif
 
 // 회전 초밥(중)
-#if 1
+#if 0
 #include <malloc.h>
 int N, d, k, c;
-//int a[30000 + 10];
+int sushi[30000 + 10];
+int cnt[3000 + 10];
 int max;
-typedef struct _sushi
-{
-	unsigned short id;
-	struct _sushi *next;
-} Sushi;
-typedef struct _node
-{
-	struct _sushi *next;
-	struct _sushi *prev;
-} Node;
-Sushi Head, * sushi,  *tmp;
-Node Head, Tail, *head = &Head, *tail = &Tail;
 
-void Insert()
+int counting(int k)
 {
-
-}
-void Init(void)
-{
-	head->next = tail;
-	tail->prev = head;
+	int max = 0;
+	for (int i = 0; i < k; i++)
+	{
+		if (cnt[sushi[i]]) max++;
+	}
+	return max;
 }
 int main(void)
 {
-	int i;
-	Init();
+	int i, tmp;
+	freopen("test.txt","r", stdin);
 	// 입력받는 부분
 	scanf("%d %d %d %d", &N, &d, &k, &c);
 	for (i = 0; i<N; i++)
 	{
-		//scanf("%d", &a[i]);
-		sushi = (Sushi *)malloc(1, sizeof(Sushi));
-		
+		scanf("%d", &sushi[i]);
 	}
 
 	// 여기서부터 작성
+	for (i = 0; i < N; i++)
+	{
+		cnt[sushi[i]]++;
+	}
+	cnt[c]++;
 
+
+	max = counting(k);
+	tmp = max;
+
+	for (i = 0; i < N; i++)
+	{
+		//cnt[a[i]]
+		if (max < tmp) max = tmp;
+	}
 
 
 

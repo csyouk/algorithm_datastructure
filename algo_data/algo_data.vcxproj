@@ -84,6 +84,7 @@
     <ClCompile Include="170823-workshop.datastructure.c" />
     <ClCompile Include="170825-test.c" />
     <ClCompile Include="170828.c" />
+    <ClCompile Include="170829-recursion.c" />
     <ClCompile Include="backup.c" />
     <ClCompile Include="datastructure-lab-170821.c" />
     <ClCompile Include="datastructure-sol-170821.c" />
