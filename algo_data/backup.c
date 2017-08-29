@@ -33,3 +33,42 @@
 //		}
 //	}
 //}
+
+//
+//backup = total_budget;
+//for (int j = 0; j < i; j++)
+//{
+//	total_budget -= budget[j];
+//}
+//ub = total_budget / (n - i);
+//for (int j = i; j < n; j++)
+//{
+//	int b;
+//	if (ub < budget[j])
+//	{
+//		b = ub;
+//	}
+//	else
+//	{
+//		b = budget[j];
+//	}
+//	total_budget -= b;
+//}
+//
+//for (int i = 0; i < n; i++)
+//{
+//	if (budget[i] > ub)
+//}
+//
+//if (tmp_b > total_budget)
+//{
+//	tmp_b = total_budget;
+//	max_ub = ub;
+//}
+//else
+//{
+//	break;
+//};
+//total_budget = backup;
+//i++;
+//if (n == i) break;

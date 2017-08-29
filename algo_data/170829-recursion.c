@@ -1,4 +1,4 @@
-// 1~n ÇÕ
+ï»¿// 1~n í•©
 #if 0
 #include <stdio.h>
 int sum(int n)
@@ -9,7 +9,7 @@ int sum(int n)
 
 int main(void)
 {
-	// ¿©±â¼­ºÎÅÍ ÀÛ¼º
+	// ì—¬ê¸°ì„œë¶€í„° ì‘ì„±
 	int N;
 	scanf("%d", &N);
 	
@@ -19,7 +19,7 @@ int main(void)
 }
 #endif
 
-// ÇÇº¸³ªÄ¡¼ö¿­
+// í”¼ë³´ë‚˜ì¹˜ìˆ˜ì—´
 #if 0
 #define ULL unsigned long long int
 ULL memo[50];
@@ -38,7 +38,7 @@ ULL fib(n)
 }
 int main(void)
 {
-	// ¿©±â¼­ºÎÅÍ ÀÛ¼º
+	// ì—¬ê¸°ì„œë¶€í„° ì‘ì„±
 	int N;
 	scanf("%d", &N);
 	printf("%llu", fib(N));
@@ -46,7 +46,7 @@ int main(void)
 }
 #endif
 
-// ¹®Á¦ ¹øÈ£ P: [TST]ÃÖ´ë°ø¾à¼ö¿ÍÃÖ¼Ò°ø¹è¼ö
+// ë¬¸ì œ ë²ˆí˜¸ P: [TST]ìµœëŒ€ê³µì•½ìˆ˜ì™€ìµœì†Œê³µë°°ìˆ˜
 #if 0
 int gcd(a, b)
 {
@@ -59,7 +59,7 @@ int lcm(a, b)
 }
 int main(void)
 {
-	// ¿©±â¼­ºÎÅÍ ÀÛ¼º
+	// ì—¬ê¸°ì„œë¶€í„° ì‘ì„±
 	int a, b;
 	scanf("%d %d", &a, &b);
 	printf("%d\n", gcd(a,b));
@@ -68,7 +68,7 @@ int main(void)
 }
 #endif
 
-// ¹®Á¦ ¹øÈ£ Q: [TST]¿À¸§Â÷¼ø Á¤·Ä (ÄüÁ¤·Ä)
+// ë¬¸ì œ ë²ˆí˜¸ Q: [TST]ì˜¤ë¦„ì°¨ìˆœ ì •ë ¬ (í€µì •ë ¬)
 #if 0
 int N;
 unsigned int nums[30000 + 10];
@@ -108,7 +108,7 @@ void quick_sort(unsigned int *d, int s, int e)
 
 int main(void)
 {
-	// ¿©±â¼­ºÎÅÍ ÀÛ¼º
+	// ì—¬ê¸°ì„œë¶€í„° ì‘ì„±
 
 	scanf("%d", &N);
 	for (int i = 0; i < N; i++)
@@ -128,7 +128,7 @@ int main(void)
 #endif
 
 
-// ¹®Á¦ ¹øÈ£ R: [TST] ¼ıÀÚ Ã£±â (ÀÌÁøÅ½»ö)
+// ë¬¸ì œ ë²ˆí˜¸ R: [TST] ìˆ«ì ì°¾ê¸° (ì´ì§„íƒìƒ‰)
 #if 0
 #include <stdio.h>
 int N, T;
@@ -150,7 +150,7 @@ int BinSearch(int *d, int t, int s, int e)
 int main(void)
 {
 	//freopen("test.txt", "r", stdin);
-	// ¿©±â¼­ºÎÅÍ ÀÛ¼º
+	// ì—¬ê¸°ì„œë¶€í„° ì‘ì„±
 	scanf("%d", &N);
 	for (int i = 0; i < N; i++)
 	{
@@ -175,13 +175,13 @@ int main(void)
 }
 #endif
 
-// ¹®Á¦ ¹øÈ£ S: [TST]±×¸©
+// ë¬¸ì œ ë²ˆí˜¸ S: [TST]ê·¸ë¦‡
 #if 0
 #include <stdio.h>
 char d[55];
 int main(void)
 {
-	// ¿©±â¼­ºÎÅÍ ÀÛ¼º
+	// ì—¬ê¸°ì„œë¶€í„° ì‘ì„±
 	char *prev = d + 54;
 	char *p = d;
 	int h = 0;
@@ -209,7 +209,7 @@ int main(void)
 }
 #endif
 
-// ¹®Á¦ ¹øÈ£ T: [TST]°¡Àå ¸¹Àº ¾ËÆÄºªÀº?
+// ë¬¸ì œ ë²ˆí˜¸ T: [TST]ê°€ì¥ ë§ì€ ì•ŒíŒŒë²³ì€?
 #if 0
 #include <stdio.h>
 #include <string.h>
@@ -218,7 +218,7 @@ char d[31];
 int main(void)
 {
 	int max = -1, pos = -1;
-	// ¿©±â¼­ºÎÅÍ ÀÛ¼º
+	// ì—¬ê¸°ì„œë¶€í„° ì‘ì„±
 	scanf("%s", d);
 
 	for (int i = 0; i < strlen(d); i++)
@@ -245,14 +245,434 @@ int main(void)
 #endif
 
 
-// ¹®Á¦ ¹øÈ£ U: [TST]ÈŞ´ëÆù¹øÈ£ Á¤·Ä
-#if 1
+// ë¬¸ì œ ë²ˆí˜¸ U: [TST]íœ´ëŒ€í°ë²ˆí˜¸ ì •ë ¬
+#if 0
 #include <stdio.h>
+#include <assert.h>
+#define O_SIZE 6
+#define ASCENDING 1
+typedef struct _user
+{
+	unsigned short base;
+	unsigned short middle;
+	unsigned char m_digit;
+	unsigned short last;
+	char b_origin[5];
+	char m_origin[5];
+	char l_origin[5];
+} User;
+User users[50];
+char phone[50][15];
+int o_cnt[O_SIZE];
+int N;
+int order[O_SIZE];
+int strlen(char *p)
+{
+	int len = 0;
+	while (*p) { len++; p++; }
+	return len;
+}
+void strcpy(char *s, int start, int end, char *d)
+{
+	s = s + start;
+	for (int i = start; i < end+1; i++)
+	{
+		*d = *s;
+		s++; d++;
+	}
+}
+int strcmp(char *p, char *q)
+{
+	while (*p || *q)
+	{
+		if (*p == *q) { p++; q++; continue; }
+		return (*p > *q) ? 1 : -1;
+	}
+	return 0;
+}
+int stoi(char *p, int s, int e)
+{
+	int r = 0;
+	p = p + s;
+	while (s != (e+1))
+	{
+		r = (*p-'0') + r * 10;
+		s++; p++;
+	}
+	return r;
+}
+void tokenize(char * phones, int i)
+{
+	unsigned short b, m, l, d, len;
+	len = strlen(phones);
+	if (len == 13) // 13ìë¦¬
+	{
+		b = stoi(phones, 0, 2);
+		m = stoi(phones, 4, 7);
+		l = stoi(phones, 9, 12);
+		strcpy(phones, 0, 2, users[i].b_origin);
+		strcpy(phones, 4, 7, users[i].m_origin);
+		strcpy(phones, 9, 12, users[i].l_origin);
+		d = 4;
+	}
+	else // 12ìë¦¬
+	{
+		b = stoi(phones, 0, 2);
+		m = stoi(phones, 4, 6);
+		l = stoi(phones, 8, 11);
+		strcpy(phones, 0, 2, users[i].b_origin);
+		strcpy(phones, 4, 6, users[i].m_origin);
+		strcpy(phones, 8, 11, users[i].l_origin);
 
+		d = 3;
+	}
+	users[i].base = b; users[i].middle = m; 
+	users[i].last = l; users[i].m_digit = d;
+}
+int accum(int n)
+{
+	if (n < 0) return 0;
+	int r = 0;
+	for (int i = 0; i < n+1; i++)
+	{
+		r += o_cnt[i];
+	}
+	return r;
+}
+void sort_base()
+{
+	int pos = 0, cnt;
+	User tmp;
+	for (int i = 0; i < O_SIZE; i++)
+	{
+		cnt = 0;
+		for (int j = 0; j < N; j++)
+		{
+			if (order[i] == users[j].base % 10)
+			{
+				tmp = users[pos];
+				users[pos] = users[j];
+				users[j] = tmp;
+				pos++; cnt++;
+			}
+		}
+		o_cnt[i] = cnt;
+	}
+}
+
+void sort_middle(void)
+{
+	int s,e;
+	User tmp;
+	for (int i = 0; i < O_SIZE; i++)
+	{
+		s = accum(i - 1); 
+		e = accum(i);
+		for (int j = s; j < e-1; j++)
+		{
+			for (int k = j+1; k < e; k++)
+			{
+				if (users[j].m_digit < users[k].m_digit)
+				{
+					tmp = users[k];
+					users[k] = users[j];
+					users[j] = tmp;
+				}
+				if (users[j].m_digit == users[k].m_digit && strcmp(users[j].m_origin, users[k].m_origin) == ASCENDING)
+				{
+					tmp = users[k];
+					users[k] = users[j];
+					users[j] = tmp;
+				}
+			}
+		}
+	}
+}
+
+void sort_last(void)
+{
+	int s, e;
+	User tmp;
+	for (int i = 0; i < O_SIZE; i++)
+	{
+		s = accum(i - 1);
+		e = accum(i);
+		for (int j = s; j < e - 1; j++)
+		{
+			for (int k = j + 1; k < e; k++)
+			{
+				if (strcmp(users[j].m_origin, users[k].m_origin) == 0 && strcmp(users[j].l_origin, users[k].l_origin) == 1)
+				//if (users[j].middle == users[k].middle && users[j].last > users[k].last)
+				{
+					tmp = users[k];
+					users[k] = users[j];
+					users[j] = tmp;
+				}
+			}
+		}
+	}
+}
+void test0829(void)
+{
+	char test[] = "012-467-8892";
+	assert(12 == stoi(test, 0, 2));
+	assert(467 == stoi(test, 4, 6));
+	assert(8892 == stoi(test, 8, 11));
+}
 int main(void)
 {
-	// ¿©±â¼­ºÎÅÍ ÀÛ¼º
+	//test0829();
+	 //ì—¬ê¸°ì„œë¶€í„° ì‘ì„±
+	//freopen("test.txt", "r", stdin);
+	scanf("%d", &N);
+	for (int i = 0; i < 6; i++)
+	{
+		scanf("%d", &order[i]);
+	}
+
+	for (int i = 0; i < N; i++)
+	{
+		scanf("%s", phone[i]);
+		tokenize(phone[i], i);
+	}
+
+	sort_base();
+	sort_middle();
+	sort_last();
+
+	for (int i = 0; i < N; i++)
+	{
+		printf("%s-%s-%s\n", users[i].b_origin, users[i].m_origin, users[i].l_origin);
+	}
+	return 0;
+}
+#endif
+
+
+// ë¬¸ì œ ë²ˆí˜¸ U: [TST]ë¬¸ìì—´ ì••ì¶•
+#if 0
+#include <stdio.h>
+int N;
+char d[110];
+int main(void)
+{
+	char *prev = d + 109;
+	char *p = d;
+	int cnt = 0;
+	//freopen("test.txt", "r", stdin);
+	scanf("%d", &N);
+	scanf("%s", d);
+
+	while (*p)
+	{
+		if (*prev != *p)
+		{
+			if (cnt >= N) printf("%c(%d)", *prev, cnt);
+			else
+			{
+				for (int i = 0; i < cnt; i++)
+				{
+					printf("%c", *prev);
+				}
+			}
+			cnt = 0;
+		}
+		*prev = *p;
+		p++;
+		cnt++;
+	}
+	if (cnt >= N) printf("%c(%d)", *prev, cnt);
+	else
+	{
+		for (int i = 0; i < cnt; i++)
+		{
+			printf("%c", *prev);
+		}
+	}
 
 	return 0;
 }
 #endif
+
+
+// ë¬¸ì œ ë²ˆí˜¸ V: [TST]ì£¼ì°¨ìš”ê¸ˆ
+#if 0
+#include <stdio.h>
+int n;
+int rule(int min)
+{
+	if (min < 10) return 0;
+	if (min <= 30) return 500;
+	int t = 500;
+	min -= 31;
+	t += (min / 10 + 1)*300;
+
+	if (t > 50000) t = 50000;
+	return t;
+}
+int main(void)
+{
+	// ì—¬ê¸°ì„œë¶€í„° ì‘ì„±
+	int fee = 0, d;
+	//freopen("test.txt", "r", stdin);
+	scanf("%d", &n);
+	for (int i = 0; i < n; i++)
+	{
+		scanf("%d", &d);
+		fee += rule(d);
+	}
+	printf("%d", fee);
+	return 0;
+}
+#endif
+
+
+// ë¬¸ì œ ë²ˆí˜¸ W: [TST]ë¶„ìˆ˜ì˜ í•© êµ¬í•˜ê¸°
+#if 0
+#include <stdio.h>
+typedef struct _fraction
+{
+	short numerator;
+	unsigned short delimeter;
+} Frac;
+
+Frac fractions[100];
+int n;
+
+int gcd(a, b)
+{
+	if (b == 0) return a;
+	return gcd(b, a%b);
+}
+int lcm(a, b)
+{
+	if (a == 0 || b == 0) return 0; 
+	return a*b / gcd(a, b);
+}
+int main(void)
+{
+	// ì—¬ê¸°ì„œë¶€í„° ì‘ì„±
+	int D=1, N=0, _gcd=0;
+
+	freopen("test.txt", "r", stdin);
+	scanf("%d", &n);
+	for (int i = 0; i < n; i++)
+	{
+		scanf("%d %d", &fractions[i].numerator, &fractions[i].delimeter);
+	}
+
+	for (int i = 0; i < n; i++)
+	{
+		D = lcm(D, fractions[i].delimeter);
+	}
+	for (int i = 0; i < n; i++)
+	{
+		if (fractions[i].numerator == 0) continue;
+		N += (D / fractions[i].delimeter) * fractions[i].numerator;
+	}
+
+	_gcd = gcd(D,N);
+
+	if (_gcd == 0 || N/_gcd==0) printf("%d", 0);
+	else {
+		if (D / _gcd < 0) { printf("%d/%d", -N / _gcd, -D / _gcd); }
+		else{ printf("%d/%d", N / _gcd, D / _gcd); }
+	}
+
+	return 0;
+}
+#endif
+
+
+// ë¬¸ì œ ë²ˆí˜¸ Z: [TST]ì˜ˆì‚°
+#if 0
+#include <stdio.h>
+int N;
+unsigned int budget[10000];
+unsigned int upper_bound(unsigned int total_budget, int n)
+{
+	unsigned int tmp, tmp_b=0xffffffff, ub, max_ub=0, i = 1, backup, flag=0;
+	if (n == 1) return total_budget;
+	for (int i = 0; i < n-1; i++)
+	{
+		for (int j = i+1; j < n; j++)
+		{
+			if (budget[i] > budget[j])
+			{
+				tmp = budget[i];
+				budget[i] = budget[j];
+				budget[j] = tmp;
+			}
+		}
+	}
+
+	while (1)
+	{
+		backup = total_budget;
+		for (int j = 0; j < i; j++)
+		{
+			total_budget -= budget[j];
+		}
+		ub = total_budget / (n - i);
+		for (int j = 0; j < i; j++)
+		{
+			if (budget[j] > ub) { flag = !flag; break; }
+		}
+		if (flag) break;
+		for (int j = i; j < n; j++)
+		{
+			int b;
+			if (ub < budget[j]) 
+			{ 
+				b = ub; 
+			}
+			else
+			{ 
+				b = budget[j]; 
+			}
+			total_budget -= b;
+		}
+		
+
+
+		if (tmp_b > total_budget)
+		{
+			tmp_b = total_budget;
+			max_ub = ub;
+		}
+		total_budget = backup;
+		i++;
+		if (n == i) break;
+	}
+	return max_ub;
+}
+int main(void)
+{
+	// ì—¬ê¸°ì„œë¶€í„° ì‘ì„±
+	unsigned int total, max=0, sum=0;
+
+	freopen("test.txt", "r", stdin);
+
+	scanf("%d", &N);
+	for (int i = 0; i < N; i++)
+	{
+		scanf("%u", &budget[i]);
+		sum += budget[i];
+		if (max < budget[i]) max = budget[i];
+	}
+	scanf("%u", &total);
+
+	if (total > sum)
+	{
+		printf("%u", max);
+	}
+	else
+	{
+		max = upper_bound(total, N);
+		printf("%u", max);
+	}
+
+	return 0;
+}
+#endif
+
