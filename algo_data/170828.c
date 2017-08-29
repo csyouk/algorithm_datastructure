@@ -754,54 +754,105 @@ int main(void)
 
 // 회전 초밥(중)
 #if 0
-#include <malloc.h>
-int N, d, k, c;
-int sushi[30000 + 10];
-int cnt[3000 + 10];
-int max;
 
-int counting(int k)
+#endif
+
+// 문제 번호 A: [LAB]고기잡이
+#if 1
+#include <stdio.h>
+
+int N, l, M;
+char monun[10010][10010];
+unsigned short r[100 + 10], c[100 + 10];
+int max=0x80000000;
+
+int find_match_cnt(int minr, int minc, int maxr, int maxc, int h, int w)
 {
-	int max = 0;
-	for (int i = 0; i < k; i++)
+	int cnt, max = 0x80000000;
+	int i, j, k, l;
+	for (i = minr; i < maxr - (h-1); i++)
 	{
-		if (cnt[sushi[i]]) max++;
+		for (j = minc; j < maxc + 1 - (w-1); j++)
+		{
+			if (!monun[i][j]) continue;
+			cnt = 0;
+			for ( k = i; k < i+h+1; k++)
+			{
+				for ( l = j; l < j+w+1; l++)
+				{
+					if (monun[k][l]) cnt++;
+				}
+			}
+
+			if (max < cnt) max = cnt;
+		}
 	}
+
+	for (i = maxr - (h - 1); i < maxr + 1 - (h - 1); i++)
+	{
+		for (j = minc; j < maxc + 1 - (w - 1); j++)
+		{
+			cnt = 0;
+			for (k = i; k < i + h + 1; k++)
+			{
+				for (l = j; l < j + w + 1; l++)
+				{
+					if (monun[k][l]) cnt++;
+				}
+			}
+
+			if (max < cnt) max = cnt;
+		}
+	}
+
 	return max;
 }
+
 int main(void)
 {
-	int i, tmp;
-	freopen("test.txt","r", stdin);
+	int i, h, w, sum, cnt, minr = 0x7fffffff, minc = 0x7fffffff;
+	int maxr = 0x80000000, maxc = 0x80000000;
+	//freopen("test.txt", "r", stdin);
+	
 	// 입력받는 부분
-	scanf("%d %d %d %d", &N, &d, &k, &c);
-	for (i = 0; i<N; i++)
+	scanf("%d %d %d", &N, &l, &M);
+
+	for (i = 0; i<M; i++)
 	{
-		scanf("%d", &sushi[i]);
+		scanf("%d %d", &r[i], &c[i]);
 	}
+
+	// 좌표 표시하기.
+	for (int i = 0; i < M; i++)
+	{
+		monun[r[i]][c[i]] = 1;
+		if (minr > r[i]) minr = r[i];
+		if (minc > c[i]) minc = c[i];
+		if (maxr < r[i]) maxr = r[i];
+		if (maxc < c[i]) maxc = c[i];
+	}
+
 
 	// 여기서부터 작성
-	for (i = 0; i < N; i++)
+	sum = l / 2;
+	h = 1; w = sum - h;
+	while (1)
 	{
-		cnt[sushi[i]]++;
-	}
-	cnt[c]++;
-
-
-	max = counting(k);
-	tmp = max;
-
-	for (i = 0; i < N; i++)
-	{
-		//cnt[a[i]]
-		if (max < tmp) max = tmp;
+		cnt = find_match_cnt(minr, minc, maxr,maxc, h, w);
+		if (max < cnt)
+		{
+			max = cnt;
+			// 가장 넓은 영역에 매치할 때 멈춤. 
+			if (max == (sum / 2 * (sum - sum / 2))) break;
+		}
+		h++; w = sum - h;
+		if (h == sum) break;
 	}
 
 
 
 	// 출력하는 부분
 	printf("%d", max);
-
 	return 0;
 }
 #endif
