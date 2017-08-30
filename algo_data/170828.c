@@ -657,6 +657,37 @@ int main(void)
 }
 #endif
 
+#if 0
+#define ABS(a) (((a) < (0))?-(a):(a))
+int W, H, N, sol, a[110];
+int main(void)
+{
+	int i, d, l,dis;
+	scanf("%d %d %d", &W, &H, &N);
+	for ( i = 0; i < N+1; i++)
+	{
+		scanf("%d %d", &d, &l);
+		switch (d)
+		{
+			case 1: a[i] = l; break;
+			case 2: a[i] = 2 * W + H - l; break;
+			case 3: a[i] = 2 * W + 2 * H - l;
+			case 4: a[i] = W + l;
+			default: break;
+		}
+	}
+
+	for (i = 0; i < N+1; i++)
+	{
+		dis = ABS(a[N] - a[i]);
+		if (dis < H + W) sol += dis;
+		else sol += 2 * H + 2 * W - dis;
+	}
+	printf("%d", sol);
+	return 0;
+}
+#endif
+
 // 추가문제
 // 고기잡이
 #if 0
@@ -758,7 +789,7 @@ int main(void)
 #endif
 
 // 문제 번호 A: [LAB]고기잡이
-#if 1
+#if 0
 #include <stdio.h>
 
 int N, l, M;
@@ -772,7 +803,7 @@ int find_match_cnt(int minr, int minc, int maxr, int maxc, int h, int w)
 	int i, j, k, l;
 	for (i = minr; i < maxr - (h-1); i++)
 	{
-		for (j = minc; j < maxc + 1 - (w-1); j++)
+		for (j = minc; j < maxc - (w-1); j++)
 		{
 			if (!monun[i][j]) continue;
 			cnt = 0;

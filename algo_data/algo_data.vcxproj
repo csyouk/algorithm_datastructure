@@ -85,9 +85,11 @@
     <ClCompile Include="170825-test.c" />
     <ClCompile Include="170828.c" />
     <ClCompile Include="170829-recursion.c" />
+    <ClCompile Include="170830.c" />
     <ClCompile Include="backup.c" />
     <ClCompile Include="datastructure-lab-170821.c" />
     <ClCompile Include="datastructure-sol-170821.c" />
+    <ClCompile Include="floodfill.c" />
     <ClCompile Include="remind.c" />
     <ClCompile Include="remind_algo.c" />
     <ClCompile Include="sol-170828.c" />
@@ -98,6 +100,7 @@
   <ItemGroup>
     <Text Include="170814-3.txt" />
     <Text Include="backup.txt" />
+    <Text Include="in.txt" />
     <Text Include="student_data.txt" />
     <Text Include="test.txt" />
     <Text Include="test170818.txt" />
