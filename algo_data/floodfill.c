@@ -369,7 +369,7 @@ int cal(void)
 }
 int main(void)
 {
-	freopen("in.txt", "r", stdin);
+	//freopen("in.txt", "r", stdin);
 	int i, j, mark = 0, cnt=0;
 	// 여기서부터 작성
 	scanf("%d %d", &N, &M);
@@ -392,7 +392,6 @@ int main(void)
 	}
 	cal();
 	printf("%d", ABS(minseg2.x - minseg1.x) + ABS(minseg2.y - minseg1.y) - 1);
-	//printf("%d %d / %d %d\n", minseg1.x, minseg1.y, minseg2.x, minseg2.y);
 
 	return 0;
 }
