@@ -137,3 +137,233 @@ int main(void)
 	return 0;
 }
 #endif
+
+
+// 문제 번호 : [TST]토마토(고)
+#if 0
+#include <stdio.h>
+#define SIZE 1000
+#define DIRS 4
+
+typedef struct _data{
+	int x;
+	int y;
+	int dis;
+} Tomato;
+
+int R, C, cooked_tomato, RP, WP;
+int box[SIZE + 10][SIZE + 10];
+int chk[SIZE + 10][SIZE + 10];
+
+int di[DIRS] = { 0, -1, 0, 1 };
+int dj[DIRS] = { -1, 0, 1, 0 };
+Tomato done[SIZE*SIZE];
+Tomato Q[SIZE * SIZE + 10];
+
+
+int BFS(void)
+{
+	Tomato tmp;
+	int i, ni, nj, k;
+	for (i = 0; i < cooked_tomato; i++)
+	{
+		Q[WP].x = done[i].x; Q[WP++].y = done[i].y; chk[done[i].x][done[i].y] = 1;
+	}
+
+	while (RP < WP)
+	{
+		tmp.x = Q[RP].x; tmp.y = Q[RP].y; tmp.dis = Q[RP++].dis; 
+		//if () return tmp.dis;
+		for ( k = 0; k < DIRS; k++)
+		{
+			ni = tmp.x + di[k]; nj = tmp.y + dj[k];
+			if (ni < 1 || ni > R || nj < 1 || nj > C) continue;
+			if (chk[ni][nj] || box[ni][nj] == -1) continue;
+			Q[WP].x = ni;   Q[WP].y = nj;   Q[WP++].dis = tmp.dis + 1; chk[ni][nj] = 1;
+		}
+	}
+	return tmp.dis;
+	//printf("d");
+}
+int check_not_cooked_tomato(void)
+{
+	int i, j;
+	for (i = 1; i <R + 1; i++)
+	{
+		for (j = 1; j < C + 1; j++)
+		{
+			if (chk[i][j] == 0) {
+				return -1;
+			}
+		}
+	}
+	return 1;
+}
+int main(void)
+{
+	// 여기서부터 작성
+
+	//freopen("in.txt", "r", stdin);
+
+	int i, j, result, flag = 0;
+	scanf("%d %d", &C, &R);
+	for ( i = 1; i <=R; i++)
+	{
+		for ( j = 1; j <=C; j++)
+		{
+			scanf("%d", &box[i][j]);
+			if (box[i][j] == 1) {
+				done[cooked_tomato].x = i;
+				done[cooked_tomato].y = j;
+				cooked_tomato++;
+			}
+			if (box[i][j] == -1){
+				chk[i][j] = -1;
+			}
+		}
+	}
+
+	if (done[R*C - 1].x != 0) { printf("0"); return;}
+
+	result = BFS();
+	if (check_not_cooked_tomato() == -1) result = -1;
+
+
+	printf("%d", result);
+
+
+
+	return 0;
+}
+#endif
+
+
+//문제 번호 : [TST]너비우선탐색Ⅰ
+#if 1
+#include <stdio.h>
+#define SIZE 110
+typedef struct _node{
+	unsigned char id;
+	unsigned char visited;
+	int c_nodes[SIZE];
+	int nodes_cnt;
+} Node;
+
+Node nodes[SIZE];
+Node Q[SIZE];
+int N, E, RP, WP;
+void Init(void){
+
+	int i;
+	for ( i = 0; i < SIZE; i++)
+	{
+		nodes[i].id = i;
+		nodes[i].visited = 'X';
+	}
+}
+void BFS(int start_node_id){
+	
+	Node tmp;
+	int cnt=0, i;
+
+	Q[WP++] = nodes[start_node_id];
+	
+	while (RP < WP){
+		tmp = Q[RP++];
+		Q[RP++].visited = 'O'; 
+		if (tmp.visited == 'O') continue;
+		for (i = 0; i < tmp.nodes_cnt; i++){
+			Q[WP++] = nodes[tmp.c_nodes[i]];
+		}
+	}
+}
+
+void Print_All(){
+	
+	int i;
+	for (i = 0; i<WP; i++)
+	{
+		printf("%d ", Q[i].id);
+	}
+
+}
+
+int main(void)
+{
+	freopen("in.txt", "r", stdin);
+	int i, j=0,s, e;
+	Init();
+	// 여기서부터 작성
+	scanf("%d %d", &N, &E);
+
+	for (i = 1; i <=N; i++)
+	{
+		scanf("%d %d", &s, &e);
+		j = 0;
+		while (1)
+		{
+			if (nodes[s].c_nodes[j] == 0){
+				nodes[s].c_nodes[j] = e;
+				nodes[s].nodes_cnt++;
+				break;
+			}
+			j++;
+		}
+	}
+
+	BFS(1);
+	Print_All();
+	return 0;
+}
+#endif
+
+
+// 문제 번호 : [TST]안전 영역
+#if 0
+#include <stdio.h>
+#define SIZE 110
+#define DIRS 8
+
+typedef struct _data{
+	int x;
+	int y;
+	int dis;
+} Area;
+
+int map[SIZE][SIZE];
+int chk[SIZE][SIZE];
+
+Area Q[SIZE*SIZE];
+int WP, RP, N;
+
+int cal(void)
+{
+	int i, j, cnt = 0;
+	for (i = 1; i <= N; i++)
+	{
+		for (j = 1; j <= N; j++)
+		{
+			if (chk[i][j]) cnt++;
+		}
+	}
+	return cnt;
+}
+int main(void)
+{
+	// 여기서부터 작성
+	int i, j;
+	scanf("%d", &N);
+
+	for ( i = 1; i <=N; i++)
+	{
+		for ( j = 1; j <= N; j++)
+		{
+			scanf("%d", &map[i][j]);
+		}
+	}
+
+
+	return 0;
+}
+
+#endif
