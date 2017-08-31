@@ -1,4 +1,4 @@
-// ¹®Á¦ ¹øÈ£ : [TST]¹Ì·Î Å»Ãâ ·Îº¿
+ï»¿// ë¬¸ì œ ë²ˆí˜¸ : [TST]ë¯¸ë¡œ íƒˆì¶œ ë¡œë´‡
 #if 0
 #include <stdio.h>
 #define EMPTY 0
@@ -29,22 +29,22 @@ int BFS(int x, int y, int d)
 {
 	QData tmpQ;
 	int k, ni, nj;
-	// ÃÊ±âÈ­,  Ã¼Å© ¹è¿­¿¡ ¹æ¹®À» Çß´Ù´Â °ÍÀ» Ç¥½ÃÇÑ´Ù. WP¸¦ Áõ°¡½ÃÅ²´Ù.
-	// ¿À·ù¸¦ ÁÙÀÌ±â À§ÇØ¼­ ÇÑ ÁÙ¿¡ ´Ù Àû´Â´Ù.
+	// ì´ˆê¸°í™”,  ì²´í¬ ë°°ì—´ì— ë°©ë¬¸ì„ í–ˆë‹¤ëŠ” ê²ƒì„ í‘œì‹œí•œë‹¤. WPë¥¼ ì¦ê°€ì‹œí‚¨ë‹¤.
+	// ì˜¤ë¥˜ë¥¼ ì¤„ì´ê¸° ìœ„í•´ì„œ í•œ ì¤„ì— ë‹¤ ì ëŠ”ë‹¤.
 	Q[WP].x = x; Q[WP].y = y; Q[WP].dis = d; chk[x][y] = 1; WP++;
 
 	while (RP < WP)
 	{
-		// Å¥¿¡¼­ ÇÏ³ª ²¨³¿.
+		// íì—ì„œ í•˜ë‚˜ êº¼ëƒ„.
 		tmpQ.x = Q[RP].x; tmpQ.y = Q[RP].y; tmpQ.dis = Q[RP].dis; RP++;
 		if (tmpQ.x == E.x && tmpQ.y == E.y) {
 			return tmpQ.dis;
 		}
 
-		// x,y¸¦ Áß½ÉÀ¸·Î »óÇÏÁÂ¿ì¸¦ Ã¼Å©ÇØº»´Ù.
+		// x,yë¥¼ ì¤‘ì‹¬ìœ¼ë¡œ ìƒí•˜ì¢Œìš°ë¥¼ ì²´í¬í•´ë³¸ë‹¤.
 		for ( k = 0; k < DIRS; k++){
 			ni = tmpQ.x + di[k]; nj = tmpQ.y + dj[k];
-			// ¹è¿­ ¹ÛÀÎÁö Ã¼Å©ÇÑ´Ù.
+			// ë°°ì—´ ë°–ì¸ì§€ ì²´í¬í•œë‹¤.
 			if (ni < 1 || ni > X || nj < 1 || nj > Y) continue;
 			if (map[ni][nj] != 0 || chk[ni][nj] != 0) continue;
 			Q[WP].x = ni;  Q[WP].y = nj;  Q[WP].dis = tmpQ.dis + 1;  chk[ni][nj] = 1; WP++;
@@ -57,7 +57,7 @@ int BFS(int x, int y, int d)
 int main(void)
 {
 	//freopen("in.txt", "r", stdin);
-	// ¿©±â¼­ºÎÅÍ ÀÛ¼º
+	// ì—¬ê¸°ì„œë¶€í„° ì‘ì„±
 	int x, y,i,j,d = 0;
 	scanf("%d %d", &Y, &X);
 
@@ -85,8 +85,8 @@ int main(void)
 #endif
 
 
-// ¹®Á¦ ¹øÈ£ : [TST]Àå±â
-#if 1
+// ë¬¸ì œ ë²ˆí˜¸ : [TST]ì¥ê¸°
+#if 0
 #include <stdio.h>
 #define SIZE 110
 #define DIRS 8
@@ -129,7 +129,7 @@ int BFS(void)
 int main(void)
 {
 	freopen("in.txt", "r", stdin);
-	// ¿©±â¼­ºÎÅÍ ÀÛ¼º
+	// ì—¬ê¸°ì„œë¶€í„° ì‘ì„±
 	scanf("%d %d %d %d %d %d", &N, &M, &R, &C, &S, &K);
 
 	printf("%d", BFS());
