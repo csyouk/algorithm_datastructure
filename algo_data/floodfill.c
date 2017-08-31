@@ -304,7 +304,7 @@ int main(void)
 
 
 // 문제 번호 : [TST]암소 미인 대회(Bronze)
-#if 1
+#if 0
 #include <stdio.h>
 #define DIRS 4
 #define ABS(x) (((x) > 0) ? (x) : (-(x)))
