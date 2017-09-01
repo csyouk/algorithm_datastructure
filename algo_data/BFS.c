@@ -240,79 +240,9 @@ int main(void)
 
 //문제 번호 : [TST]너비우선탐색Ⅰ
 #if 1
-#include <stdio.h>
-#define SIZE 110
-typedef struct _node{
-	unsigned char id;
-	unsigned char visited;
-	int c_nodes[SIZE];
-	int nodes_cnt;
-} Node;
-
-Node nodes[SIZE];
-Node Q[SIZE];
-int N, E, RP, WP;
-void Init(void){
-
-	int i;
-	for ( i = 0; i < SIZE; i++)
-	{
-		nodes[i].id = i;
-		nodes[i].visited = 'X';
-	}
-}
-void BFS(int start_node_id){
-	
-	Node tmp;
-	int cnt=0, i;
-
-	Q[WP++] = nodes[start_node_id];
-	
-	while (RP < WP){
-		tmp = Q[RP++];
-		Q[RP++].visited = 'O'; 
-		if (tmp.visited == 'O') continue;
-		for (i = 0; i < tmp.nodes_cnt; i++){
-			Q[WP++] = nodes[tmp.c_nodes[i]];
-		}
-	}
-}
-
-void Print_All(){
-	
-	int i;
-	for (i = 0; i<WP; i++)
-	{
-		printf("%d ", Q[i].id);
-	}
-
-}
-
 int main(void)
 {
-	freopen("in.txt", "r", stdin);
-	int i, j=0,s, e;
-	Init();
-	// 여기서부터 작성
-	scanf("%d %d", &N, &E);
 
-	for (i = 1; i <=N; i++)
-	{
-		scanf("%d %d", &s, &e);
-		j = 0;
-		while (1)
-		{
-			if (nodes[s].c_nodes[j] == 0){
-				nodes[s].c_nodes[j] = e;
-				nodes[s].nodes_cnt++;
-				break;
-			}
-			j++;
-		}
-	}
-
-	BFS(1);
-	Print_All();
 	return 0;
 }
 #endif
