@@ -87,6 +87,7 @@
     <ClCompile Include="170829-recursion.c" />
     <ClCompile Include="170830.c" />
     <ClCompile Include="170831.c" />
+    <ClCompile Include="170901-exam.c" />
     <ClCompile Include="170901.c" />
     <ClCompile Include="backup.c" />
     <ClCompile Include="datastructure-lab-170821.c" />
