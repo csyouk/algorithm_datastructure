@@ -404,7 +404,7 @@ int main(void)
 }
 #endif
 
-#if 1
+#if 0
 #include <stdio.h>
 int N, M;
 int gcd(a, b){
