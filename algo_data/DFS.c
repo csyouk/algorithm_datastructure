@@ -1,9 +1,10 @@
-﻿// 문제 번호 : [TST]주사위 던지기2
+﻿#define _CRT_SECURE_NO_WARNINGS
+// 문제 번호 : [TST]주사위 던지기2
+#if 0
 /*
 자연수 N과 M을 입력 받아서 주사위를 N번 던져서 나온 눈의 합이 
 M이 나올 수 있는 모든 경우를 출력하는 프로그램을 작성하시오.
 */
-#if 0
 #include <stdio.h>
 int N, M;
 int sol[7 + 10];
@@ -38,9 +39,8 @@ int main(void)
 }
 #endif
 
-
-
 // 문제 번호 : [TST] 더하기
+#if 0
 /*
 덧셈을 못하는 철수를 공부시키기 위해 자연수들을 주고, 그 중에 몇 개의 수를 골라서 그 합이 K가 될 수 있는지 알아보라고 시켰다. 철수 어머니가 자연수들을 무작위로 선택해서 본인도 가능한지 아닌지 모르고 있다. 어머니가 채점을 할 수 있게 주어진 문제의 답을 찾아주자.
 입력
@@ -51,7 +51,6 @@ int main(void)
 출력
 T줄에 걸쳐 각 테스트 케이스 별로 주어진 자연수 중 몇 개의 합이 K가 되면 “YES”를 아니면 “NO”를 출력한다.
 */
-#if 0
 #include <stdio.h>
 int T, N, K, sol;
 int a[20 + 10];
@@ -236,7 +235,6 @@ int main(void)
 }
 #endif
 
-
 // 문제 번호 : [TST]건물세우기(BASIC)
 #if 0
 #include <stdio.h>
@@ -384,7 +382,8 @@ int main(void)
 }
 #endif
 
-
+// 만약 이 문제에서 0값대신, 0x7fffffff라는 값을 준다면 어떻게 됐을까?
+// 코드가 더 간단해 졌을 것이다.
 // 문제 번호 : [TST]해밀턴 순환회로
 #if 0
 #include <stdio.h>
@@ -445,6 +444,62 @@ int main(void)
 }
 #endif
 
+// 해밀턴 순환회로 변형
+#if 0
+#include <stdio.h>
+
+#define SIZE 22
+#define NO_PATH 0x7fffffff
+#define HOME 1
+#define CHECK 1
+#define UNCHECK 0
+
+
+int N, min=0x7fffffff;
+int map[SIZE][SIZE];
+int visited[SIZE];
+
+void DFS(int depth, int s, int sum){
+	int e;
+
+	if (min <= sum) return;
+	if (depth >= N){
+		if (min > sum + map[s][HOME]) min = sum + map[s][HOME];
+		return;
+	}
+
+	for (e = 1; e <= N; e++){
+		if (visited[e]) continue;
+
+		visited[e] = CHECK;
+		DFS(depth + 1, e, sum + map[s][e]);
+		visited[e] = UNCHECK;
+	}
+}
+
+int main(void)
+{
+	freopen("in.txt", "r", stdin);
+	int i, j;
+	scanf("%d", &N);
+
+	for ( i = 1; i <= N; i++)
+	{
+		for ( j = 1; j <= N; j++)
+		{
+			scanf("%d", &map[i][j]);
+			if (map[i][j] == 0) map[i][j] = NO_PATH;
+		}
+	}
+
+	visited[1] = 1;
+	DFS(1, 1, 0);
+	printf("%d", min);
+
+
+	return 0;
+}
+#endif
 
 // 문제 번호 : [TEST] 책꽂이
 // multi branch
@@ -574,6 +629,358 @@ int main(void){
 		printf("%d", min);
 
 	}
+
+	return 0;
+}
+#endif
+
+//문제 번호 : [TST] 벽장문의 이동
+// 뚫려 있는 문을 이동시키는 방법이 가장 손쉬운 풀이를 만들어낸다.
+// 문제를 변형시켜서 재단하지 말자.
+#if 0
+#include <stdio.h>
+#define SIZE 30
+#define OPEN 1
+#define CLOSE 0
+#define NO_PATH 0x7fffffff
+#define L -1
+#define R 1
+
+int D1, D2, N, Doors, Current;
+int doors[SIZE];
+
+int DFS(int depth, int door, int cnt, int dir){
+	if (door < 1 || door > N) return NO_PATH;
+	if (doors[door] == OPEN){ return cnt; }
+	return DFS(depth + 1, door + dir, cnt + 1, dir);
+}
+
+int main(void){
+	freopen("in.txt", "r", stdin);
+	int i, sum=0, left, right;
+	scanf("%d", &N);
+	scanf("%d %d", &D1, &D2);
+	scanf("%d", &Doors);
+
+	doors[D1] = OPEN;
+	doors[D2] = OPEN;
+
+	for ( i = 1; i <=Doors; i++){
+		scanf("%d", &Current);
+		left = DFS(1, Current, 0 , L);
+		right = DFS(1, Current, 0, R);
+
+		if (left == 0 || right == 0) continue;
+
+		doors[Current] = OPEN;
+		if (left < right){ doors[Current - left] = CLOSE; }
+		else { doors[Current + right] = CLOSE; }
+		sum += (left < right) ? left : right;
+		
+	}
+
+	printf("%d", sum);
+
+	return 0;
+}
+#endif
+
+
+// 문제 번호 : [TST] 벽장문의 이동
+#if 0
+#include <stdio.h>
+#define ABS(x) ((x) > 0 ? (x) : -(x))
+#define SIZE 30
+#define OPEN 1
+#define CLOSE 0
+
+int sol = 0x7fffffff;
+
+int  N, Doors, Target;
+int a[SIZE];
+
+void DFS(int n, int cnt, int l, int r){
+	if (sol <= cnt) return;
+	if (n > N){
+		if (sol > cnt) sol = cnt;
+		return;
+	}
+	DFS(n + 1, cnt + ABS(l - a[n]), a[n], r);
+	DFS(n + 1, cnt + ABS(r - a[n]), l, a[n]);
+}
+
+int main(void){
+	freopen("in.txt", "r", stdin);
+	int i, sum = 0, d1, d2, L, R;
+
+	scanf("%d", &N);
+	scanf("%d %d", &L, &R);
+	scanf("%d", &Doors);
+	for (i = 1; i <= Doors; i++) scanf("%d", &a[i]);
+
+	DFS(1, 0, L, R);
+
+	printf("%d", sol);
+
+	return 0;
+}
+#endif
+
+// 문제 번호 : [TST]N QUEEN(BASIC)
+// 내 코드
+#if 0
+#include <stdio.h>
+#define SIZE 20
+
+int chess[SIZE][SIZE];
+int N, sol;
+
+int check(int r, int c){
+	int i;
+
+	// 같은 행을 전부 검색
+	for (i = r-1; i >= 1; i--){
+		if (chess[i][c]) return 1;
+	}
+
+	// \ 방향 검색
+	for (i = 1; i <= N; i++)
+	{ 
+		if ((r - i) == 0 || (c - i) == 0) return 0;
+		if (chess[r - i][c - i]) return 1;
+	}
+
+	// / 방향 검색
+	for (i = 1; i <= N; i++)
+	{
+		if ((r - i) == 0 || (c + i) == N) return 0;
+		if (chess[r - i][c + i]) return 1;
+	}
+	return 0;
+}
+
+void DFS(int r, int c){
+	int i;
+	if (r > N){ sol++; return; }
+
+	if (check(r, c)) return;
+	for (i = 1; i <= N; i++){
+		chess[r][i] = 1;
+		DFS(r + 1, 1);
+		chess[r][i] = 0;
+	}
+}
+
+int main(void){
+	scanf("%d", &N);
+
+	DFS(1, 1);
+	printf("%d", sol);
+
+
+	return 0;
+}
+#endif
+
+// N Queen 문제
+#if 0
+#include <stdio.h>
+int N, chess[20][20], sol;
+
+int Check(int si, int sj){
+	int i, j;
+	for (i = si; i >= 1; i--) {
+		if (chess[i][sj]) return 0;
+	}
+
+	for (i = si, j = sj; i > 0 && j > 0; i--, j--){
+		if (chess[i][j]) return 0;
+	}
+
+	for (i = si, j = sj; i > 0 && j <= N; i--, j++)
+	{
+		if (chess[i][j]) return 0;
+	}
+	return 1;
+}
+
+void DFS(int n){
+	int i;
+	if (n > N) { sol++; return; }
+	for ( i = 1; i <= N; i++)
+	{
+		if (Check(n, i) == 0) continue;
+		chess[n][i] = 1;
+		DFS(n + 1);
+		chess[n][i] = 0;
+	}
+}
+
+int main(void){
+	scanf("%d", &N);
+	DFS(1);
+	printf("%d", sol);
+}
+#endif
+
+
+// 문제 번호 : [TST]돌다리 건너기(BASIC)
+#if 0
+#include <stdio.h>
+#include <string.h>
+#define DEVIL 0
+#define ANGEL 1
+
+char spell[15];
+char bridge[5][60];
+
+unsigned int sol, N, B, len_d, len_a;
+
+
+void DFS(int n, int s, int type){
+	int i;
+	if (n > N){ sol++; return; }
+
+	for (i = s; i <= B; i++)
+	{
+		//if (i < s ) continue;
+		if (spell[n] == bridge[type][i]){
+			DFS(n + 1, i+1, (type + 1) % 2);
+		}
+	}
+}
+
+int main(void){
+	freopen("in.txt", "r", stdin);
+	int d, a, i, start_d, start_a;
+	scanf("%s", &spell[1]);
+	scanf("%s", &bridge[0][1]);
+	scanf("%s", &bridge[1][1]);
+
+	B = strlen(&bridge[1][1]);
+	N = strlen(&spell[1]);
+
+	for (i = 1; i <=B; i++)
+	{
+		if (spell[1] == bridge[0][i]) break;
+	}
+	DFS(1, i, DEVIL);
+
+	for (i = 1; i <= B; i++)
+	{
+		if (spell[1] == bridge[1][i]) break;
+	}
+	DFS(1, i, ANGEL);
+
+	if (sol)printf("%d", sol);
+	else printf("0");
+	return 0;
+}
+#endif
+
+// 돌다리 건너기 sol 코드
+#if 0
+#include <stdio.h>
+char s[20], str[4][60];
+int M, N, sol;
+
+void DFS(int n, int cnt, int p){
+	// 최적화
+	if (cnt == M) sol++;
+	// 종료 조건
+	if (n >= N){
+		if (cnt == M) sol++;
+		return;
+	}
+
+	// 밟는 경우.
+	if (s[cnt] == str[p][n]) DFS(n + 1, cnt + 1, !p);
+
+	// 밟지 않는 경우.
+	DFS(n + 1, cnt + 1, p);
+}
+
+int main(void){
+	
+	scanf("%s %s %s", &s[0], &str[0][0], &str[1][0]);
+
+	for (M = 0; s[M]; M++);
+	for (N = 0; str[0][N]; i++);
+
+	DFS(0, 0, 0);
+	DFS(0, 0, 1);
+
+	printf("%d", sol);
+
+	return 0;
+}
+#endif
+
+// 문제 번호 : [TST]그래프 칠하기
+#if 0
+#include <stdio.h>
+#define SIZE 22
+int N, M, flag;
+int map[SIZE][SIZE];
+
+int node[SIZE];
+int color[SIZE];
+
+int Check(int n, int c){
+	int n_i;
+	if (flag) return;
+	for (n_i = 1; n_i <= N; n_i++){
+		if (map[n_i][n] == 0) continue;
+		if (color[n_i] == c) return 1;
+	}
+	return 0;
+}
+
+void DFS(int n ){
+	int c;
+	if (flag) return;
+	if (n > N){
+		flag = !flag;
+		return;
+	}
+
+	for (c = 1; c <= M; c++){
+		if (Check(n, c)) continue;
+		color[n] = c;
+		DFS(n + 1);
+		if(flag == 0) color[n] = 0;
+	}
+}
+
+int main(void){
+
+	freopen("in.txt", "r", stdin);
+
+	int i, j;
+	scanf("%d %d", &N, &M);
+
+	for (i = 1; i <= N; i++){
+		for ( j = 1; j <= i; j++)
+		{
+			scanf("%d", &map[i][j]);
+			map[j][i] = map[i][j];
+		}
+	}
+
+	DFS(1);
+	if (flag){ for (i = 1; i <= N; i++) printf("%d ", color[i]); }
+	else printf("-1");
+	
+	return 0;
+}
+#endif
+
+
+// 다시 도전하는 N Queen
+#if 1
+int main(void){
+
+
 
 	return 0;
 }
