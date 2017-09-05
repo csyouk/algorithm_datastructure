@@ -1147,7 +1147,20 @@ void DFS(int n){
 	}
 }
 
-
+void sort(int *p, int n){
+	int i, j, tmp;
+	for (i = 1; i <= n-1; i++)
+	{
+		for (j = i+1; j <= n; j++)
+		{
+			if (p[i] < p[j]) { 
+				tmp = p[i]; 
+				p[i] = p[j]; 
+				p[j] = tmp; 
+			}
+		}
+	}
+}
 int main(void){
 
 	freopen("in.txt", "r", stdin);
@@ -1157,8 +1170,7 @@ int main(void){
 
 	for (i = 1; i <= M; i++) scanf("%d %d", &cases[i].s, &cases[i].e);
 	for (i = 1; i <= N; i++) scanf("%d ", &bonus[i]);
-
-	DFS(1);
+	sort(bonus, N);
 
 	for (i = 1; i <= N; i++) printf("%d ", result[i]);
 
