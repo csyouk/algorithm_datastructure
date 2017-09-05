@@ -687,7 +687,7 @@ int main(void){
 
 
 // 문제 번호 : [TST] 벽장문의 이동
-#if 0
+#if 1
 #include <stdio.h>
 #define ABS(x) ((x) > 0 ? (x) : -(x))
 #define SIZE 30
