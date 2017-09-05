@@ -98,6 +98,7 @@
     <ClCompile Include="remind.c" />
     <ClCompile Include="remind_algo.c" />
     <ClCompile Include="sol-170828.c" />
+    <ClCompile Include="solution-170905.c" />
     <ClCompile Include="test_driven_development.c" />
     <ClCompile Include="Tree-Structure.c" />
     <ClCompile Include="숫자근.c" />
