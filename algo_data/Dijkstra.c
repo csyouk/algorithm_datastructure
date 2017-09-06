@@ -155,6 +155,7 @@ int main(void){
 #include <stdio.h>
 #define SIZE 110
 #define INF 0x7fffffff
+#define START 0
 
 int map[SIZE][SIZE];
 int visited[SIZE];
@@ -164,10 +165,9 @@ int path[SIZE];
 int N, M;
 void Find_Path(M){
 	int prev = path[M];
-	if (prev == 0) return;
+	if (M == START) return;
 	Find_Path(prev);
-	printf("%d ", prev);
-
+	printf("%d ", M);
 }
 
 int Dijkstra(int start){
@@ -204,7 +204,7 @@ int Dijkstra(int start){
 
 int main(void){
 
-	//freopen("in.txt", "r", stdin);
+	freopen("in.txt", "r", stdin);
 
 	int i, j;
 	scanf("%d %d", &N, &M);
@@ -222,7 +222,6 @@ int main(void){
 	printf("%d\n", Dijkstra(1));
 
 	Find_Path(M);
-	printf("%d", M);
 	return 0;
 }
 #endif
