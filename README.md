@@ -22,8 +22,8 @@
 - [DFS(Depth Frist Search, 깊이 우선 탐색)]()
   - [Flood Fill](https://github.com/csyouk/algorithm_datastructure/blob/master/Techinic/FloodFill.md)
 - [BFS(Breadth Frist Search, 너비 우선 탐색)](https://github.com/csyouk/algorithm_datastructure/blob/master/Techinic/BFS.md)
-- [Dijkstra Algorithm(최단 거리 알고리즘)]()
-
+- [Dijkstra Algorithm(최단 거리 알고리즘)](https://github.com/csyouk/algorithm_datastructure/blob/master/Techinic/Dijkstra.md)
+- [Prim(최소/최대 신장트리)](https://github.com/csyouk/algorithm_datastructure/blob/master/Techinic/Prim.md)
 
 # Data-Structure
 

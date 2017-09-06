@@ -1174,3 +1174,13 @@ int main(void){
 	return 0;
 }
 #endif
+
+
+// N-Queen 최적화(솔루션)
+#if 0
+int main(void){
+
+
+	return 0;
+}
+#endif

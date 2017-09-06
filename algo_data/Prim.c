@@ -1,3 +1,4 @@
+#define _CRT_SECURE_NO_WARNINGS
 // 문제 번호 : [TST]최소 비용 트리
 #if 0
 #include <stdio.h>
@@ -60,7 +61,7 @@ int main(void){
 
 
 // 문제 번호 : [TST]최소 비용 트리
-#if 01
+#if 0
 #include <stdio.h>
 #define SIZE 110
 #define NO_PATH 0
@@ -118,6 +119,167 @@ int main(void){
 
 
 	printf("%d", cost[N]);
+
+	return 0;
+}
+#endif
+
+// 문제 번호 : [TST]최소 비용 트리
+#if 0
+#include <stdio.h>
+#define SIZE 100+10
+#define VISIT 1
+#define NO_PATH 0
+#define INF 0x7fffffff
+
+int map[SIZE][SIZE];
+int cost[SIZE], visited[SIZE];
+int N;
+
+void Print_Cost(void){
+	int i;
+	for (i = 1; i <= N; i++) printf(" %d", cost[i]);
+}
+
+int Prim(int start, int total_node){
+	int rep, node, current_node, min, sum=0;
+	visited[start] = VISIT; cost[start] = 0;
+	current_node = start;
+
+	for (rep = 1; rep <= total_node - 1; rep++)
+	{
+		for (node = 1; node <= total_node; node++)
+		{
+			if (visited[node]) continue;
+			if (map[current_node][node] == NO_PATH) continue;
+			if (cost[node] > map[current_node][node]) {
+				cost[node] = map[current_node][node];
+			}
+		}
+
+		min = INF;
+		for ( node = 1; node <= total_node; node++)
+		{
+			if (visited[node]) continue;
+			if (cost[node] == INF) continue;
+			if (min > cost[node]){
+				min = cost[node];
+				current_node = node;
+			}
+		}
+		visited[current_node] = VISIT;
+	}
+	
+
+	for (node = 1; node <=N; node++)
+	{
+		sum += cost[node];
+	}
+	return sum;
+}
+void Init(void){
+	int i, j;
+	// 연결 상태 저장.
+	for (i = 1; i <= N; i++)
+	{
+		for ( j = 1; j <=i; j++)
+		{
+			scanf("%d", &map[i][j]);
+			map[j][i] = map[i][j];
+		}
+		cost[i] = INF;
+	}
+}
+int main(void){
+	//freopen("in.txt", "r", stdin);
+	int sel = 1;
+	scanf("%d", &N);
+	Init();
+
+	printf("%d", Prim(sel, N));
+
+	return 0;
+}
+#endif
+
+
+// 문제 번호 P: [TST]최대신장트리
+#if 0
+#include <stdio.h>
+#define NODE_SIZE 1000+10
+#define INF 0x80000000
+#define VISITED 1
+#define N_VISTED 0
+#define NO_PATH 0
+#define ULL unsigned long long 
+
+int N, M;
+int map[NODE_SIZE][NODE_SIZE];
+int visited[NODE_SIZE];
+int cost[NODE_SIZE];
+int edges[NODE_SIZE];
+
+ULL Prim(int start, int total_node){
+	int cur, rep, node, max;
+	ULL sum = 0;
+	cur = start; visited[cur] = VISITED; cost[cur] = 0;
+
+	for ( rep = 1; rep <= total_node - 1; rep++)
+	{
+		for ( node = 1; node <= total_node; node++)
+		{
+			if (visited[node]) continue;
+			if (map[cur][node] == NO_PATH) continue;
+			if (cost[node] < map[cur][node]){
+				cost[node] = map[cur][node];
+			}
+		}
+
+		max = INF;
+		for ( node = 1; node <= total_node; node++)
+		{
+			if (visited[node] || cost[node] == INF) continue;
+			if (max < cost[node]){
+				max = cost[node];
+				cur = node;
+			}
+		}
+		visited[cur] = VISITED;
+	}
+
+	for ( node = 1; node <= total_node; node++)
+	{
+		if (cost[node] != INF) sum += cost[node];
+	}
+	return sum;
+}
+
+void Init(int nodes){
+	int i;
+	for (i = 1; i <= nodes; i++) {
+		cost[i] = INF;
+		visited[i] = N_VISTED;
+	}
+}
+
+int main(void){
+	freopen("in.txt", "r", stdin);
+	int i, s, e, w, result,  max = INF;
+	scanf("%d %d", &N, &M);
+
+	for (i = 1; i <= M; i++)
+	{
+		scanf("%d %d %d", &s, &e, &w);
+		if (map[s][e] < w) map[s][e] = map[e][s] = w;
+	}
+
+	for (i = 1; i <= N; i++)
+	{
+		Init(N);
+		result = Prim(i, N);
+		if (max < result) max = result;
+	}
+	printf("%llu", max);
 
 	return 0;
 }

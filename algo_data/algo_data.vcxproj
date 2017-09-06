@@ -93,8 +93,10 @@
     <ClCompile Include="datastructure-lab-170821.c" />
     <ClCompile Include="datastructure-sol-170821.c" />
     <ClCompile Include="BFS.c" />
+    <ClCompile Include="Dijkstra.c" />
     <ClCompile Include="floodfill.c" />
     <ClCompile Include="DFS.c" />
+    <ClCompile Include="forloop.c" />
     <ClCompile Include="Prim.c" />
     <ClCompile Include="remind.c" />
     <ClCompile Include="remind_algo.c" />
