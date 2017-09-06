@@ -687,7 +687,7 @@ int main(void){
 
 
 // 문제 번호 : [TST] 벽장문의 이동
-#if 1
+#if 0
 #include <stdio.h>
 #define ABS(x) ((x) > 0 ? (x) : -(x))
 #define SIZE 30
@@ -1100,7 +1100,7 @@ int main(void) {
 
 
 // 문제 번호 : [TST]보너스
-#if 1
+#if 0
 #include <stdio.h>
 #define SIZE 20
 #define CONN_SIZE 110
@@ -1140,11 +1140,7 @@ void DFS(int n){
 	//	people[i] = DONE;
 	//	DFS(n + 1);
 	//}
-	for (i = 1; i <= M; i++)
-	{
 
-		DFS
-	}
 }
 
 void sort(int *p, int n){

@@ -95,6 +95,7 @@
     <ClCompile Include="BFS.c" />
     <ClCompile Include="floodfill.c" />
     <ClCompile Include="DFS.c" />
+    <ClCompile Include="Prim.c" />
     <ClCompile Include="remind.c" />
     <ClCompile Include="remind_algo.c" />
     <ClCompile Include="sol-170828.c" />

@@ -4,7 +4,7 @@
 
 // 미닫이 문
 // N은 몇 번째로 정해진/요청받은/약속된 문을 열것이냐를 의미함.
-#if 01
+#if 0
 #pragma warning (disable:4996)
 #include <stdio.h>
 #define ABS(a) (((a)>0)?(a):(-(a)))
@@ -102,7 +102,7 @@ int main(void) {
 // N QUEEN 이해용 오답 버전 :  정답이 N! 개 만큼 곱해져서 나옴.
 // N은 기본적으로 몇 번째로 퀸을 놓을 것이냐를 의미함.
 // N QUEEN.
-#if 01
+#if 0
 #pragma warning (disable:4996)
 #include <stdio.h>
 #define ABS(a) ((a>0)?(a):(-(a)))
