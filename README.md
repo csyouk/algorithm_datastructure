@@ -19,8 +19,8 @@
 ## Graph based algorithms
 - [Terms](https://github.com/csyouk/algorithm_datastructure/blob/master/Graph-Base/Terms.md)
 - **그래프 기반 비선형 자료구조에서 사용하는 알고리즘**
-- [DFS(Depth Frist Search, 깊이 우선 탐색)]()
-  - [Flood Fill](https://github.com/csyouk/algorithm_datastructure/blob/master/Techinic/FloodFill.md)
+- [Flood Fill](https://github.com/csyouk/algorithm_datastructure/blob/master/Techinic/FloodFill.md)
+- [DFS(Depth Frist Search, 깊이 우선 탐색)](https://github.com/csyouk/algorithm_datastructure/blob/master/Techinic/DFS.md)
 - [BFS(Breadth Frist Search, 너비 우선 탐색)](https://github.com/csyouk/algorithm_datastructure/blob/master/Techinic/BFS.md)
 - [Dijkstra Algorithm(최단 거리 알고리즘)](https://github.com/csyouk/algorithm_datastructure/blob/master/Techinic/Dijkstra.md)
 - [Prim(최소/최대 신장트리)](https://github.com/csyouk/algorithm_datastructure/blob/master/Techinic/Prim.md)
