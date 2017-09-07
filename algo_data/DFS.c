@@ -249,7 +249,7 @@ int final_order[SIZE];
 
 void DFS(int depth, int sum){
 	int i;
-	if (sum => min) return;
+	if (sum >= min) return;
 	if (depth > N){
 		if (sum < min) {
 			min = sum;
@@ -626,7 +626,7 @@ int main(void){
 
 
 		DFS(1, 0);
-		printf("%d", min);
+		printf("%d\n", min);
 
 	}
 
@@ -1292,7 +1292,7 @@ int main(void){
 
 
 // 문제 번호 W: [LAB]계단 오르기(BASIC)
-#if 1
+#if 0
 #include <stdio.h>
 
 int s[50 + 10];
