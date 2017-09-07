@@ -1193,32 +1193,32 @@ int main(void){
 #define N_FIND 0
 
 int Table[30 + 10][1 + 7 + 10];
-int Company[7 + 10]; 
+int Company[7 + 10];
 int M, C, max=0x80000000;
 
 int DFS(int company, int money, int sum){
-	int i;
+	int i, found = 0;
 
 	if (company > C ){
-		if (max < sum) { 
-			max = sum; 
-			return FIND; 
+		if (max < sum) {
+			max = sum;
+			return FIND;
 		}
 		return N_FIND;
 	}
 
 	for ( i = 0; i <= money; i++)
 	{
-		if (DFS(company + 1, money - i, sum + Table[i][company])) {
+		if(DFS(company + 1, money - i, sum + Table[i][company])){
 			Company[company] = i;
+			found = 1;
 		}
 	}
-	return N_FIND;
+	return found;
 }
 
 int main(void){
 
-	freopen("in.txt", "r", stdin);
 
 	int i, j;
 	scanf("%d %d", &M, &C);
@@ -1234,7 +1234,103 @@ int main(void){
 	DFS(1, M, 0);
 
 	printf("%d\n", max);
-	
+
 	for (i = 1; i <= C; i++) printf("%d ", Company[i]);
+}
+
+#endif
+
+// 문제 번호 U: [TST]양팔저울(BASIC)
+#if 0
+#include <stdio.h>
+
+int N, M, found;
+int W[12 + 10];
+
+void DFS(int n, int sum, int t){
+	if (found) return;
+	if (sum == t) { 
+		found = 1; 
+		return; 
+	}
+	if (n > N){
+		if (sum < 0)return;
+		if (sum == t) { found = 1; }
+		return;
+	}
+	
+	DFS(n + 1, sum + W[n], t);
+	DFS(n + 1, sum, t);
+	DFS(n + 1, sum - W[n], t);
+}
+
+int main(void){
+	freopen("in.txt", "r", stdin);
+	int i,j, s;
+	scanf("%d", &N);
+	for (i = 1; i <= N; i++)
+	{
+		scanf("%d", &W[i]);
+	}
+
+	scanf("%d", &M);
+	for (i = 1; i <= M; i++)
+	{
+		scanf("%d", &s);
+		found = 0;
+		DFS(1, 0, s);
+
+		printf("%c ", (found) ? 'Y' : 'N');
+	}
+
+
+
+
+	return 0;
+}
+#endif
+
+
+// 문제 번호 W: [LAB]계단 오르기(BASIC)
+#if 1
+#include <stdio.h>
+
+int s[50 + 10];
+int N, max = 0x80000000;
+
+// 경계조건이 문제였다.
+// N번째 있는 계단을 무조건 밟는 다는 가정하에 짠다.
+// N -> N-1 -> N-2 ...
+void DFS(int n, int step, int sum){
+	if (n < 1){
+		if (max < sum) max = sum;
+		return;
+	}
+	if (step < 2) DFS(n - 1, step + 1, sum + s[n]);
+	if (step > 0) DFS(n - 1, 0, sum);
+}
+
+int main(void){
+	freopen("in.txt", "r", stdin);
+	int i;
+	scanf("%d", &N);
+	for ( i = 1; i <= N; i++)
+	{
+		scanf("%d", &s[i]);
+	}
+	//DFS(N-1, 1, s[N]);
+	DFS(N, 0, 0);
+
+	printf("%d", max);
+
+	return 0;
+}	
+#endif
+
+// 문제 번호 L: [TST]보너스
+#if 0
+int main(void){
+
+	return 0;
 }
 #endif

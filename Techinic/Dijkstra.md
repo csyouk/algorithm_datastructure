@@ -145,6 +145,7 @@ int Dijkstra(int start){
 			if (cost[node] > cost[cur] + map[cur][node]){
 				cost[node] = cost[cur] + map[cur][node];
 
+        // 노드가 몇번 노드로 부터 왔는지 기록한다.
 				path[node] = cur;
 			}
 		}

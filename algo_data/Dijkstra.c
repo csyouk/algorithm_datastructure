@@ -151,7 +151,7 @@ int main(void){
 
 
 //문제 번호 T : [TST]지하철
-#if 01
+#if 0
 #include <stdio.h>
 #define SIZE 110
 #define INF 0x7fffffff
@@ -167,7 +167,7 @@ void Find_Path(M){
 	int prev = path[M];
 	if (M == START) return;
 	Find_Path(prev);
-	printf("%d ", M);
+	printf("%d", M);
 }
 
 int Dijkstra(int start){
