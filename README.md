@@ -48,6 +48,6 @@
   - Open Addressing
   - Chaining Method
 
-  
+
 # Problems
-- [Algorithms](./Problems/Problems.md)
+- [Problems](./Problems/Problems.md)
