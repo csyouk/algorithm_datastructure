@@ -47,3 +47,7 @@
 - [Hash Table](https://github.com/csyouk/algorithm_datastructure/blob/master/Data-Structure/Non-Linear/HashTable.md)
   - Open Addressing
   - Chaining Method
+
+  
+# Problems
+- [Algorithms](./Problems/Problems.md)
