@@ -233,7 +233,7 @@ int main(void)
 }
 #endif
 
-#if 01
+#if 0
 #include <stdio.h>
 typedef struct _rod{
 	int r, h;
@@ -255,7 +255,7 @@ int main(void){
 		}
 	}
 
-	printf("asdf");
+ 
 
 
 	return 0;
