@@ -1,5 +1,5 @@
-#define _CRT_SECURE_NO_WARNINGS
-// ¹®Á¦ ¹øÈ£ : [TST]ÃÖ¼Ò ºñ¿ë Æ®¸®
+ï»¿#define _CRT_SECURE_NO_WARNINGS
+// ë¬¸ì œ ë²ˆí˜¸ : [TST]ìµœì†Œ ë¹„ìš© íŠ¸ë¦¬
 #if 0
 #include <stdio.h>
 #define SIZE 110
@@ -60,7 +60,7 @@ int main(void){
 #endif
 
 
-// ¹®Á¦ ¹øÈ£ : [TST]ÃÖ¼Ò ºñ¿ë Æ®¸®
+// ë¬¸ì œ ë²ˆí˜¸ : [TST]ìµœì†Œ ë¹„ìš© íŠ¸ë¦¬
 #if 0
 #include <stdio.h>
 #define SIZE 110
@@ -69,11 +69,11 @@ int main(void){
 
 int map[SIZE][SIZE];
 int visited[SIZE];
-int cost[SIZE]; // 1¹ø °æ·Î¿¡¼­ 2,3,... N¹ø±îÁö °¡´Â °æ·Î¸¦ °è»ê.
-int root[SIZE]; // °æ·Î¸¦ È®ÀÎÇÏ°í ½Í´Ù¸é, °æ·Î ¹è¿­À» ¸¸µç´Ù.
+int cost[SIZE]; // 1ë²ˆ ê²½ë¡œì—ì„œ 2,3,... Në²ˆê¹Œì§€ ê°€ëŠ” ê²½ë¡œë¥¼ ê³„ì‚°.
+int root[SIZE]; // ê²½ë¡œë¥¼ í™•ì¸í•˜ê³  ì‹¶ë‹¤ë©´, ê²½ë¡œ ë°°ì—´ì„ ë§Œë“ ë‹¤.
 int N;
 
-int costN[SIZE][SIZE]; // select¸¦ k·Î ½ÃÀÛ. k¹ø °æ·Î¿¡¼­ ³ª¸ÓÁö·Î °¡´Â °æ·Î °è»ê.
+int costN[SIZE][SIZE]; // selectë¥¼ kë¡œ ì‹œì‘. kë²ˆ ê²½ë¡œì—ì„œ ë‚˜ë¨¸ì§€ë¡œ ê°€ëŠ” ê²½ë¡œ ê³„ì‚°.
 int costN[SIZE][SIZE];
 int visitedN[SIZE][SIZE];
 
@@ -93,14 +93,14 @@ int main(void){
 
 	for ( j = 1; j < N; j++){
 		for ( i = 1; i <= N; i++){
-			// ÀÌ¹Ì °¬°Å³ª, °æ·Î¿¡ ±æÀÌ ¾øÀ» °æ¿ì´Â Á¦¿ÜÇÑ´Ù.
+			// ì´ë¯¸ ê°”ê±°ë‚˜, ê²½ë¡œì— ê¸¸ì´ ì—†ì„ ê²½ìš°ëŠ” ì œì™¸í•œë‹¤.
 			if (visited[i] || map[sel][i] == NO_PATH) continue;
 
-			// ±âÁ¸ÀÇ ºñ¿ëº¸´Ù, °æÀ¯ÇØ¼­ °¡´Â ºñ¿ëÀÌ Àú·ÅÇÏ´Ù¸é ±× °ªÀ» º¯°æÇÑ´Ù.
+			// ê¸°ì¡´ì˜ ë¹„ìš©ë³´ë‹¤, ê²½ìœ í•´ì„œ ê°€ëŠ” ë¹„ìš©ì´ ì €ë ´í•˜ë‹¤ë©´ ê·¸ ê°’ì„ ë³€ê²½í•œë‹¤.
 			if (cost[i] > cost[sel] + map[sel][i]) { 
-				// °æ·Î°¡ ¹Ù²î´Â ½ÃÁ¡Àº ÀÌ°÷ÀÌ´Ù.
+				// ê²½ë¡œê°€ ë°”ë€ŒëŠ” ì‹œì ì€ ì´ê³³ì´ë‹¤.
 				cost[i] = cost[sel] + map[sel][i]; 
-				root[i] = sel; // °æ·Î¸¦ ÀÌ ½ÃÁ¡¿¡¼­ È®ÀÎÇÒ ¼ö ÀÖ´Ù.
+				root[i] = sel; // ê²½ë¡œë¥¼ ì´ ì‹œì ì—ì„œ í™•ì¸í•  ìˆ˜ ìˆë‹¤.
 			}
 			//else{ 
 			//	cost[i] = map[sel][i]; 
@@ -110,7 +110,7 @@ int main(void){
 		min = INF;
 		for (i = 1; i <= N; i++)
 		{
-			// ÀÌ¹Ì ¹æ¹®ÇÑ °÷Àº pass
+			// ì´ë¯¸ ë°©ë¬¸í•œ ê³³ì€ pass
 			if (visited[i]) continue;
 			if (min > cost[i]) { min = cost[i]; sel = i; }
 		}
@@ -124,7 +124,7 @@ int main(void){
 }
 #endif
 
-// ¹®Á¦ ¹øÈ£ : [TST]ÃÖ¼Ò ºñ¿ë Æ®¸®
+// ë¬¸ì œ ë²ˆí˜¸ : [TST]ìµœì†Œ ë¹„ìš© íŠ¸ë¦¬
 #if 0
 #include <stdio.h>
 #define SIZE 100+10
@@ -179,7 +179,7 @@ int Prim(int start, int total_node){
 }
 void Init(void){
 	int i, j;
-	// ¿¬°á »óÅÂ ÀúÀå.
+	// ì—°ê²° ìƒíƒœ ì €ì¥.
 	for (i = 1; i <= N; i++)
 	{
 		for ( j = 1; j <=i; j++)
@@ -203,7 +203,7 @@ int main(void){
 #endif
 
 
-// ¹®Á¦ ¹øÈ£ P: [TST]ÃÖ´ë½ÅÀåÆ®¸®
+// ë¬¸ì œ ë²ˆí˜¸ P: [TST]ìµœëŒ€ì‹ ì¥íŠ¸ë¦¬
 #if 0
 #include <stdio.h>
 #define NODE_SIZE 1000+10

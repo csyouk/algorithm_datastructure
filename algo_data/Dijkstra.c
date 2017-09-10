@@ -1,6 +1,6 @@
-#define _CRT_SECURE_NO_WARNINGS
+ï»¿#define _CRT_SECURE_NO_WARNINGS
 
-// ¹®Á¦ ¹øÈ£ N: [TST]ÃÖ´Ü °æ·Î Ã£±â
+// ë¬¸ì œ ë²ˆí˜¸ N: [TST]ìµœë‹¨ ê²½ë¡œ ì°¾ê¸°
 #if 0
 #include <stdio.h>
 #define E_SIZE 10 + 10
@@ -58,7 +58,7 @@ int main(void){
 #endif
 
 
-// ¹®Á¦ ¹øÈ£ Q: [TST]ÆäÀÌÁö ÀüÈ¯
+// ë¬¸ì œ ë²ˆí˜¸ Q: [TST]í˜ì´ì§€ ì „í™˜
 #if 0
 #include <stdio.h>
 #define NODE_SIZE 500 + 10
@@ -150,7 +150,7 @@ int main(void){
 #endif
 
 
-//¹®Á¦ ¹øÈ£ T : [TST]ÁöÇÏÃ¶
+//ë¬¸ì œ ë²ˆí˜¸ T : [TST]ì§€í•˜ì² 
 #if 0
 #include <stdio.h>
 #define SIZE 110
@@ -228,7 +228,7 @@ int main(void){
 
 
 
-// ¹®Á¦ ¹øÈ£ G: [TST]°æ·Î Ã£±â
+// ë¬¸ì œ ë²ˆí˜¸ G: [TST]ê²½ë¡œ ì°¾ê¸°
 #if 0
 #include <stdio.h>
 #define INF 0x7fffffff
@@ -263,7 +263,7 @@ void Dijkstra(int start){
 
 	for (rep = 1; rep <= N - 1; rep++)
 	{
-		// ÃÖ´Ü °æ·Î ¾÷µ¥ÀÌÆ®. 
+		// ìµœë‹¨ ê²½ë¡œ ì—…ë°ì´íŠ¸. 
 		for (node = 1; node <= N; node++)
 		{
 			if (visited[node] || map[cur][node] == 0) continue;
@@ -274,7 +274,7 @@ void Dijkstra(int start){
 			}
 		}
 
-		// ÃÖ¼Ò °ª Ã£±â.
+		// ìµœì†Œ ê°’ ì°¾ê¸°.
 		min = INF;
 		for (node = 1; node <= N; node++){
 			if (visited[node] || cost[node] == INF) continue;
