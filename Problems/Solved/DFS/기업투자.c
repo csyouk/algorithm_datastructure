@@ -25,7 +25,7 @@ int DFS(int company, int money, int sum){
     }
     return N_FIND;
   }
-  
+
   for ( i = 0; i <= money; i++)
   {
     if(DFS(company + 1, money - i, sum + Table[i][company])){
@@ -37,12 +37,12 @@ int DFS(int company, int money, int sum){
 }
 
 int main(void){
-  
+
   freopen("/Users/youk/workspace/scsa/codeground/codeground/in.txt", "r", stdin);
-  
+
   int i, j;
   scanf("%d %d", &M, &C);
-  
+
   for ( i = 1; i <= M; i++)
   {
     for ( j = 0; j <=C; j++)
@@ -50,11 +50,67 @@ int main(void){
       scanf("%d", &Table[i][j]);
     }
   }
-  
+
   DFS(1, M, 0);
-  
+
   printf("%d\n", max);
-  
+
   for (i = 1; i <= C; i++) printf("%d ", Company[i]);
 }
+#endif
+
+
+
+// 문제 번호 R: [TST]기업투자(BASIC)
+#if 0
+#include <stdio.h>
+#define FIND 1
+#define N_FIND 0
+
+int Table[30 + 10][1 + 7 + 10];
+int Company[7 + 10];
+int M, C, max=0x80000000;
+
+int DFS(int company, int money, int sum){
+	int i, found = 0;
+
+	if (company > C ){
+		if (max < sum) {
+			max = sum;
+			return FIND;
+		}
+		return N_FIND;
+	}
+
+	for ( i = 0; i <= money; i++)
+	{
+		if(DFS(company + 1, money - i, sum + Table[i][company])){
+			Company[company] = i;
+			found = 1;
+		}
+	}
+	return found;
+}
+
+int main(void){
+
+
+	int i, j;
+	scanf("%d %d", &M, &C);
+
+	for ( i = 1; i <= M; i++)
+	{
+		for ( j = 0; j <=C; j++)
+		{
+			scanf("%d", &Table[i][j]);
+		}
+	}
+
+	DFS(1, M, 0);
+
+	printf("%d\n", max);
+
+	for (i = 1; i <= C; i++) printf("%d ", Company[i]);
+}
+
 #endif

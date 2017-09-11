@@ -7,7 +7,7 @@
 //
 // BFS 문제이다.
 
-#if 1
+#if 0
 #include <stdio.h>
 #define DIRS 4
 typedef struct _area{
@@ -23,7 +23,7 @@ int dis[60][60];
 int di[DIRS] = { 0,-1, 0, 1};
 int dj[DIRS] = {-1, 0, 1, 0};
 
-void Fill(int i, int j, int d){
+void BFS(int i, int j, int d){
   int ni, nj, k;
   Area tmp;
 
@@ -80,7 +80,7 @@ int main(void){
     for ( j = 1; j <= C; j++)
     {
       if (chk[i][j] == 0) continue;
-      Fill(i, j, 1);
+      BFS(i, j, 1);
       Reset();
     }
   }
