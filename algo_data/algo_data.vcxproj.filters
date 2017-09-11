@@ -25,6 +25,9 @@
     <Filter Include="소스 파일\test-work">
       <UniqueIdentifier>{641d105d-f1fc-446c-8e83-57493b69f548}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\c언어심화">
+      <UniqueIdentifier>{439c35db-ecc9-46c3-a7a1-9dbfa8f16542}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="170814.c">
@@ -119,6 +122,9 @@
     </ClCompile>
     <ClCompile Include="170907-sol.c">
       <Filter>소스 파일\algorithm</Filter>
+    </ClCompile>
+    <ClCompile Include="c언어심화.c">
+      <Filter>소스 파일\c언어심화</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
