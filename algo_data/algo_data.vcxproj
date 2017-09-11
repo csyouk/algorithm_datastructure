@@ -107,6 +107,7 @@
     <ClCompile Include="solution-170905.c" />
     <ClCompile Include="test_driven_development.c" />
     <ClCompile Include="Tree-Structure.c" />
+    <ClCompile Include="workshop-1.c" />
     <ClCompile Include="숫자근.c" />
   </ItemGroup>
   <ItemGroup>
