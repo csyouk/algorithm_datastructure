@@ -194,3 +194,44 @@ int main(void)
 	return 0;
 }
 #endif
+
+
+
+// [TST] 더하기
+#if 0
+#include <stdio.h>
+int T, N, K;
+int a[30];
+int chk[30];
+
+int Determine(int n, int sum){
+
+	if (sum > K) return 0;
+	if (n > N){
+		if (sum == K) return 1;
+		return 0;
+	}
+
+	if (Determine(n + 1, sum + a[n])) return 1;
+	if (Determine(n + 1, sum)) return 1;
+	return 0;
+}
+
+int main(void)
+{
+	freopen("in.txt", "r", stdin);
+	int i, j;
+	// 여기서부터 작성
+	scanf("%d", &T);
+	for ( i = 1; i <= T; i++)
+	{
+		scanf("%d %d", &N, &K);
+		for ( j = 1; j <= N; j++) scanf("%d", &a[j]);
+
+		if (Determine(1, 0)) printf("YES\n");
+		else printf("NO\n");
+	}
+
+	return 0;
+}
+#endif

@@ -218,3 +218,37 @@ int main(void) {
 	return 0;
 }
 #endif
+
+
+
+// 문제 번호 K: [TST]N QUEEN
+#if 0
+#include <stdio.h>
+#define SIZE 23
+
+int N, cnt;
+int chkr[SIZE], chkdl[2 * SIZE], chkdr[2 * SIZE];
+
+void DFS(int n){
+	int i;
+	if (n > N) { cnt++; return; }
+	for (i = 1; i <= N; i++)
+	{
+		if (chkr[i] || chkdl[i - n + N] || chkdr[i+n]) continue;
+		chkr[i] = chkdl[i - n + N] = chkdr[i + n] = 1;
+		DFS(n + 1);
+		chkr[i] = chkdl[i - n + N] = chkdr[i + n] = 0;
+	}
+}
+
+int main(void){
+
+	scanf("%d", &N);
+
+	DFS(1);
+
+	printf("%d", cnt);
+
+	return 0;
+}
+#endif
