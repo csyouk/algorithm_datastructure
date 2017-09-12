@@ -57,3 +57,40 @@ int main(void){
 	return 0;
 }
 #endif
+
+
+
+//	그래프 칠하기
+#if 0
+#include <stdio.h>
+int N, M, a[12 + 10][12 + 10], s[12 + 10];
+int Check(int n, int c){
+	int i;
+	for (i = 1; i < n; i++){
+		if (a[n][i] == 1 && s[i] == c) return 0;
+	}
+	return 1;
+}
+int DFS(int n){
+	int i;
+	if (n > N)	return 1;
+	for (i = 1; i <= M; i++){
+		if (Check(n, i) == 0) continue;
+		s[n] = i;
+		if (DFS(n + 1) == 1) return 1;
+	}
+	return 0;
+}
+int main(void){
+	int i, j;
+	scanf("%d %d", &N, &M);
+	for (i = 1; i <= N; i++){
+		for (j = 1; j <= i; j++) scanf("%d", &a[i][j]);
+	}
+	if (DFS(1) == 0) printf("-1");
+	else{
+		for (i = 1; i <= N; i++) printf("%d ", s[i]);
+	}
+	return 0;
+}
+#endif

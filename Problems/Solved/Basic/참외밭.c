@@ -1,4 +1,4 @@
-﻿// 문제 번호 V: [SKKU]참외밭
+// 문제 번호 V: [SKKU]참외밭
 // http://dyndy.tistory.com/130
 #if 0
 #include <stdio.h>
@@ -32,7 +32,7 @@ int main(void)
 		//여기서부터작성
 
 		sum = maxh * maxw;
-		
+
 		for ( i = 1; i <= 6; i++) tmp += a[i][1] * a[i + 1][1];
 		tmp -= 3 * sum;
 		sum = sum - ABS(tmp);

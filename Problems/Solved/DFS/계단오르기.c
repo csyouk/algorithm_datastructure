@@ -67,3 +67,26 @@ int main(void){
 	return 0;
 }
 #endif
+
+
+//	계단 오르기(BASIC)
+#if 0
+#include <stdio.h>
+int N, a[50 + 10], sol;
+void DFS(int n, int cnt, int sum){
+	if (n < 1){
+		if (sol < sum) sol = sum;
+		return;
+	}
+	if (cnt < 2) DFS(n - 1, cnt + 1, sum + a[n]);	//	밟는 경우
+	if (cnt > 0) DFS(n - 1, 0, sum);	//	밟지 않는 경우
+}
+int main(void){
+	int i;
+	scanf("%d", &N);
+	for (i = 1; i <= N; i++) scanf("%d", &a[i]);
+	DFS(N - 1, 1, a[N]);
+	printf("%d", sol);
+	return 0;
+}
+#endif
