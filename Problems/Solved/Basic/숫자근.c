@@ -72,3 +72,35 @@ int main(void)
 	printf("result=%d\n", digit_root);
 }
 #endif
+
+//	숫자근
+#if 0
+#include <stdio.h>
+int N, sol;
+int Root(int n){
+	int sum;
+	for (;;){
+		sum = 0;
+		while (n > 0){ sum += n % 10;				n /= 10; }
+		if (sum < 10)	break;
+		n = sum;
+	}
+	return sum;
+}
+int main(void){
+	int i, n, root, max = 0;
+	scanf("%d", &N);
+	for (i = 0; i < N; i++){
+		scanf("%d", &n);
+		root = Root(n);
+		if (max < root){
+			max = root;	sol = n;
+		}
+		else if (max == root){
+			if (sol > n) sol = n;
+		}
+	}
+	printf("%d", sol);
+	return 0;
+}
+#endif
