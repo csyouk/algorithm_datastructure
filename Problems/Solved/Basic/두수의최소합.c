@@ -53,7 +53,7 @@ void assemble(void){
     }
     data[i] = CHECK;
   }
-  
+
   while (L.cnt) {
     L.sum += L.digits[L.cnt-1]*weight;
     weight *= 10;
@@ -65,15 +65,15 @@ void assemble(void){
     weight *= 10;
     R.cnt--;
   }
-  
-  
+
+
 }
 int main(void){
-  
+
   freopen("/Users/youk/workspace/scsa/codeground/codeground/in.txt", "r", stdin);
-  
+
   Op * l, * r;
-  
+
   scanf("%d", &N);
   for (int i =0; i < N; i++) {
     scanf("%d", &data[i]);
@@ -83,13 +83,13 @@ int main(void){
   sort_ascending();
   Set_MSD(l);
   Set_MSD(r);
-  
+
   assemble();
-  
-  
+
+
   printf("%d", L.sum + R.sum);
-  
-  
+
+
   return 0;
 }
 
