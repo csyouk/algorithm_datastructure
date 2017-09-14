@@ -1,6 +1,6 @@
 
 // 문제 번호 : [TST]자동차경주대회(BASIC2)
-#if 0
+#if 01
 #include <stdio.h>
 int MAX, N, min=0x7fffffff;
 int D[50 + 10];

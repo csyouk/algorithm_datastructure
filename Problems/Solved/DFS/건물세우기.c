@@ -1,6 +1,6 @@
 
 // 문제 번호 : [TST]건물세우기(BASIC)
-#if 0
+#if 1
 #include <stdio.h>
 #define SIZE 20
 int N, min=0x7fffffff;

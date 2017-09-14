@@ -2,7 +2,7 @@
 //문제 번호 : [TST] 벽장문의 이동
 // 뚫려 있는 문을 이동시키는 방법이 가장 손쉬운 풀이를 만들어낸다.
 // 문제를 변형시켜서 재단하지 말자.
-#if 0
+#if 01
 #include <stdio.h>
 #define SIZE 30
 #define OPEN 1

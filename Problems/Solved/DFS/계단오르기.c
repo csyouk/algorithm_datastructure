@@ -1,6 +1,6 @@
 
 // 문제 번호 W: [LAB]계단 오르기(BASIC)
-#if 0
+#if 01
 #include <stdio.h>
 
 int s[50 + 10];
