@@ -2,7 +2,7 @@
 // 만약 이 문제에서 0값대신, 0x7fffffff라는 값을 준다면 어떻게 됐을까?
 // 코드가 더 간단해 졌을 것이다.
 // 문제 번호 : [TST]해밀턴 순환회로
-#if 0
+#if 1
 #include <stdio.h>
 #define SIZE 22
 #define NO_PATH 0
