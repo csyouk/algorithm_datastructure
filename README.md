@@ -48,6 +48,8 @@
   - Open Addressing
   - Chaining Method
 
+## Dynamic-Array
+- [Dynamic-Array](./Data-Structure/Dynamic-Array/dynamic-array.md)
 
 # Problems
 - [Problems](./Problems/Problems.md)

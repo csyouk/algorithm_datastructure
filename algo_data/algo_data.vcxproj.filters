@@ -13,35 +13,17 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="소스 파일\solution">
-      <UniqueIdentifier>{ab97f887-2fab-4753-b69a-5445734fd551}</UniqueIdentifier>
-    </Filter>
     <Filter Include="소스 파일\자료구조">
       <UniqueIdentifier>{f5be2918-2e51-4978-b005-40b8792bcb27}</UniqueIdentifier>
     </Filter>
     <Filter Include="소스 파일\algorithm">
       <UniqueIdentifier>{81cd1c30-c518-48eb-a83b-374f38b3ab14}</UniqueIdentifier>
     </Filter>
-    <Filter Include="소스 파일\test-work">
-      <UniqueIdentifier>{641d105d-f1fc-446c-8e83-57493b69f548}</UniqueIdentifier>
-    </Filter>
     <Filter Include="소스 파일\c언어심화">
       <UniqueIdentifier>{439c35db-ecc9-46c3-a7a1-9dbfa8f16542}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="170817-workshop.c">
-      <Filter>소스 파일\solution</Filter>
-    </ClCompile>
-    <ClCompile Include="test_driven_development.c">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="remind.c">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="170820-주말워크샵.c">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="datastructure-lab-170821.c">
       <Filter>소스 파일\자료구조</Filter>
     </ClCompile>
@@ -66,14 +48,8 @@
     <ClCompile Include="floodfill.c">
       <Filter>소스 파일\algorithm</Filter>
     </ClCompile>
-    <ClCompile Include="170831.c">
-      <Filter>소스 파일\test-work</Filter>
-    </ClCompile>
     <ClCompile Include="BFS.c">
       <Filter>소스 파일\algorithm</Filter>
-    </ClCompile>
-    <ClCompile Include="170901.c">
-      <Filter>소스 파일\test-work</Filter>
     </ClCompile>
     <ClCompile Include="DFS.c">
       <Filter>소스 파일\algorithm</Filter>

@@ -76,13 +76,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="170817-workshop.c" />
-    <ClCompile Include="170820-주말워크샵.c" />
     <ClCompile Include="170822-workshop-datastructure.c" />
     <ClCompile Include="170823-workshop.datastructure.c" />
     <ClCompile Include="170825-test.c" />
-    <ClCompile Include="170831.c" />
-    <ClCompile Include="170901.c" />
     <ClCompile Include="170907-sol.c" />
     <ClCompile Include="datastructure-lab-170821.c" />
     <ClCompile Include="datastructure-sol-170821.c" />
@@ -94,10 +90,8 @@
     <ClCompile Include="moredeepdive.c" />
     <ClCompile Include="moredeepdive_sol.c" />
     <ClCompile Include="Prim.c" />
-    <ClCompile Include="remind.c" />
     <ClCompile Include="remind_algo.c" />
     <ClCompile Include="solution-170905.c" />
-    <ClCompile Include="test_driven_development.c" />
     <ClCompile Include="Tree-Structure.c" />
     <ClCompile Include="형변환에따른출력.c" />
   </ItemGroup>
