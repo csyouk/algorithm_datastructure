@@ -99,6 +99,9 @@
     <ClCompile Include="형변환에따른출력.c">
       <Filter>소스 파일\c언어심화</Filter>
     </ClCompile>
+    <ClCompile Include="moredeepdive_sol.c">
+      <Filter>소스 파일\c언어심화</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="student_data.txt">

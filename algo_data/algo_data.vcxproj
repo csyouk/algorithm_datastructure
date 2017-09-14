@@ -92,6 +92,7 @@
     <ClCompile Include="DFS.c" />
     <ClCompile Include="forloop.c" />
     <ClCompile Include="moredeepdive.c" />
+    <ClCompile Include="moredeepdive_sol.c" />
     <ClCompile Include="Prim.c" />
     <ClCompile Include="remind.c" />
     <ClCompile Include="remind_algo.c" />
