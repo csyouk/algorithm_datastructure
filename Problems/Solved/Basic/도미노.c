@@ -28,32 +28,6 @@ int main(void)
 
 	return 0;
 }
-*JAVA 솔루션은 다음 코드를 참조하시오.
-
-/* 1072: 도미노*/
-/* 0부터N까지두개를고르는경우의수를구하는것임*/
-
-import java.util.Scanner;
-
-public class Main {
-
-	static int N;
-	static int sol;
-
-	public static void main(String[] args) {
-		// 입력받는부분
-		Scanner sc = new Scanner(System.in);
-		N = sc.nextInt();
-		sc.close();
-
-		// 여기서부터작성
-		sol = (N + 1)*(N + 2) / 2;
-
-		// 출력하는부분
-		System.out.print(sol);
-	}
-}
-
 입력
 입력은 한 줄로 이루어지며, 정수 N(1≤N≤10, 000)이 입력된다.
 출력
