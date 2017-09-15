@@ -4146,7 +4146,7 @@ void main(void)
 
 	for (i = 0; i<4; i++)
 	{
-		printf("0x%x, 0x%x, 0x%x\n", );
+		printf("0x%x, 0x%x, 0x%x\n", (info + i)->x, (info + i)->y, (info + i)->length);
 	}
 }
 
@@ -4179,7 +4179,7 @@ void main(void)
 
 	for (i = 0; i<4; i++)
 	{
-		printf("0x%x, 0x%x, 0x%x\n", );
+		printf("0x%x, 0x%x, 0x%x\n", info[i].x, info[i].y, info[i].length);
 	}
 }
 
@@ -4416,7 +4416,7 @@ unsigned char buf[] = { 0x4d, 0x4d, 0x55, 0x5f, 0x45, 0x6e, 0x61, 0x62, 0x6c, 0x
 
 #define  info	 ((struct st *)buf)
 
-#pragma pack(              )
+#pragma pack(push,1)
 
 struct st
 {
@@ -4518,6 +4518,7 @@ void main(void)
 	case 2: flags.allstop_flag = YES;		break;
 	default: flags.err_flag = YES;
 	}
+	printf("%d\n", sizeof(flags));
 }
 
 #endif
@@ -4553,6 +4554,7 @@ void main(void)
 	printf("%d %d\n", sizeof(x), sizeof(y));
 	printf("0x%X 0x%X 0x%X 0x%X\n", x.a, x.b, y.a, y.b);
 	printf("0x%.2X 0x%.8X\n", *(unsigned char *)&x, *(unsigned int *)&y);
+	//printf("0x%X 0x%X 0x%X 0x%X\n", &x.a, &x.b, &y.a, &y.b);
 }
 
 #endif
@@ -4595,14 +4597,15 @@ void main(void)
 #if 0
 
 #include <stdio.h>
+#define US unsigned short
 
 unsigned char buf[] = { 0x52, 0x7a };
 
 struct fat_time
 {
-
-
-
+	US sec : 5;
+	US min : 6;
+	US hour : 5;
 };
 
 void main(void)
@@ -4734,7 +4737,7 @@ void main(void)
 // [9-21]  Zero Size Width 비트필드
 /***********************************************************/
 
-#if 0
+#if 0 
 
 #include <stdio.h>
 
@@ -4823,7 +4826,7 @@ void main(void)
 {
 	d_data.d = 13.625;
 
-	printf("%x:%x\n", d_data.x[1], d_data.x[0]);
+	printf("%.8x:%.8x\n", d_data.x[1], d_data.x[0]);
 	printf("%f\n", d_data.d);
 }
 
@@ -4836,6 +4839,7 @@ void main(void)
 #if 0
 
 #include <stdio.h>
+#define UI unsigned int
 
 union float_data
 {
@@ -4843,9 +4847,9 @@ union float_data
 
 	struct
 	{
-
-
-
+		UI mant : 23;
+		UI exp : 8;
+		UI sign : 1;
 	}bit;
 }fdata;
 
@@ -4868,17 +4872,19 @@ void main(void)
 // [9-25] double의 인쇄
 /***********************************************************/
 
-#if 0
+#if 01
 
 #include <stdio.h>
-
+#define ULL unsigned long long int
 union double_data
 {
 	double d;
 
 	struct
 	{
-
+		ULL mant : 52;
+		ULL exp : 11;
+		ULL sign : 1;
 
 
 	}bit;
