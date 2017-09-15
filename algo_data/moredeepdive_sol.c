@@ -2527,7 +2527,7 @@ void main(void)
 // [6-18] 직관적 코드 설계 예제 4
 /***********************************************************/
 
-#if 01
+#if 0
 #include <stdio.h>
 typedef struct _st
 {
@@ -2693,10 +2693,7 @@ void main(void)
 	int a[] = { 1, 10, 2, -5, -20, 3, 100, 200, 300, 4, -10, -20, -30, -40 };
 	int *p = a;
 
-	for (i = 0; i<4; i++)
-	{
-		p = func(p);
-	}
+	for (i = 0; i<4; i++) p = func(p);
 }
 
 #endif
@@ -2727,10 +2724,8 @@ void main(void)
 	int a[] = { 1, 10, 2, -5, -20, 3, 100, 200, 300, 4, -10, -20, -30, -40 };
 	int *p = a;
 
-	for (i = 0; i<4; i++)
-	{
-		printf("SUM=%d\n", func(p));
-	}
+	for (i = 0; i<4; i++) printf("SUM=%d\n", func(p));
+
 }
 
 #endif
@@ -2804,11 +2799,15 @@ int func(const int **p)
 
 	printf("=========%d\n", (*p)[0]);
 
+	//for(i=1;i <= (*p)[0]; i++){
+	//	sum += (*p)[i];
+	//}
+	//(*p) += i;
 
-
-
-
-
+	for (i = 1; i <= **p; i++){
+		sum += *(*p + i);
+	}
+	*p += i;
 	return sum;
 }
 
@@ -2834,11 +2833,13 @@ void main(void)
 
 #include <stdio.h>
 
-void make_data(char **p, int size, char * data)
+void make_data(char **q, int size, char * data)
 {
-
-
-
+	int i;
+	for (i = 0; i < size; i++){
+		*(*q + i) = *(data + i);
+	}
+	*q += i;
 }
 
 char mem[4 * 4];
@@ -3387,6 +3388,7 @@ void main(void)
 	int a = 1, b = 2, c = 3;
 
 	printf("남는 Argument : %d %d \n", a, b, c);
+	printf("%d\n", 9);
 	printf("적은 Argument : %d %d %d\n", a, b);
 }
 
@@ -3406,7 +3408,7 @@ int my_add(int cnt, ...)
 
 	for (i = 1; i <= cnt; i++)
 	{
-
+		sum += *(&cnt + i);
 	}
 	return sum;
 }
@@ -3501,7 +3503,7 @@ void main(void)
 {
 	float f = 3.5f;
 
-	printf("float : %#.8x\n", );
+	printf("float : %#.8x\n", *(int *)&f);
 }
 
 #endif
@@ -3535,7 +3537,7 @@ void main(void)
 {
 	double d = 3.5;
 
-	printf("double: %#.8x : %.8x\n\n", , );
+	printf("double: %#.8x : %.8x\n\n", *((int *)&d + 1), *(int *)&d);
 }
 
 #endif
@@ -3551,10 +3553,10 @@ void main(void)
 void my_ellipsis(int a, ...)
 {
 	printf("%d\n", a);
-	printf("%u\n", );
-	printf("%c\n", );
-	printf("%f\n", );
-	printf("%f\n", );
+	printf("%u\n", *(&a + 1));
+	printf("%c\n", *(&a + 2));
+	printf("%f\n", *(double *)(&a + 3));
+	printf("%f\n", *(double *)(&a + 5));
 }
 
 void main(void)
@@ -3586,11 +3588,11 @@ void my_printf(char * fmt, ...)
 	{
 		switch (*fmt++)
 		{
-		case 'u': printf("%u\n", ); break;
-		case 'd': printf("%d\n", ); break;
-		case 'c': printf("%c\n", ); break;
-		case 'f': printf("%f\n", ); break;
-		case 's': printf("%s\n", ); break;
+		case 'u': printf("%u\n", *(unsigned char *)ap++); break;
+		case 'd': printf("%d\n", *(int *)ap++); break;
+		case 'c': printf("%c\n", *(unsigned char *)ap++); break;
+		case 'f': printf("%f\n", *(double *)ap);  ap += 2; break;
+		case 's': printf("%s\n", *(char **)ap++);  break;
 		}
 	}
 }
@@ -3662,13 +3664,15 @@ int my_add(int cnt, ...)
 {
 	int i, sum = 0;
 
-
+	va_list ap;
+	va_start(ap, cnt);
 
 	for (i = 1; i <= cnt; i++)
 	{
-
+		sum += va_arg(ap, int);
 	}
 
+	va_end(ap);
 
 	return sum;
 }
@@ -3727,9 +3731,9 @@ void main(void)
 
 void func(int x)
 {
-	printf("%f\n", );
-	printf("%f\n", );
-	printf("%f\n", );
+	printf("%f\n", *(double *)x);
+	printf("%f\n", *((double *)x + 1));
+	printf("%f\n", *((double *)x + 2));
 }
 
 void main(void)
@@ -3755,7 +3759,7 @@ void func(int x)
 
 	for (i = 0; i<3; i++)
 	{
-
+		printf("%f\n", *((double*)x + i));
 	}
 }
 
@@ -3782,7 +3786,7 @@ void func(void * p)
 
 	for (i = 0; i<3; i++)
 	{
-		printf("%f\n", );
+		printf("%f\n", *(*(double **)p + i));
 	}
 }
 
@@ -3806,7 +3810,7 @@ void main(void)
 
 void func(void *p)
 {
-	printf("%s\n", );
+	printf("%s\n", *(char **)p);
 }
 
 void main(void)
@@ -3833,8 +3837,8 @@ struct st
 
 void func(long long int a)
 {
-	printf("%d\n", );
-	printf("%c\n", );
+	printf("%d\n", (*((struct st *)&a)).i);
+	printf("%c\n", (*((struct st *)&a)).c);
 }
 
 void main(void)
@@ -3864,7 +3868,7 @@ void main(void)
 	int a = (int)func;
 
 	printf("%d\n", func(3, 4));
-	printf("%d\n", );
+	printf("%d\n", ((int(*)(int, int))a)(3, 4));
 }
 
 #endif
@@ -3879,7 +3883,7 @@ void main(void)
 
 void func(void * p)
 {
-	printf("%d\n", );
+	printf("%d\n", (*(int(**)(int, int))p)(3, 4));
 }
 
 int add(int a, int b)
@@ -3910,21 +3914,22 @@ struct _st
 	char c;
 };
 
-void my_test(char c, ...)
-{
-	printf("%c\n", c);
-	printf("%d\n", );
-	printf("%c\n", );
-	printf("%s\n", );
-	printf("%f\n", );
-	printf("%f\n", );
-	printf("%f\n", );
-	printf("%d\n", );
-}
 
 int add(int a, int b)
 {
 	return a + b;
+}
+
+void my_test(char c, ...)
+{
+	printf("%c\n", c);
+	printf("%d\n", (*((struct _st *)(&c + 4))).i);
+	printf("%c\n", (*((struct _st *)(&c + 4))).c);
+	printf("%s\n", (*((char **)(&c + 12))));
+	printf("%f\n", (*((double **)(&c + 16)))[0]);
+	printf("%f\n", (*((double **)(&c + 16)))[1]);
+	printf("%f\n", (*((double **)(&c + 16)))[2]);
+	printf("%d\n", (*(int(**)(int, int))(&c + 20))(3, 4));
 }
 
 void main(void)
@@ -3942,18 +3947,18 @@ void main(void)
 // [8-23] data parsing 2
 /***********************************************************/
 
-#if 0
+#if 01
 
 #include <stdio.h>
 
 void my_test(int a, ...)
 {
 	// [1] 넘어온 3.14 인쇄
-	printf("f => %.2f\n", );
+	printf("f => %.2f\n", *(*(double **)(&a + 1)));
 	// [2] 넘어온 배열을 이용하여 f1 함수를 간접호출하여 문자열 BIN 출력
-	printf("%s", );
+	printf("%s", (*(char *(***)())(&a + 2))[0]() + 2);
 	// [3] 넘어온 배열을 이용하여 f2 함수를 간접호출하여 문자열 GO 출력
-	printf("%s\n", );
+	printf("%s\n", (*(char *(***)())(&a + 2))[1]() + 2);
 }
 
 char * f1(void)
