@@ -1,9 +1,6 @@
-﻿#define _CRT_SECURE_NO_WARNINGS
-
-
-
+#define _CRT_SECURE_NO_WARNINGS
 // 문제 번호 : [TST]최소 비용 트리
-#if 0
+#if 01
 #include <stdio.h>
 #define SIZE 110
 #define NO_PATH 0
@@ -67,7 +64,7 @@ int main(void){
 #endif
 
 // 문제 번호 : [TST]최소 비용 트리
-#if 0
+#if 01
 #include <stdio.h>
 #define SIZE 100+10
 #define VISIT 1
