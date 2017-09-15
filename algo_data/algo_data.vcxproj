@@ -78,27 +78,14 @@
   <ItemGroup>
     <ClCompile Include="170822-workshop-datastructure.c" />
     <ClCompile Include="170823-workshop.datastructure.c" />
-    <ClCompile Include="170825-test.c" />
-    <ClCompile Include="170907-sol.c" />
     <ClCompile Include="datastructure-lab-170821.c" />
     <ClCompile Include="datastructure-sol-170821.c" />
-    <ClCompile Include="BFS.c" />
-    <ClCompile Include="Dijkstra.c" />
-    <ClCompile Include="floodfill.c" />
-    <ClCompile Include="DFS.c" />
-    <ClCompile Include="forloop.c" />
     <ClCompile Include="moredeepdive.c" />
     <ClCompile Include="moredeepdive_sol.c" />
-    <ClCompile Include="Prim.c" />
-    <ClCompile Include="remind_algo.c" />
-    <ClCompile Include="solution-170905.c" />
-    <ClCompile Include="Tree-Structure.c" />
     <ClCompile Include="형변환에따른출력.c" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="backup.txt" />
     <Text Include="in.txt" />
-    <Text Include="student_data.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

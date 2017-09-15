@@ -30,44 +30,11 @@
     <ClCompile Include="datastructure-sol-170821.c">
       <Filter>소스 파일\자료구조</Filter>
     </ClCompile>
-    <ClCompile Include="remind_algo.c">
-      <Filter>소스 파일\자료구조</Filter>
-    </ClCompile>
     <ClCompile Include="170822-workshop-datastructure.c">
       <Filter>소스 파일\자료구조</Filter>
     </ClCompile>
     <ClCompile Include="170823-workshop.datastructure.c">
       <Filter>소스 파일\자료구조</Filter>
-    </ClCompile>
-    <ClCompile Include="170825-test.c">
-      <Filter>소스 파일\자료구조</Filter>
-    </ClCompile>
-    <ClCompile Include="Tree-Structure.c">
-      <Filter>소스 파일\자료구조</Filter>
-    </ClCompile>
-    <ClCompile Include="floodfill.c">
-      <Filter>소스 파일\algorithm</Filter>
-    </ClCompile>
-    <ClCompile Include="BFS.c">
-      <Filter>소스 파일\algorithm</Filter>
-    </ClCompile>
-    <ClCompile Include="DFS.c">
-      <Filter>소스 파일\algorithm</Filter>
-    </ClCompile>
-    <ClCompile Include="solution-170905.c">
-      <Filter>소스 파일\algorithm</Filter>
-    </ClCompile>
-    <ClCompile Include="Prim.c">
-      <Filter>소스 파일\algorithm</Filter>
-    </ClCompile>
-    <ClCompile Include="forloop.c">
-      <Filter>소스 파일\algorithm</Filter>
-    </ClCompile>
-    <ClCompile Include="Dijkstra.c">
-      <Filter>소스 파일\algorithm</Filter>
-    </ClCompile>
-    <ClCompile Include="170907-sol.c">
-      <Filter>소스 파일\algorithm</Filter>
     </ClCompile>
     <ClCompile Include="moredeepdive.c">
       <Filter>소스 파일\c언어심화</Filter>
@@ -80,12 +47,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="student_data.txt">
-      <Filter>소스 파일\자료구조</Filter>
-    </Text>
-    <Text Include="backup.txt">
-      <Filter>소스 파일\자료구조</Filter>
-    </Text>
     <Text Include="in.txt">
       <Filter>소스 파일\algorithm</Filter>
     </Text>
