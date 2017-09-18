@@ -88,7 +88,6 @@ int BFS(){
 			//if (nbi < 1 || nbi > R || nbj < 1 || nbj > C) continue;
 
 			visited[nri][nrj] = 1;
-			if (nri == hall.i && nrj == hall.j) return out.rdis + 1;
 			in.ri = nri;  in.rj = nrj;  in.rdis = out.rdis + 1;
 			//in.bi = nbi;  in.bj = nbj;
 			Q[WP++] = in;
