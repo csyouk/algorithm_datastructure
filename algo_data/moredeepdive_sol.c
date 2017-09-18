@@ -4872,7 +4872,7 @@ void main(void)
 // [9-25] double의 인쇄
 /***********************************************************/
 
-#if 01
+#if 0
 
 #include <stdio.h>
 #define ULL unsigned long long int

@@ -45,6 +45,9 @@
     <ClCompile Include="moredeepdive_sol.c">
       <Filter>소스 파일\c언어심화</Filter>
     </ClCompile>
+    <ClCompile Include="구슬집어넣기게임.c">
+      <Filter>소스 파일\algorithm</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="in.txt">
