@@ -1,4 +1,4 @@
-#define _CRT_SECURE_NO_WARNINGS
+ï»¿#define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #define SIZE 30
 #define DIRS 4
@@ -38,6 +38,7 @@ void init(){
 	}
 	rp = wp = 0;
 }
+
 int re(char sym, int i, int j){
 	switch (sym)
 	{
@@ -45,7 +46,7 @@ int re(char sym, int i, int j){
 	case '.': return 0;
 	case 'R': 
 		bead.ri = i; bead.rj = j;
-		visited[i][j] = 1;
+		//visited[i][j] = 1;
 		return 0;
 	case 'B': 
 		bead.bi = i; bead.bj = j;
@@ -58,6 +59,7 @@ int re(char sym, int i, int j){
 	}
 	return - 10;
 }
+
 void gen(void){
 	int i, j;
 	for ( i = 1; i <= R; i++){
@@ -77,36 +79,47 @@ int BFS(void){
 	{
 		out = Q[rp++];
 
-		// 10È¸ ÀÌ»ó ±â¿ï¿´À¸¸é ½ÇÆĞ
-		if (out.cnt > 10) return -1;
+		// 10íšŒ ì´ìƒ ê¸°ìš¸ì˜€ìœ¼ë©´ ì‹¤íŒ¨
+		//if (out.cnt > 10) return -1;
 
-		// »¡°­°øÀÌ ±¸¸Û¿¡ µé¾î°¬À¸¸é ¼º°ø. ÀÌµ¿°Å¸® ¸®ÅÏ
-		if (out.ri == hall.i && out.rj == hall.j) return out.dis;
+		// ë¹¨ê°•ê³µì´ êµ¬ë©ì— ë“¤ì–´ê°”ìœ¼ë©´ ì„±ê³µ. ì´ë™ê±°ë¦¬ ë¦¬í„´
+		if ((out.ri == hall.i) && (out.rj == hall.j)) return out.dis;
 
-		// 4¹æÇâÀ¸·Î ±â¿ï¿©º»´Ù.
+		// 4ë°©í–¥ìœ¼ë¡œ ê¸°ìš¸ì—¬ë³¸ë‹¤.
 		for (k = 0; k < DIRS; k++)
 		{
 			nri = out.ri + di[k];   nrj = out.rj + dj[k];
 			nbi = out.bi + di[k];   nbj = out.bj + dj[k];
 
-			// ÆÄ¶û°øÀÌ È¦·Î ºüÁö¸é °ÔÀÓ Á¾·áÀÌ¹Ç·Î °Ç³Ê¶Ü.	
+			// íŒŒë‘ê³µì´ í™€ë¡œ ë¹ ì§€ë©´ ê²Œì„ ì¢…ë£Œì´ë¯€ë¡œ ê±´ë„ˆëœ€.	
 			if (nbi == hall.i && nbj == hall.j) continue;
 
-			// ÀÌ¹Ì ¹æ¹®Çß´ø °÷Àº °Ç³Ê¶Ü.
-			if (visited[nri][nrj]) continue;
+			// ì´ë¯¸ ë°©ë¬¸í–ˆë˜ ê³³ì€ ê±´ë„ˆëœ€.
+			//if (visited[nri][nrj]) continue;
 
-			// º®À¸·Î ¸·ÇôÀÖÀ¸¸é, ¿òÁ÷ÀÌÁö ¾Ê´Â´Ù. 
-			if (map[nri][nrj]){ nri = out.ri; nrj = out.rj; }
-			if (map[nbi][nbj]){ nri = out.bi; nrj = out.bj; }
+			// ë²½ìœ¼ë¡œ ë§‰í˜€ìˆìœ¼ë©´, ì›€ì§ì´ì§€ ì•ŠëŠ”ë‹¤. 
+			if (map[nri][nrj]){ 
+				nri = out.ri; 
+				nrj = out.rj; 
+			}
+
+			if (map[nbi][nbj]){
+				nri = out.bi; 
+				nrj = out.bj; 
+			}
 
 
-			// »¡°­, ÆÄ¶û °øÀÌ ¸¸³ª°Ô µÇ´Â °æ¿ì´Â Á¾·áµÇ¹Ç·Î, °Ç³Ê¶Ú´Ù.
+			// ë¹¨ê°•, íŒŒë‘ ê³µì´ ë§Œë‚˜ê²Œ ë˜ëŠ” ê²½ìš°ëŠ” ì¢…ë£Œë˜ë¯€ë¡œ, ê±´ë„ˆë›´ë‹¤.
 			if (nri == nbi && nrj == nbj) continue;
 
-			visited[nri][nrj] = 1;
+			//visited[nri][nrj] = 1;
 
-			Q[wp].ri = nri;  Q[wp].rj = nrj;
-			Q[wp].bi = nbi;  Q[wp].bj = nbj;
+			Q[wp].ri = nri;  
+			Q[wp].rj = nrj;
+
+			Q[wp].bi = nbi; 
+			Q[wp].bj = nbj;
+
 			Q[wp].cnt = out.cnt + 1;
 			Q[wp].dis = out.dis + 1;
 
