@@ -1,5 +1,5 @@
 //
-//  구슬(re).c
+//  구슬.c
 //  codeground
 //
 //  Created by youkchangsu on 2017. 9. 20..
