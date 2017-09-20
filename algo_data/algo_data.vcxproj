@@ -83,6 +83,7 @@
     <ClCompile Include="moredeepdive.c" />
     <ClCompile Include="moredeepdive_sol.c" />
     <ClCompile Include="구슬집어넣기게임.c" />
+    <ClCompile Include="좋은수열.c" />
     <ClCompile Include="형변환에따른출력.c" />
   </ItemGroup>
   <ItemGroup>

@@ -48,6 +48,9 @@
     <ClCompile Include="구슬집어넣기게임.c">
       <Filter>소스 파일\algorithm</Filter>
     </ClCompile>
+    <ClCompile Include="좋은수열.c">
+      <Filter>소스 파일\algorithm</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="in.txt">
