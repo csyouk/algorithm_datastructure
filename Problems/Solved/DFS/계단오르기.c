@@ -19,7 +19,6 @@ void DFS(int n, int step, int sum){
 }
 
 int main(void){
-	freopen("in.txt", "r", stdin);
 	int i;
 	scanf("%d", &N);
 	for ( i = 1; i <= N; i++)
