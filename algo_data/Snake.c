@@ -1,6 +1,6 @@
 #define _CRT_SECURE_NO_WARNINGS
 
-#if 1
+#if 0
 #include <stdio.h>
 #define DIRS 4
 
@@ -9,7 +9,7 @@ typedef struct {
 	char dir;
 } Behavior;
 
-enum Object{W,N,E,S,FRUIT=2};
+enum Object{w,n,e,s,SNAKE=1,FRUIT=2};
 
 
 typedef struct {
@@ -48,19 +48,27 @@ void Game(void){
 	int i;
 
 	// init
-	sin.i = 1;  sin.j = 1;  sin.len = 1; sin.dir = E;
+	sin.i = 1;  sin.j = 1;  sin.len = 1; sin.dir = e;
 	SQ[swp++] = sin;
 	map[1][1] = 1;
 
-	while (1)
-	{
-		sout = SQ[srp++];
+	while (1){
+		
 		bout = BQ[brp++];
 		for (i = 0; i < bout.t; i++)
 		{
+			sout = SQ[srp++];
 			sout.i = sout.i + di[sout.dir];  sout.j = sout.j + dj[sout.dir]; 
 			time++;
+
+			map[sout.i][sout.j] = 1;
+			sin.i = sout.i; sin.j = sout.j; sin.dir = sout.dir; sin.len = sout.len;
+			SQ[swp++] = sin;
+			//가장자리 침범시 게임 끝
 			if (sout.i < 1 || sout.i > N || sout.j < 1 || sout.j > N) return;
+			//몸통 부딪힐 시 게임 끝
+			if (map[sout.i][sout.j] == SNAKE) return;
+			if(map[sout.i][sout.j] != FRUIT)map[sout.i - di[sout.dir]][sout.j - dj[sout.dir]] = 0;
 		}
 		sout.dir += conv(bout.dir);
 	}
