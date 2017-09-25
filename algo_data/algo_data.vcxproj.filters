@@ -48,8 +48,8 @@
     <ClCompile Include="Snake.c">
       <Filter>소스 파일\algorithm</Filter>
     </ClCompile>
-    <ClCompile Include="test.c">
-      <Filter>소스 파일</Filter>
+    <ClCompile Include="backup.c">
+      <Filter>소스 파일\algorithm</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
