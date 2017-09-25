@@ -28,7 +28,7 @@ int replace(char sym){
 	{
 		case '0': return Blank;
 		case 'X': return Enemy;
-		case '*': 
+		case '*':
 			total_star_cnt++;
 			return Star;
 	}
@@ -68,8 +68,8 @@ void BFS(int i, int j){
 		}
 		for (k = 0; k < DIRS; k++)
 		{
-			ni = out.i + di[k]; 
-			nj = out.j + dj[k]; 
+			ni = out.i + di[k];
+			nj = out.j + dj[k];
 			in.score = out.score;
 			if (nj < 1 || nj > 5) continue;
 			if (map[ni][nj] == Star) in.score += 10;
@@ -106,7 +106,7 @@ int main(void){
 			convert();
 			Bomb(i);
 			BFS(13, 3);
-			RP = WP = 0; 
+			RP = WP = 0;
 		}
 		printf("%d\n", max);
 		flag = 0; max = 0x80000000;
