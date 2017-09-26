@@ -74,7 +74,7 @@ int BFS(){
         (out.j == cheese[target].j ))
     {
       if (target++ == N) return out.min;
-      RP=WP=0;
+      RP = WP = 0;
       in.i = out.i;  in.j = out.j;  in.hp = out.hp + 1;  in.min = out.min;
       Q[WP++] = in;
       out = Q[RP++];
