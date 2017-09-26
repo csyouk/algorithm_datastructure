@@ -82,7 +82,7 @@
     <ClCompile Include="datastructure-sol-170821.c" />
     <ClCompile Include="moredeepdive.c" />
     <ClCompile Include="moredeepdive_sol.c" />
-    <ClCompile Include="비행기게임.c" />
+    <ClCompile Include="빙산.c" />
     <ClCompile Include="형변환에따른출력.c" />
   </ItemGroup>
   <ItemGroup>
