@@ -48,6 +48,9 @@
     <ClCompile Include="빙산.c">
       <Filter>소스 파일\algorithm</Filter>
     </ClCompile>
+    <ClCompile Include="test.c">
+      <Filter>소스 파일\algorithm</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="in.txt">
