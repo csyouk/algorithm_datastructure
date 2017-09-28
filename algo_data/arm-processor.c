@@ -9,6 +9,8 @@ int recur(int n){
 
 int main(int argc, char **argv){
 
+	int b = 5;
+
 	recur(10);
 	//getchar();
 
