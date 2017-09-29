@@ -1,4 +1,4 @@
-#if 1
+#if 00
 #include <stdio.h>
 
 int recur(int n){
