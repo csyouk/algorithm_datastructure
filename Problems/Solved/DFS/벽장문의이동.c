@@ -91,3 +91,39 @@ int main(void){
 	return 0;
 }
 #endif
+
+
+// solution
+#include <stdio.h>
+int N;//벽장문의개수
+int M;//순서의길이
+int A[30];//순서표
+int sol;
+int ABS(int d)
+{
+      if(d<0) return -d;
+      return d;
+}
+void DFS(int n, int cnt, int L, int R)
+{
+      if(n>=M){//종료
+            if(sol>cnt) sol=cnt;//최소값이므로갱신
+            return ;
+      }
+      if(sol<=cnt) return;
+      DFS(n+1, cnt+ABS(L-A[n]), A[n], R);//왼쪽열린문으로문밀기
+      DFS(n+1, cnt+ABS(R-A[n]), L, A[n]);//오른쪽열린문으로문밀기
+}
+int main(void)
+{
+      int L, R, i;
+      scanf("%d", &N);
+      scanf("%d %d", &L, &R);
+      scanf("%d", &M);
+      for(i=0 ; i<M ; i++) scanf("%d", &A[i]);
+
+      sol = 0x7FFFFFFF;//최소이동횟수를찾는것이므로최대값저장
+      DFS(0, 0, L, R);//순서인덱스, 이동횟수, 열린문, 열린문
+      printf("%d\n", sol);
+      return 0;
+}
