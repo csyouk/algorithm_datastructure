@@ -83,9 +83,7 @@
     <ClCompile Include="datastructure-sol-170821.c" />
     <ClCompile Include="moredeepdive.c" />
     <ClCompile Include="moredeepdive_sol.c" />
-    <ClCompile Include="test.c" />
     <ClCompile Include="형변환에따른출력.c" />
-    <ClCompile Include="회의실배정.c" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="in.txt" />

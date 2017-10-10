@@ -45,12 +45,6 @@
     <ClCompile Include="moredeepdive_sol.c">
       <Filter>소스 파일\c언어심화</Filter>
     </ClCompile>
-    <ClCompile Include="test.c">
-      <Filter>소스 파일\algorithm</Filter>
-    </ClCompile>
-    <ClCompile Include="회의실배정.c">
-      <Filter>소스 파일\algorithm</Filter>
-    </ClCompile>
     <ClCompile Include="arm-processor.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
