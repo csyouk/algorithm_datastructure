@@ -42,12 +42,6 @@
     <ClCompile Include="moredeepdive_sol.c">
       <Filter>소스 파일\c언어심화</Filter>
     </ClCompile>
-    <ClCompile Include="버스.c">
-      <Filter>소스 파일\algorithm</Filter>
-    </ClCompile>
-    <ClCompile Include="택배.c">
-      <Filter>소스 파일\algorithm</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="in.txt">
