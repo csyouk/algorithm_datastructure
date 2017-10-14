@@ -1,6 +1,6 @@
 
 // 색종이(초)
-#if 0
+#if 01
 #include <stdio.h>
 #define SIZE 10
 int canvas[100][100];

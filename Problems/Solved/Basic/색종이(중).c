@@ -1,6 +1,6 @@
 
 // 색종이(중)
-#if 0
+#if 01
 #include <stdio.h>
 //#define _CRT_SECURE_NO_WARINIGS
 #define SIZE 10
@@ -48,7 +48,7 @@ int main(void)
 #endif
 
 //	색종이(중)
-#if 0
+#if 01
 #include <stdio.h>
 int N, sol;
 int a[100 + 10][100 + 10];

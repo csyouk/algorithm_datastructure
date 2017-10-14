@@ -1,4 +1,4 @@
-#if 0
+#if 01
 #include <stdio.h>
 int N, M;
 int gcd(a, b){
@@ -18,7 +18,7 @@ int main(void)
 
 
 // 문제 번호 : [TST]소시지
-#if 0
+#if 01
 #include <stdio.h>
 int N, M;
 int main(void)

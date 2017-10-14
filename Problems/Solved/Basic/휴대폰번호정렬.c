@@ -1,6 +1,6 @@
 
 //	휴대폰번호 정렬
-#if 0
+#if 01
 #include <stdio.h>
 typedef struct{
 	int n1, n2, n3, digit;

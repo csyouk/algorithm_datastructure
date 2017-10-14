@@ -1,5 +1,5 @@
 // 피보나치수열
-#if 0
+#if 01
 #define ULL unsigned long long int
 ULL memo[50];
 ULL fib(n)

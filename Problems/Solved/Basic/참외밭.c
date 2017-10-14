@@ -1,6 +1,6 @@
-// 문제 번호 V: [SKKU]참외밭
-// http://dyndy.tistory.com/130
-#if 0
+ 문제 번호 V: [SKKU]참외밭
+ http://dyndy.tistory.com/130
+#if 01
 #include <stdio.h>
 #define ABS(x) (((x) > 0)? (x) : -(x))
 

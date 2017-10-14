@@ -1,5 +1,5 @@
 // K
-#if 0
+#if 01
 #include <stdio.h>
 #define MAX_ROW 10
 #define MAX_COL 19

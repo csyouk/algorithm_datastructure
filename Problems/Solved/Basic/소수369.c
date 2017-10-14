@@ -1,6 +1,6 @@
 
 // 소수369
-#if 0
+#if 01
 #include <stdio.h>
 int is_prime(int a)
 {

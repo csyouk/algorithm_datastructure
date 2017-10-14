@@ -1,5 +1,5 @@
 
-#if 0
+#if 01
 
 처음 화면	문제 모음	순위	채점 상황 열람
 시스템 운영 문의 : keyseek@naver.com, 코드 리뷰 및 정답 요청은 사양합니다. 배열명으로 "end" 사용 금지 = 채점 시스템 예약어로 segmentation fault 발생

@@ -1,5 +1,5 @@
 
-#if 0
+#if 01
 int N;
 void move(int n, int from, int to)
 {

@@ -1,6 +1,6 @@
 
 // UNIQUENESS
-#if 0
+#if 01
 int N;
 char database[10000][21];
 typedef struct{

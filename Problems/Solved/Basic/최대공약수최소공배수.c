@@ -1,5 +1,5 @@
 // 문제 번호 P: [TST]최대공약수와최소공배수
-#if 0
+#if 01
 int gcd(a, b)
 {
 	if (b == 0) return a;
