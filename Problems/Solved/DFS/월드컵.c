@@ -1,91 +1,59 @@
 #include <stdio.h>
-
-#define N 6
-int win[N+10], lose[N+10], draw[N+10];
-int flag;
-
-#define M 15
-int genWin[N+10], genLose[N+10], genDraw[N+10];
-int gen[M+10], p1[M+10], p2[M+10];
-
-void recur(int cnt)
-{
-      int n1;
-      int n2;
-
-      if (cnt == M)
-      {
-            flag = 1;
-            return;
-      }
-
-      n1 = p1[cnt];
-      n2 = p2[cnt];
-
-      genWin[n1]++; genLose[n2]++;
-      if (genWin[n1]<=win[n1] && genLose[n2]<=lose[n2])
-            recur(cnt+1);
-      genWin[n1]--; genLose[n2]--;
-
-      genDraw[n1]++; genDraw[n2]++;
-      if (genDraw[n1]<=draw[n1] && genDraw[n2]<=draw[n2])
-            recur(cnt+1);
-      genDraw[n1]--; genDraw[n2]--;
-
-      genLose[n1]++; genWin[n2]++;
-      if (genLose[n1]<=lose[n1] && genWin[n2]<=win[n2])
-            recur(cnt+1);
-      genLose[n1]--; genWin[n2]--;
+#include <string.h>
+enum State{WIN, DRAW, LOSE};
+int sol[6][3];
+int table[6][4];
+int possibility;
+void Init(void){
+    memset(&table[0][0], 0, sizeof(int [6][4]));
+    possibility = 0;
 }
-
-void process()
-{
-      int i, j, cnt = 0;
-
-      flag = 0;
-
-      for(i=0 ; i<N ; i++)
-      {
-            genWin[i] = 0;
-            genLose[i] = 0;
-            genDraw[i] = 0;
-
-            if(win[i]+lose[i]+draw[i] != N-1) return;
-      }
-
-      for(i=0 ; i<N ; i++)
-      {
-            for (j=i+1 ; j<N ; j++)
-            {
-                  p1[cnt] = i;
-                  p2[cnt] = j;
-                  cnt++;
-            }
-      }
-
-      recur(0);
+int is_match(int t1, int t2){
+    int i;
+    for (i = 0; i < 3; i++)
+    {
+        if (table[t1][i] != sol[t1][i]) return 0;
+    }
+    return 1;
 }
-
-int main()
-{
-      int i, loop;
-
-      for(loop=0 ; loop<4 ; loop++)
-      {
-
-
-            for(i=0 ; i<N ; i++)
+void DFS(int n, int o, int cmp){
+    int i, j, k, origin = o;
+    if (n == 15){
+        for ( i = 0; i < 6; i++)
+        {
+            for ( j = 0; j < 3; j++)
             {
-                  scanf("%d %d %d", &win[i], &draw[i], &lose[i]);
+                if (table[i][j] != sol[i][j]) return;
             }
-
-
-            process();
-
-
-            if(flag) printf("1 ");
-            else printf("0 ");
-      }
-
-      return 0;
+        }
+        possibility = 1;
+        return;
+    }
+    for ( i = 0; i < 3; i++)
+    {
+        table[origin][i]++; table[cmp][2 - i]++; table[origin][3]++; table[cmp][3]++;
+        if (cmp > 4) {
+            if (is_match(origin, cmp)) { DFS(n + 1, origin + 1, origin + 2); }
+        } else {
+            DFS(n + 1, origin, cmp + 1);
+        }
+        table[origin][i]--; table[cmp][2 - i]--; table[origin][3]--; table[cmp][3]--;
+        if (possibility) return;
+    }
+}
+int main(void){
+    int i, j, k;
+    for (i = 0; i<4; i++){
+        Init();
+        for ( j = 0; j < 6; j++)
+        {
+            for ( k = 0; k < 3; k++)
+            {
+                scanf("%d ", &sol[j][k]);
+            }
+        }
+        DFS(0, 0, 1);
+        printf("%d ", possibility);
+    }
+    return 0;
 }

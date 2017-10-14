@@ -42,7 +42,7 @@
     <ClCompile Include="moredeepdive_sol.c">
       <Filter>소스 파일\c언어심화</Filter>
     </ClCompile>
-    <ClCompile Include="월드컵.c">
+    <ClCompile Include="사냥뀬.c">
       <Filter>소스 파일\algorithm</Filter>
     </ClCompile>
   </ItemGroup>
