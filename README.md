@@ -2,7 +2,7 @@
 - 문제 해결 전략들을 주로 기술한다.
 - 라이브러리 의존적으로 개발하는 습관에서 벗어나 스스로 모든 것을 만드는, 도구의 달인이 되어보자.
 
-## Array based algorithms
+## Sorting Algorithms
 - **배열 기반 선형 자료구조에서 사용하는 알고리즘**
 - [Bubble Sort](https://github.com/csyouk/algorithm_datastructure/blob/master/Sorting-Algorithms/BubbleSort.md)
   - 거품이 물 위로 떠오르듯, 가장 큰 데이터를 정렬하고자 하는 데이터의 가장 뒷 편으로 밀어내는 기법.
@@ -15,6 +15,9 @@
   - 기준점(pivot)을 타겟(target)과 바꾸는 방법.
   - target을 기준점과 바꾼 후, pivot을 기준으로 좌측과 우측을 재귀적으로 quick sort를 시키는 방법.
 
+## Searching Algorithms
+- [Binary Search](./Searching-Algorithms/BinarySearch.md)
+- [Binary Search Upper/Lower Bound](./Searching-Algorithms/BinarySearchUpperLowerBound.md)
 
 ## Graph based algorithms
 - [Terms](https://github.com/csyouk/algorithm_datastructure/blob/master/Graph-Base/Terms.md)
