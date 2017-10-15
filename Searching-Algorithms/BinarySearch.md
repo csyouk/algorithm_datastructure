@@ -63,7 +63,7 @@ return sol;
 ```cpp
 #define FAILED (-1)
 int data[] = {1,2,...1000000};
-int Binary_Search(int s, int e, int target, int \* d){
+int Binary_Search(int s, int e, int target, int * d){
   int m, sol;
   sol = FAILED;  
   while(s <= e){
@@ -94,7 +94,7 @@ int data[] = {-2,3,15,2,-193,-23,53,-661,-4,3,1,6,7,8,9,10,22,35,57,57,51,72,45,
 ```cpp
 #include <stdlib.h>
 
-int comp(const int * p1, const int * p2){ return \*p1 - \*p2;}
+int comp(const int * p1, const int * p2){ return *p1 - *p2;}
 qsort(data, sizeof(data)/sizeof(data[0]), sizeof(int), comp);
 ```
 
@@ -114,7 +114,7 @@ qsort(data, sizeof(data)/sizeof(data[0]), sizeof(int), comp);
 
 int data[] = {-2,3,15,2,-193,-23,53,-661,-4,3,1,6,7,8,9,10,22,35,57,57,51,72,45,81,24,-46,-75};
 
-int comp(const int * p1, const int * p2){ return \*p1 - \*p2;}
+int comp(const int * p1, const int * p2){ return *p1 - *p2;}
 qsort(data, sizeof(data)/sizeof(data[0]), sizeof(int), comp);
 
 

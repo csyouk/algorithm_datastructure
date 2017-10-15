@@ -51,7 +51,7 @@ void MergeSort(int s, int e, int \* data){
   - 데이터배열
 
 ```cpp
-void Merge(int s, int e, int m, int \* data);
+void Merge(int s, int e, int m, int * data);
 ```
 
 - 실질적으로 병합부분이 이 알고리즘의 백미이다. 한번 자세히 알아보자.
@@ -112,10 +112,10 @@ int data[10] = {10,9,8,7,6,5,4,3,2,1};
 // 임시로 정렬된 데이터를 만들어 놓을 공간
 int tmp[10];
 
-int MergeSort(int s, int e, int \* data);
-int Merge(int s, int e, int m, int \* data);
+int MergeSort(int s, int e, int * data);
+int Merge(int s, int e, int m, int * data);
 
-int Merge(int s, int e, int m, int \* data){
+int Merge(int s, int e, int m, int * data){
   int idx1, idx2, idxtmp;
   idx1 = s; idx2 = m+1; idxtmp = s;
 

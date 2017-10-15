@@ -33,7 +33,7 @@ int data[] = {
 
 ```cpp
 
-int Binary_Search_Lower(int s, int e, int lower, int \* data){
+int Binary_Search_Lower(int s, int e, int lower, int * data){
   int m, lower_bound = -1;
 
   while(s <= e){
@@ -56,7 +56,7 @@ int Binary_Search_Lower(int s, int e, int lower, int \* data){
 - 차이점을 눈으로 확인하자.
 
 ```cpp
-int Binary_Search_Upper(int s, int e, int upper, int \* data){
+int Binary_Search_Upper(int s, int e, int upper, int * data){
   int m, upper_bound = -1;
   while(s <= e){
     m = (s + e)/2;
