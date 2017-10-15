@@ -21,8 +21,8 @@
 - [Binary Search Upper/Lower Bound](./Searching-Algorithms/BinarySearchUpperLowerBound.md)
 
 ## Graph based algorithms
-- [Terms](https://github.com/csyouk/algorithm_datastructure/blob/master/Graph-Base/Terms.md)
 - **그래프 기반 비선형 자료구조에서 사용하는 알고리즘**
+- [Terms](https://github.com/csyouk/algorithm_datastructure/blob/master/Graph-Base/Terms.md)
 - [Flood Fill](https://github.com/csyouk/algorithm_datastructure/blob/master/Techinic/FloodFill.md)
 - [DFS(Depth Frist Search, 깊이 우선 탐색)](https://github.com/csyouk/algorithm_datastructure/blob/master/Techinic/DFS.md)
 - [BFS(Breadth Frist Search, 너비 우선 탐색)](https://github.com/csyouk/algorithm_datastructure/blob/master/Techinic/BFS.md)

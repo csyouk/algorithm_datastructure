@@ -82,7 +82,7 @@
     <ClCompile Include="datastructure-sol-170821.c" />
     <ClCompile Include="moredeepdive.c" />
     <ClCompile Include="moredeepdive_sol.c" />
-    <ClCompile Include="사냥꾼.c" />
+    <ClCompile Include="find_prime.c" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="in.txt" />

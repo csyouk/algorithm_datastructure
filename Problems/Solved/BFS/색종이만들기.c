@@ -52,7 +52,7 @@ void BFS(){
 	Pos out, in, tmp;
 	int i, j, k;
 
-	in.i = 0; in.j = 0; in.len = N; in.area = N * N; 
+	in.i = 0; in.j = 0; in.len = N; in.area = N * N;
 	Q[wp++] = in;
 
 	while (rp < wp)
@@ -66,17 +66,12 @@ void BFS(){
 		for (k = 0; k < 4; k++)
 		{
 			tmp = area_num_to_pos(out.i, out.j, k, out.len/2);
-			in.i = tmp.i; 
-			in.j = tmp.j; 
-			in.len = out.len / 2; 
+			in.i = tmp.i;
+			in.j = tmp.j;
+			in.len = out.len / 2;
 			Q[wp++] = in;
 		}
-
-
 	}
-
-
-
 }
 
 int main(void){
@@ -89,4 +84,68 @@ int main(void){
 	return 0;
 }
 
+#endif
+
+
+
+
+// 선생님 풀이
+#if 1
+#include <stdio.h>
+
+int N;
+int paper[128][128];
+int cnt[2];
+
+void Input_Data(void)
+{
+	int r, c;
+	scanf("%d",&N);
+	for (r = 0; r < N;r++)
+	{
+		for (c = 0; c < N;c++)
+		{
+			scanf("%d",&paper[r][c]);
+		}
+	}
+}
+
+void Count_Paper(int sr, int sc, int size)
+{
+	int color,r,c,er,ec;
+
+	color = paper[sr][sc];
+	er = sr + size - 1;
+	ec = sc + size - 1;
+
+	for (r = sr; r <= er ;r++)
+	{
+		for (c = sc; c <= ec;c++)
+		{
+			if (paper[r][c] != color) goto END_OF_LOOP;
+		}
+	}
+
+END_OF_LOOP:
+	if (r == er + 1) cnt[color]++;
+	else
+	{
+		Count_Paper(sr, sc, size/2);
+		Count_Paper(sr, sc + (size / 2), size / 2);
+		Count_Paper(sr + (size / 2), sc, size / 2);
+		Count_Paper(sr + (size / 2), sc + (size / 2), size / 2);
+	}
+}
+
+
+int main(void)
+{
+	Input_Data();
+
+	Count_Paper(0,0,N);
+
+	printf("%d\n%d\n",cnt[0],cnt[1]);
+
+	return 0;
+}
 #endif
