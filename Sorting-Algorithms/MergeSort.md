@@ -19,7 +19,7 @@
   - 세 번째 인자는 정렬하고자 하는 데이터 배열의 첫 요소의 주소를 넘긴다.
 
 ```cpp
-void MergeSort(int s, int e, int \* data);
+void MergeSort(int s, int e, int * data);
 ```
 
 - MergetSort의 구현은 다음과 같다.
@@ -32,7 +32,7 @@ void MergeSort(int s, int e, int \* data);
 즉, Merge함수를 호출한다는 뜻이다.
 
 ```cpp
-void MergeSort(int s, int e, int \* data){
+void MergeSort(int s, int e, int * data){
 
   int m;
   if(s >= e) return;

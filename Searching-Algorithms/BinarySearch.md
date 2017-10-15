@@ -118,7 +118,7 @@ int comp(const int * p1, const int * p2){ return *p1 - *p2;}
 qsort(data, sizeof(data)/sizeof(data[0]), sizeof(int), comp);
 
 
-int Binary_Search(int s, int e, int target, int \* d){
+int Binary_Search(int s, int e, int target, int * d){
   int m, sol;
   sol = FAILED;  
   while(s <= e){
