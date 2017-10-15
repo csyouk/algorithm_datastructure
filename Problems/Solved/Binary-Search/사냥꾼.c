@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-
+#define FAILED (-1)
 int M, N, L;
 int shoot[100000];
 typedef struct
@@ -68,33 +68,8 @@ int Binary_Search_Lower(int s, int e, int d)
 	}
 	return sol;
 }
+
 /*
-int Solve1(void)
-{
-	int i;
-	int cnt = 0,ret;
-
-	for (i = 0; i < N;i++)
-	{
-		ret = Binary_Search_Upper(0, M - 1, animal[i].x);
-		if (ret != -1 && animal[i].y + animal[i].x - shoot[ret] <= L)
-		{
-			cnt++;
-		}
-		else
-		{
-			ret = Binary_Search_Lower(0, M - 1, animal[i].x);
-			if (ret != -1 && animal[i].y + shoot[ret] - animal[i].x <= L)
-			{
-				cnt++;
-			}
-		}
-	}
-	return cnt;
-
-}
-*/
-
 int Solve2(void)
 {
 	int i,right=0;
@@ -109,11 +84,35 @@ int Solve2(void)
 	}
 
 	return cnt;
+}
+*/
 
+int Solve1(void)
+{
+	int i;
+	int cnt = 0,ret;
 
-
+	for (i = 0; i < N;i++)
+	{
+		ret = Binary_Search_Upper(0, M - 1, animal[i].x);
+		if (ret != FAILED && animal[i].y + animal[i].x - shoot[ret] <= L)
+		{
+			cnt++;
+		}
+		else
+		{
+			ret = Binary_Search_Lower(0, M - 1, animal[i].x);
+			if (ret != FAILED && animal[i].y + shoot[ret] - animal[i].x <= L)
+			{
+				cnt++;
+			}
+		}
+	}
+	return cnt;
 
 }
+
+
 
 
 
@@ -125,8 +124,10 @@ int main(void)
 	qsort(shoot, M, sizeof(int), comp_shoot);
 	printf("%d\n",Solve1());
 
+	/*
 	qsort(animal, N, sizeof(ANIMAL), comp_animal);
 	printf("%d\n",Solve2());
+	*/
 
 	return 0;
 }
