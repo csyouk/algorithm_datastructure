@@ -113,9 +113,6 @@ int Solve1(void)
 }
 
 
-
-
-
 int main(void)
 {
 	Input_Data();
