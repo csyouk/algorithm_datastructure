@@ -85,6 +85,7 @@
     <ClCompile Include="find_prime.c" />
     <ClCompile Include="가장높은탑쌓기.c" />
     <ClCompile Include="색종이올려놓기.c" />
+    <ClCompile Include="연구소.c" />
     <ClCompile Include="전깃줄(초).c" />
     <ClCompile Include="줄세우기.c" />
   </ItemGroup>

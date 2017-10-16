@@ -1,4 +1,3 @@
-#if 0
 #include <stdio.h>
 #define ABS(X,Y) (((X) > (Y)) ? ((X) - (Y)):((Y) - (X)))
 typedef struct {
@@ -47,4 +46,3 @@ int main(void){
 
 	return 0;
 }
-#endif

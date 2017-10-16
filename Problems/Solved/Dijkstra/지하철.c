@@ -1,6 +1,6 @@
 
 //문제 번호 T : [TST]지하철
-#if 0
+#if 01
 #include <stdio.h>
 #define SIZE 110
 #define INF 0x7fffffff
@@ -53,7 +53,6 @@ int Dijkstra(int start){
 
 int main(void){
 
-	freopen("in.txt", "r", stdin);
 
 	int i, j;
 	scanf("%d %d", &N, &M);
