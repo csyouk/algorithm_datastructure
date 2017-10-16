@@ -1,6 +1,5 @@
-
 // 문제 번호 G: [TST]경로 찾기
-#if 0
+#if 01
 #include <stdio.h>
 #define INF 0x7fffffff
 
