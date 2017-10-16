@@ -57,4 +57,4 @@
 - [Dynamic-Array](./Data-Structure/Dynamic-Array/dynamic-array.md)
 
 # Problems
-- [Problems](./Problems/Problems.md)
+- [Problems](https://github.com/csyouk/algorithm_datastructure/tree/master/Problems)
