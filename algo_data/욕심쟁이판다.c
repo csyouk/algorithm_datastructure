@@ -1,3 +1,4 @@
+#if 0
 #include <stdio.h>
 #include <stdlib.h>
 #define DIRS 4
@@ -58,3 +59,4 @@ int main(void){
 	printf("%d", Find());
 	return 0;
 }
+#endif
