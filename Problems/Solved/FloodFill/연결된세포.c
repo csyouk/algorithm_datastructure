@@ -1,5 +1,5 @@
 // 문제 번호 : [TST] 연결된 세포
-#if 0
+#if 01
 #include <stdio.h>
 int R, C, mark=1;
 int cell[12][12];

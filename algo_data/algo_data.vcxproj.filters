@@ -57,10 +57,7 @@
     <ClCompile Include="전깃줄(초).c">
       <Filter>소스 파일\algorithm</Filter>
     </ClCompile>
-    <ClCompile Include="욕심쟁이판다.c">
-      <Filter>소스 파일\algorithm</Filter>
-    </ClCompile>
-    <ClCompile Include="퇴사.c">
+    <ClCompile Include="고돌이고소미.c">
       <Filter>소스 파일\algorithm</Filter>
     </ClCompile>
   </ItemGroup>
