@@ -9,6 +9,8 @@ typedef struct {
 Pos p[250000];
 int N, wp;
 int map[502][502];
+
+// 비용배열에는 중간 결과값을 저장해놓아야 한다.
 int cost[502][502];
 
 int di[DIRS] = {0,-1,0,1};
