@@ -1,6 +1,6 @@
 
 // 문제 번호 E: [TST]영역 구하기
-#if 0
+#if 01
 #include <stdio.h>
 #define SIZE 110
 #define DIRS 4

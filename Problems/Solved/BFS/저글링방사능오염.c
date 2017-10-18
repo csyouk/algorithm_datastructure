@@ -1,6 +1,6 @@
 
 // 문제 번호 D: [TST]저글링 방사능 오염
-#if 0
+#if 01
 #include <stdio.h>
 #define SIZE 110
 #define DIRS 4
