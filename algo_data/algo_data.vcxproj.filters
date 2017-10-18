@@ -48,7 +48,16 @@
     <ClCompile Include="줄세우기.c">
       <Filter>소스 파일\algorithm</Filter>
     </ClCompile>
-    <ClCompile Include="종교.c">
+    <ClCompile Include="가스관.c">
+      <Filter>소스 파일\algorithm</Filter>
+    </ClCompile>
+    <ClCompile Include="BinSearch.c">
+      <Filter>소스 파일\algorithm</Filter>
+    </ClCompile>
+    <ClCompile Include="어민.c">
+      <Filter>소스 파일\algorithm</Filter>
+    </ClCompile>
+    <ClCompile Include="등산로조성.c">
       <Filter>소스 파일\algorithm</Filter>
     </ClCompile>
   </ItemGroup>

@@ -78,12 +78,15 @@
   <ItemGroup>
     <ClCompile Include="170822-workshop-datastructure.c" />
     <ClCompile Include="170823-workshop.datastructure.c" />
+    <ClCompile Include="BinSearch.c" />
     <ClCompile Include="datastructure-lab-170821.c" />
     <ClCompile Include="datastructure-sol-170821.c" />
     <ClCompile Include="moredeepdive.c" />
     <ClCompile Include="moredeepdive_sol.c" />
     <ClCompile Include="find_prime.c" />
-    <ClCompile Include="종교.c" />
+    <ClCompile Include="가스관.c" />
+    <ClCompile Include="등산로조성.c" />
+    <ClCompile Include="어민.c" />
     <ClCompile Include="줄세우기.c" />
   </ItemGroup>
   <ItemGroup>
