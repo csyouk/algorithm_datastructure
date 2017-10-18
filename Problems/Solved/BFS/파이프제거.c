@@ -5,7 +5,7 @@
 //  Created by youkchangsu on 2017. 9. 2..
 //  Copyright © 2017년 youkchangsu. All rights reserved.
 //
-#if 0
+#if 01
 #include <stdio.h>
 
 #define CONNECTED -1
@@ -40,8 +40,8 @@ void Print_All(void){
     }
     printf("\n");
   }
-  
-  
+
+
   printf("map======\n");
   for (i = 1; i <=N; i++) {
     for (j = 1; j <=N; j++) {
@@ -59,7 +59,7 @@ void Init(void){
   for (i = 1; i <=N; i++) {
     scanf("%s", &tmp[i][1]);
   }
-  
+
   // 입력값을 정수형으로 변환.
   for (i=1; i<=N; i++) {
     for (j =1; j<=N; j++) {
@@ -158,7 +158,7 @@ void Init(void){
 }
 
 int Count_Disconnected_Pipe(void){
-  
+
   int i,j;
   int left=0;
   for (i = 1; i <= N; i++) {
@@ -168,7 +168,7 @@ int Count_Disconnected_Pipe(void){
       left++;
     }
   }
-  
+
   return left;
 }
 void BFS(int x, int y){
@@ -176,8 +176,8 @@ void BFS(int x, int y){
   Pipe poped;
   Q[WP++] = pipe_map[x][y];
   if(pipe_map[x][y].type != 0) map[x][y] = CONNECTED;
-  
-  
+
+
   while (RP < WP) {
     poped = Q[RP++];
     for (k=0; k < DIRS; k++) {
@@ -203,12 +203,12 @@ int main(void)
   scanf("%d", &N);
   scanf("%d %d", &start.x, &start.y);
   Init();
-  
+
   BFS(start.y+1, start.x+1);
   left = Count_Disconnected_Pipe();
 
   Print_All();
-  
+
   printf("%d", left);
   return 0;
 }
