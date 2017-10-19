@@ -60,7 +60,7 @@ int main(void)
 {
 
   int i,j;
-  freopen("/Users/youk/workspace/scsa/codeground/codeground/in.txt", "r", stdin);
+
   scanf("%d", &N);
   scanf("%d %d", &peak.i, &peak.j);
 
