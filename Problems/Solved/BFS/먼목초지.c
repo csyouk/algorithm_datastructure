@@ -10,6 +10,8 @@ typedef struct {
 Pos PosEntries[900];
 int EntryRP, EntryWP;
 
+// 큐에 같은 위치에 대한 복수개의 요소가 들어갈 수 있기 때문에,
+// 최대한 넉넉하게 사이즈를 잡아주는 것이 좋다.
 Pos Q[1000000];
 int RP, WP;
 
@@ -24,7 +26,7 @@ int dj[DIRS] = {0,0,-1,1};
 
 void Init(void){
 	memset(map, 0, sizeof(map));
-	RP = WP = 0;
+	EntryRP = EntryWP = 0; RP = WP = 0;
 	maxtime = 0;
 }
 

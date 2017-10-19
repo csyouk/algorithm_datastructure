@@ -51,13 +51,13 @@
     <ClCompile Include="가스관.c">
       <Filter>소스 파일\algorithm</Filter>
     </ClCompile>
-    <ClCompile Include="BinSearch.c">
-      <Filter>소스 파일\algorithm</Filter>
-    </ClCompile>
     <ClCompile Include="어민.c">
       <Filter>소스 파일\algorithm</Filter>
     </ClCompile>
-    <ClCompile Include="등산로조성.c">
+    <ClCompile Include="페그솔리테어.c">
+      <Filter>소스 파일\algorithm</Filter>
+    </ClCompile>
+    <ClCompile Include="test.c">
       <Filter>소스 파일\algorithm</Filter>
     </ClCompile>
   </ItemGroup>
