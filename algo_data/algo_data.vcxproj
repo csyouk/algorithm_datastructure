@@ -87,6 +87,7 @@
     <ClCompile Include="미생물격리.c" />
     <ClCompile Include="보너스.c" />
     <ClCompile Include="어민.c" />
+    <ClCompile Include="점심식사시간.c" />
     <ClCompile Include="줄세우기.c" />
   </ItemGroup>
   <ItemGroup>

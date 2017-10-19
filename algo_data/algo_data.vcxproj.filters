@@ -60,6 +60,9 @@
     <ClCompile Include="보너스.c">
       <Filter>소스 파일\algorithm</Filter>
     </ClCompile>
+    <ClCompile Include="점심식사시간.c">
+      <Filter>소스 파일\algorithm</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="in.txt">
