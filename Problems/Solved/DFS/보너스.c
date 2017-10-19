@@ -1,7 +1,7 @@
 
 
 //	보너스(약간개선)
-#if 0
+#if 01
 #include <stdio.h>
 int N, M, a[10 + 10][10 + 10], b[10 + 10], chk[10 + 10], s[10 + 10];
 int Check(int n, int m){

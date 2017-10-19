@@ -54,7 +54,10 @@
     <ClCompile Include="어민.c">
       <Filter>소스 파일\algorithm</Filter>
     </ClCompile>
-    <ClCompile Include="페그솔리테어.c">
+    <ClCompile Include="미생물격리.c">
+      <Filter>소스 파일\algorithm</Filter>
+    </ClCompile>
+    <ClCompile Include="보너스.c">
       <Filter>소스 파일\algorithm</Filter>
     </ClCompile>
   </ItemGroup>

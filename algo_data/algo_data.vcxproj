@@ -84,9 +84,10 @@
     <ClCompile Include="moredeepdive_sol.c" />
     <ClCompile Include="find_prime.c" />
     <ClCompile Include="가스관.c" />
+    <ClCompile Include="미생물격리.c" />
+    <ClCompile Include="보너스.c" />
     <ClCompile Include="어민.c" />
     <ClCompile Include="줄세우기.c" />
-    <ClCompile Include="페그솔리테어.c" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="in.txt" />
