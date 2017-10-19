@@ -57,9 +57,6 @@
     <ClCompile Include="페그솔리테어.c">
       <Filter>소스 파일\algorithm</Filter>
     </ClCompile>
-    <ClCompile Include="test.c">
-      <Filter>소스 파일\algorithm</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="in.txt">

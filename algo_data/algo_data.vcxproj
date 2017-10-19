@@ -83,7 +83,6 @@
     <ClCompile Include="moredeepdive.c" />
     <ClCompile Include="moredeepdive_sol.c" />
     <ClCompile Include="find_prime.c" />
-    <ClCompile Include="test.c" />
     <ClCompile Include="가스관.c" />
     <ClCompile Include="어민.c" />
     <ClCompile Include="줄세우기.c" />
