@@ -42,36 +42,12 @@
     <ClCompile Include="moredeepdive_sol.c">
       <Filter>소스 파일\c언어심화</Filter>
     </ClCompile>
-    <ClCompile Include="find_prime.c">
-      <Filter>소스 파일\algorithm</Filter>
-    </ClCompile>
-    <ClCompile Include="줄세우기.c">
-      <Filter>소스 파일\algorithm</Filter>
-    </ClCompile>
-    <ClCompile Include="가스관.c">
-      <Filter>소스 파일\algorithm</Filter>
-    </ClCompile>
-    <ClCompile Include="어민.c">
-      <Filter>소스 파일\algorithm</Filter>
-    </ClCompile>
-    <ClCompile Include="미생물격리.c">
-      <Filter>소스 파일\algorithm</Filter>
-    </ClCompile>
-    <ClCompile Include="보너스.c">
-      <Filter>소스 파일\algorithm</Filter>
-    </ClCompile>
-    <ClCompile Include="점심식사시간.c">
-      <Filter>소스 파일\algorithm</Filter>
-    </ClCompile>
-    <ClCompile Include="카드게임.c">
+    <ClCompile Include="소스.c">
       <Filter>소스 파일\algorithm</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="in.txt">
-      <Filter>소스 파일\algorithm</Filter>
-    </Text>
-    <Text Include="todolist.txt">
       <Filter>소스 파일\algorithm</Filter>
     </Text>
   </ItemGroup>
