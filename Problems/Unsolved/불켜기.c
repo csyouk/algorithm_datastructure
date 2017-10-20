@@ -1,121 +1,122 @@
 #include <stdio.h>
 #include <stdlib.h>
+#define DIRS 4
+typedef struct
+{
+	int sw_r, sw_c;
+	int led_r, led_c;
+}SWITCH;
 
 int N, M;
 int map[102][102];
-int chk[102][102];
-int index[102][102];
+int vis[102][102];
+int lut[102][102];
 
-typedef struct
-{
-	int sw_r;
-	int sw_c;
-	int light_r;
-	int light_c;
-}SW;
-SW sw[20001];
-
-
-int ff_cnt;
 int sw_flag;
-int sol;
 
-void Input_Data(void)
-{
+SWITCH sw[20001];
+
+
+void Init(void){
+	memset(map, 0, sizeof(map));
+	memset(vis, 0, sizeof(vis));
+	memset(lut, 0, sizeof(lut));
+	sw_flag = 1;
+}
+
+void Input_Data(void){
 	int i;
-	scanf("%d %d",&N,&M);
-	map[1][1] = 1;
-	for (i = 1; i <= M;i++)
+	scanf("%d %d", &N, &M);
+	for ( i = 1; i <=M; i++)
 	{
-		scanf("%d %d %d %d", &sw[i].sw_r, &sw[i].sw_c, &sw[i].light_r, &sw[i].light_c);
+		scanf("%d %d %d %d", &sw[i].sw_r, &sw[i].sw_c, &sw[i].led_r, &sw[i].led_c);
 	}
 }
 
-int comp(const void* p1,const void* p2)
-{
-	if (((SW*)p1)->sw_r == ((SW*)p2)->sw_r) return ((SW*)p1)->sw_c - ((SW*)p2)->sw_c;
-	return ((SW*)p1)->sw_r - ((SW*)p2)->sw_r;
+int comp(const void * p1, const void * p2){
+	if (((SWITCH *)p1)->sw_r == ((SWITCH *)p2)->sw_r) return ((SWITCH *)p1)->sw_c - ((SWITCH *)p2)->sw_c;
+	else return ((SWITCH *)p1)->sw_r - ((SWITCH *)p2)->sw_r;
 }
 
-void Make_Index_Data(void)
-{
+void Make_Lookup_Table(void){
 	int i;
-	for (i = 1; i <= M;i++)
+	for ( i = 1; i <=M; i++)
 	{
-		if ((sw[i].sw_r != sw[i - 1].sw_r) || (sw[i].sw_c != sw[i - 1].sw_c))
-		{
-			index[sw[i].sw_r][sw[i].sw_c] = i;
+		if ((sw[i].sw_r != sw[i - 1].sw_r) || (sw[i].sw_c != sw[i - 1].sw_c)){
+			lut[sw[i].sw_r][sw[i].sw_c] = i;
 		}
 	}
 }
 
-void Clear_Chk(void)
-{
-	int r, c;
-
-	for (r = 1; r <= N;r++)
+void Turn_Lights(int start_index, int r, int c){
+	int i;
+	sw_flag = 1;
+	for (i = start_index; i <= M; i++)
 	{
-		for (c = 1; c <= N;c++)
-		{
-			chk[r][c] = 0;
+		if (sw[i].sw_r != r || sw[i].sw_c != c) break;
+		if (map[sw[i].led_r][sw[i].led_c] == 0){
+			map[sw[i].led_r][sw[i].led_c] = 1;
 		}
 	}
+	lut[r][c] = 0;
 }
 
-void Flood_Fill(int r,int c)
-{
-	int nr, nc,i;
-	int dr[] = {0,0,1,-1};
-	int dc[] = {1,-1,0,0};
+void Flood_Fill(int r, int c){
+	int k, nr, nc;
+	static int dr[] = {-1,1,0,0};
+	static int dc[] = {0,0,-1,1};
 
-	chk[r][c] = 1;
+	vis[r][c] = 1;
 
-	if (index[r][c])
+	if (lut[r][c]){ Turn_Lights(lut[r][c], r, c); }
+
+	// flood fill
+	for ( k = 0; k < 4; k++)
 	{
-		sw_flag = 1;
-		for (i = index[r][c]; i <= M; i++)
-		{
-			if (sw[i].sw_r != r || sw[i].sw_c != c) break;
-			if (map[sw[i].light_r][sw[i].light_c] == 0)
-			{
-				map[sw[i].light_r][sw[i].light_c] = 1;
-				sol++;
-			}
-		}
-		index[r][c] = 0;
-	}
-
-	for (i = 0; i < 4;i++)
-	{
-		nr = r + dr[i]; nc = c + dc[i];
-		if (map[nr][nc] && !chk[nr][nc])
-		{
+		nr = r + dr[k]; nc = c + dc[k];
+		if (map[nr][nc] && !vis[nr][nc]){
 			Flood_Fill(nr, nc);
 		}
 	}
 }
 
+
+int Count(void){
+	int r, c, cnt=0;
+	for ( r = 1; r <=N; r++)
+	{
+		for ( c = 1; c <=N; c++)
+		{
+			if (map[r][c]) cnt++;
+		}
+	}
+	return cnt;
+}
+
+void Init_Enviroment(void){
+	sw_flag = 0;
+	memset(vis, 0, sizeof(vis));
+	map[1][1] = 1;
+}
+
 int main(void)
 {
 	int T;
-	scanf("%d",&T);
+	scanf("%d", &T);
 	while (T--)
 	{
-
-		memset(sw, 0, sizeof(sw));
-		memset(map, 0, sizeof(map));
+		Init();
 		Input_Data();
-		qsort(sw + 1, M, sizeof(SW), comp);
-		Make_Index_Data();
+		qsort(sw + 1, M, sizeof(SWITCH), comp);
+		Make_Lookup_Table();
+
 		sw_flag = 1;
-		sol = 1;
 		while (sw_flag)
 		{
-			sw_flag = 0;
-			Clear_Chk();
-			Flood_Fill(1,1);
+			Init_Enviroment();
+			Flood_Fill(1, 1);
 		}
-		printf("%d\n", sol);
+		printf("%d\n", Count());
 	}
 	return 0;
 }

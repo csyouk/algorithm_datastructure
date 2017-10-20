@@ -56,6 +56,8 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <StackReserveSize>6000000</StackReserveSize>
+      <StackCommitSize>6000000</StackCommitSize>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -82,7 +84,7 @@
     <ClCompile Include="datastructure-sol-170821.c" />
     <ClCompile Include="moredeepdive.c" />
     <ClCompile Include="moredeepdive_sol.c" />
-    <ClCompile Include="소스.c" />
+    <ClCompile Include="불켜기.c" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="in.txt" />

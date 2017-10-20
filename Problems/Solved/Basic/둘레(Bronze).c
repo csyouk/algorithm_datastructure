@@ -5,7 +5,7 @@
 //  Created by youkchangsu on 2017. 8. 30..
 //  Copyright © 2017년 youkchangsu. All rights reserved.
 //
-#if 0
+#if 01
 #include <stdio.h>
 #define DIRS 4
 #define LEN 120
@@ -32,7 +32,7 @@ void pprint(void)
     for (i=0; i<LEN; i++) {
         printf("%s\n", a[i]);
     }
-    
+
     printf("check\n");
     for (i=0; i<LEN; i++) {
         printf("%s\n", chk[i]);
@@ -43,8 +43,8 @@ void Fill(int i, int j, int mark)
     int ni,nj,k;
     if(chk[i][j] == '0'+mark) return;
     chk[i][j] = mark + '0';
-    
-    
+
+
     for (k=0; k<DIRS; k++) {
         ni = i + di[k]; nj = j + dj[k];
         if(a[ni][nj] == '.'){
@@ -77,13 +77,13 @@ int main(void)
         scanf("%d %d",&x, &y);
         a[x][y] = 'X';
     }
-    
-    
-    
+
+
+
     start_check();
-    
+
 //    pprint();
-    
+
     for (i = 1; i<LEN; i++) {
         for (j=1; j<LEN; j++) {
             if(chk[i][j] == '1') continue;
@@ -95,7 +95,7 @@ int main(void)
             }
         }
     }
-    
+
     printf("%d", cnt);
     return 0;
 }
