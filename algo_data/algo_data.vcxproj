@@ -89,6 +89,7 @@
     <ClCompile Include="어민.c" />
     <ClCompile Include="점심식사시간.c" />
     <ClCompile Include="줄세우기.c" />
+    <ClCompile Include="카드게임.c" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="in.txt" />
