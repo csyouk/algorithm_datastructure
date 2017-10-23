@@ -1,3 +1,6 @@
+# 비트가 1인 것들 셈하기
+
+```cpp
 #include <stdio.h>
 
 int coutung_1bit(unsigned int x){
@@ -14,3 +17,5 @@ int main(void){
 	printf("1 : %d / 0 : %d", coutung_1bit(0xbc637eff), 32 - coutung_1bit(0xbc637eff));
 	return 0;
 }
+
+```

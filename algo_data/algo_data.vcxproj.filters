@@ -42,9 +42,6 @@
     <ClCompile Include="moredeepdive_sol.c">
       <Filter>소스 파일\c언어심화</Filter>
     </ClCompile>
-    <ClCompile Include="counting_bits.c">
-      <Filter>소스 파일\algorithm</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="in.txt">
