@@ -80,11 +80,11 @@
   <ItemGroup>
     <ClCompile Include="170822-workshop-datastructure.c" />
     <ClCompile Include="170823-workshop.datastructure.c" />
+    <ClCompile Include="counting_bits.c" />
     <ClCompile Include="datastructure-lab-170821.c" />
     <ClCompile Include="datastructure-sol-170821.c" />
     <ClCompile Include="moredeepdive.c" />
     <ClCompile Include="moredeepdive_sol.c" />
-    <ClCompile Include="프로세서연결.c" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="in.txt" />
