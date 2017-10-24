@@ -80,6 +80,7 @@
   <ItemGroup>
     <ClCompile Include="170822-workshop-datastructure.c" />
     <ClCompile Include="170823-workshop.datastructure.c" />
+    <ClCompile Include="bit_twiddling_hack.c" />
     <ClCompile Include="datastructure-lab-170821.c" />
     <ClCompile Include="datastructure-sol-170821.c" />
     <ClCompile Include="moredeepdive.c" />
