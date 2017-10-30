@@ -1,6 +1,6 @@
 
 // 문제 번호 : [TST]돌다리 건너기(BASIC)
-#if 0
+#if 01
 #include <stdio.h>
 #include <string.h>
 #define DEVIL 0
@@ -26,7 +26,6 @@ void DFS(int n, int s, int type){
 }
 
 int main(void){
-	freopen("in.txt", "r", stdin);
 	int d, a, i, start_d, start_a;
 	scanf("%s", &spell[1]);
 	scanf("%s", &bridge[0][1]);
@@ -49,44 +48,6 @@ int main(void){
 
 	if (sol)printf("%d", sol);
 	else printf("0");
-	return 0;
-}
-#endif
-
-// 돌다리 건너기 sol 코드
-#if 0
-#include <stdio.h>
-char s[20], str[4][60];
-int M, N, sol;
-
-void DFS(int n, int cnt, int p){
-	// 최적화
-	if (cnt == M) sol++;
-	// 종료 조건
-	if (n >= N){
-		if (cnt == M) sol++;
-		return;
-	}
-
-	// 밟는 경우.
-	if (s[cnt] == str[p][n]) DFS(n + 1, cnt + 1, !p);
-
-	// 밟지 않는 경우.
-	DFS(n + 1, cnt + 1, p);
-}
-
-int main(void){
-
-	scanf("%s %s %s", &s[0], &str[0][0], &str[1][0]);
-
-	for (M = 0; s[M]; M++);
-	for (N = 0; str[0][N]; i++);
-
-	DFS(0, 0, 0);
-	DFS(0, 0, 1);
-
-	printf("%d", sol);
-
 	return 0;
 }
 #endif

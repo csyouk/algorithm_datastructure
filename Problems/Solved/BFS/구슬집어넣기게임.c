@@ -179,3 +179,119 @@ int main(void)
   return 0;
 }
 #endif
+
+
+
+// 상태배열의 확장.
+
+#include <stdio.h>
+#include <string.h>
+
+#define DIRS 4
+typedef struct {
+  int rr, rc;
+  int br, bc;
+  int cnt;
+}Ball;
+
+typedef struct {
+  int r,c;
+}Hall;
+
+Ball ball;
+Hall hall;
+Ball Q[8*17*7*17];
+
+int R, C, RP, WP;
+char map[8][17];
+int vis[8][17][8][17];
+
+void Input_Data(void){
+  int i, j;
+  //Init
+  memset(vis, 0, sizeof(vis));
+  memset(map, 0, sizeof(map));
+  RP = WP = 0;
+  scanf("%d %d",  &R, &C);
+  for (i=0; i<R; i++) {
+    scanf("%s", &map[i][0]);
+    for (j=0; j<C; j++) {
+      if(map[i][j] == 'R'){
+        ball.rr = i; ball.rc = j;
+      }
+      if(map[i][j] == 'B'){
+        ball.br = i; ball.bc = j;
+      }
+      if(map[i][j] == 'H'){
+        hall.r = i; hall.c = j;
+      }
+    }
+  }
+}
+
+int BFS(){
+  int k1, k2;
+  static int dr[] = {-1,1,0,0};
+  static int dc[] = {0,0,-1,1};
+
+  Ball data, ndata;
+
+  Q[WP++]= ball;
+  vis[ball.rr][ball.rc][ball.br][ball.bc] = 1;
+
+  while (RP < WP) {
+    data = Q[RP++];
+    ndata = data;
+    // 10회 이상 기울일 시 패스
+    if(ndata.cnt > 10) continue;
+    if(ndata.rr == hall.r && ndata.rc == hall.c){
+      return ndata.cnt;
+    }
+    for (k1 = 0; k1 < DIRS; k1++) {
+
+      ndata.rr = data.rr +dr[k1]; ndata.rc = data.rc +dc[k1];
+
+      if(map[ndata.rr][ndata.rc] == '#'){
+        // 벽이 있을 경우 못움직이니 자리 원복.
+        ndata.rr = data.rr; ndata.rc = data.rc;
+      }
+
+      ndata.br = data.br + dr[k1]; ndata.bc = data.bc +dc[k1];
+      if(map[ndata.br][ndata.bc] == '#'){
+        // 벽이 있을 경우 못움직이니 자리 원복.
+        ndata.br = data.br; ndata.bc = data.bc;
+      }
+
+      // 빨강 파랑공 부딪히는 경우
+      if(ndata.rr == ndata.br && ndata.rc == ndata.bc) continue;
+
+      // 파랑공이 홀에 들어가는 경우
+      if(ndata.br == hall.r && ndata.bc == hall.c) {
+        continue;
+      }
+      if(vis[ndata.rr][ndata.rc][ndata.br][ndata.bc]) continue;
+      vis[ndata.rr][ndata.rc][ndata.br][ndata.bc] = 1;
+
+      Q[WP] = ndata;
+      Q[WP].cnt += 1;
+      WP++;
+
+
+    }
+  }
+  return -1;
+}
+
+
+int main(void){
+  int T;
+
+  scanf("%d", &T);
+  while (T--) {
+    Input_Data();
+    printf("%d\n", BFS());
+  }
+
+
+  return 0;
+}

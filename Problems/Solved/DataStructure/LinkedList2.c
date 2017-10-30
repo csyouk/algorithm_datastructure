@@ -1,6 +1,6 @@
 
 //[Data Structure] Linked List #2
-#if 0
+#if 01
 
 //Heap을 쓰지 않고 간단한 배열에 구조체를 저장하고 이를 연결 리스트(Linked List)로 관리하려 한다. 구조체 배열은 다음과 같은 초기값으로 되어 있다. 구조체에서 id가 0이면 빈 방, next가 -1이면 링크의 마지막 방을 의미한다.
 //struct st

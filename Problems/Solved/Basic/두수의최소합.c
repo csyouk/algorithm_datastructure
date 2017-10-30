@@ -5,7 +5,7 @@
 //  Created by youkchangsu on 2017. 9. 2..
 //  Copyright © 2017년 youkchangsu. All rights reserved.
 //
-#if 0
+#if 01
 #include <stdio.h>
 #define CHECK -1
 #define MSD 0

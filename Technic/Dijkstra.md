@@ -42,7 +42,7 @@ int Dijkstra(int start, int total_node){
 		}
 
 		min = INF;
-		for ( node = 1; node <= total_node; node++){
+		for ( node = 1; node <= N; node++){
 			if (visited[node] || cost[node] == INF) continue;
 			if (min > cost[node]){
 				min = cost[node];

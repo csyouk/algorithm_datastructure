@@ -1,6 +1,6 @@
 
 // 문제 번호 N: [TST]최단 경로 찾기
-#if 0
+#if 01
 #include <stdio.h>
 #define E_SIZE 10 + 10
 #define INF 0x7fffffff

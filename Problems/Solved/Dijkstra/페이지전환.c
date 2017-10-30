@@ -1,6 +1,6 @@
 
 // 문제 번호 Q: [TST]페이지 전환
-#if 0
+#if 01
 #include <stdio.h>
 #define NODE_SIZE 500 + 10
 #define PAGES 500+10
